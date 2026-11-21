@@ -33,7 +33,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import figstyle as fs  # noqa: E402
 
-TASKS = [("gsm8k", "GSM8K (500 items)", "Gsm", "#333333", "-"), ("math", "MATH L1-3 (238 items)", "Math", "#333333", "--")]
+TASKS = [("gsm8k", "GSM8K", "Gsm", "#333333", "-"), ("math", "MATH L1-3", "Math", "#333333", "--")]
 
 
 def load():
@@ -86,7 +86,7 @@ def main():
         # above it there)
         ax.annotate(f"$r$ = {rs:.2f}", (rs, YLO), xytext=(-2, 4), textcoords="offset points",
                     ha="right", va="bottom", fontsize=7.5, color="#333333", rotation=90)
-    ax.legend(loc="upper left", frameon=False, handlelength=2.2, borderaxespad=0.3)
+    ax.legend(loc="upper right", bbox_to_anchor=(1.0, 0.80), frameon=False, handlelength=1.8, borderaxespad=0.3)
     ax.annotate(r"SC $k$=8 cheaper", (6.0, 0), xytext=(4, -3), textcoords="offset points",
                 fontsize=7.5, color="#444444", ha="left", va="top")
     ax.annotate("debate cheaper", (6.0, 0), xytext=(4, 3), textcoords="offset points",

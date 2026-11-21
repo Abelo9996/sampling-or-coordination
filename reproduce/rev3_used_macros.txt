@@ -1,5 +1,5 @@
 # Macro names defined in paper/arxiv_rev3/*_macros.tex and used by the final rev3 manuscript
-# (compute-optimal-agents bc8c9715), its table fragments or the rev3 scripts.
+# (compute-optimal-agents 90bb3829), its table fragments or the rev3 scripts.
 AuAccDeb
 AuAccGe
 AuAccHier
@@ -229,6 +229,7 @@ MeDSceightMinusDeb
 MeDSceightMinusGe
 MeDSceightMinusHier
 MeDSceightMinusSa
+MeDScfourMinusDeb
 MeDScfourMinusGe
 MeDebAcc
 MeDebCI
@@ -246,6 +247,7 @@ MeISceightMinusDeb
 MeISceightMinusGe
 MeISceightMinusHier
 MeISceightMinusSa
+MeIScfourMinusDeb
 MeIScfourMinusGe
 MeN
 MePSceightMinusDeb
@@ -334,6 +336,8 @@ RrCTwoPvOne
 RrCodeDomHolm
 RrCodeSaAcc
 RrCodeSaTok
+RrCrossCIGsm
+RrCrossCIMath
 RrCrossGsm
 RrCrossRoundGsm
 RrCtxMaxAll
@@ -352,6 +356,15 @@ RrDtGsmSaMinusHier
 RrDtGsmSceightMinusDeb
 RrDtGsmScfourMinusDeb
 RrDtGsmScfourMinusGe
+RrEnChanges
+RrEnGsmDeb
+RrEnGsmSceight
+RrEnGsmScfour
+RrEnIcpt
+RrEnNChanges
+RrEnNRen
+RrEnNRtot
+RrEnRatio
 RrEngGeMinusSa
 RrEngHierAcc
 RrEngHierMinusSa

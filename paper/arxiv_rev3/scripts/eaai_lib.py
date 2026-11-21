@@ -1,7 +1,7 @@
 """Helpers for the adapted rev3 figures, copied from scripts/make_eaai_figures.py and
 scripts/make_aaibd_figure.py (those originals are not imported and not modified).
 
-Only presentation differs from the originals (figstyle names, colours, error-bar weight); the
+Only presentation differs from the originals (figstyle names, colors, error-bar weight); the
 data functions (aggregation, mixture frontier, trace counts, unit clusters, bootstrap summaries)
 are verbatim copies so that every plotted number is the number the original computed.
 """
@@ -322,9 +322,9 @@ def obstacles(ax, include_text=True):
 def place_labels(ax, items, fontsize=7.5, pad=1.5, color="#222222", avoid_lines=True,
                  max_d=60, cross_pen=25):
     """Greedy collision-free label placement (copy of make_eaai_figures.place_labels with a
-    colour argument): each label goes to the nearest offset whose box hits no line, error bar,
+    color argument): each label goes to the nearest offset whose box hits no line, error bar,
     marker, axis edge or earlier label; a short grey leader joins a label set away from its
-    point. items: (text, x, y[, colour])."""
+    point. items: (text, x, y[, color])."""
     fig = ax.figure
     fig.canvas.draw()
     rend = fig.canvas.get_renderer()

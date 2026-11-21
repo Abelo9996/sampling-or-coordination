@@ -2,7 +2,7 @@
 that replaces fig_criterion_units.
 
 Data functions are verbatim copies in eaai_lib.py (the original script is not imported or
-modified); only presentation changes (figstyle fonts, names and colours; legends and labels
+modified); only presentation changes (figstyle fonts, names and colors; legends and labels
 moved off the data). Outputs (paper/arxiv_rev3/):
   figures/fig_flow.pdf (printed=1.0)  correction/corruption flows, results/mechanistic.jsonl
       (trace_counts); debate and GE parameters from results/gsm8k_matrix.jsonl. Asserted: the

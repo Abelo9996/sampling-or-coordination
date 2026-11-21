@@ -17,6 +17,8 @@ run results/audit/math_extraction_audit.py analyze
 run results/audit/hardmath_extraction_audit.py analyze
 # rev3 reruns R1-R5 (protocols/REV3_RERUN_PROTOCOL.md): every rerun test, C1-C5, Holm over five
 run scripts/analyze_rev3_reruns.py --r5 --jobs ${JOBS:-8}
+# modeled energy per query and price-ratio crossover intervals (exploratory)
+run scripts/analyze_rev3_costs.py
 
 # 2. first-generation emitters (paper/*.tex, paper/eaai/, paper/aaibd/, results/analysis/)
 for s in emit_crosstask emit_macros emit_evidence emit_humaneval emit_mmlu_pro_eng \

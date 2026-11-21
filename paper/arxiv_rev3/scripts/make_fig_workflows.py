@@ -169,7 +169,7 @@ def main():
     ax.plot([0.05, W - 0.05], [leg_h, leg_h], color="#DDDDDD", lw=0.6)
     ly = leg_h / 2 - 0.09
     box(ax, 0.10, ly, 0.42, 0.18, "", FS.tint(COL["SC"], 0.78), COL["SC"])
-    ax.text(0.58, ly + 0.09, "one model call (colour = workflow)", fontsize=F, va="center")
+    ax.text(0.58, ly + 0.09, "one model call (color = workflow)", fontsize=F, va="center")
     box(ax, 2.55, ly, 0.42, 0.18, "", "#FFFFFF", "#555555", ls="--")
     ax.text(3.03, ly + 0.09, "vote, no model call", fontsize=F, va="center")
     arrow(ax, (4.15, ly + 0.09), (4.5, ly + 0.09))

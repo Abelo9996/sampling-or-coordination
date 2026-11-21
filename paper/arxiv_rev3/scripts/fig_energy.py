@@ -4,7 +4,7 @@ the least-squares fit J = a*out + b*in + c.
 
 Output: paper/arxiv_rev3/figures/fig_energy.pdf (design width 2.7 in, printed=0.49).
 Points: every call of every record of the HumanEval matrix (seven configurations, 2,132 records,
-10,004 calls), shaded by the call's input tokens (log colour scale). Lines: the fitted plane
+10,004 calls), shaded by the call's input tokens (log color scale). Lines: the fitted plane
 evaluated at the median and at the 95th percentile of input tokens per call.
 
 Source (read only): results/humaneval_matrix_pc.jsonl, read with harness.analyze.load. The fit is

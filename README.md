@@ -69,7 +69,9 @@ python3 reproduce/check_rev3.py         # compares them with the reference copie
    extraction audits `results/audit/math_extraction_audit.py analyze`,
    `results/audit/hardmath_extraction_audit.py analyze` (results in `results/extra/` and
    `results/audit/`), and `scripts/analyze_rev3_reruns.py --r5` (every rev3 rerun test, the
-   pre-registered family C1 to C5 and its Holm adjustment; `results/extra/rev3_reruns_analysis.json`).
+   pre-registered family C1 to C5 and its Holm adjustment; `results/extra/rev3_reruns_analysis.json`),
+   and `scripts/analyze_rev3_costs.py` (modeled energy per query and the price-ratio crossover
+   intervals, exploratory; `results/extra/rev3_costs_analysis.json`).
 2. First-generation emitters: `scripts/emit_crosstask.py`, `emit_macros.py`,
    `emit_evidence.py`, `emit_humaneval.py`, `emit_mmlu_pro_eng.py`, `emit_scale70b.py`,
    `emit_throughput.py`, `criterion_predictive.py`, `aaibd_revision_stats.py`,
@@ -101,6 +103,8 @@ manuscript (not included) and into `harness/tasks.py`.
 | Table 1 `tab:crosstask` | `tables/rev3/rr_main_table.tex` | `emit_rev3_reruns.py` from `rev3_reruns_analysis.json` and `tables/math_easy.json` | `power/gsm8k_qwen3b_s*_sh*of2` (GSM8K 500 x 3), `rev3/*` (HIERFIX), `power/math500_qwen3b_s*`, `mmlu_matrix`, `mmlu_pro_eng_matrix`, `rev3/humaneval_*` |
 | Table 2 `tab:domination` | `rr_domination_gsm.tex`, `rr_gsm200_domination.tex`, `rr_math_domination.tex` | `emit_rev3_reruns.py` | as Table 1, `gsm8k_scale200` |
 | Table 3 `tab:costverdict` | `rr_cost_verdict.tex` | `analyze_rev3_reruns.py`, `emit_rev3_reruns.py` | as Table 1 |
+| `tab:energyverdict` (modeled energy verdicts) | `rr_energy_verdict.tex` | `scripts/analyze_rev3_costs.py` (modeled J per query from the HumanEval per-call energy fit; item-bootstrap intervals), then `emit_rev3_reruns.py` | GSM8K 500 x 3, MMLU matrix + R2, MATH 238 x 3, MMLU-Pro eng. matrix + R4, R3 HumanEval, `humaneval_matrix_pc` (fit) |
+| Price-ratio crossovers with 95% intervals (`\RrCross*`, `\RrCrossCI*`; `fig:crossover`) | `rev3_reruns_macros.tex`, `fig_price_crossover.pdf` | `scripts/analyze_rev3_costs.py` (seed-aware bootstrap of r*, 10,000 replicates), `emit_rev3_reruns.py`, `fig_price_crossover.py` | `power/gsm8k_qwen3b_s*_sh*of2`, `power/math500_qwen3b_s*` |
 | `tab:confirm` (C1 to C5, Holm over five) | `rr_confirm_table.tex` | `analyze_rev3_reruns.py --r5`, `emit_rev3_reruns.py` | `power/gsm8k_qwen3b_s*_sh*of2`, `rev3/gsm8k_*`, `rev3/humaneval_*`, `power/math500hard_*`, `rev3/math500_cap2048_*` |
 | `tab:hard` | `hard_math_table.tex` | `scripts/analyze_hard_math.py`, then `emit_hard_math.py` | `power/math500hard_qwen3b_s*`, `power/extra_math45_qwen3b_s*` |
 | `tab:outverdict`, `tab:extra`, `tab:extra-full`, `tab:equiv`, `tab:code`, `tab:hierorig`, `fig:frontier-extra` | `rr_output_verdict.tex`, `rr_extra_compact.tex`, `rr_extra_full.tex`, `rr_equivalence.tex`, `rr_humaneval_table.tex`, `rr_hier_table.tex`, `fig_frontier_extra.pdf` | `emit_rev3_reruns.py`; `make_fig_frontier.py --extra` | rerun records and the original matrices |
@@ -157,6 +161,7 @@ Analysis only (no model call; about 50 minutes with 8 processes on an Apple M4):
 
 ```bash
 python3 scripts/analyze_rev3_reruns.py --r5 --jobs 8     # results/extra/rev3_reruns_analysis.json
+python3 scripts/analyze_rev3_costs.py                     # results/extra/rev3_costs_analysis.json
 python3 paper/arxiv_rev3/scripts/emit_rev3_reruns.py      # rev3_reruns_macros.tex, tables/rev3/rr_*.tex
 python3 reproduce/check_rev3.py
 ```

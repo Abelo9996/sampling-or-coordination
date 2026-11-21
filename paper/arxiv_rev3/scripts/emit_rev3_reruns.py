@@ -421,6 +421,32 @@ write("rr_gsm200_domination.tex", g200, "Table 2, GSM8K-200 rows (copied from po
 
 
 # Table 3: total, output, price r = 2 to 5
+# ========== modeled energy (second external review): results/extra/rev3_costs_analysis.json
+CA = json.load(open(os.path.join(ROOT, "results", "extra", "rev3_costs_analysis.json")))
+EN = {"gsm8k": "gsm8k", "math": "math", "mmlu": "mmlu", "proeng": "proeng", "code": "code"}
+
+
+def verdict_energy(task, w):
+    cfg, tests = V[task]
+    R = CA["runs"][EN[task]]["configs"]
+    # the modeled-energy file and the accuracy views describe the same runs: check token means
+    for cname in cfg:
+        if cname in R:
+            assert abs(R[cname]["in_tokens"] + R[cname]["out_tokens"] - cfg[cname]["total_tokens"]) < 1e-6, (task, cname)
+    cheaper = [a for a in samp_of(task) if R[a]["modeled_J"] < R[w]["modeled_J"]]
+    v, rob = verdict(cheaper, {a: tests[(a, w)]["adv_ci"] for a in cheaper})
+    return v, rob, cheaper
+
+
+def ecell(task, w):
+    v, rob, _ = verdict_energy(task, w)
+    if v == "R":
+        d = CA["runs"][EN[task]]["diffs"][f"{rob[0]}|{w}"]["ci95"]
+        dag = "$^\\dagger$" if d[0] <= 0 <= d[1] else ""
+        return f"R{dag} {{\\scriptsize {LBL[rob[0]]}}}"
+    return v
+
+
 def vcell(task, w, unit=None, r=None):
     v, rob, _ = verdict_unit(task, w, unit, r)
     if v == "R":
@@ -447,7 +473,7 @@ for task, label in (("gsm8k", "GSM8K$_{500}$"), ("math", "MATH$_{238}$"), ("code
                     parts.append(f"{pr[start - 2]} ({rng})")
                     start = r
             pc = ", ".join(parts)
-        ct.append(" & ".join([label if i == 0 else "", CN[w], tot_c, out_c, pc]) + " \\\\")
+        ct.append(" & ".join([label if i == 0 else "", CN[w], tot_c, out_c, pc, ecell(task, w)]) + " \\\\")
 write("rr_cost_verdict.tex", ct, "Table 3, verdicts under total, output and price-weighted tokens.")
 
 
@@ -624,6 +650,42 @@ for fn, lab, pre in (("humaneval_table.tex", "tab:code", "Earlier HumanEval run 
     t = t.replace("\\label{" + lab + "}", "\\label{" + lab + "-orig}").replace("\\caption{", "\\caption{" + pre, 1)
     t = t.replace("\\begin{table}[t]", "\\begin{table}[!htbp]").replace("\\begin{table}[tp]", "\\begin{table}[!htbp]")
     open(os.path.join(DST, "rr_orig_" + fn), "w").write("% emit_rev3_reruns.py: earlier-run copy of " + fn + " with label " + lab + "-orig\n" + t)
+# modeled-energy verdict table (all five headline runs) and macros
+EV, firstt = [], True
+TLE = (("gsm8k", "GSM8K$_{500}$"), ("mmlu", "MMLU"), ("math", "MATH$_{238}$"), ("proeng", "MMLU-Pro eng."), ("code", "HumanEval"))
+nR = {"tot": 0, "en": 0}
+changes = []
+for task, label in TLE:
+    if EV:
+        EV.append("\\midrule")
+    R = CA["runs"][EN[task]]["configs"]
+    for i, w in enumerate(COORD):
+        v, rob, ch = verdict_energy(task, w)
+        vt = verdict_unit(task, w, "total_tokens")[0]
+        nR["tot"] += vt == "R"; nR["en"] += v == "R"
+        if v != vt:
+            changes.append(f"{CN[w]} on {TL.get(task, label)} ({vt} to {v})")
+        cheaper = ", ".join(f"{LBL[a]}~{tok(R[a]['modeled_J'])}" for a in ch) or "none"
+        EV.append(" & ".join([label if i == 0 else "", CN[w], tok(R[w]["modeled_J"]), cheaper, ecell(task, w)]) + " \\\\")
+write("rr_energy_verdict.tex", EV, "verdicts under modeled energy (fit of the first HumanEval run), results/extra/rev3_costs_analysis.json.")
+mac("RrEnNRtot", NUMW[nR["tot"]]); mac("RrEnNRen", NUMW[nR["en"]])
+mac("RrEnChanges", ", ".join(changes[:-1]) + (" and " if len(changes) > 1 else "") + changes[-1] if changes else "none")
+mac("RrEnNChanges", NUMW[len(changes)])
+EF = CA["energy_fit"]
+mac("RrEnIcpt", f"{EF['intercept_J_per_call']:.1f}")
+mac("RrEnRatio", f"{EF['ratio_out_in']:.1f}")
+for task, tn in (("gsm8k", "Gsm"), ("math", "Math"), ("code", "Code")):
+    for cname in ("SA", "SC_k4", "SC_k8", "DEBATE_N3_R1"):
+        mac(f"RrEn{tn}{MN[cname]}", tok(CA["runs"][EN[task]]["configs"][cname]["modeled_J"]))
+# crossover intervals
+for task, tn in (("gsm8k", "Gsm"), ("math", "Math")):
+    x = CA["crossover"][task]["SC_k8"]
+    assert x["share_infinite"] == 0.0
+    mac(f"RrCrossCI{tn}", f"$[{x['ci95'][0]:.1f},{x['ci95'][1]:.1f}]$")
+    y = CA["crossover"][task]["SC_k4"]
+    assert y["point"] == "inf" and y["share_infinite"] == 1.0  # SC k=4 cheaper at every ratio
+assert f"{CA['crossover']['gsm8k']['SC_k8']['point']:.2f}" == f"{rstar:.2f}"
+
 # throughput table: its energy pointer now refers to the first HumanEval run's table
 t = open(os.path.join(DST, "throughput_table.tex")).read()
 assert t.count("\\ref{tab:code}") == 1

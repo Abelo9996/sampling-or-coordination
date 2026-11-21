@@ -5,7 +5,7 @@
 * One naming style for workflows everywhere (tables, text and figures): "SA", "SC k=8"
   (mathtext k), "debate", "GE", "HIER"; swept and repaired variants "debate N=2", "debate R=2",
   "GE R=1", "HIER M=2", "GES" (gated GE) and "HIERC" (chained HIER), defined in captions.
-* One colour per workflow (Okabe-Ito); orange (vermillion) means debate and nothing else.
+* One color per workflow (Okabe-Ito); orange (vermillion) means debate and nothing else.
   Non-workflow semantics: FIX (sky blue) for repairs, CORR (dark red) for corruption,
   greys for kept / still wrong / frontier.
 * save() writes figures/<name>.pdf at its printed size and refuses text below MIN_PT at the
