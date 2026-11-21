@@ -23,7 +23,11 @@ interval lies wholly above zero (the caption says so).
 rev3 rerun fold-in: GSM8K, MMLU, MMLU-Pro engineering and HumanEval rows now come from
 results/extra/rev3_reruns_analysis.json (GSM8K 500 x 3; HIER = HIERFIX on every task; HumanEval
 R3 with the entry-block extractor); see the comment in collect().
-Output: paper/arxiv_rev3/figures/fig_forest.pdf (printed=1.0).
+Cross-run rows (open marker and dagger): a coordination row whose records come from a rerun file
+that holds no sampling record (HIER on GSM8K, MMLU and MMLU-Pro engineering: the repaired-HIER
+rerun; checked from results/rev3/*.jsonl), and Du et al. debate on MATH levels 4 to 5 (its own run,
+results/power/extra_math45_qwen3b_s*.jsonl, which holds no sampling record).
+Output: paper/arxiv_rev3/figures/fig_forest.pdf (FULL_W wide, drawn at printed size).
 """
 import json
 import os
@@ -31,7 +35,9 @@ import sys
 
 import numpy as np
 
-import figstyle as FS
+import glob
+
+import plotstyle as FS
 
 FS.setup()
 import matplotlib.pyplot as plt  # noqa: E402
@@ -59,6 +65,32 @@ def records(task):
 def sa_from_records(task):
     cor = S.per_item_seed_correct(records(task))["SA"]
     return 100 * float(np.mean([v.mean() for v in cor.values()])), len(cor)
+
+
+RERUN_FILES = {"gsm8k": "results/rev3/gsm8k_qwen3b_s*.jsonl", "mmlu": "results/rev3/mmlu_qwen3b_*.jsonl",
+               "proeng": "results/rev3/mmlu_pro_eng_qwen3b_*.jsonl",
+               "code": "results/rev3/humaneval_qwen3b_*.jsonl",
+               "du45": "results/power/extra_math45_qwen3b_s*.jsonl"}
+SAMPLING = {"SA", "SC_k2", "SC_k4", "SC_k8", "SC_k12"}
+
+
+def configs_in(pattern):
+    cs = set()
+    for f in glob.glob(os.path.join(FS.ROOT, pattern)):
+        cs |= {json.loads(l)["config"] for l in open(f) if l.strip()}
+    assert cs, pattern
+    return cs
+
+
+def cross_run():
+    """{(task, workflow)}: rows whose workflow records sit in a file without sampling records."""
+    out = set()
+    for t, pat in RERUN_FILES.items():
+        cs = configs_in(pat)
+        if not cs & SAMPLING:
+            out |= {(t, "HIER_M3" if c == "HIERFIX_M3" else ("DU" if c.startswith("DU") else c)) for c in cs}
+    assert out == {("gsm8k", "HIER_M3"), ("mmlu", "HIER_M3"), ("proeng", "HIER_M3"), ("du45", "DU")}, out
+    return out
 
 
 def collect():
@@ -93,7 +125,7 @@ def collect():
             rows.append((lab, t["diff"], t["ci95"][0], t["ci95"][1]))
         sa = T["configs"]["SA"]["acc"]
         assert f"{sa:.1f}" == rmac[f"Rr{tn}SaAcc"], (key, sa)
-        groups.append((f"{nm}\nSA {sa:.1f}%, $n$={T['n_items']}", float(f"{sa:.1f}"), rows))
+        groups.append((f"{nm}\nSA {sa:.1f}%, $n$={T['n_items']}", float(f"{sa:.1f}"), rows, key))
     for key, nm in (("gsm8k200", "GSM8K-200"),):
         rows = []
         for r in eq["rows"]:
@@ -104,14 +136,14 @@ def collect():
         assert rows, key
         acc, n = sa_from_records(key)
         assert f"{acc:.1f}" == sa_label[key], (key, acc, sa_label[key])
-        groups.append((f"{nm}\nSA {sa_label[key]}%, $n$={n}", float(sa_label[key]), rows))
+        groups.append((f"{nm}\nSA {sa_label[key]}%, $n$={n}", float(sa_label[key]), rows, key))
     # MATH levels 1 to 3: the 238-item, 3-seed run.
     rows = []
     for w in ("DEBATE_N3_R1", "GE_R2", "HIER_M3"):
         t = mi["within_stratum"][w]["easy_minus_SC_k8"]
         rows.append((w, t["diff"], t["ci95"][0], t["ci95"][1]))
     assert f"{mi['easy']['accuracy']['SA']:.1f}" == sa_math, sa_math
-    groups.append((f"MATH L1-3\nSA {sa_math}%, $n$={mi['easy']['n_items']}", float(sa_math), rows))
+    groups.append((f"MATH L1-3\nSA {sa_math}%, $n$={mi['easy']['n_items']}", float(sa_math), rows, "math"))
     groups.sort(key=lambda g: g[1])          # lowest single-call accuracy at the top
     # MATH levels 4 to 5, cost-matched comparator.
     want = [("DEBATE_N3_R1", "SC_k8"), ("GE_R2", "SC_k4"), ("HIER_M3", "SC_k4"), ("DU", "SC_k8")]
@@ -133,26 +165,32 @@ def collect():
 
 def main():
     groups, hard, n_hard = collect()
+    cross = cross_run()
     allrows = [r for g in groups for r in g[2]] + [(h[0], h[2], h[3], h[4]) for h in hard]
     assert not any(lo > 0 for _, _, lo, _ in allrows), "an interval lies wholly above zero"
 
-    fig = plt.figure(figsize=(FS.TEXTW, 3.2))
-    ax = fig.add_axes([0.255, 0.115, 0.735, 0.80])
+    fig, ax = plt.subplots(figsize=(FS.FULL_W, 3.5))
     step, ggap = 1.0, 0.75
     y = 0.0
-    ticks, tlabels, tcol = [], [], []
-    for lab, _, rows in groups:
+    ticks, tlabels = [], []
+
+    def row(c, est, lo, hi, y, cr):
+        col = FS.COL[CKEY[c]]
+        FS.errorbar(ax, est, y, color=col, marker=FS.MARK[CKEY[c]], mfc="white" if cr else None,
+                    xlo=lo, xhi=hi, zorder=4)
+        if cr:
+            ax.annotate("\u2020", (hi, y), xytext=(3, 0), textcoords="offset points", ha="left",
+                        va="center", color=col, fontsize=FS.FONT_PT)
+
+    for lab, _, rows, key in groups:
         rows = sorted(rows, key=lambda r: ORDER.index(r[0]))
         ys = []
         for c, est, lo, hi in rows:
-            col = FS.COL[CKEY[c]]
-            ax.plot([lo, hi], [y, y], color=col, lw=1.1, solid_capstyle="butt", zorder=3)
-            ax.plot(est, y, FS.MARK[CKEY[c]], color=col, ms=4.0, mew=0.9, zorder=4)
+            row(c, est, lo, hi, y, (key, c) in cross)
             ys.append(y)
             y -= step
         ticks.append(float(np.mean(ys)))
         tlabels.append(lab)
-        tcol.append("#222222")
         y -= ggap
     # divider and the MATH L4-5 block
     ydiv = y + ggap / 2 + 0.05
@@ -161,9 +199,8 @@ def main():
     y -= 0.75
     hard_ticks = []
     for a, b, est, lo, hi in hard:
-        col = FS.COL[CKEY[a]]
-        ax.plot([lo, hi], [y, y], color=col, lw=1.1, solid_capstyle="butt", zorder=3)
-        ax.plot(est, y, FS.MARK[CKEY[a]], color=col, ms=4.0, mew=0.9, zorder=4)
+        cr = ("du45", a) in cross
+        row(a, est, lo, hi, y, cr)
         hard_ticks.append((y, f"{FS.NAME[a]} vs {FS.NAME[b]}"))
         y -= step
     ymin = y + step - 0.7
@@ -171,30 +208,30 @@ def main():
     xlo, xhi = np.floor(min(xs) / 5) * 5 - 1, max(8.0, np.ceil(max(xs) / 5) * 5 + 1)
     ax.set_xlim(xlo, xhi)
     ax.set_ylim(ymin, 0.85)
-    ax.axvspan(0, xhi, color=FS.tint(FS.FIX, 0.82), lw=0, zorder=0)
-    ax.axvline(0, color="#222222", lw=0.8, zorder=2)
-    ax.axhline(ydiv, color="#888888", lw=0.6, zorder=2)
-    ax.text(xhi - 0.4, 0.55, "coordination\nbetter", ha="right", va="top", fontsize=7.5,
-            color="#1F5F86", linespacing=1.0)
-    ax.text(xlo + 0.4, 0.55, "minus SC $k$=8", ha="left", va="top", fontsize=7.5,
-            color="#222222", style="italic")
+    ax.axvspan(0, xhi, color=FS.tint(FS.COL["SC"], 0.92), lw=0, zorder=0)
+    ax.axvline(0, color=FS.TEXT, lw=0.8, zorder=2)
+    ax.axhline(ydiv, color="#9E9E9E", lw=0.6, zorder=2)
+    ax.text(xhi - 0.4, 0.55, "coordination\nbetter", ha="right", va="top", color=FS.MUTED,
+            style="italic", linespacing=1.0)
+    ax.text(xlo + 0.4, 0.55, "minus SC $k$=8", ha="left", va="top", color=FS.MUTED, style="italic")
     ax.text(xlo + 0.4, yhead, f"MATH L4-5, cost-matched SC, $n$={n_hard}", ha="left",
-            va="center", fontsize=7.5, color="#222222", style="italic")
+            va="center", color=FS.MUTED, style="italic")
     yt = ticks + [t[0] for t in hard_ticks]
     yl = tlabels + [t[1] for t in hard_ticks]
     ax.set_yticks(yt)
-    ax.set_yticklabels(yl, fontsize=7.5, linespacing=1.0)
+    ax.set_yticklabels(yl, linespacing=1.0)
     ax.tick_params(axis="y", length=0, pad=3)
-    ax.grid(True, axis="x", ls=":", lw=0.5, alpha=0.6, zorder=1)
-    ax.set_xlabel("coordination minus SC (accuracy points, 95% interval)", fontsize=8)
-    handles = [Line2D([], [], color=FS.COL[CKEY[c]], marker=FS.MARK[CKEY[c]], ls="-", lw=1.1,
-                      ms=4.0, label=FS.NAME[c]) for c in ORDER]
-    fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.62, 1.0), ncol=4,
-               frameon=False, handlelength=1.6, columnspacing=1.4, fontsize=7.5,
-               borderaxespad=0.2)
-    FS.save(fig, "fig_forest", printed=1.0)
+    ax.grid(False, axis="y")
+    ax.spines["left"].set_visible(False)
+    ax.set_xlabel("coordination minus SC (accuracy points, 95% interval)")
+    handles = [Line2D([], [], color=FS.COL[CKEY[c]], marker=FS.MARK[CKEY[c]], ls="-", lw=FS.ELW,
+                      ms=FS.MS, label=FS.NAME[c]) for c in ORDER]
+    handles.append(Line2D([], [], color="#555555", marker="o", mfc="white", ls="none", ms=FS.MS,
+                          label="\u2020 different run"))
+    fig.legend(handles=handles, loc="outside upper center", ncol=5)
+    FS.save(fig, "fig_forest")
     print("fig_forest:", len(allrows), "intervals; groups top to bottom:",
-          [g[0].split("\n")[0] for g in groups], "+ MATH L4-5 x", len(hard))
+          [g[0].split("\n")[0] for g in groups], "+ MATH L4-5 x", len(hard), "; cross-run", sorted(cross))
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 """rev3 figure: run-to-run drift of identical configurations against the width of a within-run
 95% interval.
 
-Output: paper/arxiv_rev3/figures/fig_drift.pdf (design width 2.7 in, printed=0.49).
+Output: paper/arxiv_rev3/figures/fig_drift.pdf (0.55 FULL_W wide, drawn at printed size).
 Encoding: x = accuracy minus the matrix accuracy of the same configuration on the same items
 (points). Grey bar = the matrix accuracy's 95% item-bootstrap interval as printed in the paper,
 shifted by the same matrix accuracy. Filled marker at 0 = matrix (July Apple M4 run); open marker
@@ -38,7 +38,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import figstyle as fs  # noqa: E402
+import plotstyle as fs  # noqa: E402
 
 ROWS = [("SA", "Sa", "SA", "SA"), ("SC_k8", "Sc", "SC $k{=}8$", "SC"),
         ("DEBATE_N3_R1", "Deb", "Debate", "DEBATE"), ("GE_R2", "Ge", "GE", "GE"),
@@ -83,21 +83,21 @@ def main():
     R = load()
     fs.setup()
     import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(2.7, 2.35))
+    fig, ax = plt.subplots(figsize=(0.55 * fs.FULL_W, 2.45))
     ys = [6.0, 5.0, 4.0, 3.0, 2.0, 0.0]
     for y, r in zip(ys, R):
-        ax.plot([r["lo"] - r["ref"], r["hi"] - r["ref"]], [y, y], "-", color=fs.KEEP, lw=5.5,
+        ax.plot([r["lo"] - r["ref"], r["hi"] - r["ref"]], [y, y], "-", color=fs.BAND, lw=5.5,
                 solid_capstyle="butt", zorder=1)
         xs = [v - r["ref"] for v in r["base"] + r["other"]]
-        ax.plot([min(xs + [0]), max(xs + [0])], [y, y], "-", color=r["col"], lw=1.0, zorder=2)
+        ax.plot([min(xs + [0]), max(xs + [0])], [y, y], "-", color=r["col"], lw=fs.LW, zorder=2)
         if len(r["base"]) == 1:
             ax.plot(0, y, "|", color="#555555", ms=5, mew=0.8, zorder=2)
         for v in r["base"]:
-            ax.plot(v - r["ref"], y, "o", color=r["col"], ms=4.2, mew=0.8, zorder=3)
+            ax.plot(v - r["ref"], y, "o", color=r["col"], ms=fs.MS, zorder=3)
         for v in r["other"]:
-            ax.plot(v - r["ref"], y, "o", color=r["col"], mfc="white", ms=4.2, mew=0.9, zorder=3)
-        ax.text(1.02, y, r["text"], transform=ax.get_yaxis_transform(), ha="left", va="center",
-                fontsize=7.5, color="#333333")
+            ax.plot(v - r["ref"], y, "o", color=r["col"], mfc="white", ms=fs.MS, zorder=3)
+        ax.text(1.04, y, r["text"], transform=ax.get_yaxis_transform(), ha="left", va="center",
+                color=fs.TEXT)   # inside the axes' tight box, so constrained layout keeps room
     if len(R[-1]["base"]) > 1:  # reference tick for the pooled matrix accuracy of the eng row
         ax.plot(0, ys[-1], "|", color="#555555", ms=5, mew=0.8, zorder=2)
     ax.axvline(0, color="#999999", lw=0.5, ls=":", zorder=0)
@@ -108,24 +108,25 @@ def main():
     from matplotlib.transforms import blended_transform_factory
     tr = blended_transform_factory(fig.transFigure, ax.transData)
     ax.text(0.012, 6.75, "GSM8K, 80 items: matrix vs rerun", transform=tr, ha="left", va="center",
-            fontsize=7.5, style="italic", color="#444444")
+            style="italic", color=fs.MUTED, zorder=5,
+            bbox=dict(fc="white", ec="none", pad=0.6))
     ax.text(0.012, 0.75, "MMLU-Pro eng., 150 items: matrix seeds vs trace run", transform=tr,
-            ha="left", va="center", fontsize=7.5, style="italic", color="#444444")
+            ha="left", va="center", style="italic", color=fs.MUTED, zorder=5,
+            bbox=dict(fc="white", ec="none", pad=0.6))
     from matplotlib.lines import Line2D
-    hand = [Line2D([], [], marker="o", ls="none", color="#555555", ms=4.2),
-            Line2D([], [], marker="o", ls="none", color="#555555", mfc="white", ms=4.2),
-            Line2D([], [], color=fs.KEEP, lw=5.5, solid_capstyle="butt")]
-    fig.legend(hand, ["matrix", "rerun", "matrix 95% interval"], loc="upper center", ncol=3,
-               frameon=False, bbox_to_anchor=(0.5, 1.0), handlelength=1.4, columnspacing=1.0,
-               handletextpad=0.4)
+    hand = [Line2D([], [], marker="o", ls="none", color="#555555", ms=fs.MS),
+            Line2D([], [], marker="o", ls="none", color="#555555", mfc="white", ms=fs.MS),
+            Line2D([], [], color=fs.BAND, lw=5.5, solid_capstyle="butt")]
+    fig.legend(hand, ["matrix", "rerun", "matrix 95% interval"], loc="outside upper center", ncol=3,
+               handlelength=1.4)
     ax.set_ylim(-0.6, 7.2)
     ax.set_xlim(-16, 12)
     ax.set_xticks([-15, -10, -5, 0, 5, 10])
     ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: fs.minus(f"{x:+.0f}") if x else "0"))
-    ax.set_xlabel("accuracy minus matrix accuracy (points)")
+    ax.set_xlabel("minus matrix accuracy (points)")
     ax.spines[["top", "right", "left"]].set_visible(False)
-    fig.subplots_adjust(left=0.155, right=0.655, bottom=0.17, top=0.905)
-    fs.save(fig, "fig_drift", printed=0.49)
+    ax.grid(False, axis="y")
+    fs.save(fig, "fig_drift")
     for r in R:
         print(r["label"], r["ref"], [round(v - r["ref"], 2) for v in r["other"]], (r["lo"], r["hi"]))
 

@@ -11,7 +11,7 @@ $PY make_fig_frontier.py --extra
 $PY make_fig_gsm8k_pareto.py
 $PY make_fig_eaai_adapted.py
 cd ../figures
-for f in fig_forest fig_workflows fig_frontier fig_frontier_extra fig_gsm8k_pareto fig_flow fig_criterion \
+for f in fig_forest fig_workflows fig_frontier fig_frontier_extra fig_gsm8k_pareto fig_criterion \
          fig_code_energy fig_proeng_pareto; do
   if pdffonts "$f.pdf" | grep -q "Type 3"; then echo "Type 3 font in $f.pdf"; exit 1; fi
 done

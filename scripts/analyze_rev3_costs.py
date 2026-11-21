@@ -9,11 +9,21 @@
    has r* = infinity (SC k=8 cheaper at every ratio); the share of such replicates is reported.
    Runs: GSM8K 500 x 3 (phase A) and MATH levels 1 to 3, 238 x 3, cap 1,024 (phase B; SC k=8 =
    first 8 samples of SC k=12). The same for SC k=4 (in- and output-token differences).
-2. Modeled energy per query, from the least-squares fit of per-call GPU energy in the first
-   HumanEval run (J = c + b_in x in + a_out x out per call; refitted here exactly as
-   paper/arxiv_rev3/scripts/fig_energy.py and asserted against its macros). Per query:
-   a_out x output tokens + b_in x input tokens + c x number of calls. MODELED, not measured: it is
-   price-weighted tokens at ratio a_out/b_in plus a per-call term. For every configuration of the
+2. Modeled energy per query, from a fit of per-call GPU energy in the first HumanEval run
+   (results/humaneval_matrix_pc.jsonl, gross board energy "energy_j" of all 10,004 calls).
+   The unconstrained least-squares fit J = c + b_in x in + a_out x out (scripts/emit_humaneval.py,
+   asserted against paper/arxiv_rev3/humaneval_macros.tex) has c = -7.5 J per call, which is not
+   physical. The paper's model is the same fit with the intercept constrained to c >= 0
+   (non-negative least squares on the intercept only: with one bound the minimizer is the
+   unconstrained fit if its c >= 0, else the least-squares fit with c = 0). Also reported, not
+   used: a context-term model J = c + b_in x in + a_out x out + d x in x out (c >= 0; energy per
+   output token rising with prompt length). Fit quality: R^2 = 1 - SSE/SST and RMSE per call
+   in sample, and 10-fold cross-validation with folds of items (calls of one item stay together;
+   items permuted with numpy default_rng(0)). The context-term model would replace the paper's
+   model only if clearly better on held-out error; it also needs per-call token counts, which the
+   MMLU and MMLU-Pro matrix logs lack. Per query: a_out x output tokens + b_in x input tokens +
+   c x number of calls. MODELED, not measured: with c = 0 it is price-weighted tokens at ratio
+   a_out/b_in. For every configuration of the
    headline runs (GSM8K 500 x 3, MMLU matrix + HIERFIX, MATH 238 x 3, MMLU-Pro engineering matrix
    + HIERFIX, HumanEval rerun): mean modeled J per query, and for each workflow and each sampling
    configuration the item-bootstrap 95% interval of (sampling minus workflow) modeled J
@@ -65,21 +75,65 @@ def costs(recs, cfg, ids, seeds, k=None, src=None):
     return {i: np.array([rec_cost(recs[(src, i, s)], k) for s in ss], float) for i in ids}
 
 
+def _fit(X, y, nonneg_icpt):
+    with np.errstate(all="ignore"):  # spurious BLAS warnings on macOS numpy
+        beta = np.linalg.lstsq(X, y, rcond=None)[0]
+        if nonneg_icpt and beta[0] < 0:  # KKT: the bound is active, refit with c = 0
+            beta = np.r_[0.0, np.linalg.lstsq(X[:, 1:], y, rcond=None)[0]]
+    return beta
+
+
+def _quality(X, y, beta):
+    with np.errstate(all="ignore"):
+        res = y - X @ beta
+    return {"r2": float(1 - (res ** 2).sum() / ((y - y.mean()) ** 2).sum()),
+            "rmse": float(np.sqrt((res ** 2).mean())), "mae": float(np.abs(res).mean())}
+
+
 def fit_energy():
     rows = [json.loads(l) for l in open(os.path.join(ROOT, "results/humaneval_matrix_pc.jsonl")) if l.strip()]
-    calls = [c for r in rows for c in r["calls"]]
-    X = np.array([[1.0, c["in_tokens"], c["out_tokens"]] for c in calls])
-    y = np.array([c["energy_j"] for c in calls])
-    with np.errstate(all="ignore"):
-        beta = np.linalg.lstsq(X, y, rcond=None)[0]
-        r2 = float(1 - ((y - X @ beta) ** 2).sum() / ((y - y.mean()) ** 2).sum())
+    calls = [(r["item_id"], c) for r in rows for c in r["calls"]]
+    I = np.array([c["in_tokens"] for _, c in calls], float)
+    O = np.array([c["out_tokens"] for _, c in calls], float)
+    y = np.array([c["energy_j"] for _, c in calls])
+    items = np.array([i for i, _ in calls])
+    one = np.ones_like(I)
+    X3, X4 = np.column_stack([one, I, O]), np.column_stack([one, I, O, I * O])
+    # unconstrained fit (as in scripts/emit_humaneval.py), asserted against its macros
+    ols = _fit(X3, y, False)
     mac = {m.group(1): m.group(2) for m in re.finditer(r"\\newcommand\{\\(\w+)\}\{(.*)\}",
            open(os.path.join(ROOT, "paper/arxiv_rev3/humaneval_macros.tex")).read())}
-    assert f"{beta[2]:.2f}" == mac["regOutCode"] and f"{beta[1]:.3f}" == mac["regInCode"]
-    assert f"{beta[0]:.1f}" == mac["regIcptCode"] and f"{r2:.3f}" == mac["regRsqCode"]
-    return {"intercept_J_per_call": float(beta[0]), "J_per_input_token": float(beta[1]),
-            "J_per_output_token": float(beta[2]), "r2": r2, "n_calls": len(calls),
-            "ratio_out_in": float(beta[2] / beta[1])}
+    q = _quality(X3, y, ols)
+    assert f"{ols[2]:.2f}" == mac["regOutCode"] and f"{ols[1]:.3f}" == mac["regInCode"]
+    assert f"{ols[0]:.1f}" == mac["regIcptCode"] and f"{q['r2']:.3f}" == mac["regRsqCode"]
+    models = {"unconstrained": (X3, False), "nonneg_intercept": (X3, True), "context": (X4, True)}
+    # 10-fold cross-validation, folds of items
+    uit = np.array(sorted(set(items)))
+    perm = np.random.default_rng(0).permutation(len(uit))
+    fold_of = {it: n % 10 for n, it in enumerate(uit[perm])}
+    f = np.array([fold_of[i] for i in items])
+    fits = {}
+    for name, (X, nn) in models.items():
+        beta = _fit(X, y, nn)
+        pred = np.zeros_like(y)
+        for k in range(10):
+            tr = f != k
+            with np.errstate(all="ignore"):
+                pred[~tr] = X[~tr] @ _fit(X[tr], y[tr], nn)
+        res = y - pred
+        fits[name] = {"coef": [float(b) for b in beta], **_quality(X, y, beta),
+                      "cv10_rmse": float(np.sqrt((res ** 2).mean())), "cv10_mae": float(np.abs(res).mean()),
+                      "cv10_r2": float(1 - (res ** 2).sum() / ((y - y.mean()) ** 2).sum())}
+    fits["unconstrained"]["terms"] = fits["nonneg_intercept"]["terms"] = ["intercept", "in", "out"]
+    fits["context"]["terms"] = ["intercept", "in", "out", "in_x_out"]
+    # the paper's model: the constrained-intercept fit, unless the context-term model is clearly
+    # better on held-out error (taken as a cross-validated RMSE at least 10% lower)
+    use_ctx = fits["context"]["cv10_rmse"] < 0.9 * fits["nonneg_intercept"]["cv10_rmse"]
+    assert not use_ctx, "context-term model clearly better: per-call modeling needed"
+    c, b, a = fits["nonneg_intercept"]["coef"]
+    return {"intercept_J_per_call": c, "J_per_input_token": b, "J_per_output_token": a,
+            "r2": fits["nonneg_intercept"]["r2"], "n_calls": len(calls), "ratio_out_in": a / b,
+            "model": "nonneg_intercept", "cv_folds": 10, "cv_grouping": "item", "fits": fits}
 
 
 def crossover(A, Bc, ids, seed=0):

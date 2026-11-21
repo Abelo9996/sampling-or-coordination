@@ -2,7 +2,10 @@
 """rev3 figure: price-weighted cost of SC k=8 minus that of debate as a function of the
 output:input price ratio r.
 
-Output: paper/arxiv_rev3/figures/fig_price_crossover.pdf (design width 2.7 in, printed=0.49).
+Output: paper/arxiv_rev3/figures/fig_price_crossover.pdf (HALF_W wide, drawn at printed size).
+Grey bands: the 95% bootstrap intervals of the break-even ratios (items, then seeds within item,
+10,000 replicates), results/extra/rev3_costs_analysis.json crossover.<task>.SC_k8.ci95, asserted
+against \\RrCrossCIGsm and \\RrCrossCIMath; the break-even ratios are x-axis ticks.
 cost(config) = mean input tokens + r x mean output tokens per query, input = total - output.
 y(r) = cost(SC k=8) - cost(debate); one line for GSM8K (rev3 rerun fold-in: the 500-item,
 three-seed run, results/extra/rev3_reruns_analysis.json, asserted against \\RrCrossGsm; 640 cap) and one for MATH
@@ -31,7 +34,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import figstyle as fs  # noqa: E402
+import plotstyle as fs  # noqa: E402
 
 TASKS = [("gsm8k", "GSM8K", "Gsm", "#333333", "-"), ("math", "MATH L1-3", "Math", "#333333", "--")]
 
@@ -69,39 +72,52 @@ def load():
     return out
 
 
+def intervals():
+    CA = json.load(open(os.path.join(fs.ROOT, "results/extra/rev3_costs_analysis.json")))["crossover"]
+    rmac = fs.macros("rev3_reruns_macros.tex")
+    out = {}
+    for key, tn in (("gsm8k", "Gsm"), ("math", "Math")):
+        lo, hi = CA[key]["SC_k8"]["ci95"]
+        assert f"$[{lo:.1f},{hi:.1f}]$" == rmac[f"RrCrossCI{tn}"], (key, lo, hi)
+        out[key] = (lo, hi)
+    return out
+
+
 def main():
     V = load()
+    CI = intervals()
     fs.setup()
     import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(2.7, 2.05))
-    r = np.linspace(1, 16, 300)
-    ax.axhspan(-3000, 0, color=fs.SHADE, zorder=0, lw=0)
-    ax.axhline(0, color="#777777", lw=0.6, zorder=1)
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    fig, ax = plt.subplots(figsize=(fs.HALF_W, 2.2))
+    XHI = 20
+    assert max(hi for _, hi in CI.values()) < XHI
+    r = np.linspace(1, XHI, 300)
     YLO, YHI = -2700, 2500
+    for key in CI:
+        ax.axvspan(*CI[key], color=fs.BAND, lw=0, zorder=0)
+    ax.axhline(0, color="#777777", lw=0.6, zorder=1)
+    hs = []
     for key, lab, _, col, ls in TASKS:
         din, dout, rs = V[key]
-        ax.plot(r, din + r * dout, ls, color=col, lw=1.2, zorder=3, label=lab)
-        ax.axvline(rs, color="#555555", lw=0.7, ls=":", zorder=2)
-        # break-even label inside the shaded region, left of its dotted line (both lines lie
-        # above it there)
-        ax.annotate(f"$r$ = {rs:.2f}", (rs, YLO), xytext=(-2, 4), textcoords="offset points",
-                    ha="right", va="bottom", fontsize=7.5, color="#333333", rotation=90)
-    ax.legend(loc="upper right", bbox_to_anchor=(1.0, 0.80), frameon=False, handlelength=1.8, borderaxespad=0.3)
-    ax.annotate(r"SC $k$=8 cheaper", (6.0, 0), xytext=(4, -3), textcoords="offset points",
-                fontsize=7.5, color="#444444", ha="left", va="top")
-    ax.annotate("debate cheaper", (6.0, 0), xytext=(4, 3), textcoords="offset points",
-                fontsize=7.5, color="#444444", ha="left", va="bottom")
-    ax.set_xlim(1, 16); ax.set_ylim(YLO, YHI)
-    ax.set_xticks([1, 2, 4, 6, 8, 10, 12, 14, 16])
+        hs += ax.plot(r, din + r * dout, ls, color=col, lw=fs.LW, zorder=3, label=lab)
+        ax.axvline(rs, color="#555555", lw=0.6, ls=":", zorder=2)
+    hs.append(Patch(color=fs.BAND, lw=0, label="95% interval"))
+    fig.legend(handles=hs, loc="outside upper center", ncol=3, handlelength=1.5, columnspacing=0.8)
+    ax.text(9.0, -1950, r"SC $k$=8" "\n" "cheaper", ha="center", va="center", color=fs.MUTED,
+            style="italic", linespacing=1.1)
+    ax.set_xlim(1, XHI); ax.set_ylim(YLO, YHI)
+    br = sorted(V[k][2] for k in V)
+    ax.set_xticks([1, br[0], 10, br[1], XHI])
+    ax.set_xticklabels(["1", f"{br[0]:.2f}", "10", f"{br[1]:.2f}", str(XHI)])
+    ax.grid(False, axis="x")
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: fs.minus(fs.fmt_int(y))))
     ax.set_xlabel("output:input price ratio $r$")
     ax.set_ylabel(r"SC $k$=8 minus debate" "\n" "(price-weighted tokens / query)")
-    ax.spines[["top", "right"]].set_visible(False)
-    fig.subplots_adjust(left=0.265, right=0.975, bottom=0.185, top=0.975)
-    fs.save(fig, "fig_price_crossover", printed=0.49)
+    fs.save(fig, "fig_price_crossover")
     for key in V:
-        print(key, "dIn %.2f dOut %.2f r* %.4f" % V[key])
-
+        print(key, "dIn %.2f dOut %.2f r* %.4f" % V[key], "CI", CI[key])
 
 if __name__ == "__main__":
     main()

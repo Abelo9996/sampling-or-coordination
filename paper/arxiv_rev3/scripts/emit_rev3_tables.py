@@ -21,6 +21,9 @@ and from generated JSON. The original emit scripts are not touched.
    scripts/emit_math_easy.py).
 4. MATH L1-3 (238 items) verdict rows for Table 2 (math_easy_domination.tex) from
    tables/math_easy.json, in the format of poster_domination_table.tex.
+5. Layout only: the 95% item-bootstrap accuracy intervals of the MATH levels 4 to 5 table, read
+   from tables/hard_math_ci.json (scripts/emit_hard_ci.py) after asserting each accuracy cell,
+   and every bracketed interval set at \\footnotesize (8 pt) instead of \\tiny or \\scriptsize.
 """
 import json, os, re, sys
 from collections import Counter
@@ -131,6 +134,26 @@ t = t.replace("Du et al." + t.split("Du et al.")[1],
               "Du et al." + t.split("Du et al.")[1].replace(old_cell, f"${raw:.3f}$"))
 t = t.replace("Single call (greedy, 1 seed)", "SA (greedy, 1 seed)")
 t = re.sub(r"^debate \(\$N\{=\}3\$, \$R\{=\}1\$\)", "debate", t, flags=re.M)
+# 2c. 95% item-bootstrap accuracy intervals (tables/hard_math_ci.json, scripts/emit_hard_ci.py, the
+# bootstrap of Table 1), printed to whole points like every accuracy interval; each accuracy cell
+# is asserted equal to the interval file's accuracy first.
+HC = json.load(open(os.path.join(SRC, "hard_math_ci.json")))["configs"]
+ROWCFG = [("SA (greedy, 1 seed)", "SA"), ("SC $k{=}2$", "SC_k2"), ("SC $k{=}4$", "SC_k4"), ("SC $k{=}8$", "SC_k8"),
+          ("SC $k{=}12$", "SC_k12"), ("debate", "DEBATE_N3_R1"), ("GE ($R{=}2$)", "GE_R2"),
+          ("HIER ($M{=}3$)", "HIER_M3"), ("Du et al.\\ debate", "DU")]
+rows_out, seen = [], set()
+for l in t.splitlines():
+    cells = l.split(" & ")
+    hit = [c for lab, c in ROWCFG if cells[0] == lab]
+    if hit:
+        d = HC[hit[0]]
+        assert cells[1] == f"{d['acc']:.1f}", (cells[0], cells[1], d["acc"])
+        cells[1] = f"{cells[1]} {{\\footnotesize[{d['lo']:.0f},{d['hi']:.0f}]}}"
+        seen.add(hit[0])
+        l = " & ".join(cells)
+    rows_out.append(l)
+assert seen == set(HC), (seen, set(HC))
+t = "\n".join(rows_out) + "\n"
 open(os.path.join(DST, "hard_math_table.tex"), "w").write(t)
 
 # == 3. Table 1 ==
@@ -206,12 +229,52 @@ for wf, mark in (("debate", ""), ("GE", "$^{\\P}$"), ("HIER", "")):
     t = t.replace(old, pre + f" & R{mark} {{\\scriptsize SA}} & R {{\\scriptsize SA}} & -- & -- & R{mark} {{\\scriptsize SA}} \\\\")
 open(p3, "w").write(t)
 
-# H3: positioning table, "Released" cell of this study.
+# H3: positioning table. Row of this study (cost units, HumanEval, release) and four 2026 rows
+# (Tran and Kiela; Mirzaei; Fu et al., BenchAgent; Ferreira et al.), each cell checked on
+# 21 Nov 2026 against the full text of the cited version: arXiv 2604.02460v2, 2607.28576v1,
+# 2606.05670v2, 2609.35875v1 ("Not stated": the text does not say).
 pp = os.path.join(DST, "positioning_table.tex")
 t = open(pp).read()
-old = "Not yet public; code and every per-record log will be released \\\\"
+old = r"""This study & Qwen2.5-3B (7B, Llama-3.2-3B, Gemma-2-2B, Llama-3.3-70B probes) &
+Exact per-call tokens; Pareto at matched measured tokens & Apple M4 laptop,
+RTX 4060 & SC ($k{=}2$ to $12$), DEB, CR, PE & Corrections versus corruptions,
+condition \eqref{eq:cc-odds} tested out of sample & MMLU-Pro engineering &
+Not yet public; code and every per-record log will be released \\"""
 assert t.count(old) == 1
-t = t.replace(old, "Code, prompts and per-record logs are at \\CodeURL \\\\")
+new = r"""\citet{tran2026single} & Qwen3-30B-A3B, DeepSeek-R1-Distill-Llama-70B, Gemini-2.5
+Flash and Pro & Thinking tokens; one global budget matched across architectures &
+Not stated & PE (sequential, subtask-parallel), DEB, parallel roles, ensemble with
+judge & None reported & No (FRAMES, MuSiQue) & Not stated \\
+\addlinespace
+\citet{fu2026moreagents} & GPT-4.1 (Qwen3-32B, GLM-5 in checks) & Recorded tokens
+per instance; not budget-matched (shared step limits) & Not stated (API) &
+BenchAgent single-agent core against PE (Jarvis), DEB (LLM-Debate, ChatEval),
+AutoGen, CAMEL, EvoAgent & Correct-to-incorrect and incorrect-to-correct counts
+(ChatEval, GSM8K) & HumanEval, MBPP with tests & Code \\
+\addlinespace
+\citet{mirzaei2026sample} & Qwen2.5-1.5B, 3B, 7B Instruct, 8-bit (llama.cpp) &
+Generated tokens; each method against SC at its own measured cost & Yes (CPU
+only) & SC, DEB, CR (Self-Refine, Reflexion), best-of-$N$ & None reported & No
+(GSM8K, MATH-500) & Code, prompts, generations \\
+\addlinespace
+\citet{ferreira2026beyond} & 23 open-weight models, 0.6B to 109B & Generation
+count matched; tokens and time reported & Yes (two RTX 3090; L40, A100 cluster)
+& DEB (homogeneous, persona, mixed-model), SC & Helpful and harmful answer flips
+& No & Code, scored outputs \\
+\addlinespace
+This study & Qwen2.5-3B (7B, Llama-3.2-3B, Gemma-2-2B, Llama-3.3-70B probes) &
+Exact per-call total and output tokens, price-weighted tokens (break-even price
+ratio), serial time, GPU energy measured on code and modeled; cost-matched
+dominance test & Apple M4 laptop, RTX 4060 & SC ($k{=}2$ to $12$), DEB, CR, PE &
+Corrections versus corruptions, condition \eqref{eq:cc-odds} tested out of sample
+& HumanEval with tests; MMLU-Pro engineering & GitHub (see Data and code) \\"""
+t = t.replace(old, new)
+old = "versions on 12 Oct 2026)."
+assert t.count(old) == 1
+t = t.replace(old, "versions, last on 21 Nov 2026).")
+old = "% 2403.02419v2, 2601.12307v1, 2505.18286v1) on 2026-10-12;"
+assert t.count(old) == 1
+t = t.replace(old, "% 2403.02419v2, 2601.12307v1, 2505.18286v1) on 2026-10-12, and the rows of\n% 2604.02460v2, 2606.05670v2, 2607.28576v1, 2609.35875v1 and this study on 2026-11-21;")
 open(pp, "w").write(t)
 
 # L6: one direction per comparison. Table 24's rerun debate row (debate minus SC k=8) is the
@@ -267,4 +330,11 @@ for f in MARKED:
     t2 = re.sub(r"(^|&\s*|\\quad\s*)HIER\b(?!FIX|\\hiermark)", r"\1HIER\\hiermark{}", t, flags=re.M)
     assert t2.count("\\hiermark") >= 1, f
     open(p, "w").write(t2)
+# == 6. bracketed intervals at \\footnotesize (8 pt) in every fragment this script writes ==
+for f in sorted(set(x for x in os.listdir(SRC) if x.endswith(".tex")) | {"main_table.tex", "math_easy_domination.tex"}):
+    p = os.path.join(DST, f)
+    t = open(p).read()
+    t2 = t.replace("{\\tiny", "{\\footnotesize").replace("{\\scriptsize $[", "{\\footnotesize $[")
+    if t2 != t:
+        open(p, "w").write(t2)
 print("wrote", sorted(os.listdir(DST)))

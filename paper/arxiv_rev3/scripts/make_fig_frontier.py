@@ -20,7 +20,8 @@ scripts/make_aaibd_figure.py). Sources (nothing typed by hand):
     (2 decimals) for the five configurations it lists.
   * The 640-token cap in the GSM8K and MMLU titles: the default of harness/client.py
     (DEFAULT_NUM_PREDICT), read from that file.
-Output: paper/arxiv_rev3/figures/fig_frontier.pdf (printed=1.0).
+Output: paper/arxiv_rev3/figures/fig_frontier.pdf (FULL_W wide; --extra: fig_frontier_extra.pdf,
+two thirds of FULL_W, same panel size), drawn at printed size with plotstyle.
 """
 import json
 import os
@@ -30,7 +31,7 @@ from collections import defaultdict
 
 import numpy as np
 
-import figstyle as FS
+import plotstyle as FS
 
 FS.setup()
 import matplotlib  # noqa: E402
@@ -43,7 +44,7 @@ sys.path.insert(0, FS.ROOT)
 from harness import analyze, stats as S  # noqa: E402
 
 HEAD = ["SA", "SC_k2", "SC_k4", "SC_k8", "SC_k12", "DEBATE_N3_R1", "GE_R2", "HIER_M3"]
-TOPO = {"SA": "SC", "SC_k2": "SC", "SC_k4": "SC", "SC_k8": "SC", "SC_k12": "SC",
+TOPO = {"SA": "SA", "SC_k2": "SC", "SC_k4": "SC", "SC_k8": "SC", "SC_k12": "SC",
         "DEBATE_N3_R1": "DEBATE", "GE_R2": "GE", "HIER_M3": "HIER"}
 TAB = os.path.join(FS.REV3, "tables")
 
@@ -118,21 +119,19 @@ def ticks_for(ax):
 
 
 def panel(ax, a, key):
-    samp = sorted([c for c in a if TOPO[c] == "SC"], key=lambda c: a[c][key])
+    samp = sorted([c for c in a if TOPO[c] in ("SA", "SC")], key=lambda c: a[c][key])
     ax.plot([a[c][key] for c in samp], [a[c]["acc"] for c in samp], "-", color=FS.COL["SC"],
-            lw=1.2, zorder=2)
+            lw=FS.LW, zorder=2)
     for c, v in a.items():
         t = TOPO[c]
         col, mk = FS.COL[t], FS.MARK[t]
         hollow = v["nseed"] == 1 and c != "SA"
-        E.errbar(ax, v[key], v["acc"], v["lo"], v["hi"], col, mk, 4.3,
+        E.errbar(ax, v[key], v["acc"], v["lo"], v["hi"], col, mk, FS.MS,
                  "white" if hollow else col, zorder=3)
     xs = [v[key] for v in a.values()]
     ax.set_xscale("log")
     ax.set_xlim(min(xs) / 1.5, max(xs) * 2.0)
     ticks_for(ax)
-    ax.grid(True, which="major", ls=":", lw=0.5, alpha=0.5)
-    ax.tick_params(length=2.5, pad=1.5)
 
 
 def main():
@@ -141,7 +140,7 @@ def main():
     extra = "--extra" in sys.argv
     allp = load_panels()
     panels = allp[3:] if extra else allp[:3]
-    fig, axes = plt.subplots(2, len(panels), figsize=(FS.TEXTW * len(panels) / 3, 4.55))
+    fig, axes = plt.subplots(2, len(panels), figsize=(FS.FULL_W * len(panels) / 3, 4.7))
     for j, (title, a) in enumerate(panels):
         ys = [v["lo"] for v in a.values()] + [v["hi"] for v in a.values()]
         ylim = (min(ys) - 3, max(ys) + 10)   # room for labels beyond the bar ends
@@ -151,30 +150,26 @@ def main():
             ax.set_ylim(*ylim)
             ax.set_yticks([t for t in ax.get_yticks() if ylim[0] <= t <= min(ylim[1], 100)])
             if i == 0:
-                ax.set_title(title, fontsize=8.5, linespacing=1.05)
+                ax.set_title(title, linespacing=1.05)
             ax.set_xlabel("total tokens / query (log)" if key == "tok"
-                          else "output tokens / query (log)", fontsize=8, labelpad=1.5)
+                          else "output tokens / query (log)")
     for ax in axes[:, 0]:
         ax.set_ylabel("accuracy (%)")
-    handles = [Line2D([], [], color=FS.COL["SC"], marker="o", ls="-", ms=4.3, lw=1.2,
-                      label=r"SA and SC $k$ (sampling)")]
-    handles += [Line2D([], [], color=FS.COL[t], marker=FS.MARK[t], ls="", ms=4.3, label=lab)
-                for t, lab in (("DEBATE", "debate ($N$=3, $R$=1)"), ("GE", "GE ($R$=2)"),
-                               ("HIER", "HIER ($M$=3)"))]
-    fig.tight_layout(pad=0.3, w_pad=0.5, h_pad=0.6, rect=(0, 0, 1, 0.94 if len(panels) > 2 else 0.885))
-    fig.legend(handles=handles, loc="upper center", ncol=4 if len(panels) > 2 else 2, frameon=False,
-               bbox_to_anchor=(0.5, 1.0), handletextpad=0.3, columnspacing=1.2)
+    handles = E.legend_handles(with_front=False, names={"DEBATE": "debate ($N$=3, $R$=1)",
+                                                         "GE": "GE ($R$=2)", "HIER": "HIER ($M$=3)"})
+    fig.legend(handles=handles, loc="outside upper center", ncol=5 if len(panels) > 2 else 3)
     problems = []
     for j, (_, a) in enumerate(panels):
         for i, key in enumerate(("tok", "out")):
             ax = axes[i, j]
-            sc = sorted([c for c in HEAD if TOPO[c] == "SC" and c in a], key=lambda c: a[c][key])
-            items = [("SA" if c == "SA" else "$k$=" + c.split("_k")[1], a[c][key], a[c]["acc"], a[c]["lo"],
+            sc = sorted([c for c in HEAD if TOPO[c] in ("SA", "SC") and c in a], key=lambda c: a[c][key])
+            items = [(FS.klabel(c), a[c][key], a[c]["acc"], a[c]["lo"],
                       a[c]["hi"]) for c in sc]
-            texts = E.place_in_column(ax, items, fontsize=7.5, sides=True, dirs=(1, -1))
-            problems += E.check_labels(ax, texts, pad=0.2)
+            texts = E.place_in_column(ax, items, fontsize=FS.FONT_PT, sides=True, dirs=(1, -1),
+                                      pad=1.6)
+            problems += E.check_labels(ax, texts, pad=1.0)
     assert not problems, problems
-    FS.save(fig, "fig_frontier_extra" if extra else "fig_frontier", printed=len(panels) / 3)
+    FS.save(fig, "fig_frontier_extra" if extra else "fig_frontier")
     for (t, a) in panels:
         print("fig_frontier:", t.split("\n")[0], {c: (round(v["acc"], 2), round(v["tok"]),
                                                      round(v["out"])) for c, v in a.items()})

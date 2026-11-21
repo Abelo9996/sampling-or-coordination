@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """rev3 figure: accuracy against cost on MATH-500 levels 4 to 5 (262 items, seeds 1 to 3, cap 2,048).
 
-Output: paper/arxiv_rev3/figures/fig_hard_frontier.pdf (full text width, printed=1.0).
+Output: paper/arxiv_rev3/figures/fig_hard_frontier.pdf (FULL_W wide, drawn at printed size).
 Left panel: accuracy vs mean total tokens per query (log x). Right panel: accuracy vs mean output
 tokens per query (log x). Sampling curve SA, SC k=2,4,8,12 (SC k = first k samples of each SC k=12
 record, majority vote with harness.topologies._majority, as in scripts/analyze_hard_math.py);
@@ -39,11 +39,13 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import figstyle as fs  # noqa: E402
+import plotstyle as fs  # noqa: E402
 
 ROOT = fs.ROOT
 sys.path.insert(0, ROOT)
 from harness import analyze, tasks, topologies  # noqa: E402
+
+import eaai_lib as E  # noqa: E402
 
 spec = importlib.util.spec_from_file_location("hm", os.path.join(ROOT, "scripts/analyze_hard_math.py"))
 hm = importlib.util.module_from_spec(spec); spec.loader.exec_module(hm)
@@ -125,42 +127,27 @@ def check(P):
     return comp
 
 
-# label offsets (points) per panel: (dx, dy, ha, va)
-OFF = {
-    "tot": {"SA": (5, -4, "left", "top"), "SC_k2": (4, -5, "left", "top"),
-            "SC_k4": (-5, 5, "right", "bottom"), "SC_k8": (-5, 5, "right", "bottom"),
-            "SC_k12": (5, 3, "left", "bottom"),
-            "DEBATE_N3_R1": (5, -2, "left", "top"), "GE_R2": (5, 1, "left", "center"),
-            "HIER_M3": (-6, -1, "right", "center"), "DU": (6, 2, "left", "center")},
-    "out": {"SA": (5, -4, "left", "top"), "SC_k2": (-4, 5, "right", "bottom"),
-            "SC_k4": (-5, 5, "right", "bottom"), "SC_k8": (-5, 5, "right", "bottom"),
-            "SC_k12": (5, 3, "left", "bottom"),
-            "DEBATE_N3_R1": (6, -5, "left", "top"), "GE_R2": (-6, 1, "right", "center"),
-            "HIER_M3": (-6, -1, "right", "center"), "DU": (6, 0, "left", "top")},
-}
-
-
 def panel(ax, P, key, xlabel):
+    """Same marks as the frontier figure (Fig. 3): SA black, SC blue line, error bars in each
+    point's color; sampling points labeled SA, k=2, ...; workflows in the legend."""
+    import matplotlib
     xs = [P[c][key] for c in SAMP]; ys = [P[c]["acc"] for c in SAMP]
-    ax.plot(xs, ys, "-", color=fs.COL["SC"], lw=1.1, zorder=2)
+    ax.plot(xs, ys, "-", color=fs.COL["SC"], lw=fs.LW, zorder=2)
     for c in SAMP + COORD + ["DU"]:
         p = P[c]
         kc = "SA" if c == "SA" else ("SC" if c.startswith("SC") else KEYC[c])
-        col = fs.COL[kc]
-        ax.errorbar(p[key], p["acc"], yerr=[[p["acc"] - p["lo"]], [p["hi"] - p["acc"]]], fmt="none",
-                    ecolor=fs.tint(col, 0.55), elinewidth=0.6, capsize=0, zorder=1)
-        hollow = c == "DU"
-        ax.plot(p[key], p["acc"], fs.MARK[kc], color=col, ms=4.3 if kc in ("SA", "SC") else 4.8,
-                mfc="white" if hollow else col, mew=0.9, zorder=3)
-        lab = fs.NAME[c] if c in ("SA",) + tuple(COORD) + ("DU",) else rf"$k$={c.split('k')[1]}"
-        dx, dy, ha, va = OFF[key][c]
-        ax.annotate(lab, (p[key], p["acc"]), xytext=(dx, dy), textcoords="offset points", ha=ha, va=va,
-                    fontsize=7.5, color=col if kc not in ("SA", "SC") else "#333333", zorder=4)
+        fs.errorbar(ax, p[key], p["acc"], p["lo"], p["hi"], color=fs.COL[kc], marker=fs.MARK[kc],
+                    mfc="white" if c == "DU" else None)
     ax.set_xscale("log")
     ax.set_xlabel(xlabel)
-    ax.grid(True, which="major", ls=":", lw=0.5, alpha=0.6)
-    ax.set_ylim(34, 62)
-    ax.spines[["top", "right"]].set_visible(False)
+    ax.set_ylim(34, 64)
+
+
+def label(ax, P, key):
+    items = [(fs.klabel(c), P[c][key], P[c]["acc"], P[c]["lo"], P[c]["hi"]) for c in SAMP]
+    texts = E.place_in_column(ax, items, fontsize=fs.FONT_PT, sides=True, dirs=(1, -1), pad=1.6)
+    probs = E.check_labels(ax, texts, pad=1.0)
+    assert not probs, probs
 
 
 def main():
@@ -168,22 +155,27 @@ def main():
     check(P)
     fs.setup()
     import matplotlib.pyplot as plt
+    from matplotlib.lines import Line2D
     from matplotlib.ticker import FixedLocator, FuncFormatter, NullLocator
-    fig, axs = plt.subplots(1, 2, figsize=(fs.TEXTW, 2.3), sharey=True)
+    fig, axs = plt.subplots(1, 2, figsize=(fs.FULL_W, 2.6), sharey=True)
     panel(axs[0], P, "tot", "mean total tokens per query (log scale)")
     panel(axs[1], P, "out", "mean output tokens per query (log scale)")
     axs[0].set_ylabel("accuracy (%)")
-    axs[0].set_xlim(600, 32000); axs[1].set_xlim(500, 14000)
-    for ax, ticks in ((axs[0], [1000, 2000, 5000, 10000]), (axs[1], [1000, 2000, 5000, 10000])):
+    axs[0].set_xlim(600, 20000); axs[1].set_xlim(450, 12000)
+    for ax, ticks in ((axs[0], [1000, 2000, 5000, 10000]), (axs[1], [500, 1000, 2000, 5000, 10000])):
         ax.xaxis.set_major_locator(FixedLocator(ticks))
         ax.xaxis.set_minor_locator(NullLocator())
         ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: fs.fmt_int(x)))
-    fig.subplots_adjust(left=0.075, right=0.99, bottom=0.175, top=0.97, wspace=0.08)
-    fs.save(fig, "fig_hard_frontier", printed=1.0)
+    hs = E.legend_handles(with_front=False)
+    hs.append(Line2D([], [], color=fs.COL["DU"], marker=fs.MARK["DU"], mfc="white", ls="none",
+                     ms=fs.MS, label="Du et al. debate"))
+    fig.legend(handles=hs, loc="outside upper center", ncol=6)
+    for ax, key in ((axs[0], "tot"), (axs[1], "out")):
+        label(ax, P, key)
+    fs.save(fig, "fig_hard_frontier")
     for c in SAMP + COORD + ["DU"]:
         p = P[c]
         print(f"{c:14s} acc {p['acc']:6.2f} [{p['lo']:.1f},{p['hi']:.1f}] tot {p['tot']:8.1f} out {p['out']:8.1f}")
-
 
 if __name__ == "__main__":
     main()

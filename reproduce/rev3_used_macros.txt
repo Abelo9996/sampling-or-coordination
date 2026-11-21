@@ -1,5 +1,6 @@
 # Macro names defined in paper/arxiv_rev3/*_macros.tex and used by the final rev3 manuscript
 # (compute-optimal-agents 90bb3829), its table fragments or the rev3 scripts.
+# 21 Nov 2026: added the constrained-intercept energy refit macros (RrEn*) and GsmParetoKey.
 AuAccDeb
 AuAccGe
 AuAccHier
@@ -118,6 +119,7 @@ EqTwoDebMinusSa
 EqTwoOutDeb
 EqTwoOutSa
 EqTwoOutSc
+GsmParetoKey
 HeCapCoord
 HeGapSaDebUp
 HeGapSaGeUp
@@ -357,14 +359,32 @@ RrDtGsmSceightMinusDeb
 RrDtGsmScfourMinusDeb
 RrDtGsmScfourMinusGe
 RrEnChanges
+RrEnCtxGain
+RrEnCtxIcpt
+RrEnCtxIn
+RrEnCtxInOut
+RrEnCtxOut
+RrEnCvCtx
+RrEnCvNn
+RrEnCvOls
 RrEnGsmDeb
 RrEnGsmSceight
 RrEnGsmScfour
 RrEnIcpt
+RrEnIn
+RrEnNCalls
 RrEnNChanges
 RrEnNRen
 RrEnNRtot
+RrEnOut
 RrEnRatio
+RrEnRatioRound
+RrEnRmseNn
+RrEnRmseOls
+RrEnRsq
+RrEnRsqCtx
+RrEnRsqNn
+RrEnRsqOls
 RrEngGeMinusSa
 RrEngHierAcc
 RrEngHierMinusSa

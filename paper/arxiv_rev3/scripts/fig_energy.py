@@ -1,24 +1,25 @@
 #!/usr/bin/env python3
-"""rev3 figure: per-call GPU energy on HumanEval (RTX 4060) against output tokens per call, with
-the least-squares fit J = a*out + b*in + c.
+"""rev3 figure: per-call GPU energy on HumanEval (first run, RTX 4060) against output tokens per call,
+with the paper's energy model: least squares J = a*out + b*in + c with the intercept constrained
+to c >= 0 (the unconstrained fit has c = -7.5 J, not physical; the constrained fit has c = 0).
 
-Output: paper/arxiv_rev3/figures/fig_energy.pdf (design width 2.7 in, printed=0.49).
+Output: paper/arxiv_rev3/figures/fig_energy.pdf (HALF_W wide, drawn at printed size).
 Points: every call of every record of the HumanEval matrix (seven configurations, 2,132 records,
-10,004 calls), shaded by the call's input tokens (log color scale). Lines: the fitted plane
+10,004 calls), shaded by the call's input tokens (log color scale). Lines: the fitted model
 evaluated at the median and at the 95th percentile of input tokens per call.
 
-Source (read only): results/humaneval_matrix_pc.jsonl, read with harness.analyze.load. The fit is
-the exact code of scripts/emit_humaneval.py (main(), "per-call energy against input and output
-tokens"): X = [1, in_tokens, out_tokens] per call over all calls of all records, y = the call's
-gross GPU board energy "energy_j" (not the idle-subtracted energy_j_net, which exists per record
-only), numpy.linalg.lstsq, R^2 = 1 - SSE/SST. The script is imported read-only for its LOG path.
+Source (read only): results/humaneval_matrix_pc.jsonl (scripts/emit_humaneval.py LOG). The fit is
+fit_energy() of scripts/analyze_rev3_costs.py (imported read-only), which also asserts the
+unconstrained fit against paper/arxiv_rev3/humaneval_macros.tex (\\regOutCode, \\regInCode,
+\\regIcptCode, \\regRsqCode).
 
-Assertions (against paper/arxiv_rev3/humaneval_macros.tex, to the printed precision):
-  a  = per output token  f"{a:.2f}"  == \\regOutCode   (1.11)
-  b  = per input token   f"{b:.3f}"  == \\regInCode    (0.040)
-  c  = intercept         f"{c:.1f}"  == \\regIcptCode  (-7.5)
-  R^2                    f"{r2:.3f}" == \\regRsqCode   (0.996)
-  a/b                    f"{a/b:.0f}" == \\regRatioCode (28)
+Assertions (against paper/arxiv_rev3/rev3_reruns_macros.tex, to the printed precision; the same
+values as results/extra/rev3_costs_analysis.json energy_fit):
+  a  = per output token  f"{a:.2f}"  == \\RrEnOut
+  b  = per input token   f"{b:.3f}"  == \\RrEnIn
+  c  = intercept         == 0        (\\RrEnIcpt = 0.0)
+  R^2                    f"{r2:.3f}" == \\RrEnRsq
+  a/b                    f"{a/b:.0f}" == \\RrEnRatioRound
 plus the completeness checks of emit_humaneval.py (164 items, 2,132 records, energy on every record).
 The annotation text is formatted from the computed values.
 
@@ -32,7 +33,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import figstyle as fs  # noqa: E402
+import plotstyle as fs  # noqa: E402
 
 ROOT = fs.ROOT
 sys.path.insert(0, ROOT)
@@ -40,6 +41,8 @@ from harness import analyze  # noqa: E402
 
 spec = importlib.util.spec_from_file_location("eh", os.path.join(ROOT, "scripts/emit_humaneval.py"))
 eh = importlib.util.module_from_spec(spec); spec.loader.exec_module(eh)
+spec = importlib.util.spec_from_file_location("costs", os.path.join(ROOT, "scripts/analyze_rev3_costs.py"))
+costs = importlib.util.module_from_spec(spec); spec.loader.exec_module(costs)
 
 
 def fit():
@@ -49,20 +52,21 @@ def fit():
     assert len(rows) == expect == 2132 and len(items) == 164, (len(rows), expect, len(items))
     assert not any(r.get("energy_j") is None or r.get("energy_j_net") is None for r in rows)
     calls = [c for r in rows for c in r["calls"]]
-    # begin: exact fit code of scripts/emit_humaneval.py
     X = np.array([[1.0, c["in_tokens"], c["out_tokens"]] for c in calls])
     y = np.array([c["energy_j"] for c in calls])
-    with np.errstate(all="ignore"):  # spurious BLAS warnings on macOS numpy
-        beta = np.linalg.lstsq(X, y, rcond=None)[0]
-        r2 = float(1 - ((y - X @ beta) ** 2).sum() / ((y - y.mean()) ** 2).sum())
-    # end: exact fit code
-    m = fs.macros("humaneval_macros.tex")
-    assert f"{beta[2]:.2f}" == m["regOutCode"] == "1.11", (beta[2], m["regOutCode"])
-    assert f"{beta[1]:.3f}" == m["regInCode"] == "0.040", (beta[1], m["regInCode"])
-    assert f"{beta[0]:.1f}" == m["regIcptCode"] == "-7.5", (beta[0], m["regIcptCode"])
-    assert f"{r2:.3f}" == m["regRsqCode"] == "0.996", (r2, m["regRsqCode"])
-    assert f"{beta[2] / beta[1]:.0f}" == m["regRatioCode"] == "28", (beta[2] / beta[1], m["regRatioCode"])
-    return X, y, beta, r2
+    E = costs.fit_energy()
+    c0, b_in, a_out, r2 = E["intercept_J_per_call"], E["J_per_input_token"], E["J_per_output_token"], E["r2"]
+    assert E["n_calls"] == len(calls)
+    with np.errstate(all="ignore"):
+        res = y - X @ np.array([c0, b_in, a_out])
+    assert abs(1 - (res ** 2).sum() / ((y - y.mean()) ** 2).sum() - r2) < 1e-12
+    m = fs.macros("rev3_reruns_macros.tex")
+    assert f"{a_out:.2f}" == m["RrEnOut"], (a_out, m["RrEnOut"])
+    assert f"{b_in:.3f}" == m["RrEnIn"], (b_in, m["RrEnIn"])
+    assert c0 == 0.0 and m["RrEnIcpt"] == "0.0", (c0, m["RrEnIcpt"])
+    assert f"{r2:.3f}" == m["RrEnRsq"], (r2, m["RrEnRsq"])
+    assert f"{a_out / b_in:.0f}" == m["RrEnRatioRound"], (a_out / b_in, m["RrEnRatioRound"])
+    return X, y, (c0, b_in, a_out), r2
 
 
 def main():
@@ -71,7 +75,7 @@ def main():
     fs.setup()
     import matplotlib.pyplot as plt
     from matplotlib.colors import LogNorm
-    fig, ax = plt.subplots(figsize=(2.7, 2.2))
+    fig, ax = plt.subplots(figsize=(fs.HALF_W, 2.2))
     order = np.argsort(X[:, 1])  # draw prompt-heavy calls last so they stay visible
     norm = LogNorm(vmin=X[:, 1].min(), vmax=X[:, 1].max())
     sc = ax.scatter(X[order, 2], y[order], c=X[order, 1], cmap="viridis_r", norm=norm, s=2.5,
@@ -79,33 +83,28 @@ def main():
     xo = np.array([0.0, 1024.0])
     for q, ls in ((50, "-"), (95, "--")):
         xin = float(np.percentile(X[:, 1], q))
-        ax.plot(xo, a_out * xo + b_in * xin + c0, ls, color="#222222", lw=0.9, zorder=3,
+        ax.plot(xo, a_out * xo + b_in * xin + c0, ls, color=fs.TEXT, lw=0.9, zorder=3,
                 label=f"{fs.fmt_int(xin)} ({'median' if q == 50 else 'p95'})")
-    ax.legend(loc="upper left", bbox_to_anchor=(0.0, 0.76), title="fit at input tokens", title_fontsize=7.5, alignment="left", frameon=False, handlelength=1.5, borderaxespad=0.1, labelspacing=0.3, handletextpad=0.5)
+    ax.legend(loc="upper left", bbox_to_anchor=(0.0, 0.72), title="fit at input tokens",
+              alignment="left", handlelength=1.5, borderaxespad=0.1)
     txt = (f"{a_out:.2f} J per output token\n{b_in:.3f} J per input token\n"
-           f"$R^2$ = {r2:.3f}")
-    ax.text(0.03, 0.97, txt, transform=ax.transAxes, ha="left", va="top", fontsize=7.5,
-            color="#222222", linespacing=1.25)
+           f"intercept \u2265 0 (fitted 0)\n$R^2$ = {r2:.3f}")
+    ax.text(0.03, 0.98, txt, transform=ax.transAxes, ha="left", va="top", color=fs.TEXT,
+            linespacing=1.2)
     ax.set_xlim(0, 1060); ax.set_ylim(0, 1320)
     ax.set_xticks([0, 256, 512, 768, 1024])
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: fs.fmt_int(v)))
     ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: fs.fmt_int(v)))
     ax.set_xlabel("output tokens per call")
     ax.set_ylabel("GPU energy per call (J)")
-    ax.spines[["top", "right"]].set_visible(False)
-    fig.subplots_adjust(left=0.19, right=0.75, bottom=0.175, top=0.975)
-    pos = ax.get_position()
-    cax = fig.add_axes([pos.x1 + 0.025, pos.y0, 0.03, pos.height])
-    cb = fig.colorbar(sc, cax=cax)
+    cb = fig.colorbar(sc, ax=ax, fraction=0.08, pad=0.03, aspect=25)
     cb.set_ticks([100, 300, 1000, 3000])
     cb.set_ticklabels([fs.fmt_int(t) for t in (100, 300, 1000, 3000)])
     cb.ax.minorticks_off()
-    cb.set_label("input tokens per call (log scale)", fontsize=7.5, labelpad=2)
-    cb.ax.tick_params(labelsize=7.5)
+    cb.set_label("input tokens per call (log scale)", labelpad=2)
     cb.solids.set(alpha=1, rasterized=True)
-    fs.save(fig, "fig_energy", printed=0.49)
+    fs.save(fig, "fig_energy")
     print("a %.4f b %.5f c %.3f R2 %.5f ratio %.2f n %d" % (a_out, b_in, c0, r2, a_out / b_in, len(y)))
-
 
 if __name__ == "__main__":
     main()

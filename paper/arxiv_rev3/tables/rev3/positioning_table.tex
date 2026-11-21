@@ -2,12 +2,13 @@
 % Comparison table, copied from paper/eaai/positioning_table_eaai.tex; caption and the
 % header of column 7 edited for the arXiv version; the "Released" cell of this study changed on 16 Nov 2026 to what is true today. Every entry was checked against the
 % full text of the cited version (arXiv 2407.01502v1, 2311.17371v3,
-% 2403.02419v2, 2601.12307v1, 2505.18286v1) on 2026-10-12; "not stated" means
+% 2403.02419v2, 2601.12307v1, 2505.18286v1) on 2026-10-12, and the rows of
+% 2604.02460v2, 2606.05670v2, 2607.28576v1, 2609.35875v1 and this study on 2026-11-21; "not stated" means
 % the paper text does not say, not that the feature is absent.
 \begin{table}[t]\centering\scriptsize
 \caption{Studies that compare multi-agent workflows with cheaper baselines at
 reported cost, as each paper reports itself (entries checked against the cited
-versions on 12 Oct 2026). Workflows: SC self-consistency or voting, DEB debate,
+versions, last on 21 Nov 2026). Workflows: SC self-consistency or voting, DEB debate,
 CR critique and revision (generator-evaluator, Reflexion-style), PE
 planner-executor decomposition. ``Answer-change analysis'' is any count of how
 coordination changes initial answers. \citet{wang2024tokeneconomies} and
@@ -50,11 +51,33 @@ prefill and decode tokens; no matched-cost frontier & Not stated & DEB, PE
 (HyperAgent, TDAG), role pipelines, routing & Per-item win/tie counts between
 single and multi-agent & Code benchmarks (HumanEval to SWE-bench) & Not stated \\
 \addlinespace
+\citet{tran2026single} & Qwen3-30B-A3B, DeepSeek-R1-Distill-Llama-70B, Gemini-2.5
+Flash and Pro & Thinking tokens; one global budget matched across architectures &
+Not stated & PE (sequential, subtask-parallel), DEB, parallel roles, ensemble with
+judge & None reported & No (FRAMES, MuSiQue) & Not stated \\
+\addlinespace
+\citet{fu2026moreagents} & GPT-4.1 (Qwen3-32B, GLM-5 in checks) & Recorded tokens
+per instance; not budget-matched (shared step limits) & Not stated (API) &
+BenchAgent single-agent core against PE (Jarvis), DEB (LLM-Debate, ChatEval),
+AutoGen, CAMEL, EvoAgent & Correct-to-incorrect and incorrect-to-correct counts
+(ChatEval, GSM8K) & HumanEval, MBPP with tests & Code \\
+\addlinespace
+\citet{mirzaei2026sample} & Qwen2.5-1.5B, 3B, 7B Instruct, 8-bit (llama.cpp) &
+Generated tokens; each method against SC at its own measured cost & Yes (CPU
+only) & SC, DEB, CR (Self-Refine, Reflexion), best-of-$N$ & None reported & No
+(GSM8K, MATH-500) & Code, prompts, generations \\
+\addlinespace
+\citet{ferreira2026beyond} & 23 open-weight models, 0.6B to 109B & Generation
+count matched; tokens and time reported & Yes (two RTX 3090; L40, A100 cluster)
+& DEB (homogeneous, persona, mixed-model), SC & Helpful and harmful answer flips
+& No & Code, scored outputs \\
+\addlinespace
 This study & Qwen2.5-3B (7B, Llama-3.2-3B, Gemma-2-2B, Llama-3.3-70B probes) &
-Exact per-call tokens; Pareto at matched measured tokens & Apple M4 laptop,
-RTX 4060 & SC ($k{=}2$ to $12$), DEB, CR, PE & Corrections versus corruptions,
-condition \eqref{eq:cc-odds} tested out of sample & MMLU-Pro engineering &
-Code, prompts and per-record logs are at \CodeURL \\
+Exact per-call total and output tokens, price-weighted tokens (break-even price
+ratio), serial time, GPU energy measured on code and modeled; cost-matched
+dominance test & Apple M4 laptop, RTX 4060 & SC ($k{=}2$ to $12$), DEB, CR, PE &
+Corrections versus corruptions, condition \eqref{eq:cc-odds} tested out of sample
+& HumanEval with tests; MMLU-Pro engineering & GitHub (see Data and code) \\
 \bottomrule
 \end{tabular}
 \end{table}

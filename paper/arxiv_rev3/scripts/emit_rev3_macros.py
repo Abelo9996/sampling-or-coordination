@@ -119,6 +119,19 @@ for w, wn in W.items():
     up = round(r["ci90"][1], 1) + 0.0
     mac(f"RthEasyUp{wn}", f"${'+' if up > 0 else ''}{up:.1f}$")
     assert (r["ci90"][1] < 0) == (r["p_any_gain"] < 0.05)
+# Accuracy intervals of the Llama-3.3-70B probe at whole points, the rule of every accuracy
+# interval in the paper (scale70b_macros.tex prints one decimal). One seed on n items, so each
+# bootstrap percentile is a multiple of 100/n; the one-decimal value is mapped back to that exact
+# multiple (asserted) and rounded once.
+n70 = int(MAC["sevN"])
+for m in ("Sa", "Scfour", "Sceight", "Deb"):
+    ends = []
+    for side in ("Lo", "Hi"):
+        v = float(MAC[f"sevAcc{side}{m}"])
+        k = round(v * n70 / 100)
+        assert abs(v - 100 * k / n70) <= 0.05 + 1e-9, (m, side, v)
+        ends.append(f"{100 * k / n70:.0f}")
+    mac(f"RthSevCI{m}", f"[{ends[0]},{ends[1]}]")
 open(os.path.join(REV3, "rev3_macros.tex"), "w").write("\n".join(L) + "\n")
 print("\n".join(L))
 

@@ -1,7 +1,7 @@
 """Helpers for the adapted rev3 figures, copied from scripts/make_eaai_figures.py and
 scripts/make_aaibd_figure.py (those originals are not imported and not modified).
 
-Only presentation differs from the originals (figstyle names, colors, error-bar weight); the
+Only presentation differs from the originals (plotstyle names, colors, error bars); the
 data functions (aggregation, mixture frontier, trace counts, unit clusters, bootstrap summaries)
 are verbatim copies so that every plotted number is the number the original computed.
 """
@@ -17,7 +17,7 @@ import matplotlib.ticker  # noqa: F401
 from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch, Polygon
 
-import figstyle as FS
+import plotstyle as FS
 
 ROOT = FS.ROOT
 RES = os.path.join(ROOT, "results")
@@ -176,7 +176,7 @@ def summarize(clusters, B=10000, seed=0):
 
 
 def criterion_points(units=("debate_item", "ge_item", "item70")):
-    """Copy of make_eaai_figures.criterion_points, with figstyle display labels; the count
+    """Copy of make_eaai_figures.criterion_points, with plotstyle display labels; the count
     checks against paper/arxiv_rev3/scale70b_macros.tex are kept."""
     u3, u70 = units_3b(), units_70b()
     m = FS.macros("scale70b_macros.tex")
@@ -215,8 +215,6 @@ PARENT = {"GES": "GE", "HIERC": "HIER"}
 VARIANTS = {"GES_R2", "HIERC_M3", "DEBATE_N3_R2"}
 SWEEPS = {"DEBATE": ["DEBATE_N2_R1", "DEBATE_N3_R1"], "GE": ["GE_R1", "GE_R2"],
           "HIER": ["HIER_M2", "HIER_M3"]}
-EB = dict(elinewidth=0.6, capsize=1.2, capthick=0.6)   # thin, light error bars
-EB_ALPHA = 0.45
 
 
 def topo_of(a):
@@ -224,20 +222,16 @@ def topo_of(a):
     return t if t in COL else "OTHER"
 
 
-def errbar(ax, x, y, lo, hi, col, mk, ms, mfc, zorder=3, alpha_bar=EB_ALPHA, mew=0.9):
-    """Marker at full opacity, error bar thin and light (drawn separately)."""
-    eb = ax.errorbar(x, y, yerr=[[y - lo], [hi - y]], fmt="none", ecolor=col, zorder=zorder - 0.5,
-                     **EB)
-    for art in eb[1] + eb[2]:
-        art.set_alpha(alpha_bar)
-    ax.plot([x], [y], mk, color=col, ms=ms, mfc=mfc, mew=mew, zorder=zorder, ls="none")
-    return eb
+def errbar(ax, x, y, lo, hi, col, mk, ms=FS.MS, mfc=None, zorder=3):
+    """Marker with a thin error bar in its own color (plotstyle.errorbar)."""
+    return FS.errorbar(ax, x, y, lo, hi, color=col, marker=mk, mfc=mfc, ms=ms, zorder=zorder)
 
 
 def frontier_panel(ax, agg, keys_sc=None, rings=True, sweep_lines=False, xpad=(0.8, 1.3),
-                   ms=4.6, marker_alpha=1.0):
+                   ms=FS.MS, marker_alpha=1.0, skip=()):
     """Adapted from make_eaai_figures.frontier_panel: same mixture frontier band, rings,
-    sampling line and markers; no jitter; thin light error bars."""
+    sampling line and markers; no jitter; thin error bars in each point's color. Configurations
+    in skip are not drawn (they still enter the frontier)."""
     keys = list(agg)
     hull = mixture_frontier(agg, keys)
     hx, hy = [], []
@@ -248,25 +242,26 @@ def frontier_panel(ax, agg, keys_sc=None, rings=True, sweep_lines=False, xpad=(0
                             [agg[c0]["accuracy"] * 100, agg[c1]["accuracy"] * 100]))
     if len(hull) == 1:
         hx, hy = [agg[hull[0]]["tokens"]], [agg[hull[0]]["accuracy"] * 100]
-    ax.plot(hx, hy, "-", color=FS.FRONT, lw=6, alpha=0.55, zorder=1, solid_capstyle="round")
+    ax.plot(hx, hy, "-", color=FS.BAND, lw=6, zorder=1, solid_capstyle="round")
     if rings:
         ax.plot([agg[c]["tokens"] for c in hull], [agg[c]["accuracy"] * 100 for c in hull],
-                "o", ms=9.5, mfc="none", mec="#7A7A7A", mew=1.0, zorder=5, clip_on=False)
+                "o", ms=9.5, mfc="none", mec="#8C8C8C", mew=0.9, zorder=5, clip_on=False)
     sc = sorted((agg[c]["tokens"], agg[c]["accuracy"] * 100) for c in keys
                 if agg[c]["topology"] in ("SA", "SC"))
-    ax.plot(*zip(*sc), "-", color=COL["SC"], lw=1.3, zorder=2)
+    ax.plot(*zip(*sc), "-", color=COL["SC"], lw=FS.LW, zorder=2)
     if sweep_lines:
         for topo, cs in SWEEPS.items():
             if all(c in agg for c in cs):
                 ax.plot([agg[c]["tokens"] for c in cs], [agg[c]["accuracy"] * 100 for c in cs],
                         "--", color=COL[topo], lw=0.9, zorder=2)
     for c, a in agg.items():
+        if c in skip:
+            continue
         t = topo_of(a)
         col = COL[t]
         mfc = "white" if c in VARIANTS else col
         y = a["accuracy"] * 100
-        errbar(ax, a["tokens"], y, a["acc_lo"] * 100, a["acc_hi"] * 100, col, MARK[t],
-               ms if t != "SA" else ms + 0.5, mfc)
+        errbar(ax, a["tokens"], y, a["acc_lo"] * 100, a["acc_hi"] * 100, col, MARK[t], ms, mfc)
     ax.set_xscale("log")
     xs = [a["tokens"] for a in agg.values()]
     ax.set_xlim(min(xs) * xpad[0], max(xs) * xpad[1])
@@ -275,21 +270,22 @@ def frontier_panel(ax, agg, keys_sc=None, rings=True, sweep_lines=False, xpad=(0
     ax.xaxis.set_major_locator(matplotlib.ticker.FixedLocator(ticks))
     ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{int(v):,}"))
     ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
-    ax.grid(True, which="major", ls=":", lw=0.5, alpha=0.6)
-    ax.tick_params(length=2.5, pad=1.5)
     return hull
 
 
-def legend_handles(with_front=True, extra=()):
+def legend_handles(with_front=True, extra=(), names=None):
+    """Legend keys: mixture frontier (optional), SA, SC k (line), debate, GE, HIER."""
+    names = names or {}
     h = []
     if with_front:
-        h.append(Line2D([], [], color=FS.FRONT, lw=6, alpha=0.55, marker="o", ms=8.5,
-                        mfc="none", mec="#7A7A7A", mew=1.0, solid_capstyle="butt",
+        h.append(Line2D([], [], color=FS.BAND, lw=6, marker="o", ms=8.5,
+                        mfc="none", mec="#8C8C8C", mew=0.9, solid_capstyle="butt",
                         label="mixture frontier"))
-    h.append(Line2D([], [], color=COL["SC"], marker="o", lw=1.3, ms=4.3,
-                    label=r"SA and SC $k$ (sampling)"))
+    h.append(Line2D([], [], color=COL["SA"], marker="o", ls="none", ms=FS.MS, label="SA"))
+    h.append(Line2D([], [], color=COL["SC"], marker="o", lw=FS.LW, ms=FS.MS, label=r"SC $k$"))
     for t, lab in (("DEBATE", "debate"), ("GE", "GE"), ("HIER", "HIER")):
-        h.append(Line2D([], [], color=COL[t], marker=MARK[t], ls="none", ms=4.3, label=lab))
+        h.append(Line2D([], [], color=COL[t], marker=MARK[t], ls="none", ms=FS.MS,
+                        label=names.get(t, lab)))
     h.extend(extra)
     return h
 
@@ -319,7 +315,7 @@ def obstacles(ax, include_text=True):
     return (np.array(pts) if pts else np.zeros((0, 2))), boxes
 
 
-def place_labels(ax, items, fontsize=7.5, pad=1.5, color="#222222", avoid_lines=True,
+def place_labels(ax, items, fontsize=FS.FONT_PT, pad=1.5, color="#222222", avoid_lines=True,
                  max_d=60, cross_pen=25):
     """Greedy collision-free label placement (copy of make_eaai_figures.place_labels with a
     color argument): each label goes to the nearest offset whose box hits no line, error bar,
@@ -421,7 +417,7 @@ def check_labels(ax, texts, pad=0.5, ignore_soft=False):
     return problems
 
 
-def box(ax, x, y, w, h, text, fc, ec, ls="-", fs=7.5, lw=0.9, weight="normal",
+def box(ax, x, y, w, h, text, fc, ec, ls="-", fs=FS.FONT_PT, lw=0.9, weight="normal",
         style="round,pad=0,rounding_size=0.05"):
     ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle=style, fc=fc, ec=ec, lw=lw, ls=ls,
                                 zorder=3))
@@ -454,7 +450,7 @@ def band(ax, x0, x1, y0a, y0b, y1a, y1b, col, alpha=1.0):
     ax.add_patch(Polygon(poly, closed=True, fc=col, ec="none", alpha=alpha, zorder=2))
 
 
-def place_at_bar_ends(ax, items, fontsize=7.5, gap=1.6, pad=0.6, color="#333333",
+def place_at_bar_ends(ax, items, fontsize=FS.FONT_PT, gap=1.6, pad=0.6, color="#333333",
                       fallback_d=40):
     """Label each point just beyond one end of its own error bar (no leader needed), or beside
     its marker; the first position, in an alternating below/above preference order, whose box
@@ -506,7 +502,7 @@ def place_at_bar_ends(ax, items, fontsize=7.5, gap=1.6, pad=0.6, color="#333333"
     return out
 
 
-def place_in_column(ax, items, fontsize=7.5, gap=1.6, pad=0.6, color="#333333",
+def place_in_column(ax, items, fontsize=FS.FONT_PT, gap=1.6, pad=0.6, color="#333333",
                     lead_col="#8C8C8C", sides=True, dirs=(-1, 1), strict=True, side_r=3.4):
     """Label each point beside its marker if that is free, else in its own column: the label
     slides down from the lower end (or up from the upper end) of the point's own error bar to

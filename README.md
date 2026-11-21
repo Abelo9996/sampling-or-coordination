@@ -31,6 +31,7 @@ without a model call. Re-running the experiments needs Ollama and the models bel
 | `paper/arxiv_long/*_macros.tex`, `paper/arxiv_long/tables/`, `paper/aaibd/revision_stats.json` | Intermediate generated outputs that the rev3 scripts read |
 | `protocols/` | Analysis protocols fixed before the runs they govern (hard MATH, extra workflows, rev3 reruns) and the original preregistration |
 | `soc/dominance.py` | The cost-matched dominance test and the break-even price ratio as two functions (numpy only); see "Reusable tools" |
+| `soc/plotstyle.py` | The shared matplotlib style of every paper figure (fonts, sizes, workflow colors, error bars); a copy of `paper/arxiv_rev3/scripts/plotstyle.py` |
 | `tests/` | Offline unit tests (no model calls) |
 | `tasks_data/` | Benchmark items used (see `tasks_data/LICENSES.md`) |
 | `results/` | Per-record logs (`*.jsonl`) and analysis outputs; see "Logs" |
@@ -81,9 +82,12 @@ python3 reproduce/check_rev3.py         # compares them with the reference copie
    verdicts, extra workflows, hard MATH, HumanEval audit, MATH audit, MATH interaction,
    review revision).
 4. rev3: `paper/arxiv_rev3/scripts/emit_math_easy.py`, `emit_rev3_macros.py`,
-   `check_gsm8k_rerun_subset.py`, `emit_rev3_tables.py`, `emit_rev3_reruns.py` (rerun macros
-   `rev3_reruns_macros.tex` and the `tables/rev3/rr_*.tex` fragments), `emit_token_multiple.py`
-   (token multiples, `token_multiple_macros.tex`), then the figures.
+   `check_gsm8k_rerun_subset.py`, `emit_hard_ci.py` (accuracy intervals of `tab:hard`),
+   `emit_rev3_tables.py`, `emit_rev3_reruns.py` (rerun macros `rev3_reruns_macros.tex` and the
+   `tables/rev3/rr_*.tex` fragments), `emit_token_multiple.py` (token multiples,
+   `token_multiple_macros.tex`), `emit_table_bodies.py` (the tabular of each whole-table
+   fragment, `tables/rev3/tabular_*.tex`, for the merged tables), then the figures and the
+   flow table (`make_fig_eaai_adapted.py`).
 
 Stage outputs of steps 2 and 3 are written under `paper/` (to `paper/*.tex`,
 `paper/eaai/`, `paper/aaibd/`, `paper/arxiv_long/`); `check_rev3.py` maps each reference
@@ -104,25 +108,26 @@ manuscript (not included) and into `harness/tasks.py`.
 |---|---|---|---|
 | Table 1 `tab:crosstask` | `tables/rev3/rr_main_table.tex` | `emit_rev3_reruns.py` from `rev3_reruns_analysis.json` and `tables/math_easy.json` | `power/gsm8k_qwen3b_s*_sh*of2` (GSM8K 500 x 3), `rev3/*` (HIERFIX), `power/math500_qwen3b_s*`, `mmlu_matrix`, `mmlu_pro_eng_matrix`, `rev3/humaneval_*` |
 | Table 2 `tab:domination` | `rr_domination_gsm.tex`, `rr_gsm200_domination.tex`, `rr_math_domination.tex` | `emit_rev3_reruns.py` | as Table 1, `gsm8k_scale200` |
-| Table 3 `tab:costverdict` | `rr_cost_verdict.tex` | `analyze_rev3_reruns.py`, `emit_rev3_reruns.py` | as Table 1 |
-| `tab:energyverdict` (modeled energy verdicts) | `rr_energy_verdict.tex` | `scripts/analyze_rev3_costs.py` (modeled J per query from the HumanEval per-call energy fit; item-bootstrap intervals), then `emit_rev3_reruns.py` | GSM8K 500 x 3, MMLU matrix + R2, MATH 238 x 3, MMLU-Pro eng. matrix + R4, R3 HumanEval, `humaneval_matrix_pc` (fit) |
+| Table 3 `tab:robust` | `poster_robustness_table.tex` | `aaibd_revision_stats.py` then `aaibd_emit_tables.py` | July matrices |
+| Table 4 `tab:flow` (initial against final answer; replaces the earlier flow figure) | `tables/flow_table.tex` (copied to `tables/rev3/`) | `make_fig_eaai_adapted.py` (`flow_table`), `emit_rev3_tables.py` | `mechanistic` |
+| Table 5 `tab:costverdict` | `rr_cost_verdict.tex` | `analyze_rev3_reruns.py`, `emit_rev3_reruns.py` | as Table 1 |
+| Table 6 `tab:outverdict` (a: output tokens; b: modeled energy) | `rr_output_verdict.tex`, `rr_energy_verdict.tex` | `emit_rev3_reruns.py`; modeled J from `scripts/analyze_rev3_costs.py` (HumanEval per-call energy fit; item-bootstrap intervals) | GSM8K 500 x 3, MMLU matrix + R2, MATH 238 x 3, MMLU-Pro eng. matrix + R4, R3 HumanEval, `gsm8k_scale200`, `humaneval_matrix_pc` (fit) |
 | Price-ratio crossovers with 95% intervals (`\RrCross*`, `\RrCrossCI*`; `fig:crossover`) | `rev3_reruns_macros.tex`, `fig_price_crossover.pdf` | `scripts/analyze_rev3_costs.py` (seed-aware bootstrap of r*, 10,000 replicates), `emit_rev3_reruns.py`, `fig_price_crossover.py` | `power/gsm8k_qwen3b_s*_sh*of2`, `power/math500_qwen3b_s*` |
 | `tab:confirm` (C1 to C5, Holm over five) | `rr_confirm_table.tex` | `analyze_rev3_reruns.py --r5`, `emit_rev3_reruns.py` | `power/gsm8k_qwen3b_s*_sh*of2`, `rev3/gsm8k_*`, `rev3/humaneval_*`, `power/math500hard_*`, `rev3/math500_cap2048_*` |
-| `tab:hard` | `hard_math_table.tex` | `scripts/analyze_hard_math.py`, then `emit_hard_math.py` | `power/math500hard_qwen3b_s*`, `power/extra_math45_qwen3b_s*` |
-| `tab:outverdict`, `tab:extra`, `tab:extra-full`, `tab:equiv`, `tab:code`, `tab:hierorig`, `fig:frontier-extra` | `rr_output_verdict.tex`, `rr_extra_compact.tex`, `rr_extra_full.tex`, `rr_equivalence.tex`, `rr_humaneval_table.tex`, `rr_hier_table.tex`, `fig_frontier_extra.pdf` | `emit_rev3_reruns.py`; `make_fig_frontier.py --extra` | rerun records and the original matrices |
-| `tab:orig`, `tab:orig-dom`, `tab:costverdict-orig`, `tab:extra-orig`, `tab:equiv-orig` (original exploratory run, unrepaired HIER) | `poster_main_table.tex`, `poster_domination_table.tex`, `cost_verdict_table.tex`, `extra_domination_compact.tex`, `equivalence_table.tex` | `aaibd_emit_tables.py`, `emit_review_revision.py`, `emit_extra_noise_aware.py`, `emit_equivalence.py` | July matrices, `mmlu_pro_eng_matrix`, `humaneval_matrix_pc` |
-| Table 5 `tab:overview` | inline text | | |
-| `tab:round0`, `tab:robust`, `tab:cost` | `poster_*_table.tex` | `aaibd_revision_stats.py` then `aaibd_emit_tables.py` | July matrices, `mechanistic`, traces |
-| `tab:predictive`, `tab:S-splits`, `tab:S-pooled`, `fig:criterion` | `criterion_*_table.tex`, `fig_criterion.pdf` | `scripts/criterion_predictive.py`; figure `make_fig_eaai_adapted.py` | `*_traces_mac*`, `mechanistic`, `gsm8k_llama70b` |
-| `tab:proeng`, `fig:proeng` | `mmlu_pro_eng_table.tex`, `fig_proeng_pareto.pdf` | `scripts/emit_mmlu_pro_eng.py`; `make_fig_eaai_adapted.py` | `mmlu_pro_eng_matrix` |
-| `fig:code`, `fig:energy` (original HumanEval run, energy) | `fig_code_energy.pdf`, `fig_energy.pdf` | `scripts/emit_humaneval.py`; `make_fig_eaai_adapted.py`; `fig_energy.py` | `humaneval_matrix_pc`, `humaneval_matrix_pc_idle`, `humaneval_secondary_vote` |
-| `tab:heaudit` | `humaneval_audit_table.tex` | `emit_humaneval_audit.py` | `humaneval_matrix_pc` |
-| `tab:rerun`, `tab:drift`, `tab:audit`, `fig:drift` | `audit_*_table.tex`, `fig_drift.pdf` | `emit_audit.py`; `fig_drift.py` | `power/gsm8k_qwen3b_s{1,2,3}`, `power/gsm8k_cap2048_*`, `gsm8k_qwen3b_coord_trace`, `results/audit/gsm8k_*` |
+| `tab:hard` | `hard_math_table.tex` | `scripts/analyze_hard_math.py`, `emit_hard_math.py`; accuracy intervals `emit_hard_ci.py` (`tables/hard_math_ci.json`), inserted by `emit_rev3_tables.py` | `power/math500hard_qwen3b_s*`, `power/extra_math45_qwen3b_s*` |
+| `tab:extra`, `tab:equiv` (upper block), `tab:extra-acc` (b), `tab:hierorig`, `fig:frontier-extra` | `rr_extra_full.tex`, `rr_equivalence.tex`, `rr_humaneval_table.tex`, `rr_hier_table.tex`, `fig_frontier_extra.pdf` | `emit_rev3_reruns.py`; `make_fig_frontier.py --extra` | rerun records and the original matrices |
+| `tab:orig`, `tab:orig-dom` (a: total tokens; b: each cost model), `tab:equiv` (lower block) (original exploratory run, unrepaired HIER) | `poster_main_table.tex`, `poster_domination_table.tex` with `extra_domination_compact.tex`, `cost_verdict_table.tex`, `equivalence_orig_rows.tex` | `aaibd_emit_tables.py`, `emit_review_revision.py`, `emit_extra_noise_aware.py`, `emit_equivalence.py`; `emit_table_bodies.py` | July matrices, `mmlu_pro_eng_matrix`, `humaneval_matrix_pc` |
+| `tab:overview` | inline text | | |
+| `tab:cost` (a: cost models; b: cost tails and latency), `tab:throughput` | `poster_cost_table.tex`, `tabular_latency_table.tex`, `tabular_rr_throughput_table.tex` | `aaibd_emit_tables.py`, `emit_throughput.py`; `emit_table_bodies.py` | July matrices, RTX 4060 runs |
+| `tab:predictive` (a: cells; b: other units), `tab:S-splits` (a: pilot splits; b: pooled), `fig:criterion` | `tabular_criterion_*_table.tex`, `criterion_units_table.tex`, `fig_criterion.pdf` | `scripts/criterion_predictive.py`; `make_fig_eaai_adapted.py`; `emit_table_bodies.py` | `*_traces_mac*`, `mechanistic`, `gsm8k_llama70b` |
+| `tab:extra-acc` (a), `fig:proeng` | `tabular_mmlu_pro_eng_table.tex`, `fig_proeng_pareto.pdf` | `scripts/emit_mmlu_pro_eng.py`; `make_fig_eaai_adapted.py` | `mmlu_pro_eng_matrix` |
+| `tab:code-orig` (a: pass@1 and energy; b: vote inputs; c: unparsed records), `fig:code`, `fig:energy` (first HumanEval run) | `tabular_rr_orig_humaneval_*table.tex`, `humaneval_audit_table.tex`, `fig_code_energy.pdf`, `fig_energy.pdf` | `scripts/emit_humaneval.py`, `emit_humaneval_audit.py`; `make_fig_eaai_adapted.py`; `fig_energy.py` | `humaneval_matrix_pc`, `humaneval_matrix_pc_idle`, `humaneval_secondary_vote` |
+| `tab:rerun` (a: accuracy and cost; b: run-to-run change; c: extraction audit), `fig:drift` | `audit_*_table.tex`, `fig_drift.pdf` | `emit_audit.py`; `fig_drift.py` | `power/gsm8k_qwen3b_s{1,2,3}`, `power/gsm8k_cap2048_*`, `gsm8k_qwen3b_coord_trace`, `results/audit/gsm8k_*` |
 | `tab:extrawf` | `extra_workflows_table.tex` | `analyze_extra_gsm8k.py`, `emit_extra_workflows.py` | `power/extra_gsm8k_qwen3b_s*` |
-| `tab:crossfamily` | macros in `rerun_macros.tex`, `review_revision_macros.tex` | `aaibd_emit_rerun_macros.py`, `emit_review_revision.py` | `gsm8k_llama3b*`, `gsm8k_gemma2b*`, `mmlu_*` |
-| `tab:trunc`, `tab:scale`, `tab:scale70b`, `tab:diversity`, `tab:latency`, `tab:throughput`, `tab:units`, `tab:positioning` | `trunc_`, `scale_`, `scale70b_`, `diversity_`, `latency_`, `throughput_`, `criterion_units_`, `positioning_table.tex` | `emit_truncation.py`, `revision_stats.json`, `emit_scale70b.py`, `emit_throughput.py`, `make_fig_eaai_adapted.py`; positioning is a hand-written comparison table | `math500_matrix`, `math500_trunc`, `gsm8k_7b`, `gsm8k_llama70b`, `gsm8k_debate_*` |
+| `tab:probes` (a: model size; b: Llama-3.3-70B; c: model family; d: diversity) | `tabular_scale_table.tex`, macros in `scale70b_macros.tex` (whole-point intervals `\RthSevCI*` in `rev3_macros.tex`), `rerun_macros.tex`, `review_revision_macros.tex`, `tabular_diversity_table.tex` | `revision_stats.json`, `emit_scale70b.py`, `emit_rev3_macros.py`, `aaibd_emit_rerun_macros.py`, `emit_review_revision.py` | `gsm8k_7b`, `gsm8k_llama70b`, `gsm8k_llama3b*`, `gsm8k_gemma2b*`, `gsm8k_debate_*` |
+| `tab:trunc` (a: 640 against 1,024; b: 1,024 against 2,048), `tab:positioning` | `tabular_trunc_table.tex`, macros in `rev3_reruns_macros.tex`, `tabular_positioning_table.tex` | `emit_truncation.py`, `emit_rev3_reruns.py`; positioning is a hand-written comparison table | `math500_matrix`, `math500_trunc`, `rev3/math500_cap2048_*` |
 | Fig. 1 `fig:overview` | `fig_forest.pdf` | `make_fig_forest.py` | via macros and `tables/math_easy.json` |
-| Fig. 2 `fig:workflows`, Fig. 3 `fig:frontier`, Fig. 4 `fig:gsm8k`, Fig. 5 `fig:flow` | `fig_workflows.pdf`, `fig_frontier.pdf`, `fig_gsm8k_pareto.pdf`, `fig_flow.pdf` | `make_fig_workflows.py`, `make_fig_frontier.py`, `make_fig_gsm8k_pareto.py`, `make_fig_eaai_adapted.py` | matrices, `power/math500_qwen3b_s*`, `mechanistic` |
+| Fig. 2 `fig:workflows`, Fig. 3 `fig:frontier`, Fig. 4 `fig:gsm8k` | `fig_workflows.pdf`, `fig_frontier.pdf`, `fig_gsm8k_pareto.pdf` | `make_fig_workflows.py`, `make_fig_frontier.py`, `make_fig_gsm8k_pareto.py` | matrices, `power/math500_qwen3b_s*` |
 | `fig:crossover`, `fig:hard` | `fig_price_crossover.pdf`, `fig_hard_frontier.pdf` | `fig_price_crossover.py`, `fig_hard_frontier.py` | via `rev3_macros.tex`, `power/math500hard_*` |
 | All in-text numbers | `paper/arxiv_rev3/*_macros.tex` | the emitter named in each file's first line | |
 

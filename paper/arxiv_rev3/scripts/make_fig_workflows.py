@@ -1,22 +1,22 @@
-"""rev3 workflow schematic (calls per query), re-rendered with figstyle.
+"""rev3 workflow schematic (calls per query), re-rendered with plotstyle.
 
 Copy of scripts/make_eaai_figures.py:fig_workflows() as used by
 paper/arxiv_long/scripts/make_workflows_figure.py (which produced
-paper/arxiv_rev2/figures/fig_workflows.pdf), with: figstyle fonts and names ("SC k", "debate"),
-text of at least 7.7 pt (so it is at least 7 pt at the printed width 0.92 linewidth), and the
+paper/arxiv_rev2/figures/fig_workflows.pdf), with: plotstyle fonts and names ("SC k", "debate"),
+8 pt text at the printed size, and the
 debate round-0 and round-1 columns moved apart so that their header labels do not run together
 (asserted from the rendered text boxes).
 Sources: results/gsm8k_matrix.jsonl (calls per configuration and parameters N, R, M, k; the
 call counts are asserted to equal N(R+1), 2R+1 and M+2), the SC k values present in every
 matrix log (gsm8k, mmlu, math500, mmlu_pro_eng) and the k=12 note, asserted present in both
 MATH logs (results/math500_trunc.jsonl and the 238-item run results/power/math500_qwen3b_s*.jsonl).
-Output: paper/arxiv_rev3/figures/fig_workflows.pdf (printed=0.92).
+Output: paper/arxiv_rev3/figures/fig_workflows.pdf (FULL_W wide, drawn at printed size).
 """
 import glob
 import json
 import os
 
-import figstyle as FS
+import plotstyle as FS
 
 FS.setup()
 import matplotlib.pyplot as plt  # noqa: E402
@@ -25,7 +25,7 @@ import eaai_lib as E  # noqa: E402
 from eaai_lib import box, arrow, R, L  # noqa: E402
 
 COL = FS.COL
-F = 7.7      # smallest text size (7.08 pt at 0.92 linewidth)
+F = FS.FONT_PT   # text size (printed at 1:1)
 
 
 def main():
@@ -67,8 +67,8 @@ def main():
     order = ["SA", "SC", "DEBATE", "GE", "HIER"]
     leg_h = 0.32
     H = sum(heights.values()) + leg_h
-    W = FS.TEXTW
-    fig = plt.figure(figsize=(W, H))
+    W = FS.FULL_W
+    fig = plt.figure(figsize=(W, H), layout="none")   # one full-figure axes in inches
     ax = fig.add_axes([0, 0, 1, 1])
     ax.set_xlim(0, W)
     ax.set_ylim(0, H)
@@ -179,7 +179,7 @@ def main():
     rend = fig.canvas.get_renderer()
     b0, b1 = (t.get_window_extent(rend) for t in heads)
     assert (b1.x0 - b0.x1) / fig.dpi >= 0.12, (b0, b1)
-    FS.save(fig, "fig_workflows", printed=0.92)
+    FS.save(fig, "fig_workflows")
     print("fig_workflows: calls", {"SA": nsa, "SC_k": ks, "debate": ndeb, "GE": nge, "HIER": nhier})
 
 
