@@ -41,6 +41,7 @@ run paper/arxiv_rev3/scripts/emit_rev3_macros.py
 run paper/arxiv_rev3/scripts/check_gsm8k_rerun_subset.py
 run paper/arxiv_rev3/scripts/emit_rev3_tables.py
 run paper/arxiv_rev3/scripts/emit_rev3_reruns.py
+run paper/arxiv_rev3/scripts/emit_token_multiple.py
 for s in make_fig_forest make_fig_workflows make_fig_frontier make_fig_gsm8k_pareto \
          make_fig_eaai_adapted fig_hard_frontier fig_price_crossover fig_drift fig_energy; do
   run paper/arxiv_rev3/scripts/$s.py

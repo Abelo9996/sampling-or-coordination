@@ -30,6 +30,7 @@ without a model call. Re-running the experiments needs Ollama and the models bel
 | `paper/arxiv_rev3/*_macros.tex`, `paper/arxiv_rev3/tables/`, `paper/arxiv_rev3/figures/`, `paper/arxiv_rev3/data/` | The exact generated numbers, table fragments and figures used in the paper (reference outputs; the manuscript source itself is not included) |
 | `paper/arxiv_long/*_macros.tex`, `paper/arxiv_long/tables/`, `paper/aaibd/revision_stats.json` | Intermediate generated outputs that the rev3 scripts read |
 | `protocols/` | Analysis protocols fixed before the runs they govern (hard MATH, extra workflows, rev3 reruns) and the original preregistration |
+| `soc/dominance.py` | The cost-matched dominance test and the break-even price ratio as two functions (numpy only); see "Reusable tools" |
 | `tests/` | Offline unit tests (no model calls) |
 | `tasks_data/` | Benchmark items used (see `tasks_data/LICENSES.md`) |
 | `results/` | Per-record logs (`*.jsonl`) and analysis outputs; see "Logs" |
@@ -69,7 +70,7 @@ python3 reproduce/check_rev3.py         # compares them with the reference copie
    extraction audits `results/audit/math_extraction_audit.py analyze`,
    `results/audit/hardmath_extraction_audit.py analyze` (results in `results/extra/` and
    `results/audit/`), and `scripts/analyze_rev3_reruns.py --r5` (every rev3 rerun test, the
-   pre-registered family C1 to C5 and its Holm adjustment; `results/extra/rev3_reruns_analysis.json`),
+   family of five tests C1 to C5 fixed before the reruns and its Holm adjustment; `results/extra/rev3_reruns_analysis.json`),
    and `scripts/analyze_rev3_costs.py` (modeled energy per query and the price-ratio crossover
    intervals, exploratory; `results/extra/rev3_costs_analysis.json`).
 2. First-generation emitters: `scripts/emit_crosstask.py`, `emit_macros.py`,
@@ -81,7 +82,8 @@ python3 reproduce/check_rev3.py         # compares them with the reference copie
    review revision).
 4. rev3: `paper/arxiv_rev3/scripts/emit_math_easy.py`, `emit_rev3_macros.py`,
    `check_gsm8k_rerun_subset.py`, `emit_rev3_tables.py`, `emit_rev3_reruns.py` (rerun macros
-   `rev3_reruns_macros.tex` and the `tables/rev3/rr_*.tex` fragments), then the figures.
+   `rev3_reruns_macros.tex` and the `tables/rev3/rr_*.tex` fragments), `emit_token_multiple.py`
+   (token multiples, `token_multiple_macros.tex`), then the figures.
 
 Stage outputs of steps 2 and 3 are written under `paper/` (to `paper/*.tex`,
 `paper/eaai/`, `paper/aaibd/`, `paper/arxiv_long/`); `check_rev3.py` maps each reference
@@ -126,6 +128,23 @@ manuscript (not included) and into `harness/tasks.py`.
 
 Table and figure files are under `paper/arxiv_rev3/`; scripts named without a path are in
 `scripts/`, `paper/arxiv_long/scripts/` or `paper/arxiv_rev3/scripts/`.
+
+## Reusable tools
+
+`soc/dominance.py` (numpy only) provides the paper's two procedures for any workflow and cost
+unit. `cost_matched_dominance` returns R (robustly dominated: some cheaper reference
+configuration has a 95% seed-aware hierarchical interval of its accuracy advantage above
+zero), C (cheaper, accuracy not distinguishable) or N (not dominated). `break_even_price_ratio`
+returns the output:input price ratio below which one configuration is cheaper than another in
+price-weighted tokens (input + r x output), with a 95% interval. Inputs are arrays of shape
+(items, seeds); with the released logs they return the paper's values
+(`python3 -m unittest tests.test_dominance`, about 20 seconds).
+
+```python
+from soc.dominance import cost_matched_dominance, break_even_price_ratio
+v = cost_matched_dominance(acc_debate, tok_debate, {"SA": acc_sa, "SC_k4": acc_sc4}, {"SA": tok_sa, "SC_k4": tok_sc4})
+r = break_even_price_ratio(in_sc8, out_sc8, in_debate, out_debate)   # r["point"], r["ci95"]
+```
 
 ## Logs
 
