@@ -1,5 +1,5 @@
 {
-  "title": "Sampling or Coordination? Self-Consistency vs. Multi-Agent Debate at Matched Token, Price and Energy Cost in a Small LLM: code and per-record logs",
+  "title": "Sampling or Coordination? Cost-Accuracy Frontiers for Homogeneous Small-Model LLM Agent Workflows: code and per-record logs",
   "upload_type": "software",
   "description": "Evaluation harness, prompts, run drivers, analysis scripts and the per-record logs (every model call's tokens, latency, answers and, where logged, raw text and GPU energy) behind every table and figure of the paper. Qwen2.5-3B-Instruct (4-bit, Ollama) on GSM8K, MATH, MMLU, MMLU-Pro engineering and HumanEval; single call, self-consistency, multi-agent debate, generator-evaluator and planner-executor workflows. Code: MIT. Logs: CC BY 4.0.",
   "creators": [

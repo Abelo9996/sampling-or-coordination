@@ -58,9 +58,7 @@ configs:
      when uploading, copy results/ next to this card (or adjust the data_files globs).
      The schemas of the records differ between runs, so each config is loaded separately. -->
 
-Per-record logs behind every table and figure of the paper *Sampling or Coordination?
-Self-Consistency vs. Multi-Agent Debate at Matched Token, Price and Energy Cost in a Small
-LLM* (Abel Yagubyan, Independent Researcher, 2026). Code: https://github.com/Abelo9996/sampling-or-coordination
+Per-record logs behind every table and figure of the paper *Sampling or Coordination? Cost-Accuracy Frontiers for Homogeneous Small-Model LLM Agent Workflows* (Abel Yagubyan, Independent Researcher, 2026). Code: https://github.com/Abelo9996/sampling-or-coordination
 
 ## What a record is
 

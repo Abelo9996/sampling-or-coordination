@@ -2,8 +2,8 @@
 
 Code, prompts and per-record logs for the paper
 
-> **Sampling or Coordination? Self-Consistency vs. Multi-Agent Debate at Matched Token,
-> Price and Energy Cost in a Small LLM.** Abel Yagubyan, Independent Researcher, 2026.
+> **Sampling or Coordination? Cost-Accuracy Frontiers for Homogeneous Small-Model LLM
+> Agent Workflows.** Abel Yagubyan, Independent Researcher, 2026.
 > arXiv identifier: to be added.
 
 The paper compares, on one small open model (Qwen2.5-3B-Instruct, 4-bit, served locally by

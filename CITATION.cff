@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or these logs, please cite the paper."
-title: "Sampling or Coordination? Self-Consistency vs. Multi-Agent Debate at Matched Token, Price and Energy Cost in a Small LLM"
+title: "Sampling or Coordination? Cost-Accuracy Frontiers for Homogeneous Small-Model LLM Agent Workflows"
 type: software
 authors:
   - family-names: Yagubyan
@@ -18,7 +18,7 @@ keywords:
   - energy
 preferred-citation:
   type: article
-  title: "Sampling or Coordination? Self-Consistency vs. Multi-Agent Debate at Matched Token, Price and Energy Cost in a Small LLM"
+  title: "Sampling or Coordination? Cost-Accuracy Frontiers for Homogeneous Small-Model LLM Agent Workflows"
   authors:
     - family-names: Yagubyan
       given-names: Abel
