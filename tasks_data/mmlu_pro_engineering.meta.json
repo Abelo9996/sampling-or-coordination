@@ -1,0 +1,51 @@
+{
+  "dataset": "TIGER-Lab/MMLU-Pro",
+  "revision": "b189ec765aa7ed75c8acfea42df31fdae71f97be",
+  "file": "data/test-00000-of-00001.parquet",
+  "parquet_sha256": "0e24a191921c2f453518a537a8b2117bd137e7714d4ef1565e9ba06c1ecb9ad8",
+  "category": "engineering",
+  "pool_size": 969,
+  "n": 150,
+  "seed": 0,
+  "sampler": "random.Random(seed).sample(pool sorted by question_id, n); output sorted by question_id",
+  "pool_option_counts": {
+    "3": 1,
+    "4": 59,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 5,
+    "9": 21,
+    "10": 880
+  },
+  "sample_option_counts": {
+    "4": 11,
+    "9": 4,
+    "10": 135
+  },
+  "sample_gold_letters": {
+    "A": 20,
+    "B": 14,
+    "C": 21,
+    "D": 16,
+    "E": 18,
+    "F": 11,
+    "G": 13,
+    "H": 10,
+    "I": 19,
+    "J": 8
+  },
+  "sample_src": {
+    "ori_mmlu-electrical_engineering": 10,
+    "stemez-ElectricCircuits": 13,
+    "stemez-ElectricalMachines": 16,
+    "stemez-Electromagnetics": 19,
+    "stemez-ElectronicCommunications": 18,
+    "stemez-FluidMechanics": 10,
+    "stemez-HeatTransfer": 9,
+    "stemez-MachineDesign": 11,
+    "stemez-Thermodynamics": 28,
+    "stemez-TransportPhenomena": 16
+  },
+  "out_sha256": "21ef1f570c6614e8d5bfde248537563d91b605960371a04c646c0c06e53a8fe2"
+}

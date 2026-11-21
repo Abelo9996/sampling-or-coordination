@@ -1,0 +1,3964 @@
+{
+ "reader": "AI assistant (Claude), reading math_extraction_cases.json only; blind to workflow, item, gold and harness reading at reading time; no human check",
+ "status_codes": {
+  "answer": "text states a final answer (verbatim in 'answer')",
+  "none": "text states no single final answer",
+  "truncated": "text cut off before stating a final answer"
+ },
+ "cut_off_flag": "answer status but text is cut off after an explicit final-answer statement (counted in a sensitivity variant as truncated)",
+ "auto_rule": "exactly one \\boxed{...} in the text; text after its closing brace under 300 chars with no 'answer', no '=', no further \\boxed (see auto_rule in math_extraction_audit.py); auto reading = boxed content, stripped",
+ "auto_resolved_count": 690,
+ "manual_count": 90,
+ "spot_check": {
+  "n": 30,
+  "sampling": "random.Random(7).sample(sorted(auto ids), 30)",
+  "case_ids": [
+   "c78897648",
+   "c3556828f",
+   "c96254e28",
+   "cf41f036f",
+   "c12020c1c",
+   "c1b3c7388",
+   "ccb800c84",
+   "c21d3270c",
+   "c89879136",
+   "cdbafa210",
+   "c171a528f",
+   "cbe09a82f",
+   "c4c44c632",
+   "c0d8a991f",
+   "c1f6f1d33",
+   "ca304e1e9",
+   "c9e59989c",
+   "c19b8b00c",
+   "c59d85bbb",
+   "c1ff0a75f",
+   "cd03a557c",
+   "ca079b993",
+   "c172d2d1e",
+   "cd47c38c0",
+   "c2c2a9755",
+   "c4e5c7ee2",
+   "ceb331362",
+   "ce965c68b",
+   "c17f42352",
+   "cd8fa1553"
+  ],
+  "agreed_with_auto_reading": 30,
+  "disagreed": 0
+ },
+ "clerical_fixes": [],
+ "readings": {
+  "cc1ee8992": {
+   "status": "answer",
+   "answer": "3",
+   "method": "manual"
+  },
+  "c4b9670be": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c9f3c8fac": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c2ee31ac8": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c9fe3f7e9": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c1e16e51e": {
+   "status": "answer",
+   "answer": "3 \\sqrt{13}",
+   "method": "auto"
+  },
+  "c5aa26c96": {
+   "status": "answer",
+   "answer": "\\text{E}",
+   "method": "auto"
+  },
+  "c13be93d1": {
+   "status": "answer",
+   "answer": "36",
+   "method": "auto"
+  },
+  "c6559330b": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c45584a94": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c99a537c4": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "c119abb58": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "c34525f2a": {
+   "status": "answer",
+   "answer": "21",
+   "method": "auto"
+  },
+  "c655f2166": {
+   "status": "answer",
+   "answer": "-\\frac{1}{32}",
+   "method": "auto"
+  },
+  "c444ac9d9": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "ce084347f": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c1a1ff33c": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "ceb41a37c": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cfc555816": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "c37a33647": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "cf5e678d7": {
+   "status": "answer",
+   "answer": "14",
+   "method": "manual"
+  },
+  "c6554ed43": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c13c37559": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c0fb20cdf": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "manual"
+  },
+  "c947f3ed7": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "caabe7d84": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c4d689630": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c9d81367b": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "caaae802a": {
+   "status": "answer",
+   "answer": "58.5",
+   "method": "auto"
+  },
+  "c5e20787c": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c260b80ec": {
+   "status": "answer",
+   "answer": "-\\frac{1}{32}",
+   "method": "auto"
+  },
+  "c7f0cac31": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "cbafdd719": {
+   "status": "answer",
+   "answer": "\\text{E}",
+   "method": "auto"
+  },
+  "cfc360319": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "manual"
+  },
+  "c40696fc5": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c8e6f6700": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "c7642f09e": {
+   "status": "answer",
+   "answer": "\\frac{4}{3}",
+   "method": "auto"
+  },
+  "ce11ae49a": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "c558c473b": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "cfd950da6": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c2ae4fdce": {
+   "status": "answer",
+   "answer": "0",
+   "method": "auto"
+  },
+  "c31d1f79a": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cb5eee777": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "c4c8c7cbd": {
+   "status": "answer",
+   "answer": "\\text{E}",
+   "method": "auto"
+  },
+  "ca5fc8cd8": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "ce0f95f39": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c7f195adf": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "c8815aa92": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c9e9542a3": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "cca8d5308": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "cb3304dd5": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "manual"
+  },
+  "c577c40e1": {
+   "status": "answer",
+   "answer": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "method": "auto"
+  },
+  "c5a639d02": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "c260a1b88": {
+   "status": "answer",
+   "answer": "12",
+   "method": "manual"
+  },
+  "c5466016c": {
+   "status": "answer",
+   "answer": "120",
+   "method": "auto"
+  },
+  "c59508bef": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c84330078": {
+   "status": "answer",
+   "answer": "C",
+   "method": "auto"
+  },
+  "c725463f7": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "c41ac21e9": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c230aba8e": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "c5d31777d": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "ce29d94d4": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c2c2a9755": {
+   "status": "answer",
+   "answer": "\\text{neither}",
+   "method": "auto"
+  },
+  "cde624e6c": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c846710b6": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "ce0b8b74a": {
+   "status": "answer",
+   "answer": "41",
+   "method": "auto"
+  },
+  "c03095966": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c1c697288": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "cf1a1cd59": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c391e9370": {
+   "status": "answer",
+   "answer": "C",
+   "method": "manual"
+  },
+  "c95833b98": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c6662d941": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c2910b6c5": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c96254e28": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "c365e27d2": {
+   "status": "answer",
+   "answer": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "method": "auto"
+  },
+  "c1c56bb0b": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c969775e2": {
+   "status": "answer",
+   "answer": "20",
+   "method": "auto"
+  },
+  "ce1db597a": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "ce7c7981b": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cc178c753": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c78897648": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "cb59ebaa0": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "c2c6394ec": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "c23f454ab": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c3fee4179": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "cfc097419": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cc0c078f8": {
+   "status": "answer",
+   "answer": "E",
+   "method": "auto"
+  },
+  "cb8dc4e4c": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cad42bd71": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c24c878f6": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cde5227ed": {
+   "status": "answer",
+   "answer": "\\frac{1}{8}",
+   "method": "auto"
+  },
+  "c1751b547": {
+   "status": "answer",
+   "answer": "37",
+   "method": "auto"
+  },
+  "cf2d498b7": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c2e243f95": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "cf4f26fec": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c947bc9e3": {
+   "status": "answer",
+   "answer": "3 \\sqrt{13}",
+   "method": "auto"
+  },
+  "c1e7f53ed": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "ceb331362": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c8e1fff59": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c917a3859": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "ca122dcd5": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "ccc658b9a": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c0bcf1d4a": {
+   "status": "answer",
+   "answer": "0.000672",
+   "method": "auto"
+  },
+  "c076b3d83": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c5bfecd04": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c22a44643": {
+   "status": "answer",
+   "answer": "E",
+   "method": "auto"
+  },
+  "c98dc3eb4": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cb9141e14": {
+   "status": "answer",
+   "answer": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "cut_off": true,
+   "note": "states 'The quotient is x^5 - x^4 + x^3 - x^2 + x - 1' then is cut off while restating it",
+   "method": "manual"
+  },
+  "c2b974da5": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "cc8396715": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c1a0d54d5": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "cb2ba3be9": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cdf214d43": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c75c69654": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "ca75e5a01": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c411b9760": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c62e8d497": {
+   "status": "answer",
+   "answer": "85",
+   "method": "auto"
+  },
+  "caae9f7fb": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "cdd550e9a": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cac98bc2e": {
+   "status": "answer",
+   "answer": "2",
+   "method": "manual"
+  },
+  "c00f4d5ab": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c766a68b3": {
+   "status": "answer",
+   "answer": "1",
+   "note": "computes 0.5 in text but states boxed final 1",
+   "method": "manual"
+  },
+  "c0482fd07": {
+   "status": "answer",
+   "answer": "24\\sqrt{3}",
+   "method": "manual"
+  },
+  "cc1838342": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "ce940da18": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "cdec5512e": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "c637d98f0": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c50b0a954": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c1983f69b": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cba4d3d5d": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cefa0590b": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "c1fc37fc2": {
+   "status": "answer",
+   "answer": "15",
+   "method": "auto"
+  },
+  "c6bf6bb85": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cea22b324": {
+   "status": "answer",
+   "answer": "x^5 - x^4 - x^2 + x - 1",
+   "cut_off": true,
+   "note": "states quotient x^5 - x^4 - x^2 + x - 1, cut off inside the final \\boxed{x^",
+   "method": "manual"
+  },
+  "c12e8c024": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c1516f91f": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "cffcca8c9": {
+   "status": "answer",
+   "answer": "8",
+   "method": "auto"
+  },
+  "c54fead42": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "c17922fa5": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "c6aee33e4": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "ca9e98c06": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cd150ee2e": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c2d8be904": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cd831acd0": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c5d0caef7": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cc78c8235": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "cc834d59a": {
+   "status": "answer",
+   "answer": "24\\sqrt{3}",
+   "method": "auto"
+  },
+  "c04fa1565": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "c4d56b52d": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "ce1749903": {
+   "status": "answer",
+   "answer": "0.0000672",
+   "method": "auto"
+  },
+  "cd4132496": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "c32ac5a43": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "cfdcddeec": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "c69a5e547": {
+   "status": "answer",
+   "answer": "C",
+   "method": "auto"
+  },
+  "c5d6cabfb": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c498fd1e4": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "ce5628388": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c604fdefc": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "cbc183db4": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c766df0bb": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c5eeb784b": {
+   "status": "answer",
+   "answer": "\\text{E}",
+   "method": "auto"
+  },
+  "c256bd960": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c736f7658": {
+   "status": "answer",
+   "answer": "3",
+   "method": "manual"
+  },
+  "cb7176b92": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c8388e0a7": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cbefa9e29": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "c24a26961": {
+   "status": "answer",
+   "answer": "\\text{E}",
+   "method": "auto"
+  },
+  "c162ca868": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "c2d3f28be": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "cb9fa411c": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "c3cff68b6": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ca920cbc6": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "cut_off": true,
+   "note": "endorses 'The final answer is indeed 8/21' for both agents; own alternative solution cut off before restating",
+   "method": "manual"
+  },
+  "c3ea124f6": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "ca982b772": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "ce1d56b45": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "c7a24f9b7": {
+   "status": "answer",
+   "answer": "9",
+   "method": "manual"
+  },
+  "ce0fe1768": {
+   "status": "answer",
+   "answer": "40",
+   "method": "auto"
+  },
+  "ccabfc609": {
+   "status": "answer",
+   "answer": "C",
+   "method": "auto"
+  },
+  "c6114d28c": {
+   "status": "answer",
+   "answer": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "method": "auto"
+  },
+  "c246803ef": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cf90240e9": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "cb7390c23": {
+   "status": "answer",
+   "answer": "5",
+   "method": "manual"
+  },
+  "c9cb76126": {
+   "status": "answer",
+   "answer": "21",
+   "method": "auto"
+  },
+  "c917767d1": {
+   "status": "answer",
+   "answer": "36",
+   "method": "auto"
+  },
+  "c83cae42b": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "cce36b989": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "cdd03620d": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c1d143831": {
+   "status": "answer",
+   "answer": "21",
+   "note": "computes area 45 in text but states boxed final 21",
+   "method": "manual"
+  },
+  "c9039137e": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "c01b14ac4": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c89879136": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c4d25c3f9": {
+   "status": "answer",
+   "answer": "12",
+   "method": "manual"
+  },
+  "c51e5915d": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "ca267597e": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "ce54c8015": {
+   "status": "answer",
+   "answer": "(2,4)",
+   "method": "auto"
+  },
+  "c9acc4fb1": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c27831b28": {
+   "status": "answer",
+   "answer": "31",
+   "method": "auto"
+  },
+  "c0dd76b6c": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "cebc7d94e": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "cdf036f3b": {
+   "status": "answer",
+   "answer": "36",
+   "method": "auto"
+  },
+  "ccf3007f9": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c885a6b6c": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "manual"
+  },
+  "c31437371": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c7e7e3621": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cf2c715bd": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "cc37d54d7": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c41acb009": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c4743a8f2": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c37f6b33f": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "c17f42352": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c405adabc": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c497d66c2": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "manual"
+  },
+  "c84b7444c": {
+   "status": "answer",
+   "answer": "6r^2 + 44r - 24",
+   "method": "auto"
+  },
+  "c922a1ba5": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c93e441e4": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "c78ecf592": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c0f71c1d0": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cb244d8c9": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c3f92e768": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "cb77315a6": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "manual"
+  },
+  "ca5fa67ca": {
+   "status": "answer",
+   "answer": "\\text{C}",
+   "method": "auto"
+  },
+  "c78433dcb": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c2d350a58": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cc6bb172f": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c3ad68eaa": {
+   "status": "truncated",
+   "note": "long division cut off at 'Thus, the quotient when x^6 - 3 is divided by'; no final answer stated",
+   "method": "manual"
+  },
+  "cba259d48": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "c5a34e5cb": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "c7cf7d815": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cd66fcf80": {
+   "status": "answer",
+   "answer": "64",
+   "method": "auto"
+  },
+  "cb1ed9fca": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cffbad3a7": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c613d6cf6": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "cf34b5e58": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cd33705bd": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c37e9c445": {
+   "status": "answer",
+   "answer": "2",
+   "method": "manual"
+  },
+  "c66591cce": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c9599f2ee": {
+   "status": "answer",
+   "answer": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "method": "auto"
+  },
+  "c919df228": {
+   "status": "answer",
+   "answer": "(2, 2)",
+   "method": "auto"
+  },
+  "c20e09f60": {
+   "status": "answer",
+   "answer": "0.34",
+   "method": "auto"
+  },
+  "c0703b4e7": {
+   "status": "answer",
+   "answer": "\\frac{1}{32}",
+   "method": "auto"
+  },
+  "c54a61727": {
+   "status": "none",
+   "note": "ends 'the final answer in \\boxed{36} or \\boxed{49}'; two candidates, no single final answer",
+   "method": "manual"
+  },
+  "c8052e2d5": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c8046fcd7": {
+   "status": "answer",
+   "answer": "41",
+   "method": "manual"
+  },
+  "ca079b993": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c172d2d1e": {
+   "status": "answer",
+   "answer": "0.00672",
+   "method": "auto"
+  },
+  "c33a30b63": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cccc848b7": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c1127eb7f": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "c325eaa5b": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c0b9d2ada": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "c00a619a7": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c51980120": {
+   "status": "answer",
+   "answer": "37",
+   "method": "auto"
+  },
+  "c5e7becd0": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cc60970ff": {
+   "status": "answer",
+   "answer": "2",
+   "method": "manual"
+  },
+  "ce77cdad2": {
+   "status": "answer",
+   "answer": "(2,4)",
+   "method": "auto"
+  },
+  "c12cfbe2d": {
+   "status": "answer",
+   "answer": "40",
+   "method": "manual"
+  },
+  "c6c732ca3": {
+   "status": "answer",
+   "answer": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "method": "auto"
+  },
+  "c05530c7b": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "ce4aff79c": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c39907cbc": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cd03a557c": {
+   "status": "answer",
+   "answer": "0",
+   "method": "auto"
+  },
+  "cc0036109": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c08cccf3a": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "cbc8268f8": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cdadbc1d7": {
+   "status": "answer",
+   "answer": "8",
+   "method": "auto"
+  },
+  "c4e5c7ee2": {
+   "status": "answer",
+   "answer": "40",
+   "method": "auto"
+  },
+  "c4461b5e6": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "c192edf63": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cba416122": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c0d8a991f": {
+   "status": "answer",
+   "answer": "x^5 + x^4 + x^3 + x^2 + x",
+   "method": "auto"
+  },
+  "c04810b47": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c24d31cb6": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cd3a88749": {
+   "status": "answer",
+   "answer": "(2,4)",
+   "method": "auto"
+  },
+  "c61ca9e70": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "c680341c8": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "c3e3cb7c3": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c7395648e": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c4a441730": {
+   "status": "answer",
+   "answer": "6r^2 + 6r - 24",
+   "method": "auto"
+  },
+  "c1cd858e4": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "c757e9dc2": {
+   "status": "answer",
+   "answer": "\\frac{4}{3}",
+   "method": "auto"
+  },
+  "c4c44c632": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cac679c4a": {
+   "status": "answer",
+   "answer": "8",
+   "method": "auto"
+  },
+  "c122cec87": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cdeb05ebe": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c88dab360": {
+   "status": "answer",
+   "answer": "43",
+   "method": "auto"
+  },
+  "cdba78a27": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c6256d141": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c4c285afe": {
+   "status": "answer",
+   "answer": "12",
+   "method": "manual"
+  },
+  "c72426bcd": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "cd8de3626": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "cfe0d4f85": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "c7172ffc8": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c15e06dcd": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c9ace9f83": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c171a528f": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cbc2d086d": {
+   "status": "answer",
+   "answer": "120",
+   "method": "auto"
+  },
+  "c1f6f1d33": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "c56ff16fe": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c06f9b33b": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cb7cdb920": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "c838456be": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cd0e4c481": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c2e318ad9": {
+   "status": "answer",
+   "answer": "\\text{neither}",
+   "method": "auto"
+  },
+  "cf6e6e642": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c32c4ee99": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "cfbd1ebea": {
+   "status": "answer",
+   "answer": "6+9i",
+   "method": "auto"
+  },
+  "cb1dbd6dd": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "c96a4a43d": {
+   "status": "answer",
+   "answer": "\\text{neither}",
+   "method": "auto"
+  },
+  "cb05f597b": {
+   "status": "answer",
+   "answer": "21",
+   "method": "auto"
+  },
+  "c65344158": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c88136724": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "cb30cb7e0": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "c26c0fc54": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c3f40bf6a": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cf7c974bb": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c2dea3c65": {
+   "status": "answer",
+   "answer": "30",
+   "method": "auto"
+  },
+  "cd0056cd7": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c03d163c7": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "c327a656f": {
+   "status": "answer",
+   "answer": "21",
+   "method": "auto"
+  },
+  "c3e41007e": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c945da870": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "c762fd377": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c60f92fb0": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "ccba5ec7c": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c0caac31d": {
+   "status": "answer",
+   "answer": "15",
+   "method": "auto"
+  },
+  "c734cedb5": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "c630a3e92": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c4a07350f": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c21d3270c": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cc552c4df": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "c4c58e338": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "ce220ed22": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "c9a538dea": {
+   "status": "answer",
+   "answer": "192\\sqrt{3}",
+   "method": "auto"
+  },
+  "c885c476c": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "cfe23e31b": {
+   "status": "answer",
+   "answer": "120",
+   "method": "auto"
+  },
+  "c5fb6043a": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c97d799dd": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c42643371": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c41831803": {
+   "status": "answer",
+   "answer": "63",
+   "method": "auto"
+  },
+  "cae12b71c": {
+   "status": "answer",
+   "answer": "6r^2 + 44r - 24",
+   "method": "auto"
+  },
+  "ce95a7dee": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "c3c1266f7": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "c9d342e20": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c7cddc38d": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c392a755c": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c3ebda102": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c4e202c6b": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c64f9d660": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "c8512f48e": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c8fc67bb9": {
+   "status": "answer",
+   "answer": "3",
+   "method": "manual"
+  },
+  "c15006490": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "manual"
+  },
+  "ca8c8921f": {
+   "status": "answer",
+   "answer": "41",
+   "method": "auto"
+  },
+  "c53aa66b2": {
+   "status": "answer",
+   "answer": "5",
+   "method": "manual"
+  },
+  "ccaa0b6ca": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "manual"
+  },
+  "cce738094": {
+   "status": "answer",
+   "answer": "729",
+   "method": "manual"
+  },
+  "cd1c360d6": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cd34527e6": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "cd901d0db": {
+   "status": "answer",
+   "answer": "15",
+   "method": "auto"
+  },
+  "cef03f1fa": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c57eee1fb": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "c72c74adc": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "c2b57e1af": {
+   "status": "answer",
+   "answer": "0.00168",
+   "method": "manual"
+  },
+  "c3ac1a2cd": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "cde9f9080": {
+   "status": "answer",
+   "answer": "-\\frac{1}{32}",
+   "method": "auto"
+  },
+  "c870a41cc": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c78a024e9": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c4610b467": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c913aa95c": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c3c7ae6f6": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "c263c4c0d": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "c0cad725b": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c2f87fed9": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "ca56e54f9": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ce0c3f4fa": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "ceb597ec5": {
+   "status": "answer",
+   "answer": "12",
+   "method": "manual"
+  },
+  "ca694b25c": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c01cf24ac": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c23d3c670": {
+   "status": "answer",
+   "answer": "900",
+   "method": "manual"
+  },
+  "c9bf8663b": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c32c853a2": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cac65f400": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c8067c849": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cb4ff2912": {
+   "status": "truncated",
+   "note": "long division cut off mid-step; no final answer stated",
+   "method": "manual"
+  },
+  "c28f2f97c": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c38dc914b": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "cb373e103": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c4b9cb2f9": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c8efe03ad": {
+   "status": "answer",
+   "answer": "47",
+   "method": "manual"
+  },
+  "c75014cf9": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "ce900f0dd": {
+   "status": "answer",
+   "answer": "\\sqrt[3]{3}",
+   "method": "auto"
+  },
+  "c95feefda": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "cd13a0346": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c82206f87": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "cd47c38c0": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c1ff0a75f": {
+   "status": "answer",
+   "answer": "E",
+   "method": "auto"
+  },
+  "c86273e82": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "cd1807fd9": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c85c9a53a": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c8e5bd8eb": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c1bbdd672": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c29e8bf06": {
+   "status": "answer",
+   "answer": "\\text{E}",
+   "method": "auto"
+  },
+  "c9645baf9": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c71841b9c": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "manual"
+  },
+  "ce965c68b": {
+   "status": "answer",
+   "answer": "0.0006688",
+   "method": "auto"
+  },
+  "c66dd5ee3": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "cbc430194": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c59d85bbb": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "c6c770644": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "cf88dba91": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "ce149fae6": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "c85aa6fc6": {
+   "status": "answer",
+   "answer": "5",
+   "method": "manual"
+  },
+  "cce4d1569": {
+   "status": "answer",
+   "answer": "729",
+   "method": "auto"
+  },
+  "c91615355": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cd55d801e": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c48f1e839": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c7d9700ea": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c6ae37bbf": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c8c367751": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c7c7d2cd9": {
+   "status": "answer",
+   "answer": "10",
+   "method": "auto"
+  },
+  "cc233e59b": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "cfa489c39": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "c5e43abc7": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c3edff0fb": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c40e99c1c": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "manual"
+  },
+  "c319721dd": {
+   "status": "truncated",
+   "note": "computes AB + B = 8 inside a critique of agent 1; own 'Final Updated Solution' cut off before any final-answer statement",
+   "method": "manual"
+  },
+  "c5c1fb279": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "c7c05bcc5": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c677ac254": {
+   "status": "answer",
+   "answer": "0.0000672",
+   "method": "auto"
+  },
+  "cb44ff901": {
+   "status": "answer",
+   "answer": "43",
+   "method": "auto"
+  },
+  "cbf52f64f": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c1dd468d9": {
+   "status": "answer",
+   "answer": "3 \\sqrt{13}",
+   "method": "auto"
+  },
+  "c050c7e91": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c0a97362d": {
+   "status": "answer",
+   "answer": "0.00068",
+   "method": "auto"
+  },
+  "c8aa46cbd": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "cf71bae27": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "c43444d6b": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "c9446973a": {
+   "status": "answer",
+   "answer": "E",
+   "method": "auto"
+  },
+  "c7dc343ff": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "manual"
+  },
+  "c0e52566a": {
+   "status": "answer",
+   "answer": "(2,4)",
+   "method": "auto"
+  },
+  "cb78363d8": {
+   "status": "answer",
+   "answer": "729",
+   "method": "auto"
+  },
+  "c0460afe5": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c036c8d29": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "cd0a61f99": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c15c2a52e": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c0d0e3bd1": {
+   "status": "answer",
+   "answer": "\\frac{1}{8}",
+   "method": "auto"
+  },
+  "c0ae495cb": {
+   "status": "answer",
+   "answer": "\\text{even}",
+   "method": "auto"
+  },
+  "ce033d454": {
+   "status": "answer",
+   "answer": "47",
+   "method": "auto"
+  },
+  "ce5a7d049": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "manual"
+  },
+  "ca15f2b1f": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c2a961294": {
+   "status": "answer",
+   "answer": "10",
+   "method": "auto"
+  },
+  "ccf179f8e": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c5e4d4f17": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c3fdadaf8": {
+   "status": "answer",
+   "answer": "5r^5",
+   "cut_off": true,
+   "note": "states 'Final Answer: \\boxed{5r^5}' twice while re-deriving each agent's steps; own 'My Solution' cut off at 5r^5 before restating",
+   "method": "manual"
+  },
+  "c9d9669d9": {
+   "status": "answer",
+   "answer": "\\frac{4}{3}",
+   "method": "auto"
+  },
+  "c18e0393c": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ccdc3cd86": {
+   "status": "answer",
+   "answer": "35",
+   "method": "auto"
+  },
+  "caf9669e1": {
+   "status": "answer",
+   "answer": "216",
+   "method": "auto"
+  },
+  "c4c6104fb": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "c95efac89": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c34650964": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c8ae25a78": {
+   "status": "answer",
+   "answer": "41",
+   "method": "auto"
+  },
+  "cbe71f600": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "manual"
+  },
+  "c292649a3": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "ccb800c84": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ce6dd5184": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cfff84c9b": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "cf2d1d307": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "cb635bdee": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "c1fe9c2b6": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ca545ae57": {
+   "status": "answer",
+   "answer": "C",
+   "method": "auto"
+  },
+  "c16433569": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c5c6ea003": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c57ea1263": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c5c0e54d1": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c0f7e2cbc": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "cd4120172": {
+   "status": "answer",
+   "answer": "15",
+   "method": "auto"
+  },
+  "c4085f8d0": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c291816b0": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c97a19c47": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c0f1aa44b": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "c305c6b5d": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c7212883b": {
+   "status": "answer",
+   "answer": "0",
+   "method": "auto"
+  },
+  "c5fce9137": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "c3c82e57e": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "c6d47cc75": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "c70e7ac41": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c3981b1ce": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "ca3079b66": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c35d5e55b": {
+   "status": "answer",
+   "answer": "C",
+   "method": "auto"
+  },
+  "c97c73a81": {
+   "status": "answer",
+   "answer": "\\frac{\\sqrt{3}}{8}",
+   "method": "auto"
+  },
+  "cd8b9481d": {
+   "status": "answer",
+   "answer": "41",
+   "method": "manual"
+  },
+  "cee842c6b": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "manual"
+  },
+  "c8eecb7a2": {
+   "status": "answer",
+   "answer": "35",
+   "method": "auto"
+  },
+  "c5f556a6c": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c06241f00": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cdf63a68e": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "cf2f36e2d": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "cc9efeb9c": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cc407ac4d": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c641fff1a": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "cd774ee87": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c0b2c0c0a": {
+   "status": "answer",
+   "answer": "21",
+   "method": "auto"
+  },
+  "c12020c1c": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "c6c11552e": {
+   "status": "answer",
+   "answer": "60",
+   "method": "auto"
+  },
+  "c263c5ac8": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c9816dfe6": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c8f57556f": {
+   "status": "answer",
+   "answer": "2",
+   "method": "manual"
+  },
+  "ce3599b66": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c8147fe75": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "ca8a75084": {
+   "status": "answer",
+   "answer": "6",
+   "method": "manual"
+  },
+  "cdb6e1c76": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cf251746a": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c26b70c5e": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "cbe09a82f": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cfa1ebc3a": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "cabced574": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c249e9d31": {
+   "status": "answer",
+   "answer": "0.0000672",
+   "method": "auto"
+  },
+  "ca64e0699": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "c2725ac54": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "ccd0e0e68": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cdbafa210": {
+   "status": "answer",
+   "answer": "\\frac{5}{4}",
+   "method": "auto"
+  },
+  "c82c0417b": {
+   "status": "answer",
+   "answer": "8",
+   "method": "auto"
+  },
+  "cf41f036f": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "cbe6dbcf2": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "c292aa998": {
+   "status": "answer",
+   "answer": "84",
+   "method": "auto"
+  },
+  "cbaa3b4e5": {
+   "status": "truncated",
+   "note": "cut off mid-derivation solving for k; no final answer stated",
+   "method": "manual"
+  },
+  "c60cd4ecf": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "c1ca67bb8": {
+   "status": "answer",
+   "answer": "32",
+   "method": "auto"
+  },
+  "cd5b376ad": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c8db80882": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "ce53ceabf": {
+   "status": "answer",
+   "answer": "3",
+   "method": "manual"
+  },
+  "cb5d0e554": {
+   "status": "truncated",
+   "note": "long division cut off mid-step; no final answer stated",
+   "method": "manual"
+  },
+  "cab277157": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "cb56e1da2": {
+   "status": "answer",
+   "answer": "21",
+   "method": "auto"
+  },
+  "c0382e63b": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "cfc0cf381": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cf1912eab": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "manual"
+  },
+  "c23d4c8ee": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "c8eafc4cd": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "ca7630f75": {
+   "status": "answer",
+   "answer": "5",
+   "method": "manual"
+  },
+  "c920a4876": {
+   "status": "answer",
+   "answer": "C",
+   "method": "manual"
+  },
+  "c938dedd1": {
+   "status": "answer",
+   "answer": "\\frac{27\\sqrt{2}}{4}",
+   "method": "auto"
+  },
+  "c1b44df93": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "c0c259e80": {
+   "status": "answer",
+   "answer": "(0, 4)",
+   "method": "auto"
+  },
+  "c67c3ae7b": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "ce9cae5a2": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cd003ed4c": {
+   "status": "answer",
+   "answer": "36",
+   "method": "auto"
+  },
+  "c5ca65f01": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c19b8b00c": {
+   "status": "answer",
+   "answer": "(2, 4)",
+   "method": "auto"
+  },
+  "c5c514b14": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "cb9289afc": {
+   "status": "answer",
+   "answer": "5",
+   "method": "manual"
+  },
+  "cfc13025e": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "ca304e1e9": {
+   "status": "answer",
+   "answer": "234000",
+   "method": "auto"
+  },
+  "ccfba20a6": {
+   "status": "answer",
+   "answer": "\\text{C}",
+   "method": "auto"
+  },
+  "c05a3c757": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "ce616d329": {
+   "status": "answer",
+   "answer": "\\text{C}",
+   "method": "auto"
+  },
+  "c3e586426": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c49aeafbe": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "cab4a55ab": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c17206048": {
+   "status": "answer",
+   "answer": "1",
+   "method": "manual"
+  },
+  "ce4e8a132": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c78e04238": {
+   "status": "answer",
+   "answer": "41",
+   "method": "manual"
+  },
+  "c39857a0a": {
+   "status": "answer",
+   "answer": "6r^2 - 4r - 24",
+   "method": "auto"
+  },
+  "c1b3c7388": {
+   "status": "answer",
+   "answer": "40",
+   "method": "auto"
+  },
+  "cdb4d6849": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c72bd06d6": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c818046e6": {
+   "status": "answer",
+   "answer": "3 \\sqrt{13}",
+   "method": "manual"
+  },
+  "c7df104fc": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c65cb7e81": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cf018dbb7": {
+   "status": "answer",
+   "answer": "15",
+   "method": "auto"
+  },
+  "ceb4a0ff4": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c378ede49": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "manual"
+  },
+  "c5c81a2ef": {
+   "status": "answer",
+   "answer": "(2, 4)",
+   "method": "manual"
+  },
+  "ca256a2cc": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c3dd26308": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "ce3e7e305": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cf0aa48a2": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c627dcb37": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "c94eebc76": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ce910ef30": {
+   "status": "answer",
+   "answer": "5r^9",
+   "method": "auto"
+  },
+  "c95a3fec7": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "c61a94fc7": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "cd76dea83": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cebb7a589": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "cd794b9a0": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "c1c24caad": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "c6a2b5ae8": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "cc094b191": {
+   "status": "answer",
+   "answer": "-\\frac{1}{32}",
+   "method": "auto"
+  },
+  "c0d6d15b0": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cca4d84c7": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c3737f2cc": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "cebd03f6c": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "manual"
+  },
+  "cddd6dc4c": {
+   "status": "answer",
+   "answer": "42",
+   "method": "auto"
+  },
+  "c77108124": {
+   "status": "answer",
+   "answer": "(2,4)",
+   "method": "auto"
+  },
+  "c04d06fb8": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "ce60105ea": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "c72f8f77c": {
+   "status": "truncated",
+   "note": "states remainder -2 then cut off at 'So, the quotient when x^6 - 3'; no final answer to the question stated",
+   "method": "manual"
+  },
+  "ceb1248a0": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "manual"
+  },
+  "cb64a51e3": {
+   "status": "answer",
+   "answer": "0.0000672",
+   "method": "auto"
+  },
+  "c46195c85": {
+   "status": "answer",
+   "answer": "54\\sqrt{2}",
+   "method": "auto"
+  },
+  "c8687fa13": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c5d8b9208": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "caa1239a9": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c2f2ce372": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "cddc65ca1": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cd4722954": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c5a60fa60": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c4e7f6cc9": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c887e3049": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "c76a4538d": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c82c78e06": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c0ebc4dca": {
+   "status": "answer",
+   "answer": "-5",
+   "method": "auto"
+  },
+  "c02420184": {
+   "status": "answer",
+   "answer": "6",
+   "method": "manual"
+  },
+  "c7e2ffa31": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c20e52bf4": {
+   "status": "answer",
+   "answer": "0",
+   "method": "auto"
+  },
+  "ceffb926b": {
+   "status": "answer",
+   "answer": "\\text{C}",
+   "method": "auto"
+  },
+  "ca2b08e41": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "c492a5532": {
+   "status": "answer",
+   "answer": "\\text{E}",
+   "method": "auto"
+  },
+  "c3c1ee311": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c9c667ea6": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "cade34127": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c06b20775": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "cca363a10": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c069b9d76": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c98270bc2": {
+   "status": "truncated",
+   "note": "cut off mid-derivation solving for k; no final answer stated",
+   "method": "manual"
+  },
+  "c17b6e44e": {
+   "status": "answer",
+   "answer": "4",
+   "method": "manual"
+  },
+  "c878c8108": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c0d6d9410": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c8db55fb5": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "c4b1b483a": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c536f5c6d": {
+   "status": "answer",
+   "answer": "36",
+   "method": "auto"
+  },
+  "ca849376d": {
+   "status": "answer",
+   "answer": "(2, 4)",
+   "method": "manual"
+  },
+  "c0be0dfba": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c706775b5": {
+   "status": "answer",
+   "answer": "14",
+   "method": "manual"
+  },
+  "c400152d8": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cb5d2cb4d": {
+   "status": "answer",
+   "answer": "0.00168",
+   "method": "manual"
+  },
+  "c3112d6f7": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "auto"
+  },
+  "cf4f3d53d": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "cd8fa1553": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c6a2d3747": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c5311ac6a": {
+   "status": "answer",
+   "answer": "\\frac{14}{3}",
+   "method": "auto"
+  },
+  "c80df043b": {
+   "status": "answer",
+   "answer": "21",
+   "note": "computes area 45 in text but states boxed final 21",
+   "method": "manual"
+  },
+  "c3e92b10d": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cb40b6ada": {
+   "status": "answer",
+   "answer": "27",
+   "method": "auto"
+  },
+  "cd86506a1": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c35b50efd": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c2d3a3715": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c2973e744": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "cd0f20688": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "ca9226015": {
+   "status": "answer",
+   "answer": "3",
+   "method": "manual"
+  },
+  "c7c55c12b": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ce89f7095": {
+   "status": "answer",
+   "answer": "(2, 4)",
+   "method": "auto"
+  },
+  "c687fafa9": {
+   "status": "answer",
+   "answer": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "method": "auto"
+  },
+  "c54faf61e": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "cf082e7fa": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c46247cf8": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c7af0e031": {
+   "status": "answer",
+   "answer": "\\frac{1}{16}",
+   "method": "auto"
+  },
+  "c1bde940d": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c9a3d3417": {
+   "status": "answer",
+   "answer": "24\\sqrt{3}",
+   "method": "auto"
+  },
+  "ca573ec15": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "ccaa99a9d": {
+   "status": "answer",
+   "answer": "28",
+   "method": "manual"
+  },
+  "c4d7f8f11": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c8ff96d2a": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "manual"
+  },
+  "c9f7b3636": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "cb5f08270": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "cb8a0dab1": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c0193eaae": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "manual"
+  },
+  "ce30b6f39": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "cfe58b7b7": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "ccf58313a": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c20b8db9d": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "ce204ab3e": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "cb4afae17": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c089add73": {
+   "status": "answer",
+   "answer": "\\frac{1}{16}",
+   "method": "auto"
+  },
+  "ca83b81b9": {
+   "status": "answer",
+   "answer": "3\\sqrt{13}",
+   "method": "auto"
+  },
+  "c3f0e8878": {
+   "status": "answer",
+   "answer": "-\\frac{1}{8}",
+   "method": "auto"
+  },
+  "c4b5f4156": {
+   "status": "answer",
+   "answer": "0 \\text{ or } 3",
+   "method": "auto"
+  },
+  "cb9135785": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "ca2d5c9c1": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "ca2cf997b": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cd77dcd55": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "cbb76fdb2": {
+   "status": "answer",
+   "answer": "1",
+   "method": "manual"
+  },
+  "ca3e2f618": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c39e7bf0d": {
+   "status": "answer",
+   "answer": "2",
+   "method": "manual"
+  },
+  "c5e0b237d": {
+   "status": "answer",
+   "answer": "12",
+   "method": "auto"
+  },
+  "cbbe591eb": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "c823b6570": {
+   "status": "answer",
+   "answer": "21",
+   "method": "manual"
+  },
+  "c4ccc9224": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cf2f8b68e": {
+   "status": "answer",
+   "answer": "C",
+   "method": "manual"
+  },
+  "ce9bd402b": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c9ea48a9a": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c1faeb560": {
+   "status": "answer",
+   "answer": "40",
+   "method": "auto"
+  },
+  "cb723a6ff": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "c37e191bb": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "c7ce290e2": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "ca7d817d1": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c5b2c0536": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "auto"
+  },
+  "c72934012": {
+   "status": "answer",
+   "answer": "36",
+   "method": "auto"
+  },
+  "c1d9ef622": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cf480d75e": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "c9777027f": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c24d5982d": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "manual"
+  },
+  "cde2f697e": {
+   "status": "answer",
+   "answer": "(2, 4)",
+   "method": "auto"
+  },
+  "ca9343893": {
+   "status": "answer",
+   "answer": "0.000672",
+   "method": "auto"
+  },
+  "c6e6d1cfc": {
+   "status": "answer",
+   "answer": "10",
+   "method": "auto"
+  },
+  "cc2cbbdcd": {
+   "status": "answer",
+   "answer": "\\frac{3}{2}",
+   "method": "auto"
+  },
+  "c6577f6a4": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "c988b3ea8": {
+   "status": "answer",
+   "answer": "\\frac{\\sqrt{15}}{16}",
+   "method": "auto"
+  },
+  "ca2a7fa36": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c1909c408": {
+   "status": "answer",
+   "answer": "5r^5",
+   "method": "auto"
+  },
+  "cf00732d1": {
+   "status": "answer",
+   "answer": "\\frac{33}{100}",
+   "method": "auto"
+  },
+  "c304be0a9": {
+   "status": "answer",
+   "answer": "5",
+   "method": "auto"
+  },
+  "c10ba4006": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "ce4c24c21": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c2fcda2cb": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "manual"
+  },
+  "caf96a1b9": {
+   "status": "answer",
+   "answer": "-\\frac{1}{16}",
+   "method": "auto"
+  },
+  "c8432dcfc": {
+   "status": "answer",
+   "answer": "E",
+   "method": "auto"
+  },
+  "cc781e27b": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c185685d5": {
+   "status": "answer",
+   "answer": "C",
+   "method": "auto"
+  },
+  "c467bfc40": {
+   "status": "answer",
+   "answer": "216",
+   "method": "auto"
+  },
+  "c4c436886": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "cbb489a42": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "cf2eb7f7c": {
+   "status": "answer",
+   "answer": "40",
+   "method": "manual"
+  },
+  "c454d456f": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "manual"
+  },
+  "c3556828f": {
+   "status": "answer",
+   "answer": "0.0000671875",
+   "method": "auto"
+  },
+  "c03d3c381": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "auto"
+  },
+  "c367c2ff1": {
+   "status": "answer",
+   "answer": "4005",
+   "method": "auto"
+  },
+  "c5ccda97a": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "cef530a04": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "cab9d4ecb": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "c29d64874": {
+   "status": "answer",
+   "answer": "900",
+   "method": "auto"
+  },
+  "c19b6df34": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c0ae39e0c": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "cc0c8d4b6": {
+   "status": "answer",
+   "answer": "4\\sqrt{3}",
+   "method": "auto"
+  },
+  "cc308e4b6": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "ca2ca8332": {
+   "status": "answer",
+   "answer": "-\\frac{\\pi}{6}",
+   "method": "auto"
+  },
+  "c3341be66": {
+   "status": "answer",
+   "answer": "22",
+   "method": "auto"
+  },
+  "c64f9d114": {
+   "status": "answer",
+   "answer": "\\frac{13}{15}",
+   "method": "manual"
+  },
+  "ca5afc400": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "cc0447daa": {
+   "status": "answer",
+   "answer": "1",
+   "method": "manual"
+  },
+  "c3b17e992": {
+   "status": "truncated",
+   "note": "cut off mid-simplification; no final answer stated",
+   "method": "manual"
+  },
+  "cf3782a9d": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "cc921e6c5": {
+   "status": "answer",
+   "answer": "\\text{odd}",
+   "method": "auto"
+  },
+  "c20123e14": {
+   "status": "answer",
+   "answer": "1251",
+   "method": "manual"
+  },
+  "c98c1c88c": {
+   "status": "answer",
+   "answer": "\\frac{3}{4}",
+   "method": "auto"
+  },
+  "c693e158f": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c32f0ffb8": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "cacb48b36": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cb14792bd": {
+   "status": "answer",
+   "answer": "6 + 9i",
+   "method": "auto"
+  },
+  "cac54d5c9": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "c54cdb7a0": {
+   "status": "answer",
+   "answer": "0.00168",
+   "method": "auto"
+  },
+  "c3e91480d": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c1c5731e9": {
+   "status": "answer",
+   "answer": "35",
+   "method": "auto"
+  },
+  "c4f798659": {
+   "status": "answer",
+   "answer": "14",
+   "method": "auto"
+  },
+  "c0ddd91df": {
+   "status": "answer",
+   "answer": "3",
+   "method": "auto"
+  },
+  "c06d31126": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c7858e25f": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cc102bb88": {
+   "status": "answer",
+   "answer": "1",
+   "method": "auto"
+  },
+  "c4222b937": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cb3c7d636": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "ccbceb38f": {
+   "status": "answer",
+   "answer": "8",
+   "method": "auto"
+  },
+  "c37aa27df": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c9d407d32": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "cb590a209": {
+   "status": "answer",
+   "answer": "5r^8",
+   "method": "auto"
+  },
+  "c8297b846": {
+   "status": "answer",
+   "answer": "E",
+   "method": "auto"
+  },
+  "c9e59989c": {
+   "status": "answer",
+   "answer": "58500",
+   "method": "auto"
+  },
+  "cec4eb3f9": {
+   "status": "answer",
+   "answer": "\\frac{8}{21}",
+   "method": "manual"
+  },
+  "cd0d62f1c": {
+   "status": "answer",
+   "answer": "(2, 4)",
+   "method": "auto"
+  },
+  "ca6ffa760": {
+   "status": "answer",
+   "answer": "28",
+   "method": "auto"
+  },
+  "c79cb86a2": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c04bd9386": {
+   "status": "truncated",
+   "note": "computes 47 inside critiques of both agents, says both give the same result, cut off while restating; no final-answer statement",
+   "method": "manual"
+  },
+  "cc5845980": {
+   "status": "answer",
+   "answer": "6",
+   "method": "auto"
+  },
+  "c29970415": {
+   "status": "answer",
+   "answer": "4",
+   "method": "auto"
+  },
+  "c305d53a8": {
+   "status": "answer",
+   "answer": "11",
+   "method": "auto"
+  },
+  "cb1007c64": {
+   "status": "answer",
+   "answer": "(5, \\infty)",
+   "method": "auto"
+  },
+  "c43e9641e": {
+   "status": "answer",
+   "answer": "9",
+   "method": "auto"
+  },
+  "ccca9205b": {
+   "status": "answer",
+   "answer": "120^\\circ",
+   "method": "auto"
+  },
+  "c18d6b748": {
+   "status": "answer",
+   "answer": "2",
+   "method": "auto"
+  },
+  "cb790e6af": {
+   "status": "answer",
+   "answer": "-4",
+   "method": "auto"
+  },
+  "c80265afd": {
+   "status": "answer",
+   "answer": "6 + 6i",
+   "method": "auto"
+  }
+ }
+}

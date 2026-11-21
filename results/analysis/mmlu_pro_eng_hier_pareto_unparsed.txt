@@ -1,0 +1,20 @@
+
+===== mmlu_pro_eng (seed-aware hierarchical bootstrap, Holm) =====
+  SC_k8 vs DEBATE_N3_R1   Δ= +8.7  CI[ +2.0,+15.3]  raw p=0.0150  Holm=0.0450  *SIG*
+  SC_k8 vs GE_R2          Δ= +4.7  CI[ -2.3,+11.7]  raw p=0.2044  Holm=0.4088
+  SC_k8 vs HIER_M3        Δ= +3.3  CI[ -5.0,+11.7]  raw p=0.4612  Holm=0.4612
+
+===== gsm8k Pareto-membership (% of resamples non-dominated) =====
+  SA             100.0%
+  SC_k2           34.3%
+  SC_k4           83.8%
+  SC_k8           91.4%
+  SC_k12          29.8%
+  DEBATE_N2_R1     2.0%
+  DEBATE_N3_R1     0.2%
+  GE_R1            6.0%
+  GE_R2            2.1%
+  HIER_M2          0.0%
+  HIER_M3          0.0%
+{'SA': 100.0, 'SC_k2': 69.73, 'SC_k4': 64.54, 'SC_k8': 67.2, 'DEBATE_N3_R1': 0.12, 'GE_R2': 29.41, 'HIER_M3': 38.01}
+{'SA': 0.7, 'SC_k2': 0.0, 'SC_k4': 0.0, 'SC_k8': 0.0, 'DEBATE_N3_R1': 0.3, 'GE_R2': 1.0, 'HIER_M3': 1.0}

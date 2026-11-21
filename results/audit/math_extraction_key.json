@@ -1,0 +1,5462 @@
+{
+ "cc1ee8992": {
+  "record_index": 0,
+  "item_id": "math-117",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c4b9670be": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c9f3c8fac": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c2ee31ac8": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c9fe3f7e9": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c1e16e51e": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c5aa26c96": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c13be93d1": {
+  "record_index": 56,
+  "item_id": "math-128",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c6559330b": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c45584a94": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c99a537c4": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c119abb58": {
+  "record_index": 39,
+  "item_id": "math-95",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c34525f2a": {
+  "record_index": 83,
+  "item_id": "math-369",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c655f2166": {
+  "record_index": 57,
+  "item_id": "math-351",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c444ac9d9": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "ce084347f": {
+  "record_index": 91,
+  "item_id": "math-178",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1a1ff33c": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ceb41a37c": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cfc555816": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c37a33647": {
+  "record_index": 41,
+  "item_id": "math-182",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cf5e678d7": {
+  "record_index": 33,
+  "item_id": "math-440",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c6554ed43": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c13c37559": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c0fb20cdf": {
+  "record_index": 16,
+  "item_id": "math-90",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c947f3ed7": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "caabe7d84": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c4d689630": {
+  "record_index": 18,
+  "item_id": "math-79",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c9d81367b": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "caaae802a": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c5e20787c": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c260b80ec": {
+  "record_index": 57,
+  "item_id": "math-351",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c7f0cac31": {
+  "record_index": 33,
+  "item_id": "math-440",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cbafdd719": {
+  "record_index": 26,
+  "item_id": "math-255",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cfc360319": {
+  "record_index": 44,
+  "item_id": "math-393",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c40696fc5": {
+  "record_index": 163,
+  "item_id": "math-108",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c8e6f6700": {
+  "record_index": 179,
+  "item_id": "math-8",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7642f09e": {
+  "record_index": 43,
+  "item_id": "math-108",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ce11ae49a": {
+  "record_index": 64,
+  "item_id": "math-449",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c558c473b": {
+  "record_index": 54,
+  "item_id": "math-347",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cfd950da6": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c2ae4fdce": {
+  "record_index": 25,
+  "item_id": "math-377",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c31d1f79a": {
+  "record_index": 18,
+  "item_id": "math-79",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cb5eee777": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c4c8c7cbd": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ca5fc8cd8": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ce0f95f39": {
+  "record_index": 60,
+  "item_id": "math-117",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7f195adf": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c8815aa92": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c9e9542a3": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cca8d5308": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cb3304dd5": {
+  "record_index": 1,
+  "item_id": "math-171",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c577c40e1": {
+  "record_index": 46,
+  "item_id": "math-51",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c5a639d02": {
+  "record_index": 121,
+  "item_id": "math-171",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c260a1b88": {
+  "record_index": 66,
+  "item_id": "math-203",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5466016c": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c59508bef": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c84330078": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c725463f7": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c41ac21e9": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c230aba8e": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c5d31777d": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ce29d94d4": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c2c2a9755": {
+  "record_index": 82,
+  "item_id": "math-120",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cde624e6c": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c846710b6": {
+  "record_index": 39,
+  "item_id": "math-95",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ce0b8b74a": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c03095966": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1c697288": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cf1a1cd59": {
+  "record_index": 10,
+  "item_id": "math-83",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c391e9370": {
+  "record_index": 20,
+  "item_id": "math-227",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c95833b98": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c6662d941": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c2910b6c5": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c96254e28": {
+  "record_index": 13,
+  "item_id": "math-207",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c365e27d2": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c1c56bb0b": {
+  "record_index": 97,
+  "item_id": "math-344",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c969775e2": {
+  "record_index": 133,
+  "item_id": "math-207",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce1db597a": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce7c7981b": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cc178c753": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c78897648": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cb59ebaa0": {
+  "record_index": 32,
+  "item_id": "math-265",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c2c6394ec": {
+  "record_index": 17,
+  "item_id": "math-221",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c23f454ab": {
+  "record_index": 100,
+  "item_id": "math-226",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3fee4179": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cfc097419": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cc0c078f8": {
+  "record_index": 146,
+  "item_id": "math-255",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb8dc4e4c": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cad42bd71": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c24c878f6": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cde5227ed": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c1751b547": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cf2d498b7": {
+  "record_index": 31,
+  "item_id": "math-178",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c2e243f95": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cf4f26fec": {
+  "record_index": 160,
+  "item_id": "math-226",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c947bc9e3": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c1e7f53ed": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "ceb331362": {
+  "record_index": 169,
+  "item_id": "math-487",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c8e1fff59": {
+  "record_index": 38,
+  "item_id": "math-53",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c917a3859": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ca122dcd5": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ccc658b9a": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c0bcf1d4a": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c076b3d83": {
+  "record_index": 108,
+  "item_id": "math-316",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5bfecd04": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c22a44643": {
+  "record_index": 86,
+  "item_id": "math-255",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c98dc3eb4": {
+  "record_index": 15,
+  "item_id": "math-107",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb9141e14": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c2b974da5": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cc8396715": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c1a0d54d5": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cb2ba3be9": {
+  "record_index": 141,
+  "item_id": "math-337",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cdf214d43": {
+  "record_index": 36,
+  "item_id": "math-410",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c75c69654": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "ca75e5a01": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c411b9760": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c62e8d497": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "caae9f7fb": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cdd550e9a": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cac98bc2e": {
+  "record_index": 118,
+  "item_id": "math-396",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c00f4d5ab": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c766a68b3": {
+  "record_index": 58,
+  "item_id": "math-396",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c0482fd07": {
+  "record_index": 28,
+  "item_id": "math-486",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cc1838342": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "ce940da18": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cdec5512e": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c637d98f0": {
+  "record_index": 49,
+  "item_id": "math-487",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c50b0a954": {
+  "record_index": 3,
+  "item_id": "math-77",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1983f69b": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cba4d3d5d": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cefa0590b": {
+  "record_index": 4,
+  "item_id": "math-449",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c1fc37fc2": {
+  "record_index": 136,
+  "item_id": "math-90",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c6bf6bb85": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cea22b324": {
+  "record_index": 166,
+  "item_id": "math-51",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c12e8c024": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1516f91f": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cffcca8c9": {
+  "record_index": 48,
+  "item_id": "math-316",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c54fead42": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c17922fa5": {
+  "record_index": 162,
+  "item_id": "math-413",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c6aee33e4": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca9e98c06": {
+  "record_index": 144,
+  "item_id": "math-169",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd150ee2e": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c2d8be904": {
+  "record_index": 138,
+  "item_id": "math-79",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd831acd0": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c5d0caef7": {
+  "record_index": 25,
+  "item_id": "math-377",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cc78c8235": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cc834d59a": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c04fa1565": {
+  "record_index": 114,
+  "item_id": "math-347",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c4d56b52d": {
+  "record_index": 40,
+  "item_id": "math-226",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ce1749903": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cd4132496": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c32ac5a43": {
+  "record_index": 151,
+  "item_id": "math-178",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cfdcddeec": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c69a5e547": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c5d6cabfb": {
+  "record_index": 156,
+  "item_id": "math-410",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c498fd1e4": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ce5628388": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c604fdefc": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cbc183db4": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c766df0bb": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c5eeb784b": {
+  "record_index": 26,
+  "item_id": "math-255",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c256bd960": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c736f7658": {
+  "record_index": 0,
+  "item_id": "math-117",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb7176b92": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c8388e0a7": {
+  "record_index": 120,
+  "item_id": "math-117",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cbefa9e29": {
+  "record_index": 59,
+  "item_id": "math-8",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c24a26961": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c162ca868": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c2d3f28be": {
+  "record_index": 27,
+  "item_id": "math-312",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb9fa411c": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c3cff68b6": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ca920cbc6": {
+  "record_index": 2,
+  "item_id": "math-256",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c3ea124f6": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ca982b772": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ce1d56b45": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c7a24f9b7": {
+  "record_index": 5,
+  "item_id": "math-122",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce0fe1768": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccabfc609": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c6114d28c": {
+  "record_index": 46,
+  "item_id": "math-51",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c246803ef": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cf90240e9": {
+  "record_index": 14,
+  "item_id": "math-260",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb7390c23": {
+  "record_index": 11,
+  "item_id": "math-211",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c9cb76126": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c917767d1": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c83cae42b": {
+  "record_index": 32,
+  "item_id": "math-265",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cce36b989": {
+  "record_index": 158,
+  "item_id": "math-53",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cdd03620d": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1d143831": {
+  "record_index": 23,
+  "item_id": "math-369",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c9039137e": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c01b14ac4": {
+  "record_index": 172,
+  "item_id": "math-35",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c89879136": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c4d25c3f9": {
+  "record_index": 24,
+  "item_id": "math-169",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c51e5915d": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ca267597e": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "ce54c8015": {
+  "record_index": 50,
+  "item_id": "math-314",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c9acc4fb1": {
+  "record_index": 145,
+  "item_id": "math-377",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c27831b28": {
+  "record_index": 175,
+  "item_id": "math-458",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c0dd76b6c": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cebc7d94e": {
+  "record_index": 45,
+  "item_id": "math-225",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cdf036f3b": {
+  "record_index": 176,
+  "item_id": "math-128",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccf3007f9": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c885a6b6c": {
+  "record_index": 35,
+  "item_id": "math-20",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c31437371": {
+  "record_index": 29,
+  "item_id": "math-343",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c7e7e3621": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cf2c715bd": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cc37d54d7": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c41acb009": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c4743a8f2": {
+  "record_index": 96,
+  "item_id": "math-410",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c37f6b33f": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c17f42352": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c405adabc": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c497d66c2": {
+  "record_index": 42,
+  "item_id": "math-413",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c84b7444c": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c922a1ba5": {
+  "record_index": 105,
+  "item_id": "math-225",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c93e441e4": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c78ecf592": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c0f71c1d0": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cb244d8c9": {
+  "record_index": 165,
+  "item_id": "math-225",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3f92e768": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cb77315a6": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ca5fa67ca": {
+  "record_index": 140,
+  "item_id": "math-227",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c78433dcb": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c2d350a58": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cc6bb172f": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c3ad68eaa": {
+  "record_index": 106,
+  "item_id": "math-51",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cba259d48": {
+  "record_index": 13,
+  "item_id": "math-207",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c5a34e5cb": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c7cf7d815": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cd66fcf80": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb1ed9fca": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cffbad3a7": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c613d6cf6": {
+  "record_index": 54,
+  "item_id": "math-347",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cf34b5e58": {
+  "record_index": 21,
+  "item_id": "math-337",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd33705bd": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c37e9c445": {
+  "record_index": 58,
+  "item_id": "math-396",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c66591cce": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c9599f2ee": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c919df228": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c20e09f60": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c0703b4e7": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c54a61727": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c8052e2d5": {
+  "record_index": 53,
+  "item_id": "math-208",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c8046fcd7": {
+  "record_index": 55,
+  "item_id": "math-458",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca079b993": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c172d2d1e": {
+  "record_index": 132,
+  "item_id": "math-176",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c33a30b63": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cccc848b7": {
+  "record_index": 43,
+  "item_id": "math-108",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1127eb7f": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c325eaa5b": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c0b9d2ada": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c00a619a7": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c51980120": {
+  "record_index": 124,
+  "item_id": "math-449",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5e7becd0": {
+  "record_index": 34,
+  "item_id": "math-325",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cc60970ff": {
+  "record_index": 58,
+  "item_id": "math-396",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ce77cdad2": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c12cfbe2d": {
+  "record_index": 56,
+  "item_id": "math-128",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c6c732ca3": {
+  "record_index": 46,
+  "item_id": "math-51",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c05530c7b": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce4aff79c": {
+  "record_index": 30,
+  "item_id": "math-72",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c39907cbc": {
+  "record_index": 15,
+  "item_id": "math-107",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cd03a557c": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cc0036109": {
+  "record_index": 22,
+  "item_id": "math-120",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c08cccf3a": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cbc8268f8": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cdadbc1d7": {
+  "record_index": 48,
+  "item_id": "math-316",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c4e5c7ee2": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c4461b5e6": {
+  "record_index": 174,
+  "item_id": "math-347",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c192edf63": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cba416122": {
+  "record_index": 18,
+  "item_id": "math-79",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c0d8a991f": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c04810b47": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c24d31cb6": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cd3a88749": {
+  "record_index": 50,
+  "item_id": "math-314",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c61ca9e70": {
+  "record_index": 137,
+  "item_id": "math-221",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c680341c8": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c3e3cb7c3": {
+  "record_index": 173,
+  "item_id": "math-208",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7395648e": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c4a441730": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c1cd858e4": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c757e9dc2": {
+  "record_index": 103,
+  "item_id": "math-108",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c4c44c632": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cac679c4a": {
+  "record_index": 168,
+  "item_id": "math-316",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c122cec87": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cdeb05ebe": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c88dab360": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cdba78a27": {
+  "record_index": 51,
+  "item_id": "math-266",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c6256d141": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c4c285afe": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c72426bcd": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cd8de3626": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cfe0d4f85": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c7172ffc8": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c15e06dcd": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c9ace9f83": {
+  "record_index": 149,
+  "item_id": "math-343",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c171a528f": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cbc2d086d": {
+  "record_index": 134,
+  "item_id": "math-260",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1f6f1d33": {
+  "record_index": 104,
+  "item_id": "math-393",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c56ff16fe": {
+  "record_index": 38,
+  "item_id": "math-53",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c06f9b33b": {
+  "record_index": 79,
+  "item_id": "math-363",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb7cdb920": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c838456be": {
+  "record_index": 34,
+  "item_id": "math-325",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cd0e4c481": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c2e318ad9": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cf6e6e642": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c32c4ee99": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cfbd1ebea": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb1dbd6dd": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c96a4a43d": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cb05f597b": {
+  "record_index": 69,
+  "item_id": "math-223",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c65344158": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c88136724": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb30cb7e0": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c26c0fc54": {
+  "record_index": 40,
+  "item_id": "math-226",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3f40bf6a": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cf7c974bb": {
+  "record_index": 167,
+  "item_id": "math-56",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c2dea3c65": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cd0056cd7": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c03d163c7": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c327a656f": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c3e41007e": {
+  "record_index": 78,
+  "item_id": "math-79",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c945da870": {
+  "record_index": 164,
+  "item_id": "math-393",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c762fd377": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c60f92fb0": {
+  "record_index": 67,
+  "item_id": "math-2",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccba5ec7c": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c0caac31d": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c734cedb5": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c630a3e92": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c4a07350f": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c21d3270c": {
+  "record_index": 52,
+  "item_id": "math-35",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cc552c4df": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c4c58e338": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ce220ed22": {
+  "record_index": 161,
+  "item_id": "math-182",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c9a538dea": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c885c476c": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cfe23e31b": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c5fb6043a": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c97d799dd": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c42643371": {
+  "record_index": 49,
+  "item_id": "math-487",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c41831803": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cae12b71c": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ce95a7dee": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c3c1266f7": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c9d342e20": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7cddc38d": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c392a755c": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c3ebda102": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c4e202c6b": {
+  "record_index": 45,
+  "item_id": "math-225",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c64f9d660": {
+  "record_index": 59,
+  "item_id": "math-8",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c8512f48e": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c8fc67bb9": {
+  "record_index": 52,
+  "item_id": "math-35",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c15006490": {
+  "record_index": 171,
+  "item_id": "math-266",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca8c8921f": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c53aa66b2": {
+  "record_index": 37,
+  "item_id": "math-344",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccaa0b6ca": {
+  "record_index": 14,
+  "item_id": "math-260",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cce738094": {
+  "record_index": 28,
+  "item_id": "math-486",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd1c360d6": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cd34527e6": {
+  "record_index": 22,
+  "item_id": "math-120",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cd901d0db": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cef03f1fa": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c57eee1fb": {
+  "record_index": 14,
+  "item_id": "math-260",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c72c74adc": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c2b57e1af": {
+  "record_index": 12,
+  "item_id": "math-176",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c3ac1a2cd": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cde9f9080": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c870a41cc": {
+  "record_index": 65,
+  "item_id": "math-122",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c78a024e9": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c4610b467": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c913aa95c": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c3c7ae6f6": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c263c4c0d": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c0cad725b": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c2f87fed9": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ca56e54f9": {
+  "record_index": 63,
+  "item_id": "math-77",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce0c3f4fa": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ceb597ec5": {
+  "record_index": 6,
+  "item_id": "math-203",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ca694b25c": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c01cf24ac": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c23d3c670": {
+  "record_index": 17,
+  "item_id": "math-221",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c9bf8663b": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c32c853a2": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cac65f400": {
+  "record_index": 81,
+  "item_id": "math-337",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c8067c849": {
+  "record_index": 112,
+  "item_id": "math-35",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb4ff2912": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c28f2f97c": {
+  "record_index": 31,
+  "item_id": "math-178",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c38dc914b": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cb373e103": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c4b9cb2f9": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c8efe03ad": {
+  "record_index": 115,
+  "item_id": "math-458",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c75014cf9": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ce900f0dd": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c95feefda": {
+  "record_index": 9,
+  "item_id": "math-223",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd13a0346": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c82206f87": {
+  "record_index": 62,
+  "item_id": "math-256",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd47c38c0": {
+  "record_index": 5,
+  "item_id": "math-122",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c1ff0a75f": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c86273e82": {
+  "record_index": 37,
+  "item_id": "math-344",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cd1807fd9": {
+  "record_index": 6,
+  "item_id": "math-203",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c85c9a53a": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c8e5bd8eb": {
+  "record_index": 30,
+  "item_id": "math-72",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c1bbdd672": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c29e8bf06": {
+  "record_index": 26,
+  "item_id": "math-255",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c9645baf9": {
+  "record_index": 76,
+  "item_id": "math-90",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c71841b9c": {
+  "record_index": 101,
+  "item_id": "math-182",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce965c68b": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c66dd5ee3": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cbc430194": {
+  "record_index": 51,
+  "item_id": "math-266",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c59d85bbb": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c6c770644": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cf88dba91": {
+  "record_index": 5,
+  "item_id": "math-122",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ce149fae6": {
+  "record_index": 155,
+  "item_id": "math-20",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c85aa6fc6": {
+  "record_index": 11,
+  "item_id": "math-211",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cce4d1569": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c91615355": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd55d801e": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c48f1e839": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c7d9700ea": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c6ae37bbf": {
+  "record_index": 31,
+  "item_id": "math-178",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c8c367751": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c7c7d2cd9": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cc233e59b": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cfa489c39": {
+  "record_index": 153,
+  "item_id": "math-440",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5e43abc7": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c3edff0fb": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c40e99c1c": {
+  "record_index": 7,
+  "item_id": "math-2",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c319721dd": {
+  "record_index": 48,
+  "item_id": "math-316",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c5c1fb279": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7c05bcc5": {
+  "record_index": 131,
+  "item_id": "math-211",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c677ac254": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cb44ff901": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cbf52f64f": {
+  "record_index": 25,
+  "item_id": "math-377",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1dd468d9": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c050c7e91": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c0a97362d": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c8aa46cbd": {
+  "record_index": 29,
+  "item_id": "math-343",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cf71bae27": {
+  "record_index": 4,
+  "item_id": "math-449",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c43444d6b": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c9446973a": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c7dc343ff": {
+  "record_index": 7,
+  "item_id": "math-2",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c0e52566a": {
+  "record_index": 50,
+  "item_id": "math-314",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb78363d8": {
+  "record_index": 28,
+  "item_id": "math-486",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c0460afe5": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c036c8d29": {
+  "record_index": 54,
+  "item_id": "math-347",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd0a61f99": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c15c2a52e": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c0d0e3bd1": {
+  "record_index": 117,
+  "item_id": "math-351",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c0ae495cb": {
+  "record_index": 142,
+  "item_id": "math-120",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce033d454": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "ce5a7d049": {
+  "record_index": 16,
+  "item_id": "math-90",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ca15f2b1f": {
+  "record_index": 125,
+  "item_id": "math-122",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c2a961294": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccf179f8e": {
+  "record_index": 220,
+  "item_id": "math-226",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5e4d4f17": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c3fdadaf8": {
+  "record_index": 42,
+  "item_id": "math-413",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c9d9669d9": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c18e0393c": {
+  "record_index": 34,
+  "item_id": "math-325",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ccdc3cd86": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "caf9669e1": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c4c6104fb": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c95efac89": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c34650964": {
+  "record_index": 43,
+  "item_id": "math-108",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c8ae25a78": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cbe71f600": {
+  "record_index": 35,
+  "item_id": "math-20",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c292649a3": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccb800c84": {
+  "record_index": 154,
+  "item_id": "math-325",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce6dd5184": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cfff84c9b": {
+  "record_index": 92,
+  "item_id": "math-265",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cf2d1d307": {
+  "record_index": 93,
+  "item_id": "math-440",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb635bdee": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c1fe9c2b6": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca545ae57": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c16433569": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c5c6ea003": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c57ea1263": {
+  "record_index": 8,
+  "item_id": "math-474",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c5c0e54d1": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c0f7e2cbc": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cd4120172": {
+  "record_index": 24,
+  "item_id": "math-169",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c4085f8d0": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c291816b0": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c97a19c47": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c0f1aa44b": {
+  "record_index": 127,
+  "item_id": "math-2",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c305c6b5d": {
+  "record_index": 147,
+  "item_id": "math-312",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7212883b": {
+  "record_index": 75,
+  "item_id": "math-107",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5fce9137": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c3c82e57e": {
+  "record_index": 7,
+  "item_id": "math-2",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c6d47cc75": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c70e7ac41": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c3981b1ce": {
+  "record_index": 61,
+  "item_id": "math-171",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca3079b66": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c35d5e55b": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c97c73a81": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cd8b9481d": {
+  "record_index": 55,
+  "item_id": "math-458",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cee842c6b": {
+  "record_index": 44,
+  "item_id": "math-393",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c8eecb7a2": {
+  "record_index": 235,
+  "item_id": "math-458",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c5f556a6c": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c06241f00": {
+  "record_index": 30,
+  "item_id": "math-72",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cdf63a68e": {
+  "record_index": 59,
+  "item_id": "math-8",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cf2f36e2d": {
+  "record_index": 32,
+  "item_id": "math-265",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cc9efeb9c": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cc407ac4d": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c641fff1a": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cd774ee87": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c0b2c0c0a": {
+  "record_index": 9,
+  "item_id": "math-223",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c12020c1c": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c6c11552e": {
+  "record_index": 211,
+  "item_id": "math-178",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c263c5ac8": {
+  "record_index": 84,
+  "item_id": "math-169",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c9816dfe6": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c8f57556f": {
+  "record_index": 70,
+  "item_id": "math-83",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce3599b66": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c8147fe75": {
+  "record_index": 17,
+  "item_id": "math-221",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ca8a75084": {
+  "record_index": 85,
+  "item_id": "math-377",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cdb6e1c76": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cf251746a": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c26b70c5e": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cbe09a82f": {
+  "record_index": 150,
+  "item_id": "math-72",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cfa1ebc3a": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cabced574": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c249e9d31": {
+  "record_index": 72,
+  "item_id": "math-176",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca64e0699": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c2725ac54": {
+  "record_index": 102,
+  "item_id": "math-413",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccd0e0e68": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cdbafa210": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c82c0417b": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cf41f036f": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cbe6dbcf2": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c292aa998": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cbaa3b4e5": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c60cd4ecf": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c1ca67bb8": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cd5b376ad": {
+  "record_index": 22,
+  "item_id": "math-120",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c8db80882": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce53ceabf": {
+  "record_index": 52,
+  "item_id": "math-35",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb5d0e554": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cab277157": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cb56e1da2": {
+  "record_index": 203,
+  "item_id": "math-369",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c0382e63b": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cfc0cf381": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cf1912eab": {
+  "record_index": 44,
+  "item_id": "math-393",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c23d4c8ee": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c8eafc4cd": {
+  "record_index": 159,
+  "item_id": "math-95",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca7630f75": {
+  "record_index": 11,
+  "item_id": "math-211",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c920a4876": {
+  "record_index": 20,
+  "item_id": "math-227",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c938dedd1": {
+  "record_index": 148,
+  "item_id": "math-486",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1b44df93": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c0c259e80": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c67c3ae7b": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "ce9cae5a2": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cd003ed4c": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c5ca65f01": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c19b8b00c": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c5c514b14": {
+  "record_index": 45,
+  "item_id": "math-225",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cb9289afc": {
+  "record_index": 37,
+  "item_id": "math-344",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cfc13025e": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ca304e1e9": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ccfba20a6": {
+  "record_index": 80,
+  "item_id": "math-227",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c05a3c757": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ce616d329": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c3e586426": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c49aeafbe": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cab4a55ab": {
+  "record_index": 21,
+  "item_id": "math-337",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c17206048": {
+  "record_index": 8,
+  "item_id": "math-474",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce4e8a132": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c78e04238": {
+  "record_index": 55,
+  "item_id": "math-458",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c39857a0a": {
+  "record_index": 234,
+  "item_id": "math-347",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1b3c7388": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cdb4d6849": {
+  "record_index": 9,
+  "item_id": "math-223",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c72bd06d6": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c818046e6": {
+  "record_index": 119,
+  "item_id": "math-8",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7df104fc": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c65cb7e81": {
+  "record_index": 6,
+  "item_id": "math-203",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cf018dbb7": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ceb4a0ff4": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c378ede49": {
+  "record_index": 111,
+  "item_id": "math-266",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5c81a2ef": {
+  "record_index": 170,
+  "item_id": "math-314",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca256a2cc": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c3dd26308": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "ce3e7e305": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cf0aa48a2": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c627dcb37": {
+  "record_index": 74,
+  "item_id": "math-260",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c94eebc76": {
+  "record_index": 123,
+  "item_id": "math-77",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce910ef30": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c95a3fec7": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c61a94fc7": {
+  "record_index": 47,
+  "item_id": "math-56",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cd76dea83": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cebb7a589": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cd794b9a0": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c1c24caad": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c6a2b5ae8": {
+  "record_index": 107,
+  "item_id": "math-56",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cc094b191": {
+  "record_index": 57,
+  "item_id": "math-351",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c0d6d15b0": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cca4d84c7": {
+  "record_index": 49,
+  "item_id": "math-487",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3737f2cc": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cebd03f6c": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cddd6dc4c": {
+  "record_index": 184,
+  "item_id": "math-449",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c77108124": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c04d06fb8": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ce60105ea": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c72f8f77c": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ceb1248a0": {
+  "record_index": 35,
+  "item_id": "math-20",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cb64a51e3": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c46195c85": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c8687fa13": {
+  "record_index": 199,
+  "item_id": "math-363",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c5d8b9208": {
+  "record_index": 19,
+  "item_id": "math-363",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "caa1239a9": {
+  "record_index": 178,
+  "item_id": "math-396",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c2f2ce372": {
+  "record_index": 51,
+  "item_id": "math-266",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cddc65ca1": {
+  "record_index": 10,
+  "item_id": "math-83",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cd4722954": {
+  "record_index": 19,
+  "item_id": "math-363",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5a60fa60": {
+  "record_index": 180,
+  "item_id": "math-117",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c4e7f6cc9": {
+  "record_index": 53,
+  "item_id": "math-208",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c887e3049": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c76a4538d": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c82c78e06": {
+  "record_index": 21,
+  "item_id": "math-337",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c0ebc4dca": {
+  "record_index": 186,
+  "item_id": "math-203",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c02420184": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c7e2ffa31": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c20e52bf4": {
+  "record_index": 36,
+  "item_id": "math-410",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ceffb926b": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "ca2b08e41": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c492a5532": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c3c1ee311": {
+  "record_index": 157,
+  "item_id": "math-344",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c9c667ea6": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cade34127": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c06b20775": {
+  "record_index": 29,
+  "item_id": "math-343",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cca363a10": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c069b9d76": {
+  "record_index": 139,
+  "item_id": "math-363",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c98270bc2": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c17b6e44e": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c878c8108": {
+  "record_index": 87,
+  "item_id": "math-312",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c0d6d9410": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c8db55fb5": {
+  "record_index": 15,
+  "item_id": "math-107",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c4b1b483a": {
+  "record_index": 47,
+  "item_id": "math-56",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c536f5c6d": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ca849376d": {
+  "record_index": 110,
+  "item_id": "math-314",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c0be0dfba": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c706775b5": {
+  "record_index": 33,
+  "item_id": "math-440",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c400152d8": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cb5d2cb4d": {
+  "record_index": 12,
+  "item_id": "math-176",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c3112d6f7": {
+  "record_index": 221,
+  "item_id": "math-182",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cf4f3d53d": {
+  "record_index": 152,
+  "item_id": "math-265",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd8fa1553": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c6a2d3747": {
+  "record_index": 16,
+  "item_id": "math-90",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c5311ac6a": {
+  "record_index": 187,
+  "item_id": "math-2",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c80df043b": {
+  "record_index": 23,
+  "item_id": "math-369",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3e92b10d": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cb40b6ada": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cd86506a1": {
+  "record_index": 128,
+  "item_id": "math-474",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c35b50efd": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c2d3a3715": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c2973e744": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cd0f20688": {
+  "record_index": 36,
+  "item_id": "math-410",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ca9226015": {
+  "record_index": 0,
+  "item_id": "math-117",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c7c55c12b": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ce89f7095": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c687fafa9": {
+  "record_index": 226,
+  "item_id": "math-51",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c54faf61e": {
+  "record_index": 227,
+  "item_id": "math-56",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cf082e7fa": {
+  "record_index": 27,
+  "item_id": "math-312",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c46247cf8": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c7af0e031": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c1bde940d": {
+  "record_index": 38,
+  "item_id": "math-53",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c9a3d3417": {
+  "record_index": 208,
+  "item_id": "math-486",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ca573ec15": {
+  "record_index": 24,
+  "item_id": "math-169",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ccaa99a9d": {
+  "record_index": 13,
+  "item_id": "math-207",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c4d7f8f11": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c8ff96d2a": {
+  "record_index": 2,
+  "item_id": "math-256",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c9f7b3636": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cb5f08270": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb8a0dab1": {
+  "record_index": 3,
+  "item_id": "math-77",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c0193eaae": {
+  "record_index": 42,
+  "item_id": "math-413",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce30b6f39": {
+  "record_index": 197,
+  "item_id": "math-221",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cfe58b7b7": {
+  "record_index": 190,
+  "item_id": "math-83",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccf58313a": {
+  "record_index": 229,
+  "item_id": "math-487",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c20b8db9d": {
+  "record_index": 217,
+  "item_id": "math-344",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ce204ab3e": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cb4afae17": {
+  "record_index": 19,
+  "item_id": "math-363",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c089add73": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ca83b81b9": {
+  "record_index": 239,
+  "item_id": "math-8",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c3f0e8878": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c4b5f4156": {
+  "record_index": 90,
+  "item_id": "math-72",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb9135785": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca2d5c9c1": {
+  "record_index": 182,
+  "item_id": "math-256",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ca2cf997b": {
+  "record_index": 126,
+  "item_id": "math-203",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cd77dcd55": {
+  "record_index": 219,
+  "item_id": "math-95",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cbb76fdb2": {
+  "record_index": 8,
+  "item_id": "math-474",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ca3e2f618": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c39e7bf0d": {
+  "record_index": 10,
+  "item_id": "math-83",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c5e0b237d": {
+  "record_index": 228,
+  "item_id": "math-316",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cbbe591eb": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c823b6570": {
+  "record_index": 23,
+  "item_id": "math-369",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c4ccc9224": {
+  "record_index": 3,
+  "item_id": "math-77",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cf2f8b68e": {
+  "record_index": 20,
+  "item_id": "math-227",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ce9bd402b": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c9ea48a9a": {
+  "record_index": 205,
+  "item_id": "math-377",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c1faeb560": {
+  "record_index": 116,
+  "item_id": "math-128",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cb723a6ff": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c37e191bb": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c7ce290e2": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "ca7d817d1": {
+  "record_index": 191,
+  "item_id": "math-211",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c5b2c0536": {
+  "record_index": 181,
+  "item_id": "math-171",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c72934012": {
+  "record_index": 236,
+  "item_id": "math-128",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c1d9ef622": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cf480d75e": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c9777027f": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c24d5982d": {
+  "record_index": 41,
+  "item_id": "math-182",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cde2f697e": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "ca9343893": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c6e6d1cfc": {
+  "record_index": 129,
+  "item_id": "math-223",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cc2cbbdcd": {
+  "record_index": 196,
+  "item_id": "math-90",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c6577f6a4": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c988b3ea8": {
+  "record_index": 177,
+  "item_id": "math-351",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca2a7fa36": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c1909c408": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cf00732d1": {
+  "record_index": 231,
+  "item_id": "math-266",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c304be0a9": {
+  "record_index": 71,
+  "item_id": "math-211",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c10ba4006": {
+  "record_index": 40,
+  "item_id": "math-226",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ce4c24c21": {
+  "record_index": 195,
+  "item_id": "math-107",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c2fcda2cb": {
+  "record_index": 1,
+  "item_id": "math-171",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "caf96a1b9": {
+  "record_index": 237,
+  "item_id": "math-351",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c8432dcfc": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cc781e27b": {
+  "record_index": 94,
+  "item_id": "math-325",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c185685d5": {
+  "record_index": 200,
+  "item_id": "math-227",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c467bfc40": {
+  "record_index": 88,
+  "item_id": "math-486",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c4c436886": {
+  "record_index": 27,
+  "item_id": "math-312",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cbb489a42": {
+  "record_index": 218,
+  "item_id": "math-53",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cf2eb7f7c": {
+  "record_index": 56,
+  "item_id": "math-128",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c454d456f": {
+  "record_index": 39,
+  "item_id": "math-95",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c3556828f": {
+  "record_index": 192,
+  "item_id": "math-176",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c03d3c381": {
+  "record_index": 122,
+  "item_id": "math-256",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c367c2ff1": {
+  "record_index": 212,
+  "item_id": "math-265",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c5ccda97a": {
+  "record_index": 210,
+  "item_id": "math-72",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cef530a04": {
+  "record_index": 135,
+  "item_id": "math-107",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cab9d4ecb": {
+  "record_index": 47,
+  "item_id": "math-56",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "c29d64874": {
+  "record_index": 77,
+  "item_id": "math-221",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c19b6df34": {
+  "record_index": 53,
+  "item_id": "math-208",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c0ae39e0c": {
+  "record_index": 233,
+  "item_id": "math-208",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cc0c8d4b6": {
+  "record_index": 204,
+  "item_id": "math-169",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cc308e4b6": {
+  "record_index": 193,
+  "item_id": "math-207",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "ca2ca8332": {
+  "record_index": 98,
+  "item_id": "math-53",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3341be66": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c64f9d114": {
+  "record_index": 1,
+  "item_id": "math-171",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ca5afc400": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cc0447daa": {
+  "record_index": 113,
+  "item_id": "math-208",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3b17e992": {
+  "record_index": 68,
+  "item_id": "math-474",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cf3782a9d": {
+  "record_index": 89,
+  "item_id": "math-343",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cc921e6c5": {
+  "record_index": 202,
+  "item_id": "math-120",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c20123e14": {
+  "record_index": 41,
+  "item_id": "math-182",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c98c1c88c": {
+  "record_index": 224,
+  "item_id": "math-393",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c693e158f": {
+  "record_index": 201,
+  "item_id": "math-337",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c32f0ffb8": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "cacb48b36": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cb14792bd": {
+  "record_index": 215,
+  "item_id": "math-20",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cac54d5c9": {
+  "record_index": 109,
+  "item_id": "math-487",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c54cdb7a0": {
+  "record_index": 12,
+  "item_id": "math-176",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c3e91480d": {
+  "record_index": 232,
+  "item_id": "math-35",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c1c5731e9": {
+  "record_index": 143,
+  "item_id": "math-369",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c4f798659": {
+  "record_index": 213,
+  "item_id": "math-440",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c0ddd91df": {
+  "record_index": 188,
+  "item_id": "math-474",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c06d31126": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c7858e25f": {
+  "record_index": 198,
+  "item_id": "math-79",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cc102bb88": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "c4222b937": {
+  "record_index": 214,
+  "item_id": "math-325",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "cb3c7d636": {
+  "record_index": 130,
+  "item_id": "math-83",
+  "config": "HIER_M3",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ccbceb38f": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c37aa27df": {
+  "record_index": 189,
+  "item_id": "math-223",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c9d407d32": {
+  "record_index": 238,
+  "item_id": "math-396",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "cb590a209": {
+  "record_index": 222,
+  "item_id": "math-413",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 7
+ },
+ "c8297b846": {
+  "record_index": 206,
+  "item_id": "math-255",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "c9e59989c": {
+  "record_index": 209,
+  "item_id": "math-343",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 1
+ },
+ "cec4eb3f9": {
+  "record_index": 2,
+  "item_id": "math-256",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 3
+ },
+ "cd0d62f1c": {
+  "record_index": 230,
+  "item_id": "math-314",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "ca6ffa760": {
+  "record_index": 73,
+  "item_id": "math-207",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c79cb86a2": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c04bd9386": {
+  "record_index": 4,
+  "item_id": "math-449",
+  "config": "DEBATE_N3_R1",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "cc5845980": {
+  "record_index": 216,
+  "item_id": "math-410",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c29970415": {
+  "record_index": 183,
+  "item_id": "math-77",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "c305d53a8": {
+  "record_index": 225,
+  "item_id": "math-225",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "cb1007c64": {
+  "record_index": 207,
+  "item_id": "math-312",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 0
+ },
+ "c43e9641e": {
+  "record_index": 185,
+  "item_id": "math-122",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 5
+ },
+ "ccca9205b": {
+  "record_index": 194,
+  "item_id": "math-260",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 2
+ },
+ "c18d6b748": {
+  "record_index": 223,
+  "item_id": "math-108",
+  "config": "SC_k8",
+  "seed": 1,
+  "call_idx": 6
+ },
+ "cb790e6af": {
+  "record_index": 99,
+  "item_id": "math-95",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ },
+ "c80265afd": {
+  "record_index": 95,
+  "item_id": "math-20",
+  "config": "GE_R2",
+  "seed": 1,
+  "call_idx": 4
+ }
+}

@@ -1,0 +1,2 @@
+wrote paper/eaai/mmlu_pro_eng_table.tex
+wrote paper/eaai/mmlu_pro_eng_macros.tex (103 macros)

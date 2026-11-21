@@ -1,0 +1,59 @@
+% Comparison table, copied from paper/eaai/positioning_table_eaai.tex; caption and the
+% header of column 7 edited for the arXiv version; the "Released" cell of this study changed on 16 Nov 2026 to what is true today. Every entry was checked against the
+% full text of the cited version (arXiv 2407.01502v1, 2311.17371v3,
+% 2403.02419v2, 2601.12307v1, 2505.18286v1) on 2026-10-12; "not stated" means
+% the paper text does not say, not that the feature is absent.
+\begin{table}[t]\centering\scriptsize
+\caption{Studies that compare multi-agent workflows with cheaper baselines at
+reported cost, as each paper reports itself (entries checked against the cited
+versions on 12 Oct 2026). Workflows: SC self-consistency or voting, DEB debate,
+CR critique and revision (generator-evaluator, Reflexion-style), PE
+planner-executor decomposition. ``Answer-change analysis'' is any count of how
+coordination changes initial answers. \citet{wang2024tokeneconomies} and
+\citet{choi2025debate}, discussed in the text, are not tabulated.}
+\label{tab:positioning}
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{0.10\linewidth}
+>{\raggedright\arraybackslash\hspace{0pt}}p{0.12\linewidth}
+>{\raggedright\arraybackslash\hspace{0pt}}p{0.15\linewidth}
+>{\raggedright\arraybackslash\hspace{0pt}}p{0.08\linewidth}
+>{\raggedright\arraybackslash\hspace{0pt}}p{0.12\linewidth}
+>{\raggedright\arraybackslash\hspace{0pt}}p{0.12\linewidth}
+>{\raggedright\arraybackslash\hspace{0pt}}p{0.11\linewidth}
+>{\raggedright\arraybackslash\hspace{0pt}}p{0.09\linewidth}@{}}
+\toprule
+Work & Models & Cost measure; matched-cost comparison & Local hardware &
+Workflows & Answer-change analysis & Code or engineering task & Released \\
+\midrule
+\citet{kapoor2024agents} & GPT-3.5, GPT-4, Llama-3 8B/70B, all through APIs &
+US dollars from API prices; Pareto frontier in dollars & No (no GPU used) &
+CR (Reflexion, LDB, LATS), retry and escalation baselines & None reported & HumanEval
+with tests & Code \\
+\addlinespace
+\citet{smit2024mad} & GPT-3.5 (GPT-4, Mixtral on one task), APIs & Dollars,
+API calls, tokens, time; accuracy-cost scatter, not matched & No (APIs) &
+DEB (three protocols), SC, ensembling & Counts of agents that change answers,
+not split by direction & No (medical and science QA) & Code \\
+\addlinespace
+\citet{chen2024morecalls} & GPT-3.5, API & Number of calls; no cost & No (API) &
+SC (vote, filter-vote), swept over calls & Analysis of voting by query difficulty &
+No & Promised \\
+\addlinespace
+\citet{rethinkingmas2026} & GPT-4o-mini, Claude-3.5-Haiku, Qwen-3 8B & Dollar
+token cost, simulated cache; Pareto on one task & Not stated & SC ($k{=}5$),
+searched multi-agent workflows & None reported & HumanEval, MBPP & Not stated \\
+\addlinespace
+\citet{whynotboth2025} & Gemini, GPT, Llama 8B/70B, mostly APIs & Weighted
+prefill and decode tokens; no matched-cost frontier & Not stated & DEB, PE
+(HyperAgent, TDAG), role pipelines, routing & Per-item win/tie counts between
+single and multi-agent & Code benchmarks (HumanEval to SWE-bench) & Not stated \\
+\addlinespace
+This study & Qwen2.5-3B (7B, Llama-3.2-3B, Gemma-2-2B, Llama-3.3-70B probes) &
+Exact per-call tokens; Pareto at matched measured tokens & Apple M4 laptop,
+RTX 4060 & SC ($k{=}2$ to $12$), DEB, CR, PE & Corrections versus corruptions,
+condition \eqref{eq:cc-odds} tested out of sample & MMLU-Pro engineering &
+Not yet public; code and every per-record log will be released \\
+\bottomrule
+\end{tabular}
+\end{table}

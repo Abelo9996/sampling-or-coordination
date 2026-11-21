@@ -1,0 +1,18 @@
+% rev3: formatted copy of tables/trunc_table.tex by scripts/emit_rev3_tables.py (separators, names).
+% Body copied from paper/trunc_table.tex (values reproduced in paper/aaibd/REVISION_STATS.md, section J,
+% "Table trunc"); caption rewritten for the arXiv version.
+\begin{table}[t]\centering\small
+\caption{MATH (levels 1 to 3, $n{=}60$) accuracy (\%) at the earlier 640-token cap and at the 1{,}024-token cap used for every other MATH number in this paper. At 640, 15\% of single-call outputs had no parseable answer, against 1.7\% at 1024.}
+\label{tab:trunc}
+\begin{tabular}{lrrr}
+\toprule
+Config & 640 cap & 1{,}024 cap & Change \\
+\midrule
+SA & 68.3 & 78.3 & +10.0 \\
+SC $k{=}8$ & 83.3 & 86.7 & +3.3 \\
+debate & 75.0 & 79.2 & +4.2 \\
+GE & 73.3 & 77.5 & +4.2 \\
+HIER & 71.7 & 73.3 & +1.7 \\
+\bottomrule
+\end{tabular}
+\end{table}

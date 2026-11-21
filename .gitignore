@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+.env
+# intermediate outputs written by reproduce/regenerate_all.sh (not part of the release)
+paper/*.tex
+paper/eaai/
+paper/aaibd/*
+!paper/aaibd/revision_stats.json
+paper/aaibd/REVISION_STATS.md
+third_party/du2023_debate/upstream/

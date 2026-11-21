@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code or these logs, please cite the paper."
+title: "Sampling or Coordination? Self-Consistency vs. Multi-Agent Debate at Matched Token, Price and Energy Cost in a Small LLM"
+type: software
+authors:
+  - family-names: Yagubyan
+    given-names: Abel
+    affiliation: "Independent Researcher"
+repository-code: "https://github.com/Abelo9996/sampling-or-coordination"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-21"
+keywords:
+  - self-consistency
+  - multi-agent debate
+  - test-time compute
+  - LLM evaluation
+  - energy
+preferred-citation:
+  type: article
+  title: "Sampling or Coordination? Self-Consistency vs. Multi-Agent Debate at Matched Token, Price and Energy Cost in a Small LLM"
+  authors:
+    - family-names: Yagubyan
+      given-names: Abel
+      affiliation: "Independent Researcher"
+  year: 2026
+  notes: "arXiv preprint (identifier to be added on submission)"

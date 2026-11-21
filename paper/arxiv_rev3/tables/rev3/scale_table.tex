@@ -1,0 +1,20 @@
+% rev3: formatted copy of tables/scale_table.tex by scripts/emit_rev3_tables.py (separators, names).
+% Body copied from paper/scale_table.tex (values reproduced in paper/aaibd/revision_stats.json J.checks[60..64]);
+% caption rewritten for the arXiv version.
+\begin{table}[t]\centering\small
+\caption{Matched-item size probe on GSM8K: Qwen2.5-3B and Qwen2.5-7B on the same 50 items (SA one seed; SC $k{=}8$ and debate two seeds; 640-token cap). Accuracy (\%) and total tokens per query. Size by workflow interaction of the SC $k{=}8$ minus debate gap: $-2.0$ points, 95\% CI $[-12,8]$, $p{=}0.76$.}
+\label{tab:scale}
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{Qwen2.5-3B} & \multicolumn{2}{c}{Qwen2.5-7B} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Config & Acc.\ (\%) & Tok. & Acc.\ (\%) & Tok. \\
+\midrule
+SA & 84.0 & 391 & 86.0 & 328 \\
+SC $k{=}8$ & 88.0 & 3{,}212 & 91.0 & 2{,}705 \\
+debate & 83.0 & 4{,}840 & 88.0 & 3{,}563 \\
+\midrule
+SC $k{=}8$ $-$ Debate & \multicolumn{2}{c}{$+5.0$} & \multicolumn{2}{c}{$+3.0$} \\
+\bottomrule
+\end{tabular}
+\end{table}

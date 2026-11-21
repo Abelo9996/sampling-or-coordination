@@ -1,0 +1,120 @@
+{
+ "configs": {
+  "SA": {
+   "records": 164,
+   "unparsed": 1,
+   "unparsed_at_cap": 1,
+   "acc_logged": 68.90243902439025,
+   "acc_upper": 68.90243902439025,
+   "acc_parsed": 69.32515337423312
+  },
+  "SC_k2": {
+   "records": 328,
+   "unparsed": 0,
+   "unparsed_at_cap": 0,
+   "acc_logged": 63.41463414634146,
+   "acc_upper": 63.41463414634146,
+   "acc_parsed": 63.41463414634146
+  },
+  "SC_k4": {
+   "records": 328,
+   "unparsed": 0,
+   "unparsed_at_cap": 0,
+   "acc_logged": 62.80487804878049,
+   "acc_upper": 62.80487804878049,
+   "acc_parsed": 62.80487804878049
+  },
+  "SC_k8": {
+   "records": 328,
+   "unparsed": 0,
+   "unparsed_at_cap": 0,
+   "acc_logged": 64.9390243902439,
+   "acc_upper": 64.9390243902439,
+   "acc_parsed": 64.9390243902439
+  },
+  "DEBATE_N3_R1": {
+   "records": 328,
+   "unparsed": 31,
+   "unparsed_at_cap": 0,
+   "acc_logged": 48.78048780487805,
+   "acc_upper": 58.23170731707317,
+   "acc_parsed": 53.872053872053876
+  },
+  "GE_R2": {
+   "records": 328,
+   "unparsed": 31,
+   "unparsed_at_cap": 0,
+   "acc_logged": 58.23170731707317,
+   "acc_upper": 67.6829268292683,
+   "acc_parsed": 64.3097643097643
+  },
+  "HIER_M3": {
+   "records": 328,
+   "unparsed": 24,
+   "unparsed_at_cap": 2,
+   "acc_logged": 53.96341463414634,
+   "acc_upper": 60.670731707317074,
+   "acc_parsed": 58.223684210526315
+  }
+ },
+ "per_sample": {
+  "SC_k2": {
+   "samples": 656,
+   "unparsed": 1
+  },
+  "SC_k4": {
+   "samples": 1312,
+   "unparsed": 4
+  },
+  "SC_k8": {
+   "samples": 2624,
+   "unparsed": 13
+  },
+  "DEBATE_N3_R1": {
+   "samples": 984,
+   "unparsed": 252
+  }
+ },
+ "gaps": {
+  "SA|DEBATE_N3_R1": {
+   "acc_logged": 20.121951219512198,
+   "acc_upper": 10.670731707317074,
+   "acc_parsed": 15.45309950217925
+  },
+  "SA|GE_R2": {
+   "acc_logged": 10.670731707317074,
+   "acc_upper": 1.2195121951219505,
+   "acc_parsed": 5.01538906446882
+  },
+  "SA|HIER_M3": {
+   "acc_logged": 14.939024390243908,
+   "acc_upper": 8.231707317073173,
+   "acc_parsed": 11.10146916370681
+  },
+  "SC_k8|DEBATE_N3_R1": {
+   "acc_logged": 16.15853658536585,
+   "acc_upper": 6.707317073170728,
+   "acc_parsed": 11.066970518190026
+  },
+  "SC_k8|GE_R2": {
+   "acc_logged": 6.707317073170728,
+   "acc_upper": -2.743902439024396,
+   "acc_parsed": 0.6292600804795967
+  },
+  "SC_k8|HIER_M3": {
+   "acc_logged": 10.975609756097562,
+   "acc_upper": 4.268292682926827,
+   "acc_parsed": 6.715340179717586
+  }
+ },
+ "test_block_wrong": {
+  "SA": 0,
+  "SC_k2": 8,
+  "SC_k4": 9,
+  "SC_k8": 8,
+  "DEBATE_N3_R1": 17,
+  "GE_R2": 12,
+  "HIER_M3": 6
+ },
+ "rescored_agree": 926
+}

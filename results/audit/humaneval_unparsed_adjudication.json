@@ -1,0 +1,3206 @@
+{
+ "method": {
+  "reader": "an AI assistant (Claude), unattended; no human checked any reading",
+  "saw_workflow_label": true,
+  "looked_at_canonical_solution": false,
+  "text_read": false,
+  "why_no_text_read": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only. No record could be read, classified by reading, or rescued; categories no_code / truncated / code_present_unextracted are undetermined for all records.",
+  "scorer": "harness.tasks.humaneval_score (sandbox harness/sandbox.py; macOS sandbox-exec backend here, docker python:3.11-slim on the PC for the logged scores), 10 s timeout as in the harness",
+  "cap": "num_predict = 1024 for every record; hit_cap = out_tokens >= 1024 on the final call(s): debate = the three round-1 agents, GE = the second revision, HIER = the aggregator, SA = its single call",
+  "sample_step4": "random.Random(0).sample(pop, 40), pop = DEBATE_N3_R1, GE_R2, HIER_M3 records with a parsed pred and correct=False, in file order",
+  "diag_sanitized": "diagnostic, not a rescue: drop top-level statements other than imports, defs, classes and assignments from the logged pred (the model's own example calls, prints, asserts, __main__ blocks), then score; no function is edited",
+  "regenerate": "/usr/bin/python3 results/audit/humaneval_unparsed_audit.py"
+ },
+ "summary": {
+  "counts_by_config_seed": [
+   {
+    "config": "SA",
+    "seed": 1,
+    "n": 164,
+    "unparsed": 1,
+    "unparsed_final_call_hit_cap_all": 1,
+    "unparsed_final_call_hit_cap_any": 1,
+    "correct": 113
+   },
+   {
+    "config": "SC_k2",
+    "seed": 1,
+    "n": 164,
+    "unparsed": 0,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 112
+   },
+   {
+    "config": "SC_k2",
+    "seed": 2,
+    "n": 164,
+    "unparsed": 0,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 96
+   },
+   {
+    "config": "SC_k4",
+    "seed": 1,
+    "n": 164,
+    "unparsed": 0,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 110
+   },
+   {
+    "config": "SC_k4",
+    "seed": 2,
+    "n": 164,
+    "unparsed": 0,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 96
+   },
+   {
+    "config": "SC_k8",
+    "seed": 1,
+    "n": 164,
+    "unparsed": 0,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 107
+   },
+   {
+    "config": "SC_k8",
+    "seed": 2,
+    "n": 164,
+    "unparsed": 0,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 106
+   },
+   {
+    "config": "DEBATE_N3_R1",
+    "seed": 1,
+    "n": 164,
+    "unparsed": 14,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 78
+   },
+   {
+    "config": "DEBATE_N3_R1",
+    "seed": 2,
+    "n": 164,
+    "unparsed": 17,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 82
+   },
+   {
+    "config": "GE_R2",
+    "seed": 1,
+    "n": 164,
+    "unparsed": 14,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 98
+   },
+   {
+    "config": "GE_R2",
+    "seed": 2,
+    "n": 164,
+    "unparsed": 17,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 93
+   },
+   {
+    "config": "HIER_M3",
+    "seed": 1,
+    "n": 164,
+    "unparsed": 12,
+    "unparsed_final_call_hit_cap_all": 0,
+    "unparsed_final_call_hit_cap_any": 0,
+    "correct": 90
+   },
+   {
+    "config": "HIER_M3",
+    "seed": 2,
+    "n": 164,
+    "unparsed": 12,
+    "unparsed_final_call_hit_cap_all": 2,
+    "unparsed_final_call_hit_cap_any": 2,
+    "correct": 87
+   }
+  ],
+  "counts_table": [
+   {
+    "config": "SA",
+    "unparsed": 1,
+    "no_code": null,
+    "truncated": null,
+    "code_present_unextracted": null,
+    "other_text_not_logged": 1,
+    "of_which_final_call_hit_cap": 1,
+    "rescued_passes": null
+   },
+   {
+    "config": "SC_k2",
+    "unparsed": 0,
+    "no_code": null,
+    "truncated": null,
+    "code_present_unextracted": null,
+    "other_text_not_logged": 0,
+    "of_which_final_call_hit_cap": 0,
+    "rescued_passes": null
+   },
+   {
+    "config": "SC_k4",
+    "unparsed": 0,
+    "no_code": null,
+    "truncated": null,
+    "code_present_unextracted": null,
+    "other_text_not_logged": 0,
+    "of_which_final_call_hit_cap": 0,
+    "rescued_passes": null
+   },
+   {
+    "config": "SC_k8",
+    "unparsed": 0,
+    "no_code": null,
+    "truncated": null,
+    "code_present_unextracted": null,
+    "other_text_not_logged": 0,
+    "of_which_final_call_hit_cap": 0,
+    "rescued_passes": null
+   },
+   {
+    "config": "DEBATE_N3_R1",
+    "unparsed": 31,
+    "no_code": null,
+    "truncated": null,
+    "code_present_unextracted": null,
+    "other_text_not_logged": 31,
+    "of_which_final_call_hit_cap": 0,
+    "rescued_passes": null
+   },
+   {
+    "config": "GE_R2",
+    "unparsed": 31,
+    "no_code": null,
+    "truncated": null,
+    "code_present_unextracted": null,
+    "other_text_not_logged": 31,
+    "of_which_final_call_hit_cap": 0,
+    "rescued_passes": null
+   },
+   {
+    "config": "HIER_M3",
+    "unparsed": 24,
+    "no_code": null,
+    "truncated": null,
+    "code_present_unextracted": null,
+    "other_text_not_logged": 24,
+    "of_which_final_call_hit_cap": 2,
+    "rescued_passes": null
+   }
+  ],
+  "per_sample_unparsed": {
+   "SC_k2": {
+    "samples": 656,
+    "unparsed": 1,
+    "hit_cap": 0,
+    "unparsed_and_hit_cap": 0,
+    "note": "SC samples: first-pass answers to the plain prompt at T=0.7"
+   },
+   "SC_k4": {
+    "samples": 1312,
+    "unparsed": 4,
+    "hit_cap": 1,
+    "unparsed_and_hit_cap": 0,
+    "note": "SC samples: first-pass answers to the plain prompt at T=0.7"
+   },
+   "SC_k8": {
+    "samples": 2624,
+    "unparsed": 13,
+    "hit_cap": 1,
+    "unparsed_and_hit_cap": 0,
+    "note": "SC samples: first-pass answers to the plain prompt at T=0.7"
+   },
+   "DEBATE_N3_R1": {
+    "samples": 984,
+    "unparsed": 252,
+    "hit_cap": 11,
+    "unparsed_and_hit_cap": 1,
+    "note": "debate: the 3 round-1 (final) agent outputs"
+   }
+  },
+  "extractor_signature_scan_parsed_records": {
+   "SA": {
+    "pass": 113,
+    "pass_toplevel_nondef": 25,
+    "fail": 50,
+    "fail_entry_stub": 2,
+    "fail_toplevel_nondef": 17,
+    "stub_kinds": {
+     "block_defines_other_name": 2
+    }
+   },
+   "SC_k2": {
+    "pass": 208,
+    "pass_toplevel_nondef": 53,
+    "fail": 120,
+    "fail_toplevel_nondef": 57,
+    "fail_entry_stub": 12,
+    "stub_kinds": {
+     "block_is_test_or_usage_code": 8,
+     "block_defines_other_name": 4
+    }
+   },
+   "SC_k4": {
+    "pass": 206,
+    "pass_toplevel_nondef": 50,
+    "fail": 122,
+    "fail_toplevel_nondef": 58,
+    "fail_entry_stub": 13,
+    "stub_kinds": {
+     "block_is_test_or_usage_code": 9,
+     "block_defines_other_name": 4
+    }
+   },
+   "SC_k8": {
+    "pass": 213,
+    "pass_toplevel_nondef": 52,
+    "fail": 115,
+    "fail_toplevel_nondef": 53,
+    "fail_entry_stub": 12,
+    "stub_kinds": {
+     "block_defines_other_name": 4,
+     "block_is_test_or_usage_code": 8
+    }
+   },
+   "DEBATE_N3_R1": {
+    "fail": 137,
+    "fail_toplevel_nondef": 73,
+    "fail_entry_stub": 20,
+    "pass": 160,
+    "pass_toplevel_nondef": 48,
+    "stub_kinds": {
+     "block_is_test_or_usage_code": 17,
+     "block_defines_other_name": 3
+    }
+   },
+   "GE_R2": {
+    "pass": 191,
+    "pass_toplevel_nondef": 60,
+    "fail": 106,
+    "fail_toplevel_nondef": 57,
+    "fail_entry_stub": 13,
+    "stub_kinds": {
+     "block_is_test_or_usage_code": 12,
+     "block_defines_other_name": 1
+    }
+   },
+   "HIER_M3": {
+    "pass": 177,
+    "pass_toplevel_nondef": 110,
+    "fail": 127,
+    "fail_toplevel_nondef": 92,
+    "fail_entry_stub": 8,
+    "stub_kinds": {
+     "block_defines_other_name": 2,
+     "block_is_test_or_usage_code": 6
+    }
+   }
+  },
+  "step4_sample": {
+   "n": 40,
+   "mismatches": null,
+   "determinable": false,
+   "entry_stub_in_sample": 3,
+   "stub_kinds_in_sample": {
+    "block_is_test_or_usage_code": 3
+   }
+  },
+  "replication_of_logged_scores_on_this_mac": {
+   "agree": 926
+  },
+  "accuracy": {
+   "SA": {
+    "pooled": {
+     "logged": {
+      "num": 113,
+      "den": 164,
+      "acc": 0.689
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 113,
+      "den": 164,
+      "acc": 0.689
+     },
+     "parsed_only": {
+      "num": 113,
+      "den": 163,
+      "acc": 0.6933
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 113,
+      "den": 164,
+      "acc": 0.689
+     }
+    },
+    "seed1": {
+     "logged": {
+      "num": 113,
+      "den": 164,
+      "acc": 0.689
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 113,
+      "den": 164,
+      "acc": 0.689
+     },
+     "parsed_only": {
+      "num": 113,
+      "den": 163,
+      "acc": 0.6933
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 113,
+      "den": 164,
+      "acc": 0.689
+     }
+    }
+   },
+   "SC_k2": {
+    "pooled": {
+     "logged": {
+      "num": 208,
+      "den": 328,
+      "acc": 0.6341
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 208,
+      "den": 328,
+      "acc": 0.6341
+     },
+     "parsed_only": {
+      "num": 208,
+      "den": 328,
+      "acc": 0.6341
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 212,
+      "den": 328,
+      "acc": 0.6463
+     }
+    },
+    "seed1": {
+     "logged": {
+      "num": 112,
+      "den": 164,
+      "acc": 0.6829
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 112,
+      "den": 164,
+      "acc": 0.6829
+     },
+     "parsed_only": {
+      "num": 112,
+      "den": 164,
+      "acc": 0.6829
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 113,
+      "den": 164,
+      "acc": 0.689
+     }
+    },
+    "seed2": {
+     "logged": {
+      "num": 96,
+      "den": 164,
+      "acc": 0.5854
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 96,
+      "den": 164,
+      "acc": 0.5854
+     },
+     "parsed_only": {
+      "num": 96,
+      "den": 164,
+      "acc": 0.5854
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 99,
+      "den": 164,
+      "acc": 0.6037
+     }
+    }
+   },
+   "SC_k4": {
+    "pooled": {
+     "logged": {
+      "num": 206,
+      "den": 328,
+      "acc": 0.628
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 206,
+      "den": 328,
+      "acc": 0.628
+     },
+     "parsed_only": {
+      "num": 206,
+      "den": 328,
+      "acc": 0.628
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 210,
+      "den": 328,
+      "acc": 0.6402
+     }
+    },
+    "seed1": {
+     "logged": {
+      "num": 110,
+      "den": 164,
+      "acc": 0.6707
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 110,
+      "den": 164,
+      "acc": 0.6707
+     },
+     "parsed_only": {
+      "num": 110,
+      "den": 164,
+      "acc": 0.6707
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 111,
+      "den": 164,
+      "acc": 0.6768
+     }
+    },
+    "seed2": {
+     "logged": {
+      "num": 96,
+      "den": 164,
+      "acc": 0.5854
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 96,
+      "den": 164,
+      "acc": 0.5854
+     },
+     "parsed_only": {
+      "num": 96,
+      "den": 164,
+      "acc": 0.5854
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 99,
+      "den": 164,
+      "acc": 0.6037
+     }
+    }
+   },
+   "SC_k8": {
+    "pooled": {
+     "logged": {
+      "num": 213,
+      "den": 328,
+      "acc": 0.6494
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 213,
+      "den": 328,
+      "acc": 0.6494
+     },
+     "parsed_only": {
+      "num": 213,
+      "den": 328,
+      "acc": 0.6494
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 216,
+      "den": 328,
+      "acc": 0.6585
+     }
+    },
+    "seed1": {
+     "logged": {
+      "num": 107,
+      "den": 164,
+      "acc": 0.6524
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 107,
+      "den": 164,
+      "acc": 0.6524
+     },
+     "parsed_only": {
+      "num": 107,
+      "den": 164,
+      "acc": 0.6524
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 108,
+      "den": 164,
+      "acc": 0.6585
+     }
+    },
+    "seed2": {
+     "logged": {
+      "num": 106,
+      "den": 164,
+      "acc": 0.6463
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 106,
+      "den": 164,
+      "acc": 0.6463
+     },
+     "parsed_only": {
+      "num": 106,
+      "den": 164,
+      "acc": 0.6463
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 108,
+      "den": 164,
+      "acc": 0.6585
+     }
+    }
+   },
+   "DEBATE_N3_R1": {
+    "pooled": {
+     "logged": {
+      "num": 160,
+      "den": 328,
+      "acc": 0.4878
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 191,
+      "den": 328,
+      "acc": 0.5823
+     },
+     "parsed_only": {
+      "num": 160,
+      "den": 297,
+      "acc": 0.5387
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 168,
+      "den": 328,
+      "acc": 0.5122
+     }
+    },
+    "seed1": {
+     "logged": {
+      "num": 78,
+      "den": 164,
+      "acc": 0.4756
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 92,
+      "den": 164,
+      "acc": 0.561
+     },
+     "parsed_only": {
+      "num": 78,
+      "den": 150,
+      "acc": 0.52
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 82,
+      "den": 164,
+      "acc": 0.5
+     }
+    },
+    "seed2": {
+     "logged": {
+      "num": 82,
+      "den": 164,
+      "acc": 0.5
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 99,
+      "den": 164,
+      "acc": 0.6037
+     },
+     "parsed_only": {
+      "num": 82,
+      "den": 147,
+      "acc": 0.5578
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 86,
+      "den": 164,
+      "acc": 0.5244
+     }
+    }
+   },
+   "GE_R2": {
+    "pooled": {
+     "logged": {
+      "num": 191,
+      "den": 328,
+      "acc": 0.5823
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 222,
+      "den": 328,
+      "acc": 0.6768
+     },
+     "parsed_only": {
+      "num": 191,
+      "den": 297,
+      "acc": 0.6431
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 196,
+      "den": 328,
+      "acc": 0.5976
+     }
+    },
+    "seed1": {
+     "logged": {
+      "num": 98,
+      "den": 164,
+      "acc": 0.5976
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 112,
+      "den": 164,
+      "acc": 0.6829
+     },
+     "parsed_only": {
+      "num": 98,
+      "den": 150,
+      "acc": 0.6533
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 100,
+      "den": 164,
+      "acc": 0.6098
+     }
+    },
+    "seed2": {
+     "logged": {
+      "num": 93,
+      "den": 164,
+      "acc": 0.5671
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 110,
+      "den": 164,
+      "acc": 0.6707
+     },
+     "parsed_only": {
+      "num": 93,
+      "den": 147,
+      "acc": 0.6327
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 96,
+      "den": 164,
+      "acc": 0.5854
+     }
+    }
+   },
+   "HIER_M3": {
+    "pooled": {
+     "logged": {
+      "num": 177,
+      "den": 328,
+      "acc": 0.5396
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 199,
+      "den": 328,
+      "acc": 0.6067
+     },
+     "parsed_only": {
+      "num": 177,
+      "den": 304,
+      "acc": 0.5822
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 178,
+      "den": 328,
+      "acc": 0.5427
+     }
+    },
+    "seed1": {
+     "logged": {
+      "num": 90,
+      "den": 164,
+      "acc": 0.5488
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 102,
+      "den": 164,
+      "acc": 0.622
+     },
+     "parsed_only": {
+      "num": 90,
+      "den": 152,
+      "acc": 0.5921
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 90,
+      "den": 164,
+      "acc": 0.5488
+     }
+    },
+    "seed2": {
+     "logged": {
+      "num": 87,
+      "den": 164,
+      "acc": 0.5305
+     },
+     "literal_rescue": null,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": {
+      "num": 97,
+      "den": 164,
+      "acc": 0.5915
+     },
+     "parsed_only": {
+      "num": 87,
+      "den": 152,
+      "acc": 0.5724
+     },
+     "diag_sanitized_toplevel_dropped": {
+      "num": 88,
+      "den": 164,
+      "acc": 0.5366
+     }
+    }
+   }
+  },
+  "sa_minus_workflow_gap": {
+   "SC_k2": {
+    "pooled": {
+     "logged": 0.0549,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0549,
+     "parsed_only": 0.0592,
+     "diag_sanitized_toplevel_dropped": 0.0427,
+     "literal_rescue": null
+    },
+    "seed1": {
+     "logged": 0.0061,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0061,
+     "parsed_only": 0.0104,
+     "diag_sanitized_toplevel_dropped": 0.0,
+     "literal_rescue": null
+    }
+   },
+   "SC_k4": {
+    "pooled": {
+     "logged": 0.061,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.061,
+     "parsed_only": 0.0653,
+     "diag_sanitized_toplevel_dropped": 0.0488,
+     "literal_rescue": null
+    },
+    "seed1": {
+     "logged": 0.0183,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0183,
+     "parsed_only": 0.0226,
+     "diag_sanitized_toplevel_dropped": 0.0122,
+     "literal_rescue": null
+    }
+   },
+   "SC_k8": {
+    "pooled": {
+     "logged": 0.0396,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0396,
+     "parsed_only": 0.0439,
+     "diag_sanitized_toplevel_dropped": 0.0305,
+     "literal_rescue": null
+    },
+    "seed1": {
+     "logged": 0.0366,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0366,
+     "parsed_only": 0.0409,
+     "diag_sanitized_toplevel_dropped": 0.0305,
+     "literal_rescue": null
+    }
+   },
+   "DEBATE_N3_R1": {
+    "pooled": {
+     "logged": 0.2012,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.1067,
+     "parsed_only": 0.1546,
+     "diag_sanitized_toplevel_dropped": 0.1768,
+     "literal_rescue": null
+    },
+    "seed1": {
+     "logged": 0.2134,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.128,
+     "parsed_only": 0.1733,
+     "diag_sanitized_toplevel_dropped": 0.189,
+     "literal_rescue": null
+    }
+   },
+   "GE_R2": {
+    "pooled": {
+     "logged": 0.1067,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0122,
+     "parsed_only": 0.0502,
+     "diag_sanitized_toplevel_dropped": 0.0914,
+     "literal_rescue": null
+    },
+    "seed1": {
+     "logged": 0.0914,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0061,
+     "parsed_only": 0.04,
+     "diag_sanitized_toplevel_dropped": 0.0792,
+     "literal_rescue": null
+    }
+   },
+   "HIER_M3": {
+    "pooled": {
+     "logged": 0.1494,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.0823,
+     "parsed_only": 0.1111,
+     "diag_sanitized_toplevel_dropped": 0.1463,
+     "literal_rescue": null
+    },
+    "seed1": {
+     "logged": 0.1402,
+     "literal_rescue_upper_bound_all_noncap_unparsed_pass": 0.067,
+     "parsed_only": 0.1012,
+     "diag_sanitized_toplevel_dropped": 0.1402,
+     "literal_rescue": null
+    }
+   }
+  }
+ },
+ "records": [
+  {
+   "item_id": "humaneval-91",
+   "config": "SA",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 1024,
+   "num_predict": 1024,
+   "hit_cap": true,
+   "mechanical_hint": "final output hit the cap: consistent with truncated, but a complete program followed by a cut second block would look the same",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-146",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    327,
+    327,
+    284
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-97",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    243,
+    291,
+    292
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-6",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    593,
+    472,
+    439
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-9",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    490,
+    516,
+    554
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-148",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    652,
+    655,
+    660
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-2",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    309,
+    588,
+    433
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-39",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    503,
+    497,
+    632
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-152",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    349,
+    414,
+    389
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-7",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    306,
+    338,
+    338
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-61",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    303,
+    309,
+    310
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-22",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    215,
+    424,
+    353
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-22",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    391,
+    412,
+    319
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-95",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    316,
+    415,
+    632
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-154",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    818,
+    548,
+    503
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-87",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    859,
+    878,
+    511
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-45",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    380,
+    170,
+    170
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-16",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    373,
+    381,
+    406
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-133",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    353,
+    353,
+    374
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-60",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    222,
+    240,
+    304
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-106",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    897,
+    575,
+    520
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-56",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    442,
+    417,
+    417
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-26",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    993,
+    986,
+    1013
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-13",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    189,
+    189,
+    202
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-118",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    668,
+    665,
+    670
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-145",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    438,
+    441,
+    442
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-3",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    499,
+    501,
+    369
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-15",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    204,
+    271,
+    205
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-52",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    181,
+    195,
+    195
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-90",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    345,
+    390,
+    327
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-66",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    319,
+    268,
+    306
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-107",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": [
+    736,
+    533,
+    373
+   ],
+   "num_predict": 1024,
+   "hit_cap": [
+    false,
+    false,
+    false
+   ],
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": [
+    null,
+    null,
+    null
+   ],
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-67",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 235,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-67",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 754,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-97",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 554,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-14",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 142,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-14",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 190,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-9",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 192,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-104",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 317,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-29",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 150,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-22",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 157,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-162",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 177,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-158",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 294,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-56",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 211,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-26",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 285,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-112",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 237,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-38",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 387,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-65",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 271,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-40",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 280,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-69",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 832,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-145",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 325,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-135",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 332,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-102",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 389,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-23",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 315,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-3",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 303,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-15",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 147,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-160",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 383,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-155",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 143,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-136",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 347,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-150",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 279,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-129",
+   "config": "GE_R2",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 370,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-103",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 310,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-130",
+   "config": "GE_R2",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 439,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-2",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 121,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-119",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 264,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-48",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 233,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-48",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 216,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-99",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 416,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-151",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 1024,
+   "num_predict": 1024,
+   "hit_cap": true,
+   "mechanical_hint": "final output hit the cap: consistent with truncated, but a complete program followed by a cut second block would look the same",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-7",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 140,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-86",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 390,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-95",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 214,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-17",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 300,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-45",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 111,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-101",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 273,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-140",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 212,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-106",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 222,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-56",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 544,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-56",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 175,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-38",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 337,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-153",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 176,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-3",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 147,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-15",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 218,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-80",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 348,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-149",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 281,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-124",
+   "config": "HIER_M3",
+   "seed": 2,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 1024,
+   "num_predict": 1024,
+   "hit_cap": true,
+   "mechanical_hint": "final output hit the cap: consistent with truncated, but a complete program followed by a cut second block would look the same",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  },
+  {
+   "item_id": "humaneval-66",
+   "config": "HIER_M3",
+   "seed": 1,
+   "category": "other",
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only",
+   "out_tokens": 218,
+   "num_predict": 1024,
+   "hit_cap": false,
+   "mechanical_hint": "final output below the cap: not truncation; no_code vs code_present_unextracted undeterminable",
+   "debate_round1_programs_logged": null,
+   "rescued_pass": null,
+   "excerpt": null
+  }
+ ],
+ "step4_sample_records": [
+  {
+   "item_id": "humaneval-118",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    186
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "r i in range(len(word) - 1):\n        if word[i] in vowels and word[i + 1] not in vowels:\n            closest_vowel = word[i]\n            break\n    return closest_vowel\nprint(get_closest_vowel('yogurt'))\nprint(get_closest_vowel('FULL'))\nprint(get_closest_vowel('quick'))\nprint(get_closest_vowel('ab'))"
+  },
+  {
+   "item_id": "humaneval-3",
+   "config": "GE_R2",
+   "seed": 2,
+   "final_out_tokens": [
+    250
+   ],
+   "entry_stub": true,
+   "stub_kind": "block_is_test_or_usage_code",
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "from typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n    pass\nprint(below_zero([1, 2, 3]))\nprint(below_zero([1, 2, -4, 5]))"
+  },
+  {
+   "item_id": "humaneval-131",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "final_out_tokens": [
+    409,
+    374,
+    370
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def digits(n):\n    digits_str = str(n)\n    product = 1\n    for char in digits_str:\n        digit = int(char)\n        if digit % 2 != 0:\n            product *= digit\n    return 0 if product == 1 else product"
+  },
+  {
+   "item_id": "humaneval-130",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "final_out_tokens": [
+    773,
+    819,
+    762
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "\ndef check_function():\n    assert tri(3) == [1, 3, 2, 8], 'Test case 1 failed'\n    assert tri(4) == [1, 3, 2, 8, 3], 'Test case 2 failed'\n    assert tri(5) == [1, 3, 2, 8, 3, 14], 'Test case 3 failed'\n    assert tri(0) == [1], 'Test case 4 failed'\n    print('All test cases passed!')\ncheck_function()"
+  },
+  {
+   "item_id": "humaneval-83",
+   "config": "HIER_M3",
+   "seed": 2,
+   "final_out_tokens": [
+    33
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def starts_one_ends(n):\n    return 2 * 10 ** (n - 1) - 10 ** (n - 2)"
+  },
+  {
+   "item_id": "humaneval-6",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    213
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "current_depth)\n            elif char == ')':\n                current_depth = stack.pop()\n        return max(stack) if stack else 0\n    groups = paren_string.split()\n    max_depths = [max_depth(group) for group in groups]\n    return max_depths\nprint(parse_nested_parens('(()()) ((())) () ((())()())'))"
+  },
+  {
+   "item_id": "humaneval-145",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    394
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def order_by_points(nums):\n\n    def digit_sum(n):\n        return sum((int(d) for d in str(abs(n))))\n    return sorted(nums, key=lambda x: (digit_sum(x), nums.index(x)))\nprint(order_by_points([1, 11, -1, -11, -12]))\nprint(order_by_points([]))"
+  },
+  {
+   "item_id": "humaneval-12",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    498
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "h = 0\n    max_strings = []\n    for s in strings:\n        if len(s) > max_length:\n            max_length = len(s)\n            max_strings = [s]\n        elif len(s) == max_length:\n            max_strings.append(s)\n    if len(max_strings) > 1:\n        return None\n    else:\n        return max_strings[0]"
+  },
+  {
+   "item_id": "humaneval-67",
+   "config": "HIER_M3",
+   "seed": 2,
+   "final_out_tokens": [
+    337
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def fruit_distribution(s, n):\n    num_apples = int(s.split()[0].split(' ')[0])\n    num_oranges = int(s.split()[2].split(' ')[0])\n    num_mangoes = n - num_apples - num_oranges\n    return num_mangoes"
+  },
+  {
+   "item_id": "humaneval-92",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    481
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "z or z == x + y\n\ndef check():\n    assert any_int(5, 2, 7) == True\n    assert any_int(3, 2, 2) == False\n    assert any_int(3, -2, 1) == True\n    assert any_int(3.6, -2.2, 2) == False\n    assert any_int(5, 5, 5) == True\n    assert any_int(1.1, 2.2, 3.3) == False\n    print('All checks passed.')\ncheck()"
+  },
+  {
+   "item_id": "humaneval-75",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    413
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "//= 5\n    if a % 7 == 0:\n        a //= 7\n    for prime in [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]:\n        if a % prime == 0:\n            a //= prime\n    return a == 1\nprint(is_multiply_prime(30))\nprint(is_multiply_prime(42))\nprint(is_multiply_prime(105))"
+  },
+  {
+   "item_id": "humaneval-120",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "final_out_tokens": [
+    807,
+    1024,
+    975
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "import heapq\n\ndef maximum(arr, k):\n    max_heap = []\n    for num in arr:\n        heapq.heappush(max_heap, -num)\n    result = []\n    for _ in range(k):\n        result.append(-heapq.heappop(max_heap))\n    return result"
+  },
+  {
+   "item_id": "humaneval-88",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    357
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def sort_array(array):\n    first_element = array[0]\n    last_element = array[-1]\n    sum_of_first_and_last = first_element + last_element\n    if sum_of_first_and_last % 2 == 0:\n        sorted_array = sorted(array, reverse=True)\n    else:\n        sorted_array = sorted(array)\n    return sorted_array"
+  },
+  {
+   "item_id": "humaneval-62",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "final_out_tokens": [
+    674,
+    673,
+    429
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def derivative(xs: list):\n    return [i * x for i, x in enumerate(xs, 1)]"
+  },
+  {
+   "item_id": "humaneval-108",
+   "config": "GE_R2",
+   "seed": 2,
+   "final_out_tokens": [
+    338
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Assert",
+    "Assert",
+    "Assert",
+    "Assert"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "\n        sign = 1 if num >= 0 else -1\n        return sign + sum((int(digit) for digit in num_str[:-1]))\n    return sum((signed_sum(num) > 0 for num in arr))\nassert count_nums([]) == 0\nassert count_nums([-1, 11, -11]) == 1\nassert count_nums([1, 1, 2]) == 3\nassert count_nums([-123, 456, -789, 0]) == 2"
+  },
+  {
+   "item_id": "humaneval-110",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "final_out_tokens": [
+    498,
+    415,
+    511
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "0 for num in lst1)):\n        return 'YES'\n    for num in lst2:\n        if num % 2 == 0:\n            lst2.remove(num)\n            lst1.append(num)\n            if all((num % 2 == 0 for num in lst1)):\n                return 'YES'\n            lst1.remove(num)\n            lst2.append(num)\n    return 'NO'"
+  },
+  {
+   "item_id": "humaneval-118",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    282
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "     if word[i] in consonants:\n            if word[i + 1] in vowels:\n                if word[i + 2] in consonants:\n                    return word[i + 1]\n    return ''\nprint(get_closest_vowel('yogurt'))\nprint(get_closest_vowel('FULL'))\nprint(get_closest_vowel('quick'))\nprint(get_closest_vowel('ab'))"
+  },
+  {
+   "item_id": "humaneval-122",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "final_out_tokens": [
+    938,
+    504,
+    480
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": ", k):\n\n    def is_two_digit(n):\n        return n >= 0 and n < 100\n    k = min(k, len(arr))\n    total_sum = 0\n    for i, num in enumerate(arr[:k]):\n        if is_two_digit(num):\n            total_sum += num\n    return total_sum\narr = [111, 21, 3, 4000, 5, 6, 7, 8, 9]\nk = 4\nprint(add_elements(arr, k))"
+  },
+  {
+   "item_id": "humaneval-132",
+   "config": "HIER_M3",
+   "seed": 2,
+   "final_out_tokens": [
+    216
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "            if stack and stack[-1] == '[':\n                stack.pop()\n            else:\n                return False\n    return not stack\nprint(is_nested('[[]]'))\nprint(is_nested('[]]]]]]][[[[[]'))\nprint(is_nested('[][]'))\nprint(is_nested('[]'))\nprint(is_nested('[[][]]'))\nprint(is_nested('[[]][['))"
+  },
+  {
+   "item_id": "humaneval-122",
+   "config": "HIER_M3",
+   "seed": 2,
+   "final_out_tokens": [
+    296
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "lements(arr, k):\n\n    def has_two_digits(n):\n        return 0 <= n < 100\n    total_sum = 0\n    for i, num in enumerate(arr[:k]):\n        if has_two_digits(num):\n            total_sum += num\n    return total_sum\narr = [111, 21, 3, 4000, 5, 6, 7, 8, 9]\nk = 4\nresult = add_elements(arr, k)\nprint(result)"
+  },
+  {
+   "item_id": "humaneval-65",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    204
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def circular_shift(x, shift):\n    str_x = str(x)\n    n = len(str_x)\n    if shift >= n:\n        return str_x[::-1]\n    effective_shift = shift % n\n    result = str_x[effective_shift:] + str_x[:effective_shift]\n    return result\nprint(circular_shift(12, 1))\nprint(circular_shift(12, 2))"
+  },
+  {
+   "item_id": "humaneval-69",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "final_out_tokens": [
+    310,
+    446,
+    421
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "from collections import Counter\n\ndef search(lst):\n    frequency = Counter(lst)\n    result = -1\n    for number, freq in frequency.items():\n        if freq >= number:\n            result = number\n    return result"
+  },
+  {
+   "item_id": "humaneval-115",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    411
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "r well in grid_transposed))\n    return min_uses if all_wells_empty else -1\nprint(max_fill([[0, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 1]], 1))\nprint(max_fill([[0, 0, 1, 1], [0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 1, 1]], 2))\nprint(max_fill([[0, 0, 0], [0, 0, 0]], 5))\nprint(max_fill([[0, 0, 1], [0, 0, 0]], 1))"
+  },
+  {
+   "item_id": "humaneval-109",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "final_out_tokens": [
+    612,
+    582,
+    380
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def move_one_ball(arr):\n    if not arr:\n        return True\n    for i in range(len(arr) - 1):\n        if arr[i] > arr[i + 1]:\n            if i == len(arr) - 2 or arr[i + 2] >= arr[i]:\n                return True\n            else:\n                return False\n    return True"
+  },
+  {
+   "item_id": "humaneval-154",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "final_out_tokens": [
+    408,
+    424,
+    482
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "[a.index(b):]:\n            return True\n    return False\nprint(cycpattern_check('abcd', 'abd'))\nprint(cycpattern_check('hello', 'ell'))\nprint(cycpattern_check('whassup', 'psus'))\nprint(cycpattern_check('abab', 'baa'))\nprint(cycpattern_check('efef', 'eeff'))\nprint(cycpattern_check('himenss', 'simen'))"
+  },
+  {
+   "item_id": "humaneval-136",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    213
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "m > 0]\n    if not filtered_list:\n        return (None, None)\n    smallest_positive = min(filtered_list)\n    largest_negative = max(filter(lambda x: x < 0, lst))\n    if largest_negative is None and smallest_positive is None:\n        return (None, None)\n    return (largest_negative, smallest_positive)"
+  },
+  {
+   "item_id": "humaneval-101",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    320
+   ],
+   "entry_stub": true,
+   "stub_kind": "block_is_test_or_usage_code",
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def words_string(s):\n    pass\nprint(words_string('Hi, my name is John'))\nprint(words_string('One, two, three, four, five, six'))"
+  },
+  {
+   "item_id": "humaneval-107",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    342
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "rome(3) == (1, 2), 'Test case 1 failed'\n    assert even_odd_palindrome(12) == (4, 6), 'Test case 2 failed'\n    assert even_odd_palindrome(100) == (50, 0), 'Test case 3 failed'\n    assert even_odd_palindrome(1000) == (500, 500), 'Test case 4 failed'\n    print('All test cases passed')\ncheck_function()"
+  },
+  {
+   "item_id": "humaneval-19",
+   "config": "HIER_M3",
+   "seed": 2,
+   "final_out_tokens": [
+    340
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": ", 'seven': 7, 'eight': 8, 'nine': 9}\n    numbers_list = [number_map[numeral] for numeral in numbers.split()]\n    sorted_numbers_list = sorted(numbers_list)\n    sorted_numbers = [str(numeral) for numeral in sorted_numbers_list]\n    return ' '.join(sorted_numbers)\nprint(sort_numbers('three one five'))"
+  },
+  {
+   "item_id": "humaneval-128",
+   "config": "DEBATE_N3_R1",
+   "seed": 1,
+   "final_out_tokens": [
+    519,
+    526,
+    619
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "_of_signs = 1\n    sum_of_magnitudes = 0\n    for num in arr:\n        if num < 0:\n            product_of_signs *= -1\n        sum_of_magnitudes += abs(num)\n    return sum_of_magnitudes * product_of_signs\nprint(prod_signs([1, 2, 2, -4]) == -9)\nprint(prod_signs([0, 1]) == 0)\nprint(prod_signs([]) == None)"
+  },
+  {
+   "item_id": "humaneval-128",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    328
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "tive = False\n    for num in arr:\n        if num < 0:\n            sign_product *= -1\n            has_negative = True\n        elif num > 0 and has_negative:\n            sign_product *= -1\n    magnitude_sum = sum((abs(num) for num in arr))\n    return sign_product * magnitude_sum if magnitude_sum else 0"
+  },
+  {
+   "item_id": "humaneval-142",
+   "config": "GE_R2",
+   "seed": 2,
+   "final_out_tokens": [
+    224
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def sum_squares(lst):\n    result = 0\n    for index, value in enumerate(lst):\n        if index % 3 == 0:\n            result += value ** 2\n        elif index % 4 == 0:\n            result += value ** 3\n    return result"
+  },
+  {
+   "item_id": "humaneval-81",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    521
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "        return 'C'\n        elif gpa > 1.3:\n            return 'C-'\n        elif gpa > 1.0:\n            return 'D+'\n        elif gpa > 0.7:\n            return 'D'\n        else:\n            return 'E'\n    return [letter_grade(gpa) for gpa in grades]\nprint(numerical_letter_grade([4.0, 3, 1.7, 2, 3.5]))"
+  },
+  {
+   "item_id": "humaneval-11",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    193
+   ],
+   "entry_stub": true,
+   "stub_kind": "block_is_test_or_usage_code",
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "from typing import List\n\ndef string_xor(a: str, b: str) -> str:\n    pass\n'100'"
+  },
+  {
+   "item_id": "humaneval-145",
+   "config": "HIER_M3",
+   "seed": 2,
+   "final_out_tokens": [
+    297
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "ndexed_nums = [(num, sum_of_digits(num), i) for i, num in enumerate(nums)]\n    sorted_nums = sorted(indexed_nums, key=lambda x: (x[1], x[2]))\n    sorted_nums_list = [num for num, _, _ in sorted_nums]\n    return sorted_nums_list\nprint(order_by_points([1, 11, -1, -11, -12]))\nprint(order_by_points([]))"
+  },
+  {
+   "item_id": "humaneval-160",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "final_out_tokens": [
+    516,
+    566,
+    934
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "       elif operator[i] == '-':\n            result -= operand[i + 1]\n        elif operator[i] == '*':\n            result *= operand[i + 1]\n        elif operator[i] == '//':\n            result //= operand[i + 1]\n        elif operator[i] == '**':\n            result **= operand[i + 1]\n    return result"
+  },
+  {
+   "item_id": "humaneval-87",
+   "config": "HIER_M3",
+   "seed": 1,
+   "final_out_tokens": [
+    303
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "x:\n        coordinates.append((row_idx, len(lst[row_idx]) - col_idx - 1))\n    coordinates.sort(key=lambda coord: (coord[0], -coord[1]))\n    return coordinates\nprint(get_row([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 1, 6], [1, 2, 3, 4, 5, 1]], 1))\nprint(get_row([], 1))\nprint(get_row([[], [1], [1, 2, 3]], 3))"
+  },
+  {
+   "item_id": "humaneval-37",
+   "config": "GE_R2",
+   "seed": 1,
+   "final_out_tokens": [
+    254
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "def sort_even(l: list):\n    evens = sorted(l[1::2])\n    l_prime = [l[i] if i % 2 else evens.pop(0) for i in range(len(l))]\n    return l_prime"
+  },
+  {
+   "item_id": "humaneval-39",
+   "config": "HIER_M3",
+   "seed": 2,
+   "final_out_tokens": [
+    437
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr",
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "\n    fibonacci_numbers = generate_fibonacci(10000)\n    fibonacci_primes = [num for num in fibonacci_numbers if is_prime(num)]\n    return fibonacci_primes[n - 1] if n <= len(fibonacci_primes) else None\nprint(prime_fib(1))\nprint(prime_fib(2))\nprint(prime_fib(3))\nprint(prime_fib(4))\nprint(prime_fib(5))"
+  },
+  {
+   "item_id": "humaneval-130",
+   "config": "DEBATE_N3_R1",
+   "seed": 2,
+   "final_out_tokens": [
+    728,
+    681,
+    683
+   ],
+   "entry_stub": false,
+   "stub_kind": null,
+   "toplevel_nondef_stmts": [
+    "Expr"
+   ],
+   "n_entry_defs": 1,
+   "presented_program_matches_pred": null,
+   "reason": "model output text not logged: scripts/run_code_energy.py stores raw only when it is a list of extracted programs (SC, debate); for SA, GE and HIER raw is None and calls keep token counts only; the presented program cannot be compared",
+   "pred_excerpt": "range(2, n + 1):\n        if i % 2 == 0:\n            tribonacci.append(1 + i // 2)\n        else:\n            tribonacci.append(tribonacci[i - 1] + tribonacci[i - 2] + tribonacci[i - 3])\n    return tribonacci\n\ndef check_function():\n    print(tri(3))\n    print(tri(4))\n    print(tri(5))\ncheck_function()"
+  }
+ ]
+}

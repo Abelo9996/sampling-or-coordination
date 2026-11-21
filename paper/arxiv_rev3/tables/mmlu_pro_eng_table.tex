@@ -1,0 +1,17 @@
+\begin{table}[t]\centering\footnotesize
+\caption{Engineering-domain task: MMLU-Pro engineering ($n{=}150$ items, up to ten options), Qwen2.5-3B-Instruct (4-bit), 1024-token generation cap. Accuracy (\%) with 95\% bootstrap CI over items, measured tokens per query, unparsed outputs (\% of records), and the share of seed-aware hierarchical resamples on which the configuration is Pareto-optimal among these seven. Chance accuracy on the sample is 11.1\%.}
+\label{tab:proeng}
+\begin{tabular}{l r r r r}
+\toprule
+Config & Acc. [95\% CI] & Tok. & Unparsed & Pareto-optimal \\
+\midrule
+SA & 26.7 {\tiny[19,33]} & 832 & 0.7 & 100\% \\
+SC $k{=}2$ & 28.7 {\tiny[23,35]} & 1679 & 0.0 & 70\% \\
+SC $k{=}4$ & 30.7 {\tiny[24,37]} & 3269 & 0.0 & 65\% \\
+SC $k{=}8$ & 34.3 {\tiny[27,41]} & 6592 & 0.0 & 67\% \\
+GE & 29.7 {\tiny[23,36]} & 5314 & 1.0 & 29\% \\
+HIER & 31.0 {\tiny[25,37]} & 6091 & 1.0 & 38\% \\
+Debate & 25.7 {\tiny[20,31]} & 7909 & 0.3 & 0\% \\
+\bottomrule
+\end{tabular}
+\end{table}

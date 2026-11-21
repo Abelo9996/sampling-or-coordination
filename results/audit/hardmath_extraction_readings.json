@@ -1,0 +1,3331 @@
+{
+ "reader": "AI assistant (Claude; eight reader instances, each given one contiguous slice of hardmath_extraction_cases.json: case id and call text only); blind to workflow, item, gold and harness reading at reading time; no human check",
+ "status_codes": {
+  "answer": "text states a final answer (verbatim in 'answer')",
+  "none": "text states no single final answer",
+  "truncated": "text cut off before stating a final answer"
+ },
+ "cut_off_flag": "answer status but text cut off after an explicit final-answer statement (sensitivity variant counts it as truncated)",
+ "batches": {
+  "n": 8,
+  "rule": "cases file 'read' list in file order, batch b = items [b*n//8:(b+1)*n//8]"
+ },
+ "pre_freeze_checks": {
+  "text_consistency": "answer readings whose text (whitespace removed) does not contain the answer, and none/truncated readings whose text contains '\\boxed': 12 cases listed, each re-read from the text, no reading changed",
+  "spot_check": {
+   "n": 25,
+   "sampling": "random.Random(7).sample(sorted(case ids), 25)",
+   "method": "re-read from the text by the auditing session (Claude), blind as above",
+   "agreed": 25,
+   "disagreed": 0
+  }
+ },
+ "clerical_fixes": [],
+ "n": 472,
+ "readings": {
+  "h14c962127": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation of sequence terms",
+   "batch": 0
+  },
+  "he46825fc7": {
+   "status": "answer",
+   "answer": "4",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h3997a3a47": {
+   "status": "answer",
+   "answer": "16",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h79cdd8dd2": {
+   "status": "answer",
+   "answer": "73",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h623119b10": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "same value boxed several times",
+   "batch": 0
+  },
+  "h613f0aee6": {
+   "status": "answer",
+   "answer": "\\frac{9}{19}",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h118a921e5": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 0
+  },
+  "h7d68be905": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "final answer boxed 2, then critique quotes agents' boxed 7",
+   "batch": 0
+  },
+  "h3488830f3": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop in decimal digits, no final answer",
+   "batch": 0
+  },
+  "hfdaf45c77": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation of sequence terms",
+   "batch": 0
+  },
+  "h6d9ded1b4": {
+   "status": "answer",
+   "answer": "\\frac{2\\sqrt{3}}{3}",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "hd1a3e3556": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop in decimal digits",
+   "batch": 0
+  },
+  "ha79acb242": {
+   "status": "answer",
+   "answer": "10\\%",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h974ecfe8d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-sentence while checking candidates",
+   "batch": 0
+  },
+  "h4d9a9f4dd": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate text, ends inside unfinished box '\\boxed{1.\\boxed'",
+   "batch": 0
+  },
+  "hbf0e66508": {
+   "status": "answer",
+   "answer": "10",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "hd4dd497af": {
+   "status": "answer",
+   "answer": "10\\sqrt{2}",
+   "cut_off": false,
+   "note": "critique section computes 10 in prose, last boxed is 10\\sqrt{2}",
+   "batch": 0
+  },
+  "h82aa45dc8": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 0
+  },
+  "h7ae034da1": {
+   "status": "answer",
+   "answer": "-3",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h671c0313f": {
+   "status": "answer",
+   "answer": "10\\%",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h24defda31": {
+   "status": "answer",
+   "answer": "36",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "hc83db9d7c": {
+   "status": "answer",
+   "answer": "-\\frac{17}{2}x + \\frac{7}{2}",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "hf5b024c05": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 0
+  },
+  "hb51756562": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off; 1111110 mentioned as candidate but not committed",
+   "batch": 0
+  },
+  "h6a8855ee0": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "hb65236767": {
+   "status": "answer",
+   "answer": "5",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h02e6c3bbc": {
+   "status": "answer",
+   "answer": "36",
+   "cut_off": false,
+   "note": "derivation line computes 72 but final boxed answer is 36",
+   "batch": 0
+  },
+  "h8397c49c2": {
+   "status": "answer",
+   "answer": "0",
+   "cut_off": false,
+   "note": "derivation reaches 1/32 but final boxed answer is 0",
+   "batch": 0
+  },
+  "haaa4daf1b": {
+   "status": "answer",
+   "answer": "-5i",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h7238925d1": {
+   "status": "answer",
+   "answer": "5.0",
+   "cut_off": false,
+   "note": "critique boxes 12.4 and 5.0; final boxed is 5.0",
+   "batch": 0
+  },
+  "h44a2a5ca2": {
+   "status": "answer",
+   "answer": "\\frac{390625}{65536}",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h86086f338": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-number",
+   "batch": 0
+  },
+  "hd603e0a79": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-number",
+   "batch": 0
+  },
+  "h9c93208e7": {
+   "status": "answer",
+   "answer": "(1, -16, -4, 43)",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h78974f059": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-sentence while trying root triples",
+   "batch": 0
+  },
+  "h011ca256f": {
+   "status": "answer",
+   "answer": "29",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "hb376e14bd": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 0
+  },
+  "h76aca1f20": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula while testing values",
+   "batch": 0
+  },
+  "ha3ed65b68": {
+   "status": "answer",
+   "answer": "105",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "hc1c98ebe3": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation of sequence terms",
+   "batch": 0
+  },
+  "hac3904425": {
+   "status": "answer",
+   "answer": "2516_8",
+   "cut_off": false,
+   "note": "critique quotes agents' 6516_8; own final is 2516_8",
+   "batch": 0
+  },
+  "h59afbfe1f": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h9ab95cb3a": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula; n = 4 claimed in critique then rejected",
+   "batch": 0
+  },
+  "heaee78015": {
+   "status": "answer",
+   "answer": "15",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h3de0dfc3a": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop listing groupings, cut off",
+   "batch": 0
+  },
+  "h70561d3a9": {
+   "status": "answer",
+   "answer": "32400",
+   "cut_off": false,
+   "note": "critique quotes agent 2's 32348; own final is 32400",
+   "batch": 0
+  },
+  "h7a4f45f96": {
+   "status": "answer",
+   "answer": "6",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h2d196bfc7": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate text, repetition loop, no answer",
+   "batch": 0
+  },
+  "ha1801488d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula while trying root triples; c = 96 mentioned but not committed",
+   "batch": 0
+  },
+  "h76d031018": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 0
+  },
+  "h1dbf449e1": {
+   "status": "answer",
+   "answer": "-\\frac{17}{2}x + \\frac{7}{2}",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h8359b1cf1": {
+   "status": "answer",
+   "answer": "66",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h41d745463": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop listing segment pairs, cut off",
+   "batch": 0
+  },
+  "h7013cd292": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation of sequence terms",
+   "batch": 0
+  },
+  "hcf2d6925c": {
+   "status": "answer",
+   "answer": "-3",
+   "cut_off": false,
+   "note": "",
+   "batch": 0
+  },
+  "h51501d761": {
+   "status": "answer",
+   "answer": "0",
+   "cut_off": false,
+   "note": "derivation reaches 1/32, then revises; final boxed is 0",
+   "batch": 0
+  },
+  "hea1ba544f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula in repeated final step; 576 stated earlier in quoted agent solutions",
+   "batch": 0
+  },
+  "hcdae8d533": {
+   "status": "answer",
+   "answer": "\\text{none}",
+   "cut_off": false,
+   "note": "boxed 'none' (no integer solutions); critique quotes agent's boxed 1, 2",
+   "batch": 0
+  },
+  "h96c5190c6": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop over candidates, cut off mid-number",
+   "batch": 0
+  },
+  "h2614440ae": {
+   "status": "answer",
+   "answer": "\\frac{2}{3^{1/3}}",
+   "cut_off": false,
+   "note": "critique quotes other agent's box; own final box used",
+   "batch": 1
+  },
+  "h3804b1303": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration, repetitive loop",
+   "batch": 1
+  },
+  "h40cdbda75": {
+   "status": "answer",
+   "answer": "36^\\circ",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "h2588690fe": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "h9ee03c064": {
+   "status": "answer",
+   "answer": "864",
+   "cut_off": false,
+   "note": "critique quotes agents' boxes; own final box same",
+   "batch": 1
+  },
+  "h21916e43b": {
+   "status": "answer",
+   "answer": "\\frac{4}{9}",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "h6f3f9fb21": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off inside repeating decimal string",
+   "batch": 1
+  },
+  "hf3913da44": {
+   "status": "answer",
+   "answer": "7",
+   "cut_off": false,
+   "note": "two boxes \\frac{14}{2} = 7, last is final",
+   "batch": 1
+  },
+  "h609763c9d": {
+   "status": "answer",
+   "answer": "33",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "h133d0b8f7": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 1
+  },
+  "h04fe0f639": {
+   "status": "answer",
+   "answer": "\\frac{2}{27}",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "hc7a7f423e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "hca592f9a3": {
+   "status": "answer",
+   "answer": "66",
+   "cut_off": false,
+   "note": "own answer 66; critique quotes agent 2's box 21; restates 66 as final",
+   "batch": 1
+  },
+  "hc90ca45ea": {
+   "status": "answer",
+   "answer": "36",
+   "cut_off": false,
+   "note": "critique quotes agents' boxes 36 and 900; own final box 36",
+   "batch": 1
+  },
+  "h63b842218": {
+   "status": "answer",
+   "answer": "3R^2",
+   "cut_off": false,
+   "note": "critique quotes agent box 4R^2; own final 3R^2",
+   "batch": 1
+  },
+  "h1e30bebbb": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration of k values",
+   "batch": 1
+  },
+  "h98ef7b015": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "critique mentions agents' box 7; own final 2",
+   "batch": 1
+  },
+  "hcafc9b6f9": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "h92f80e804": {
+   "status": "answer",
+   "answer": "36",
+   "cut_off": false,
+   "note": "own derivation computes 72 but final box is 36; critique quotes 36 and 72",
+   "batch": 1
+  },
+  "h3e6e930ae": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off in repetitive modular powers list",
+   "batch": 1
+  },
+  "h81ce933bb": {
+   "status": "answer",
+   "answer": "\\begin{pmatrix} -2 \\\\ -3 \\end{pmatrix}",
+   "cut_off": false,
+   "note": "critique quotes agents' boxes; own final box used",
+   "batch": 1
+  },
+  "hd4513516d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid trial-and-error",
+   "batch": 1
+  },
+  "hb063e3804": {
+   "status": "answer",
+   "answer": "\\frac{1}{2} p q - \\frac{1}{2} q^2 - \\frac{1}{2} p^2 + \\frac{1}{2} p^3",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "h5f197a787": {
+   "status": "answer",
+   "answer": "15",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "hde7ca723b": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-sentence in repetitive search",
+   "batch": 1
+  },
+  "hd329be72a": {
+   "status": "answer",
+   "answer": "0",
+   "cut_off": false,
+   "note": "critique quotes 2/27 and 0; own updated final box 0",
+   "batch": 1
+  },
+  "h9352c1177": {
+   "status": "answer",
+   "answer": "1",
+   "cut_off": false,
+   "note": "critique quotes agents' boxes 13 and 1; own final 1",
+   "batch": 1
+  },
+  "haca7b2a0d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetitive sequence terms, cut off",
+   "batch": 1
+  },
+  "ha5d7ceffa": {
+   "status": "answer",
+   "answer": "\\text{none}",
+   "cut_off": false,
+   "note": "critique quotes agents' boxes; own final box is \\text{none}",
+   "batch": 1
+  },
+  "h59503529d": {
+   "status": "answer",
+   "answer": "19",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "he09595dfa": {
+   "status": "answer",
+   "answer": "42",
+   "cut_off": false,
+   "note": "two boxed values (28 then 42), last is final",
+   "batch": 1
+  },
+  "hfadea8d8a": {
+   "status": "answer",
+   "answer": "2516_8",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "hbdf662652": {
+   "status": "answer",
+   "answer": "16",
+   "cut_off": false,
+   "note": "critique boxes 16 too; own final 16",
+   "batch": 1
+  },
+  "h7d217ab23": {
+   "status": "answer",
+   "answer": "\\mathbf{0}",
+   "cut_off": false,
+   "note": "critique quotes agent box; own final same",
+   "batch": 1
+  },
+  "h17055f0fe": {
+   "status": "answer",
+   "answer": "36",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "hc145e862d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "hcd6971eb4": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "hb549e2c8c": {
+   "status": "answer",
+   "answer": "\\frac{10000}{1 + \\pi}",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "h876745122": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid trial enumeration",
+   "batch": 1
+  },
+  "h8c8ab61cf": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off inside long decimal string",
+   "batch": 1
+  },
+  "h294646c4b": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid term computation",
+   "batch": 1
+  },
+  "h65f56f141": {
+   "status": "answer",
+   "answer": "600",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "hb6d92eb64": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "boxed expression enters repetition loop and never closes; prose earlier states r = -7 + 7\\sqrt{3}",
+   "batch": 1
+  },
+  "h6d95c2fa7": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop in arithmetic, cut off",
+   "batch": 1
+  },
+  "h0731fc34d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid trial computation",
+   "batch": 1
+  },
+  "h73c74bed5": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off inside repeating decimal string",
+   "batch": 1
+  },
+  "h1d9147971": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "h1f641e2c0": {
+   "status": "answer",
+   "answer": "12 \\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "h618ffcc41": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-sentence listing possible values",
+   "batch": 1
+  },
+  "h7f414804c": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "hcdf0147b9": {
+   "status": "none",
+   "answer": null,
+   "cut_off": false,
+   "note": "two boxed alternatives offered as final",
+   "batch": 1
+  },
+  "hd7af90f89": {
+   "status": "answer",
+   "answer": "\\frac{1}{2}",
+   "cut_off": false,
+   "note": "two boxed values (1/3 then corrected 1/2), last is final",
+   "batch": 1
+  },
+  "ha78772ffd": {
+   "status": "answer",
+   "answer": "\\emptyset",
+   "cut_off": false,
+   "note": "critique of agents; concluding box \\emptyset",
+   "batch": 1
+  },
+  "h448500223": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 1
+  },
+  "h055a58d3d": {
+   "status": "answer",
+   "answer": "\\frac{96}{17}",
+   "cut_off": false,
+   "note": "critique quotes 4.8 and 6/25; own final 96/17",
+   "batch": 1
+  },
+  "ha6c5cb039": {
+   "status": "answer",
+   "answer": "\\begin{pmatrix} 0 \\\\ 30 \\\\ -30 \\end{pmatrix}",
+   "cut_off": false,
+   "note": "boxed vector stated as the answer; second box gives its magnitude 30\\sqrt{2}",
+   "batch": 1
+  },
+  "h6b9a9544d": {
+   "status": "none",
+   "answer": null,
+   "cut_off": false,
+   "note": "no answer, conversational text only",
+   "batch": 1
+  },
+  "h294ec9c5f": {
+   "status": "answer",
+   "answer": "12 \\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 1
+  },
+  "hd10e743e9": {
+   "status": "answer",
+   "answer": "1",
+   "cut_off": false,
+   "note": "critique quotes agents' boxes 1 and 2; own final 1",
+   "batch": 1
+  },
+  "h4f645b221": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula while computing the average",
+   "batch": 2
+  },
+  "h45e6ea388": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 2
+  },
+  "h091bdeb80": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 2
+  },
+  "h26a089495": {
+   "status": "answer",
+   "answer": "0",
+   "cut_off": false,
+   "note": "critique quotes another agent's 1/32; writer's own final is 0",
+   "batch": 2
+  },
+  "hbf4aac212": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 2
+  },
+  "h19d6086c3": {
+   "status": "answer",
+   "answer": "12 \\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "hde89a5819": {
+   "status": "answer",
+   "answer": "\\frac{11}{5} + \\frac{2}{5}i",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "hc940b0880": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off at the final \\boxed with no content; preceding derivation line ends in 4\\sqrt{23} + 4\\sqrt{5}",
+   "batch": 2
+  },
+  "h111a370a8": {
+   "status": "answer",
+   "answer": "\\{-1, -1, -1\\}",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "haa2c9fdc1": {
+   "status": "answer",
+   "answer": "40",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h7e7ed20da": {
+   "status": "answer",
+   "answer": "\\frac{243}{625}",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "he820dbb5d": {
+   "status": "answer",
+   "answer": "5",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h58403037b": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetitive trial loop, cut off mid-formula",
+   "batch": 2
+  },
+  "hca3137a0d": {
+   "status": "answer",
+   "answer": "3600",
+   "cut_off": false,
+   "note": "two boxed values \\boxed{60^2} = \\boxed{3600}, last is final",
+   "batch": 2
+  },
+  "h7e6b3841b": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop '27 - 120 = ...', cut off",
+   "batch": 2
+  },
+  "h0873b9a08": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-sentence",
+   "batch": 2
+  },
+  "h386cf1a7d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 2
+  },
+  "hc6a085aee": {
+   "status": "answer",
+   "answer": "45^\\circ",
+   "cut_off": false,
+   "note": "two boxed values (\\frac{\\pi}{4}, then 45^\\circ 'in degrees'), last is final",
+   "batch": 2
+  },
+  "h996731a60": {
+   "status": "answer",
+   "answer": "337",
+   "cut_off": false,
+   "note": "critique quotes another agent's 1009; writer's own final is 337",
+   "batch": 2
+  },
+  "hb0ef2d37f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off inside a long decimal string",
+   "batch": 2
+  },
+  "h5943ed4a9": {
+   "status": "answer",
+   "answer": "\\frac{64n^4 + 1}{5}",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "hca0ae8f0e": {
+   "status": "answer",
+   "answer": "Ian",
+   "cut_off": false,
+   "note": "three boxed earnings values; final answer stated in prose: Ian earns the most",
+   "batch": 2
+  },
+  "hbe4ec30c3": {
+   "status": "answer",
+   "answer": "\\frac{51}{14}",
+   "cut_off": false,
+   "note": "several boxed values, last is final",
+   "batch": 2
+  },
+  "hba8f5c1db": {
+   "status": "answer",
+   "answer": "576",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h9f28eb512": {
+   "status": "answer",
+   "answer": "52^\\circ",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h42b5a56a9": {
+   "status": "answer",
+   "answer": "\\begin{pmatrix} -\\frac{133}{50} \\\\ \\frac{153}{50} \\end{pmatrix}",
+   "cut_off": true,
+   "note": "text ends inside the box at '\\end{pmatrix' (closing braces missing); matrix entries complete",
+   "batch": 2
+  },
+  "hfc6582fdd": {
+   "status": "answer",
+   "answer": "\\frac{10000}{\\pi}",
+   "cut_off": false,
+   "note": "critique quotes other agents' values; writer's own final is 10000/pi",
+   "batch": 2
+  },
+  "h80ad8f8a9": {
+   "status": "answer",
+   "answer": "66",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "habcb0ab80": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off inside a long decimal string",
+   "batch": 2
+  },
+  "hbff3ae109": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 2
+  },
+  "h440f8ade9": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 2
+  },
+  "hb02b312d1": {
+   "status": "answer",
+   "answer": "3",
+   "cut_off": true,
+   "note": "answer stated in prose ('The correct root is x = 3'), then cut off at the final '\\(' statement",
+   "batch": 2
+  },
+  "h89a0d4fea": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 2
+  },
+  "hb84832b40": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h52c5752f0": {
+   "status": "answer",
+   "answer": "\\frac{5\\pi}{14}",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "hadb9b3278": {
+   "status": "answer",
+   "answer": "62",
+   "cut_off": true,
+   "note": "boxed 62 repeated in a loop, ends mid-sentence",
+   "batch": 2
+  },
+  "hd952c44a8": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 2
+  },
+  "hee4834f6d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 2
+  },
+  "h9b875faeb": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-sentence before the final count is stated",
+   "batch": 2
+  },
+  "h24835a987": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "hf5ea218db": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 2
+  },
+  "h5035b9a9e": {
+   "status": "answer",
+   "answer": "24",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h51be07879": {
+   "status": "answer",
+   "answer": "8",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "hfdaa39b68": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 2
+  },
+  "hde91aa2a4": {
+   "status": "answer",
+   "answer": "25",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h6dc86c1ad": {
+   "status": "answer",
+   "answer": "5",
+   "cut_off": true,
+   "note": "garbled text; \\boxed{5} stated three times, then loop of empty \\boxed{} until cut off",
+   "batch": 2
+  },
+  "he90b4c3de": {
+   "status": "answer",
+   "answer": "-i",
+   "cut_off": false,
+   "note": "critique quotes another agent's value; writer's own final is -i",
+   "batch": 2
+  },
+  "haac9ea1a9": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "critique quotes another agent's 30; writer's own final is 12",
+   "batch": 2
+  },
+  "he04ad1161": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 2
+  },
+  "h14f2357a2": {
+   "status": "answer",
+   "answer": "256",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h0bdcfe633": {
+   "status": "answer",
+   "answer": "864",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h9bde5ec28": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "he9f437a96": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 2
+  },
+  "he1660731f": {
+   "status": "answer",
+   "answer": "\\begin{pmatrix} -2 \\\\ -3 \\end{pmatrix}",
+   "cut_off": false,
+   "note": "critique quotes other agents' answers; writer's own final matches one of them",
+   "batch": 2
+  },
+  "h3c45ecf44": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetitive trial loop, cut off mid-number",
+   "batch": 2
+  },
+  "h2204689ac": {
+   "status": "answer",
+   "answer": "72^\\circ",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h6643b1fc4": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off inside a long repeating decimal string",
+   "batch": 2
+  },
+  "hc6c39457d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 2
+  },
+  "hb00a5f1e9": {
+   "status": "answer",
+   "answer": "4",
+   "cut_off": false,
+   "note": "",
+   "batch": 2
+  },
+  "h852af65de": {
+   "status": "answer",
+   "answer": "81",
+   "cut_off": false,
+   "note": "critique quotes other agents' boxed 36 and 3600; own final is 81",
+   "batch": 3
+  },
+  "h5f42c4a27": {
+   "status": "answer",
+   "answer": "60^\\circ",
+   "cut_off": false,
+   "note": "critique quotes other agents' answers; own final 60^\\circ",
+   "batch": 3
+  },
+  "hc17777bd3": {
+   "status": "answer",
+   "answer": "\\frac{1}{7}",
+   "cut_off": false,
+   "note": "two boxed values (0 then 1/7); text revises to last, 1/7",
+   "batch": 3
+  },
+  "hbea7fdc07": {
+   "status": "answer",
+   "answer": "\\frac{\\pi}{4k}",
+   "cut_off": false,
+   "note": "critique quotes other agents' boxed answers; own final boxed",
+   "batch": 3
+  },
+  "hcf585387f": {
+   "status": "answer",
+   "answer": "3",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h7e9ff19e1": {
+   "status": "answer",
+   "answer": "12.7",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h246f8e303": {
+   "status": "answer",
+   "answer": "5",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h100fe2c98": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-number",
+   "batch": 3
+  },
+  "hbef1d85bd": {
+   "status": "answer",
+   "answer": "\\frac{2240}{78125}",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h4c4ce1a70": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 3
+  },
+  "h1770f996e": {
+   "status": "answer",
+   "answer": "3R^2",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 3
+  },
+  "h29b6b1f70": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": true,
+   "note": "boxed 2, then critique and updated solution cut off mid-formula before restating an answer",
+   "batch": 3
+  },
+  "hfc19d9a35": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 3
+  },
+  "h2d01f1176": {
+   "status": "answer",
+   "answer": "\\frac{20000}{2 + \\pi}",
+   "cut_off": false,
+   "note": "several boxed values in critique; final commits to last",
+   "batch": 3
+  },
+  "h42ec52f5e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 3
+  },
+  "h2254d578f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop in decimal expansion, cut off",
+   "batch": 3
+  },
+  "h531e508f0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 3
+  },
+  "h05c1e9e6a": {
+   "status": "answer",
+   "answer": "8",
+   "cut_off": false,
+   "note": "boxed inline in prose",
+   "batch": 3
+  },
+  "h4f328540b": {
+   "status": "answer",
+   "answer": "12 \\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h58f929852": {
+   "status": "answer",
+   "answer": "36",
+   "cut_off": false,
+   "note": "critique quotes other agents' boxed 36 and 3600; own final 36",
+   "batch": 3
+  },
+  "h646957bc4": {
+   "status": "answer",
+   "answer": "10080",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "hf36650246": {
+   "status": "answer",
+   "answer": "0",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "hb99bc97cf": {
+   "status": "answer",
+   "answer": "15",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "hc911243ea": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 3
+  },
+  "h4360f3b4a": {
+   "status": "answer",
+   "answer": "\\frac{2}{27}",
+   "cut_off": false,
+   "note": "critique quotes boxed 2/27 and 0; own final 2/27",
+   "batch": 3
+  },
+  "h27990f21a": {
+   "status": "answer",
+   "answer": "3",
+   "cut_off": false,
+   "note": "garbled text with empty boxes; final statement boxed 3",
+   "batch": 3
+  },
+  "h4343afbbc": {
+   "status": "answer",
+   "answer": "7",
+   "cut_off": false,
+   "note": "two boxed values (7\\sqrt{2} - 7 then 7); text revises to last, 7",
+   "batch": 3
+  },
+  "h20a2f3ef8": {
+   "status": "answer",
+   "answer": "0.25",
+   "cut_off": false,
+   "note": "critique quotes boxed 0.25 and 1.25; own final 0.25",
+   "batch": 3
+  },
+  "h9518f71da": {
+   "status": "answer",
+   "answer": "6",
+   "cut_off": false,
+   "note": "garbled text with many stray boxes incl. 3; final statement boxed 6",
+   "batch": 3
+  },
+  "h3ef4e8651": {
+   "status": "answer",
+   "answer": "-1",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h6c9c3b994": {
+   "status": "answer",
+   "answer": "-\\frac{125}{4}",
+   "cut_off": false,
+   "note": "critique quotes boxed -125; own final -125/4",
+   "batch": 3
+  },
+  "h2d8db4e28": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h0ae70c323": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 3
+  },
+  "h08c0c6cc7": {
+   "status": "answer",
+   "answer": "9",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h633ab4274": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop in decimal expansion, cut off",
+   "batch": 3
+  },
+  "h8e2794e77": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h511f5265d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 3
+  },
+  "ha82c13da4": {
+   "status": "answer",
+   "answer": "26^\\circ",
+   "cut_off": false,
+   "note": "boxed 26^\\circ multiple times, consistent",
+   "batch": 3
+  },
+  "h201e6f81e": {
+   "status": "answer",
+   "answer": "33",
+   "cut_off": false,
+   "note": "critique quotes boxed 11 and 33; own final 33",
+   "batch": 3
+  },
+  "h56b56d618": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "two boxed values (12\\pi exact, 37.68 approx); prose commits to 12\\pi",
+   "batch": 3
+  },
+  "he7e331845": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop in decimal expansion, cut off",
+   "batch": 3
+  },
+  "h030348937": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 3
+  },
+  "hc085861de": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula",
+   "batch": 3
+  },
+  "h036e0a6c9": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h567350532": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-trial computation",
+   "batch": 3
+  },
+  "h9fa3ed4d0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 3
+  },
+  "hca5f1a923": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h509d0fa8e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 3
+  },
+  "h84831032f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula",
+   "batch": 3
+  },
+  "h05de2cc34": {
+   "status": "answer",
+   "answer": "\\frac{16}{27}",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "hf02d529f1": {
+   "status": "answer",
+   "answer": "\\frac{270}{7}",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h7dacfccf7": {
+   "status": "answer",
+   "answer": "12 \\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "h156b3c460": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 3
+  },
+  "haa6cad3f4": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "garbled repetition loop, cut off",
+   "batch": 3
+  },
+  "hf6a2cc2bb": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 3
+  },
+  "hd70c38b70": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 3
+  },
+  "hfb79eea5e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 3
+  },
+  "hd006ca81a": {
+   "status": "answer",
+   "answer": "661",
+   "cut_off": false,
+   "note": "boxed 661 three times, consistent",
+   "batch": 3
+  },
+  "h939e2f6c3": {
+   "status": "answer",
+   "answer": "\\frac{2}{3}",
+   "cut_off": false,
+   "note": "two boxed values (1/3 then 2/3 after correction); last is final",
+   "batch": 3
+  },
+  "h4f4f75996": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 4
+  },
+  "hc5f9f07ab": {
+   "status": "answer",
+   "answer": "52^\\circ",
+   "cut_off": false,
+   "note": "several identical boxed values",
+   "batch": 4
+  },
+  "ha95bcca0d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 4
+  },
+  "hfa5bae71f": {
+   "status": "answer",
+   "answer": "58",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h97dca7e58": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "hfa013a420": {
+   "status": "answer",
+   "answer": "42",
+   "cut_off": false,
+   "note": "two boxed values (44 then 42); text finally commits to 42",
+   "batch": 4
+  },
+  "hd2b7ad000": {
+   "status": "answer",
+   "answer": "4\\pi",
+   "cut_off": false,
+   "note": "writer's own final answer; 8\\pi quoted from agent",
+   "batch": 4
+  },
+  "h121b8cd25": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h676e82663": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "ha3768f057": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate text, empty boxes, cut off in repetition",
+   "batch": 4
+  },
+  "h8b731140b": {
+   "status": "answer",
+   "answer": "0.25",
+   "cut_off": false,
+   "note": "writer's own final answer; 1.25 quoted from agent",
+   "batch": 4
+  },
+  "h6872648ae": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h40755a1a2": {
+   "status": "answer",
+   "answer": "45",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h3f1a508aa": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "he12fee650": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 4
+  },
+  "ha027cd679": {
+   "status": "answer",
+   "answer": "62",
+   "cut_off": false,
+   "note": "two boxed values (-62 then 62); last is final",
+   "batch": 4
+  },
+  "h63a07ad20": {
+   "status": "answer",
+   "answer": "5.0",
+   "cut_off": false,
+   "note": "writer's own final answer; 12.4 quoted from agent critique",
+   "batch": 4
+  },
+  "h4f81799bc": {
+   "status": "answer",
+   "answer": "1940",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "hf0e276ebe": {
+   "status": "answer",
+   "answer": "\\frac{2}{3^{1/3}}",
+   "cut_off": false,
+   "note": "writer's own final answer; other value quoted from agent",
+   "batch": 4
+  },
+  "h69e20ff00": {
+   "status": "answer",
+   "answer": "81",
+   "cut_off": false,
+   "note": "writer's own final answer; 36 and 3600 quoted from agents",
+   "batch": 4
+  },
+  "h266cc720f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h7d099c079": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 4
+  },
+  "h45e59afa6": {
+   "status": "answer",
+   "answer": "5232_8",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h3ecbb2860": {
+   "status": "answer",
+   "answer": "\\frac{2}{27}",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h62c151184": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 4
+  },
+  "h1f76f6fa9": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "writer's final answer; 7 mentioned in critique",
+   "batch": 4
+  },
+  "he2e635249": {
+   "status": "answer",
+   "answer": "36^\\circ",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h288512baf": {
+   "status": "none",
+   "answer": null,
+   "cut_off": false,
+   "note": "two boxed ordered pairs offered as final with 'or'",
+   "batch": 4
+  },
+  "ha9731b33d": {
+   "status": "answer",
+   "answer": "40",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "hc36a22800": {
+   "status": "answer",
+   "answer": "32",
+   "cut_off": false,
+   "note": "two boxed values (32\\sqrt{2} then 32); last is final",
+   "batch": 4
+  },
+  "h6868cbcb2": {
+   "status": "answer",
+   "answer": "105",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h64c59e458": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h860ae8bfd": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h360591673": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h8bed863e8": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h1ee636a73": {
+   "status": "answer",
+   "answer": "\\frac{2}{27}",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "hcec923c5b": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 4
+  },
+  "hd59e8c086": {
+   "status": "answer",
+   "answer": "8",
+   "cut_off": false,
+   "note": "boxed inline in prose",
+   "batch": 4
+  },
+  "hada48333d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h2406a1bb3": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "hcb55564ca": {
+   "status": "answer",
+   "answer": "\\begin{pmatrix} -6 \\\\ 18 \\\\ 0 \\end{pmatrix}",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "hc17af10d1": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate repetitive text, no answer stated",
+   "batch": 4
+  },
+  "h0c3ebfd2a": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 4
+  },
+  "hb2595d3a0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "hbd69769da": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "digit repetition loop, cut off",
+   "batch": 4
+  },
+  "hcd715e218": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h0db4937d7": {
+   "status": "answer",
+   "answer": "128^\\circ",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h12d5734ca": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h1d9c2f64d": {
+   "status": "answer",
+   "answer": "10",
+   "cut_off": false,
+   "note": "boxed then verification, text completes",
+   "batch": 4
+  },
+  "h807d09b35": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 4
+  },
+  "h16e6de350": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate text, repetition loop, no answer",
+   "batch": 4
+  },
+  "he58311d83": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 4
+  },
+  "hddb430604": {
+   "status": "none",
+   "answer": null,
+   "cut_off": false,
+   "note": "two boxed sets offered as final with 'or'",
+   "batch": 4
+  },
+  "h5647dd31c": {
+   "status": "answer",
+   "answer": "\\sqrt{53}",
+   "cut_off": false,
+   "note": "",
+   "batch": 4
+  },
+  "h905ca1362": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "h2a120c644": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "Final Answer section boxes 7, trailing critique revises to boxed 2; last commitment taken, ambiguous",
+   "batch": 4
+  },
+  "h09503398a": {
+   "status": "answer",
+   "answer": "4",
+   "cut_off": false,
+   "note": "writer's own final answer; 8 quoted from agent",
+   "batch": 4
+  },
+  "h15d942661": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 4
+  },
+  "haac5189d4": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 4
+  },
+  "he61db5d94": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula before final answer",
+   "batch": 5
+  },
+  "h5fa0c29f3": {
+   "status": "answer",
+   "answer": "3R^2",
+   "cut_off": false,
+   "note": "critique quotes agent answers; own final boxed twice",
+   "batch": 5
+  },
+  "hc449947fd": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "h642240267": {
+   "status": "answer",
+   "answer": "337",
+   "cut_off": false,
+   "note": "critique quotes agent boxed values; own final is last box",
+   "batch": 5
+  },
+  "h60a939631": {
+   "status": "answer",
+   "answer": "36",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h29b36d679": {
+   "status": "none",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate text; two inconsistent garbled boxes, no concrete answer",
+   "batch": 5
+  },
+  "h47b89c5b5": {
+   "status": "answer",
+   "answer": "204_5",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "ha62f90211": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "digit repetition loop, cut off",
+   "batch": 5
+  },
+  "hb20e05979": {
+   "status": "answer",
+   "answer": "13",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h464f273c7": {
+   "status": "answer",
+   "answer": "4",
+   "cut_off": false,
+   "note": "boxed 4 twice despite noted verification failure",
+   "batch": 5
+  },
+  "hac44901a7": {
+   "status": "answer",
+   "answer": "7",
+   "cut_off": false,
+   "note": "several boxed values (14/sqrt2, 14sqrt2/2); last box 7 stated as correct",
+   "batch": 5
+  },
+  "h83e45f91e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 5
+  },
+  "hf141c8d5a": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid long division",
+   "batch": 5
+  },
+  "h203540b12": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "h8e815d894": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "h0f2fc6e9f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "hecf78c0b7": {
+   "status": "answer",
+   "answer": "40",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "hae4b6bc01": {
+   "status": "answer",
+   "answer": "22",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "ha472f24c4": {
+   "status": "answer",
+   "answer": "1",
+   "cut_off": false,
+   "note": "boxed 1 and 2 mid-text; final statement boxes 1",
+   "batch": 5
+  },
+  "hd5ef394e7": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "digit repetition loop, cut off",
+   "batch": 5
+  },
+  "h073f21da1": {
+   "status": "answer",
+   "answer": "\\begin{pmatrix} 5 \\\\ -3 \\end{pmatrix}",
+   "cut_off": false,
+   "note": "two boxed values; revises to last as correct",
+   "batch": 5
+  },
+  "h8588f4f0c": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "boxed 14 then 12; last is final",
+   "batch": 5
+  },
+  "hc1b7a22ec": {
+   "status": "answer",
+   "answer": "\\frac{7}{25}",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h7a8b08b59": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid trial enumeration",
+   "batch": 5
+  },
+  "ha3fc77f8f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "digit repetition loop, cut off",
+   "batch": 5
+  },
+  "h4271d08e2": {
+   "status": "answer",
+   "answer": "39.44",
+   "cut_off": false,
+   "note": "prose names two people tied; box holds dollar amount",
+   "batch": 5
+  },
+  "hcba85b101": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "hc7ceee5e2": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "h4d3e76fbf": {
+   "status": "answer",
+   "answer": "10",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h39ea23f1d": {
+   "status": "answer",
+   "answer": "7",
+   "cut_off": false,
+   "note": "boxed \\frac{14}{2} then 7; last is final",
+   "batch": 5
+  },
+  "hbc8f28305": {
+   "status": "answer",
+   "answer": "145",
+   "cut_off": false,
+   "note": "critique quotes agent boxes; own final last",
+   "batch": 5
+  },
+  "h21592fee8": {
+   "status": "answer",
+   "answer": "32400",
+   "cut_off": false,
+   "note": "critique quotes agent boxes; own final last",
+   "batch": 5
+  },
+  "h192841559": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation in own solution",
+   "batch": 5
+  },
+  "h3aef07edb": {
+   "status": "answer",
+   "answer": "28800",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h125058195": {
+   "status": "answer",
+   "answer": "20",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h8d53d4ec8": {
+   "status": "answer",
+   "answer": "\\frac{3125}{1024}",
+   "cut_off": false,
+   "note": "critique quotes agent boxes; own final last",
+   "batch": 5
+  },
+  "h4af8f9056": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "critique quotes agent boxes; own final last",
+   "batch": 5
+  },
+  "h1e45d23f0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "boxed 2 only in critique of agents; own solution cut off in repetition loop",
+   "batch": 5
+  },
+  "h74391245f": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "ha886e5cc0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "hf92da62cc": {
+   "status": "answer",
+   "answer": "-i",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h462a9692e": {
+   "status": "answer",
+   "answer": "2107",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h7d77892a9": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "h60733a774": {
+   "status": "answer",
+   "answer": "33\\pi",
+   "cut_off": false,
+   "note": "quotes agent boxes 33pi and 4pi; own conclusion boxes 33pi",
+   "batch": 5
+  },
+  "h7a8bf7e67": {
+   "status": "answer",
+   "answer": "6",
+   "cut_off": false,
+   "note": "critique quotes agent boxes; own final last",
+   "batch": 5
+  },
+  "hdbcbdce81": {
+   "status": "answer",
+   "answer": "64",
+   "cut_off": false,
+   "note": "critique quotes agent boxes 64 and 48; own final 64",
+   "batch": 5
+  },
+  "h97b9c2b57": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "hca05d44a5": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid enumeration",
+   "batch": 5
+  },
+  "h2b0d4dd03": {
+   "status": "answer",
+   "answer": "\\frac{1}{4}",
+   "cut_off": false,
+   "note": "boxed 1/3 then revised to 1/4; last is final",
+   "batch": 5
+  },
+  "had0bd1516": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula",
+   "batch": 5
+  },
+  "h4cf29d0c1": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid trial enumeration",
+   "batch": 5
+  },
+  "hcbea920a8": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 5
+  },
+  "hfbd082b1e": {
+   "status": "answer",
+   "answer": "58",
+   "cut_off": false,
+   "note": "critique quotes agent box 38; own final 58",
+   "batch": 5
+  },
+  "h9a10e1230": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate repetition loop, no answer",
+   "batch": 5
+  },
+  "h881093870": {
+   "status": "answer",
+   "answer": "-\\frac{125}{4}",
+   "cut_off": false,
+   "note": "critique quotes agent boxes; own final last",
+   "batch": 5
+  },
+  "h81f34596c": {
+   "status": "answer",
+   "answer": "1305",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h1b56fa63c": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid enumeration",
+   "batch": 5
+  },
+  "h66a4a6d0f": {
+   "status": "answer",
+   "answer": "125",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h4e9e71dfe": {
+   "status": "answer",
+   "answer": "630",
+   "cut_off": false,
+   "note": "",
+   "batch": 5
+  },
+  "h25cf2418e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 6
+  },
+  "hccb0a69a4": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "h74005f1f1": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "repeats BH = 1 in prose, then final boxed 2",
+   "batch": 6
+  },
+  "h354701a3a": {
+   "status": "answer",
+   "answer": "58",
+   "cut_off": false,
+   "note": "critique quotes 38; own final boxed 58",
+   "batch": 6
+  },
+  "h2a5c3ad08": {
+   "status": "answer",
+   "answer": "2\\sqrt{5}",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h520152a60": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "garbled text, repetition loop",
+   "batch": 6
+  },
+  "h168cab8b0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "h3b66312da": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "garbled text, repetition loop; stray \\boxed fragment not an answer",
+   "batch": 6
+  },
+  "h66b0742d0": {
+   "status": "answer",
+   "answer": "25231",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "hb27810fea": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "short garbled fragment, no answer",
+   "batch": 6
+  },
+  "hd1eb0cff9": {
+   "status": "answer",
+   "answer": "256",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 6
+  },
+  "h3937ad71c": {
+   "status": "answer",
+   "answer": "38",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h1484ca33f": {
+   "status": "none",
+   "answer": null,
+   "cut_off": false,
+   "note": "two boxed ordered pairs joined by 'or'",
+   "batch": 6
+  },
+  "h123204940": {
+   "status": "answer",
+   "answer": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h05d5adc4e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-sentence while computing terms",
+   "batch": 6
+  },
+  "h1e5030439": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 6
+  },
+  "h60b6b1c5f": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 6
+  },
+  "hdf04ed7a2": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "h2090298bc": {
+   "status": "answer",
+   "answer": "145",
+   "cut_off": false,
+   "note": "critique quotes 35 and 145; own final boxed 145",
+   "batch": 6
+  },
+  "h6e30a8b89": {
+   "status": "answer",
+   "answer": "83",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h836aacb42": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-recursion",
+   "batch": 6
+  },
+  "he1b8d347f": {
+   "status": "answer",
+   "answer": "35",
+   "cut_off": false,
+   "note": "two boxed values (63 then 35); text revises to 35 as final",
+   "batch": 6
+  },
+  "h7def59610": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula in repetitive loop",
+   "batch": 6
+  },
+  "hb04128661": {
+   "status": "answer",
+   "answer": "864",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h2b8321139": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 6
+  },
+  "hff8db151c": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration of powers",
+   "batch": 6
+  },
+  "h32dc6cd2a": {
+   "status": "answer",
+   "answer": "5.0",
+   "cut_off": false,
+   "note": "critique boxes 12.4 and 5.0; own final boxed 5.0",
+   "batch": 6
+  },
+  "hd0d1bea24": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "hc7e6347ec": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "critique quotes 2 and 502; own final boxed 2",
+   "batch": 6
+  },
+  "hd95e097f7": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "hf4bf6785c": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "text is only a fragment '2(x-'",
+   "batch": 6
+  },
+  "hcb4955ee0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-trial",
+   "batch": 6
+  },
+  "he57976065": {
+   "status": "answer",
+   "answer": "4.8",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h0eeb702de": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula",
+   "batch": 6
+  },
+  "hbedf93085": {
+   "status": "answer",
+   "answer": "150",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 6
+  },
+  "h0a23cdd84": {
+   "status": "answer",
+   "answer": "280",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 6
+  },
+  "h32c62a103": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "h5453e3dd2": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repeating decimal digits loop, cut off",
+   "batch": 6
+  },
+  "h1365c8cdc": {
+   "status": "answer",
+   "answer": "\\frac{390625}{65536}",
+   "cut_off": false,
+   "note": "critique quotes 1 and same value; own final boxed",
+   "batch": 6
+  },
+  "h1b1d8bb47": {
+   "status": "answer",
+   "answer": "3",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h9f40f0c21": {
+   "status": "answer",
+   "answer": "\\frac{2}{3}",
+   "cut_off": false,
+   "note": "two boxed values (1/3 then 2/3); text revises to 2/3 as final",
+   "batch": 6
+  },
+  "he6d317425": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repeating decimal digits loop, cut off",
+   "batch": 6
+  },
+  "h1918a7326": {
+   "status": "answer",
+   "answer": "1305",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "hc58e4c672": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "hcbd3a8386": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 6
+  },
+  "h68865caf8": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-trial",
+   "batch": 6
+  },
+  "hba6926ac8": {
+   "status": "answer",
+   "answer": "16",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h078be3512": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 6
+  },
+  "h3fa97c5d2": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-formula",
+   "batch": 6
+  },
+  "h81b7912e2": {
+   "status": "answer",
+   "answer": "90",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 6
+  },
+  "h6ae12a9ed": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetitive enumeration, cut off",
+   "batch": 6
+  },
+  "ha3acb648c": {
+   "status": "answer",
+   "answer": "\\frac{-35}{9}",
+   "cut_off": false,
+   "note": "final line boxes \\frac{1}{9} - 4 = boxed \\frac{-35}{9}; same value, last box taken",
+   "batch": 6
+  },
+  "h0c2379e75": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "computes total 70 then cut off mid-sentence before stating final answer",
+   "batch": 6
+  },
+  "h864b0beac": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "h261f53f9d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 6
+  },
+  "h27dd0cbf7": {
+   "status": "answer",
+   "answer": "(-9, 0) \\cup (0, 9)",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "hf8f312c94": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "boxed twice, same value",
+   "batch": 6
+  },
+  "hd025dc741": {
+   "status": "answer",
+   "answer": "2",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h1b80b5b68": {
+   "status": "answer",
+   "answer": "4",
+   "cut_off": false,
+   "note": "",
+   "batch": 6
+  },
+  "h33a0fe713": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 7
+  },
+  "h9ac528f0a": {
+   "status": "answer",
+   "answer": "1 - 3i",
+   "cut_off": false,
+   "note": "two boxed values, last is final",
+   "batch": 7
+  },
+  "hdc411c7d9": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 7
+  },
+  "h1bf0800c8": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 7
+  },
+  "hb86cb7cbd": {
+   "status": "answer",
+   "answer": "\\frac{2}{3}",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h76ee4437c": {
+   "status": "answer",
+   "answer": "\\frac{6}{25}",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "heb911db2d": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "two boxed values (12\\sqrt[3]{4} then 12), last is final",
+   "batch": 7
+  },
+  "h57b712660": {
+   "status": "answer",
+   "answer": "4",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "hf6a0423bc": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-formula",
+   "batch": 7
+  },
+  "h23abeefd7": {
+   "status": "answer",
+   "answer": "256",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h81b59f7a0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 7
+  },
+  "ha8ad0294c": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "hcdabcc16d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-sentence before answer",
+   "batch": 7
+  },
+  "h6b5e9e9eb": {
+   "status": "answer",
+   "answer": "12",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h706df4832": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-derivation",
+   "batch": 7
+  },
+  "h5b250f74e": {
+   "status": "answer",
+   "answer": "\\sqrt{53}",
+   "cut_off": false,
+   "note": "same value boxed twice",
+   "batch": 7
+  },
+  "h60f868ff4": {
+   "status": "answer",
+   "answer": "-i",
+   "cut_off": false,
+   "note": "critique quotes another boxed value; own final is -i",
+   "batch": 7
+  },
+  "h9c1e41dc4": {
+   "status": "answer",
+   "answer": "(-9, 0) \\cup (0, 9)",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h8caa28954": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 7
+  },
+  "h482496e42": {
+   "status": "answer",
+   "answer": "11\\sqrt{2}",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h6b3dfd361": {
+   "status": "answer",
+   "answer": "\\frac{32400}{47}",
+   "cut_off": false,
+   "note": "two boxed values (decimal then fraction), last is final",
+   "batch": 7
+  },
+  "h5abf92ca7": {
+   "status": "answer",
+   "answer": "12\\pi",
+   "cut_off": false,
+   "note": "same value boxed twice",
+   "batch": 7
+  },
+  "h21e7fa83e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off mid-derivation",
+   "batch": 7
+  },
+  "h3b8955133": {
+   "status": "answer",
+   "answer": "(1, -16, -4, 43)",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "hf89132170": {
+   "status": "answer",
+   "answer": "\\frac{20000}{2 + \\pi}",
+   "cut_off": false,
+   "note": "several boxed values in critique, last is final",
+   "batch": 7
+  },
+  "ha52151dd4": {
+   "status": "answer",
+   "answer": "12 \\pi",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h2505a4dfe": {
+   "status": "answer",
+   "answer": "\\frac{96}{17}",
+   "cut_off": false,
+   "note": "critique quotes other agents' boxed values; own final is 96/17",
+   "batch": 7
+  },
+  "hbc0393e9d": {
+   "status": "answer",
+   "answer": "11\\sqrt{2}",
+   "cut_off": false,
+   "note": "critique quotes boxed 11; own final is 11\\sqrt{2}",
+   "batch": 7
+  },
+  "h16f12e945": {
+   "status": "answer",
+   "answer": "\\frac{96}{17}",
+   "cut_off": false,
+   "note": "critique quotes other boxed values; own final is 96/17",
+   "batch": 7
+  },
+  "hd2f69d0ca": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-computation",
+   "batch": 7
+  },
+  "h6a294336c": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "h0b3e9dd1d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 7
+  },
+  "he84dcb4af": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "h52c423616": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "hc0ce8485d": {
+   "status": "answer",
+   "answer": "40",
+   "cut_off": false,
+   "note": "critique quotes boxed 8; own final is 40",
+   "batch": 7
+  },
+  "hccadfafac": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off inside long decimal expansion",
+   "batch": 7
+  },
+  "hcbc5b546c": {
+   "status": "answer",
+   "answer": "3",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "hcff8cfd00": {
+   "status": "answer",
+   "answer": "11",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h32a6d2416": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 7
+  },
+  "h401f0d2f8": {
+   "status": "answer",
+   "answer": "7",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "he904ec42b": {
+   "status": "answer",
+   "answer": "(8, -2)",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h551724f88": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 7
+  },
+  "h9a92b4d14": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "h8d47c0ac0": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "hb2e3f5448": {
+   "status": "answer",
+   "answer": "\\frac{270}{7}",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h14a0a901b": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "h74fc86172": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "h99af072cc": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off before final answer",
+   "batch": 7
+  },
+  "h5b17bd73b": {
+   "status": "answer",
+   "answer": "40",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h806b86f79": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "hbceea0589": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "degenerate garbage loop, cut off",
+   "batch": 7
+  },
+  "hfb443c68e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "hbfc97ae0e": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "he65ca8c9d": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "h20da2d636": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "cut off mid-enumeration",
+   "batch": 7
+  },
+  "hd06dcf9db": {
+   "status": "answer",
+   "answer": "9",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  },
+  "h25bba66ea": {
+   "status": "truncated",
+   "answer": null,
+   "cut_off": false,
+   "note": "repetition loop, cut off",
+   "batch": 7
+  },
+  "hc7c1cd85d": {
+   "status": "answer",
+   "answer": "12\\pi \\text{ inches per second}",
+   "cut_off": false,
+   "note": "units inside box",
+   "batch": 7
+  },
+  "h11e956ba3": {
+   "status": "answer",
+   "answer": "\\frac{180}{7}",
+   "cut_off": false,
+   "note": "",
+   "batch": 7
+  }
+ }
+}

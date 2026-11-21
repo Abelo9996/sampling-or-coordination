@@ -1,0 +1,23 @@
+% rev3: formatted copy of tables/latency_table.tex by scripts/emit_rev3_tables.py (separators, names).
+% Body copied from paper/latency_table.tex; serial and critical-path values equal paper/aaibd/revision_stats.json B,
+% p95 and CV recomputed from results/gsm8k_matrix.jsonl (per-item seed means). Caption rewritten.
+\begin{table}[t]\centering\small
+\caption{Cost tails and latency on GSM8K (Qwen2.5-3B, Apple M4). Tokens: mean
+total tokens per query; Serial: measured sum of per-call latencies (s); Par.:
+idealized critical path, workflow depth times mean per-call latency, a scheduling
+estimate rather than a measurement; p95 and CV: 95th percentile and coefficient of
+variation of per-item tokens.}
+\label{tab:latency}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+Config & Tokens & Serial\,s & Par.\,s & Depth & p95 tok & CV \\
+\midrule
+SA           & 386  & 9.1  & 9.1  & 1 & 561  & 0.25 \\
+SC $k{=}8$   & 3{,}224 & 79.0 & 9.9  & 1 & 4{,}494 & 0.25 \\
+debate       & 4{,}873 & 66.0 & 22.0 & 2 & 6{,}745 & 0.23 \\
+GE ($R{=}2$) & 3{,}348 & 44.9 & 44.9 & 5 & 5{,}413 & 0.33 \\
+HIER         & 2{,}238 & 24.6 & 14.7 & 3 & 3{,}730 & 0.32 \\
+\bottomrule
+\end{tabular}
+\end{table}

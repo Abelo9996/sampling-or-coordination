@@ -1,0 +1,284 @@
+{
+ "gsm8k:SC_k8-DEBATE_N3_R1": {
+  "a": "SC_k8",
+  "b": "DEBATE_N3_R1",
+  "delta": 8.125,
+  "lo": 1.25,
+  "hi": 15.0,
+  "p": 0.0178,
+  "holm": 0.0356,
+  "n": 80,
+  "status": "Holm"
+ },
+ "gsm8k:SC_k8-GE_R2": {
+  "a": "SC_k8",
+  "b": "GE_R2",
+  "delta": 6.25,
+  "lo": 0.625,
+  "hi": 12.5,
+  "p": 0.0456,
+  "holm": 0.0456,
+  "n": 80,
+  "status": "Holm"
+ },
+ "gsm8k:SC_k8-HIER_M3": {
+  "a": "SC_k8",
+  "b": "HIER_M3",
+  "delta": 17.5,
+  "lo": 10.0,
+  "hi": 25.624999999999996,
+  "p": 0.0,
+  "holm": 0.0,
+  "n": 80,
+  "status": "Holm"
+ },
+ "math500:SC_k8-DEBATE_N3_R1": {
+  "a": "SC_k8",
+  "b": "DEBATE_N3_R1",
+  "delta": 7.5,
+  "lo": -0.8333333333333334,
+  "hi": 15.833333333333332,
+  "p": 0.0958,
+  "holm": 0.0958,
+  "n": 60,
+  "status": "dir."
+ },
+ "math500:SC_k8-GE_R2": {
+  "a": "SC_k8",
+  "b": "GE_R2",
+  "delta": 9.166666666666666,
+  "lo": 1.6666666666666667,
+  "hi": 17.5,
+  "p": 0.026,
+  "holm": 0.052,
+  "n": 60,
+  "status": "dir."
+ },
+ "math500:SC_k8-HIER_M3": {
+  "a": "SC_k8",
+  "b": "HIER_M3",
+  "delta": 13.333333333333334,
+  "lo": 4.166666666666666,
+  "hi": 23.333333333333332,
+  "p": 0.0052,
+  "holm": 0.0156,
+  "n": 60,
+  "status": "Holm"
+ },
+ "mmlu:SC_k8-DEBATE_N3_R1": {
+  "a": "SC_k8",
+  "b": "DEBATE_N3_R1",
+  "delta": 2.5,
+  "lo": -6.25,
+  "hi": 11.25,
+  "p": 0.616,
+  "holm": 0.616,
+  "n": 80,
+  "status": "dir."
+ },
+ "mmlu:SC_k8-GE_R2": {
+  "a": "SC_k8",
+  "b": "GE_R2",
+  "delta": 6.25,
+  "lo": -2.5,
+  "hi": 15.0,
+  "p": 0.1784,
+  "holm": 0.4308,
+  "n": 80,
+  "status": "dir."
+ },
+ "mmlu:SC_k8-HIER_M3": {
+  "a": "SC_k8",
+  "b": "HIER_M3",
+  "delta": 8.125,
+  "lo": -2.5,
+  "hi": 18.75,
+  "p": 0.1436,
+  "holm": 0.4308,
+  "n": 80,
+  "status": "dir."
+ },
+ "mmlu_pro_eng:SC_k8-DEBATE_N3_R1": {
+  "a": "SC_k8",
+  "b": "DEBATE_N3_R1",
+  "delta": 8.666666666666668,
+  "lo": 2.0,
+  "hi": 15.333333333333332,
+  "p": 0.015,
+  "holm": 0.045,
+  "n": 150,
+  "status": "Holm"
+ },
+ "mmlu_pro_eng:SC_k8-GE_R2": {
+  "a": "SC_k8",
+  "b": "GE_R2",
+  "delta": 4.666666666666667,
+  "lo": -2.3333333333333335,
+  "hi": 11.666666666666666,
+  "p": 0.2044,
+  "holm": 0.4088,
+  "n": 150,
+  "status": "dir."
+ },
+ "mmlu_pro_eng:SC_k8-HIER_M3": {
+  "a": "SC_k8",
+  "b": "HIER_M3",
+  "delta": 3.3333333333333335,
+  "lo": -5.0,
+  "hi": 11.666666666666666,
+  "p": 0.4612,
+  "holm": 0.4612,
+  "n": 150,
+  "status": "dir."
+ },
+ "gsm8k:SC_k8-SA": {
+  "a": "SC_k8",
+  "b": "SA",
+  "n": 80,
+  "delta": 7.5,
+  "lo": 1.875,
+  "hi": 13.750000000000002,
+  "p": 0.0152,
+  "status": "sig."
+ },
+ "math500:SC_k8-SA": {
+  "a": "SC_k8",
+  "b": "SA",
+  "n": 60,
+  "delta": 8.333333333333332,
+  "lo": 0.0,
+  "hi": 17.5,
+  "p": 0.0722,
+  "status": "dir."
+ },
+ "mmlu:SC_k8-SA": {
+  "a": "SC_k8",
+  "b": "SA",
+  "n": 80,
+  "delta": 1.25,
+  "lo": -4.375,
+  "hi": 6.875000000000001,
+  "p": 0.7458,
+  "status": "dir."
+ },
+ "mmlu_pro_eng:SC_k8-SA": {
+  "a": "SC_k8",
+  "b": "SA",
+  "n": 150,
+  "delta": 7.666666666666666,
+  "lo": 1.3333333333333335,
+  "hi": 14.333333333333334,
+  "p": 0.0194,
+  "status": "sig."
+ },
+ "gsm8k:SC_k12-SC_k8": {
+  "a": "SC_k12",
+  "b": "SC_k8",
+  "n": 80,
+  "delta": -0.625,
+  "lo": -4.375,
+  "hi": 3.125,
+  "p": 0.8782,
+  "status": "dir."
+ },
+ "div:SC_k8-DEBATED": {
+  "a": "SC_k8",
+  "b": "DEBATED_N3_R1",
+  "n": 80,
+  "delta": 9.375,
+  "lo": 3.125,
+  "hi": 16.25,
+  "p": 0.0068,
+  "status": "sig."
+ },
+ "div:SC_k8-DEBATEH": {
+  "a": "SC_k8",
+  "b": "DEBATEH_N3_R1",
+  "n": 80,
+  "delta": 13.125,
+  "lo": 5.0,
+  "hi": 21.25,
+  "p": 0.0014,
+  "status": "sig."
+ },
+ "div:DEBATED-DEBATE": {
+  "a": "DEBATED_N3_R1",
+  "b": "DEBATE_N3_R1",
+  "n": 80,
+  "delta": -1.25,
+  "lo": -9.375,
+  "hi": 6.25,
+  "p": 0.7926,
+  "status": "dir."
+ },
+ "div:DEBATEH-DEBATE": {
+  "a": "DEBATEH_N3_R1",
+  "b": "DEBATE_N3_R1",
+  "n": 80,
+  "delta": -5.0,
+  "lo": -14.374999999999998,
+  "hi": 3.75,
+  "p": 0.2954,
+  "status": "dir."
+ },
+ "llama:SC_k8-DEBATE_N3_R1": {
+  "a": "SC_k8",
+  "b": "DEBATE_N3_R1",
+  "n": 50,
+  "delta": 24.0,
+  "lo": 12.0,
+  "hi": 36.0,
+  "p": 0.0,
+  "status": "sig."
+ },
+ "llama:SC_k8-GE_R2": {
+  "a": "SC_k8",
+  "b": "GE_R2",
+  "n": 50,
+  "delta": 38.0,
+  "lo": 26.0,
+  "hi": 52.0,
+  "p": 0.0,
+  "status": "sig."
+ },
+ "llama:SC_k8-HIER_M3": {
+  "a": "SC_k8",
+  "b": "HIER_M3",
+  "n": 50,
+  "delta": 24.0,
+  "lo": 12.0,
+  "hi": 38.0,
+  "p": 0.0,
+  "status": "sig."
+ },
+ "gemma:SC_k8-DEBATE_N3_R1": {
+  "a": "SC_k8",
+  "b": "DEBATE_N3_R1",
+  "n": 50,
+  "delta": 8.0,
+  "lo": -2.0,
+  "hi": 18.0,
+  "p": 0.2078,
+  "status": "dir."
+ },
+ "gemma:SC_k8-GE_R2": {
+  "a": "SC_k8",
+  "b": "GE_R2",
+  "n": 50,
+  "delta": 6.0,
+  "lo": -4.0,
+  "hi": 16.0,
+  "p": 0.3276,
+  "status": "dir."
+ },
+ "gemma:SC_k8-HIER_M3": {
+  "a": "SC_k8",
+  "b": "HIER_M3",
+  "n": 50,
+  "delta": 24.0,
+  "lo": 10.0,
+  "hi": 40.0,
+  "p": 0.0022,
+  "status": "sig."
+ }
+}

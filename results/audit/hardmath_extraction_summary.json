@@ -1,0 +1,1942 @@
+{
+ "inputs": [
+  "results/power/math500hard_qwen3b_s1.jsonl",
+  "results/power/math500hard_qwen3b_s1_sh0of2.jsonl",
+  "results/power/math500hard_qwen3b_s1_sh1of2.jsonl",
+  "results/power/math500hard_qwen3b_s2.jsonl",
+  "results/power/math500hard_qwen3b_s2_sh0of2.jsonl",
+  "results/power/math500hard_qwen3b_s2_sh1of2.jsonl",
+  "results/power/math500hard_qwen3b_s3.jsonl",
+  "results/power/math500hard_qwen3b_s3_sh0of2.jsonl",
+  "results/power/math500hard_qwen3b_s3_sh1of2.jsonl"
+ ],
+ "dedupe": "sorted path order, (config, item_id, seed), first occurrence wins",
+ "items": 262,
+ "reader": "AI assistant (Claude; eight reader instances, each given one contiguous slice of hardmath_extraction_cases.json: case id and call text only); blind to workflow, item, gold and harness reading at reading time; no human check",
+ "readings_file_sha256_at_analysis": "0d7f588f6da966ba024d988c6a7cecf3cf77c46f3e5fdf4b0b0e6bdcd8913fce",
+ "deciding_calls_rule": {
+  "SA": [
+   0
+  ],
+  "SC_k12": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "DEBATE_N3_R1": [
+   3,
+   4,
+   5
+  ],
+  "GE_R2": [
+   4
+  ],
+  "HIER_M3": [
+   4
+  ]
+ },
+ "flag_rule": "(a) no complete \\boxed{} (b) hit_cap (c) last \\boxed differs (math_score both directions) from an earlier \\boxed or from an 'answer is/:/=' or 'Final Answer' statement",
+ "flag_counts": {
+  "SA": {
+   "deciding": 262,
+   "flagged": 10,
+   "no_boxed": 10,
+   "cap": 10
+  },
+  "SC_k12": {
+   "deciding": 9432,
+   "flagged": 207,
+   "no_boxed": 144,
+   "cap": 144,
+   "stated_differs_answer_phrase": 44,
+   "stated_differs_earlier_boxed": 34
+  },
+  "DEBATE_N3_R1": {
+   "deciding": 2358,
+   "flagged": 200,
+   "stated_differs_earlier_boxed": 97,
+   "stated_differs_answer_phrase": 152,
+   "no_boxed": 22,
+   "cap": 24
+  },
+  "GE_R2": {
+   "deciding": 786,
+   "flagged": 28,
+   "no_boxed": 12,
+   "cap": 12,
+   "stated_differs_answer_phrase": 15,
+   "stated_differs_earlier_boxed": 2
+  },
+  "HIER_M3": {
+   "deciding": 786,
+   "flagged": 27,
+   "no_boxed": 17,
+   "cap": 14,
+   "stated_differs_answer_phrase": 4,
+   "stated_differs_earlier_boxed": 8
+  }
+ },
+ "read_plan": {
+  "mode": "all",
+  "n": 472
+ },
+ "replication": {
+  "calls_logged_extracted_ne_math_extract": 0,
+  "records_logged_pred_ne_recomputed_vote": 0
+ },
+ "equivalence_reading_vs_harness": "math_score(reading, extracted) or math_score(extracted, reading); both None = agree",
+ "rescoring": "flagged calls take the reading (status none/truncated -> None); unflagged calls keep the harness reading; vote = harness.topologies._majority over deciding calls (SC prefixes, DEBATE), single deciding call otherwise; scored with harness.tasks.math_score",
+ "accuracy_definition": "mean over the 262 items of the per-item mean over seeds (SA: seed 1), as in scripts/analyze_hard_math.py",
+ "per_workflow": {
+  "SA": {
+   "records": 262,
+   "logged_acc_pct": 45.42,
+   "rescored_acc_pct": 45.42,
+   "rescored_acc_cutoff_as_truncated_pct": 45.42,
+   "logged_acc_scorer_fixed_pct": 46.56,
+   "rescored_acc_scorer_fixed_pct": 46.56,
+   "logged_correct": 119,
+   "rescored_correct": 119,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 262,
+   "flagged_calls": 10,
+   "read_calls": 10,
+   "reading_differs_from_harness_calls": 0,
+   "cap_calls": 10,
+   "cap_share": 0.0382,
+   "no_final_answer_calls": 10,
+   "no_final_answer_share": 0.0382,
+   "reading_none_calls": 0,
+   "reading_truncated_calls": 10,
+   "reading_cut_off_after_answer_calls": 0,
+   "record_no_answer_logged": 10,
+   "record_no_answer_logged_share": 0.0382,
+   "record_no_answer_rescored": 10,
+   "record_no_answer_rescored_share": 0.0382,
+   "acc_among_answered_logged_pct": 47.22,
+   "acc_among_answered_rescored_pct": 47.22,
+   "disagreement_classes": {}
+  },
+  "SC_k2": {
+   "records": 786,
+   "logged_acc_pct": 46.06,
+   "rescored_acc_pct": 46.06,
+   "rescored_acc_cutoff_as_truncated_pct": 46.06,
+   "logged_acc_scorer_fixed_pct": 47.2,
+   "rescored_acc_scorer_fixed_pct": 47.2,
+   "logged_correct": 362,
+   "rescored_correct": 362,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 1572,
+   "flagged_calls": 38,
+   "read_calls": 38,
+   "reading_differs_from_harness_calls": 0,
+   "cap_calls": 26,
+   "cap_share": 0.0165,
+   "no_final_answer_calls": 26,
+   "no_final_answer_share": 0.0165,
+   "reading_none_calls": 0,
+   "reading_truncated_calls": 26,
+   "reading_cut_off_after_answer_calls": 0,
+   "record_no_answer_logged": 2,
+   "record_no_answer_logged_share": 0.0025,
+   "record_no_answer_rescored": 2,
+   "record_no_answer_rescored_share": 0.0025,
+   "acc_among_answered_logged_pct": 46.17,
+   "acc_among_answered_rescored_pct": 46.17,
+   "disagreement_classes": {}
+  },
+  "SC_k4": {
+   "records": 786,
+   "logged_acc_pct": 50.38,
+   "rescored_acc_pct": 50.38,
+   "rescored_acc_cutoff_as_truncated_pct": 50.38,
+   "logged_acc_scorer_fixed_pct": 51.53,
+   "rescored_acc_scorer_fixed_pct": 51.53,
+   "logged_correct": 396,
+   "rescored_correct": 396,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 3144,
+   "flagged_calls": 77,
+   "read_calls": 77,
+   "reading_differs_from_harness_calls": 2,
+   "cap_calls": 57,
+   "cap_share": 0.0181,
+   "no_final_answer_calls": 56,
+   "no_final_answer_share": 0.0178,
+   "reading_none_calls": 0,
+   "reading_truncated_calls": 56,
+   "reading_cut_off_after_answer_calls": 1,
+   "record_no_answer_logged": 0,
+   "record_no_answer_logged_share": 0.0,
+   "record_no_answer_rescored": 0,
+   "record_no_answer_rescored_share": 0.0,
+   "acc_among_answered_logged_pct": 50.38,
+   "acc_among_answered_rescored_pct": 50.38,
+   "disagreement_classes": {
+    "extractor_none_answer_stated": 1,
+    "extractor_nonfinal_expression": 1
+   }
+  },
+  "SC_k8": {
+   "records": 786,
+   "logged_acc_pct": 52.8,
+   "rescored_acc_pct": 52.8,
+   "rescored_acc_cutoff_as_truncated_pct": 52.8,
+   "logged_acc_scorer_fixed_pct": 53.56,
+   "rescored_acc_scorer_fixed_pct": 53.56,
+   "logged_correct": 415,
+   "rescored_correct": 415,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 6288,
+   "flagged_calls": 138,
+   "read_calls": 138,
+   "reading_differs_from_harness_calls": 5,
+   "cap_calls": 96,
+   "cap_share": 0.0153,
+   "no_final_answer_calls": 97,
+   "no_final_answer_share": 0.0154,
+   "reading_none_calls": 2,
+   "reading_truncated_calls": 95,
+   "reading_cut_off_after_answer_calls": 1,
+   "record_no_answer_logged": 0,
+   "record_no_answer_logged_share": 0.0,
+   "record_no_answer_rescored": 0,
+   "record_no_answer_rescored_share": 0.0,
+   "acc_among_answered_logged_pct": 52.8,
+   "acc_among_answered_rescored_pct": 52.8,
+   "disagreement_classes": {
+    "extractor_none_answer_stated": 1,
+    "extractor_nonfinal_expression": 2,
+    "no_answer_stated": 2
+   }
+  },
+  "SC_k12": {
+   "records": 786,
+   "logged_acc_pct": 54.33,
+   "rescored_acc_pct": 54.33,
+   "rescored_acc_cutoff_as_truncated_pct": 54.33,
+   "logged_acc_scorer_fixed_pct": 55.22,
+   "rescored_acc_scorer_fixed_pct": 55.22,
+   "logged_correct": 427,
+   "rescored_correct": 427,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 9432,
+   "flagged_calls": 207,
+   "read_calls": 207,
+   "reading_differs_from_harness_calls": 8,
+   "cap_calls": 144,
+   "cap_share": 0.0153,
+   "no_final_answer_calls": 146,
+   "no_final_answer_share": 0.0155,
+   "reading_none_calls": 4,
+   "reading_truncated_calls": 142,
+   "reading_cut_off_after_answer_calls": 2,
+   "record_no_answer_logged": 0,
+   "record_no_answer_logged_share": 0.0,
+   "record_no_answer_rescored": 0,
+   "record_no_answer_rescored_share": 0.0,
+   "acc_among_answered_logged_pct": 54.33,
+   "acc_among_answered_rescored_pct": 54.33,
+   "disagreement_classes": {
+    "extractor_none_answer_stated": 2,
+    "extractor_nonfinal_expression": 2,
+    "no_answer_stated": 4
+   }
+  },
+  "DEBATE_N3_R1": {
+   "records": 786,
+   "logged_acc_pct": 44.4,
+   "rescored_acc_pct": 44.4,
+   "rescored_acc_cutoff_as_truncated_pct": 44.4,
+   "logged_acc_scorer_fixed_pct": 45.42,
+   "rescored_acc_scorer_fixed_pct": 45.42,
+   "logged_correct": 349,
+   "rescored_correct": 349,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 2358,
+   "flagged_calls": 200,
+   "read_calls": 200,
+   "reading_differs_from_harness_calls": 4,
+   "cap_calls": 24,
+   "cap_share": 0.0102,
+   "no_final_answer_calls": 24,
+   "no_final_answer_share": 0.0102,
+   "reading_none_calls": 1,
+   "reading_truncated_calls": 23,
+   "reading_cut_off_after_answer_calls": 2,
+   "record_no_answer_logged": 3,
+   "record_no_answer_logged_share": 0.0038,
+   "record_no_answer_rescored": 3,
+   "record_no_answer_rescored_share": 0.0038,
+   "acc_among_answered_logged_pct": 44.57,
+   "acc_among_answered_rescored_pct": 44.57,
+   "disagreement_classes": {
+    "no_answer_stated": 1,
+    "extractor_nonfinal_expression": 2,
+    "truncated": 1
+   }
+  },
+  "GE_R2": {
+   "records": 786,
+   "logged_acc_pct": 45.42,
+   "rescored_acc_pct": 45.42,
+   "rescored_acc_cutoff_as_truncated_pct": 45.42,
+   "logged_acc_scorer_fixed_pct": 46.69,
+   "rescored_acc_scorer_fixed_pct": 46.69,
+   "logged_correct": 357,
+   "rescored_correct": 357,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 786,
+   "flagged_calls": 28,
+   "read_calls": 28,
+   "reading_differs_from_harness_calls": 1,
+   "cap_calls": 12,
+   "cap_share": 0.0153,
+   "no_final_answer_calls": 13,
+   "no_final_answer_share": 0.0165,
+   "reading_none_calls": 0,
+   "reading_truncated_calls": 13,
+   "reading_cut_off_after_answer_calls": 0,
+   "record_no_answer_logged": 12,
+   "record_no_answer_logged_share": 0.0153,
+   "record_no_answer_rescored": 13,
+   "record_no_answer_rescored_share": 0.0165,
+   "acc_among_answered_logged_pct": 46.12,
+   "acc_among_answered_rescored_pct": 46.18,
+   "disagreement_classes": {
+    "truncated": 1
+   }
+  },
+  "HIER_M3": {
+   "records": 786,
+   "logged_acc_pct": 42.11,
+   "rescored_acc_pct": 42.11,
+   "rescored_acc_cutoff_as_truncated_pct": 42.11,
+   "logged_acc_scorer_fixed_pct": 43.51,
+   "rescored_acc_scorer_fixed_pct": 43.51,
+   "logged_correct": 331,
+   "rescored_correct": 331,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 786,
+   "flagged_calls": 27,
+   "read_calls": 27,
+   "reading_differs_from_harness_calls": 2,
+   "cap_calls": 14,
+   "cap_share": 0.0178,
+   "no_final_answer_calls": 17,
+   "no_final_answer_share": 0.0216,
+   "reading_none_calls": 1,
+   "reading_truncated_calls": 16,
+   "reading_cut_off_after_answer_calls": 1,
+   "record_no_answer_logged": 16,
+   "record_no_answer_logged_share": 0.0204,
+   "record_no_answer_rescored": 17,
+   "record_no_answer_rescored_share": 0.0216,
+   "acc_among_answered_logged_pct": 42.99,
+   "acc_among_answered_rescored_pct": 43.04,
+   "disagreement_classes": {
+    "extractor_nonfinal_expression": 1,
+    "truncated": 1
+   }
+  }
+ },
+ "differences_points": {
+  "DEBATE_N3_R1_minus_SC_k8": {
+   "logged": -8.4,
+   "rescored": -8.4,
+   "rescored_cutoff_as_truncated": -8.4,
+   "logged_scorer_fixed": -8.14,
+   "rescored_scorer_fixed": -8.14
+  },
+  "DEBATE_N3_R1_minus_SC_k12": {
+   "logged": -9.92,
+   "rescored": -9.92,
+   "rescored_cutoff_as_truncated": -9.92,
+   "logged_scorer_fixed": -9.8,
+   "rescored_scorer_fixed": -9.8
+  },
+  "DEBATE_N3_R1_minus_SA": {
+   "logged": -1.02,
+   "rescored": -1.02,
+   "rescored_cutoff_as_truncated": -1.02,
+   "logged_scorer_fixed": -1.15,
+   "rescored_scorer_fixed": -1.15
+  },
+  "GE_R2_minus_SC_k8": {
+   "logged": -7.38,
+   "rescored": -7.38,
+   "rescored_cutoff_as_truncated": -7.38,
+   "logged_scorer_fixed": -6.87,
+   "rescored_scorer_fixed": -6.87
+  },
+  "GE_R2_minus_SC_k12": {
+   "logged": -8.91,
+   "rescored": -8.91,
+   "rescored_cutoff_as_truncated": -8.91,
+   "logged_scorer_fixed": -8.52,
+   "rescored_scorer_fixed": -8.52
+  },
+  "GE_R2_minus_SA": {
+   "logged": -0.0,
+   "rescored": -0.0,
+   "rescored_cutoff_as_truncated": -0.0,
+   "logged_scorer_fixed": 0.13,
+   "rescored_scorer_fixed": 0.13
+  },
+  "HIER_M3_minus_SC_k8": {
+   "logged": -10.69,
+   "rescored": -10.69,
+   "rescored_cutoff_as_truncated": -10.69,
+   "logged_scorer_fixed": -10.05,
+   "rescored_scorer_fixed": -10.05
+  },
+  "HIER_M3_minus_SC_k12": {
+   "logged": -12.21,
+   "rescored": -12.21,
+   "rescored_cutoff_as_truncated": -12.21,
+   "logged_scorer_fixed": -11.7,
+   "rescored_scorer_fixed": -11.7
+  },
+  "HIER_M3_minus_SA": {
+   "logged": -3.31,
+   "rescored": -3.31,
+   "rescored_cutoff_as_truncated": -3.31,
+   "logged_scorer_fixed": -3.05,
+   "rescored_scorer_fixed": -3.05
+  }
+ },
+ "scorer_problems": {
+  "SA": {
+   "records_logged_pred_equal_marked_wrong": 3,
+   "records_rescored_pred_equal_marked_wrong": 3,
+   "calls_equal_marked_wrong": 3
+  },
+  "SC_k2": {
+   "records_logged_pred_equal_marked_wrong": 9,
+   "records_rescored_pred_equal_marked_wrong": 9,
+   "calls_equal_marked_wrong": 16
+  },
+  "SC_k4": {
+   "records_logged_pred_equal_marked_wrong": 9,
+   "records_rescored_pred_equal_marked_wrong": 9,
+   "calls_equal_marked_wrong": 31
+  },
+  "SC_k8": {
+   "calls_equal_marked_wrong": 54,
+   "records_logged_pred_equal_marked_wrong": 6,
+   "records_rescored_pred_equal_marked_wrong": 6
+  },
+  "SC_k12": {
+   "calls_equal_marked_wrong": 79,
+   "records_logged_pred_equal_marked_wrong": 7,
+   "records_rescored_pred_equal_marked_wrong": 7
+  },
+  "DEBATE_N3_R1": {
+   "records_logged_pred_equal_marked_wrong": 8,
+   "records_rescored_pred_equal_marked_wrong": 8,
+   "calls_equal_marked_wrong": 24
+  },
+  "GE_R2": {
+   "records_logged_pred_equal_marked_wrong": 10,
+   "records_rescored_pred_equal_marked_wrong": 10,
+   "calls_equal_marked_wrong": 10
+  },
+  "HIER_M3": {
+   "records_logged_pred_equal_marked_wrong": 11,
+   "records_rescored_pred_equal_marked_wrong": 11,
+   "calls_equal_marked_wrong": 11
+  }
+ },
+ "scorer_problem_rules": {
+  "equal_but_marked_wrong": [
+   [
+    "math-163",
+    "\\frac{-35}{9}"
+   ],
+   [
+    "math-163",
+    "\\frac{1}{9} - 4 = \\frac{-35}{9}"
+   ],
+   [
+    "math-163",
+    "\\frac{1}{9} - 4 = \\frac{1 - 36}{9} = \\frac{-35}{9}"
+   ],
+   [
+    "math-23",
+    "5"
+   ],
+   [
+    "math-248",
+    "-\\mathbf{I}"
+   ],
+   [
+    "math-25",
+    "-2, 1"
+   ],
+   [
+    "math-273",
+    "1250 \\text{ dollars}"
+   ],
+   [
+    "math-313",
+    "12\\pi \\text{ inches per second}"
+   ],
+   [
+    "math-321",
+    "10 \\text{ meters}"
+   ],
+   [
+    "math-329",
+    "4 \\text{ inches/second}"
+   ],
+   [
+    "math-33",
+    "\\frac{2187}{5625}"
+   ],
+   [
+    "math-388",
+    "5.5"
+   ],
+   [
+    "math-408",
+    "\\begin{pmatrix} 0.2 \\\\ -3.6 \\end{pmatrix}"
+   ],
+   [
+    "math-408",
+    "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}"
+   ],
+   [
+    "math-441",
+    "550 \\text{ gallons}"
+   ],
+   [
+    "math-92",
+    "0.028672"
+   ],
+   [
+    "math-92",
+    "\\frac{2240}{78125}"
+   ]
+  ],
+  "unequal_but_marked_right": [],
+  "notes": {
+   "not_counted": "math-179: '-5x + 7y - 11z - 4 = 0' and '20x - 28y + 44z + 16 = 0' describe the gold plane but violate the form the question requires (A > 0, gcd 1); math-293 and math-431: interval endpoints open/closed differ from gold; math-238 '-4 and 1', math-391 '0 or 5': extra values; not counted",
+   "unequal_marked_right": "math_score True with differing normal forms: math-184, math-217, math-242, all equal (spacing, thousands separators, dollar sign); no tolerance case found"
+  }
+ },
+ "scorer_problem_calls": [
+  {
+   "config": "SA",
+   "item_id": "math-25",
+   "seed": 1,
+   "call_idx": 0,
+   "gold": "1,-2",
+   "stated": "-2, 1",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SA",
+   "item_id": "math-408",
+   "seed": 1,
+   "call_idx": 0,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SA",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 0,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 0,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 1,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 8,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 10,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 0,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 2,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 5,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 7,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 8,
+   "gold": "\\frac{448}{15625}",
+   "stated": "0.028672",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 9,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 10,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 3,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 5,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 9,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 11,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-441",
+   "seed": 3,
+   "call_idx": 5,
+   "gold": "550",
+   "stated": "550 \\text{ gallons}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-163",
+   "seed": 1,
+   "call_idx": 0,
+   "gold": "-\\frac{35}{9}",
+   "stated": "\\frac{-35}{9}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-163",
+   "seed": 1,
+   "call_idx": 1,
+   "gold": "-\\frac{35}{9}",
+   "stated": "\\frac{1}{9} - 4 = \\frac{-35}{9}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-163",
+   "seed": 3,
+   "call_idx": 0,
+   "gold": "-\\frac{35}{9}",
+   "stated": "\\frac{-35}{9}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-163",
+   "seed": 3,
+   "call_idx": 8,
+   "gold": "-\\frac{35}{9}",
+   "stated": "\\frac{-35}{9}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-163",
+   "seed": 3,
+   "call_idx": 11,
+   "gold": "-\\frac{35}{9}",
+   "stated": "\\frac{1}{9} - 4 = \\frac{1 - 36}{9} = \\frac{-35}{9}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-329",
+   "seed": 1,
+   "call_idx": 7,
+   "gold": "4",
+   "stated": "4 \\text{ inches/second}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-25",
+   "seed": 3,
+   "call_idx": 2,
+   "gold": "1,-2",
+   "stated": "-2, 1",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-321",
+   "seed": 3,
+   "call_idx": 1,
+   "gold": "10",
+   "stated": "10 \\text{ meters}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-321",
+   "seed": 3,
+   "call_idx": 6,
+   "gold": "10",
+   "stated": "10 \\text{ meters}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 5,
+   "gold": "12\\pi",
+   "stated": "12\\pi \\text{ inches per second}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-33",
+   "seed": 2,
+   "call_idx": 8,
+   "gold": "\\frac{243}{625}",
+   "stated": "\\frac{2187}{5625}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-408",
+   "seed": 1,
+   "call_idx": 0,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-408",
+   "seed": 2,
+   "call_idx": 3,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-408",
+   "seed": 3,
+   "call_idx": 1,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-408",
+   "seed": 3,
+   "call_idx": 8,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 1,
+   "call_idx": 2,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 1,
+   "call_idx": 3,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 1,
+   "call_idx": 7,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 1,
+   "call_idx": 9,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 0,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 2,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 3,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 7,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 11,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-388",
+   "seed": 3,
+   "call_idx": 2,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 0,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 1,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 2,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 3,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 5,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 6,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 7,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 8,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 9,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 10,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 11,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 0,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 1,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 2,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 3,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 5,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 6,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 7,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 8,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 9,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 10,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 11,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 0,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 1,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 2,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 3,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 5,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 6,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 7,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 8,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 9,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 10,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 11,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "SC_k12",
+   "item_id": "math-248",
+   "seed": 3,
+   "call_idx": 6,
+   "gold": "\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}",
+   "stated": "-\\mathbf{I}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 3,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 5,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 3,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 5,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 1,
+   "call_idx": 3,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 1,
+   "call_idx": 5,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 3,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 5,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 3,
+   "call_idx": 3,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-388",
+   "seed": 3,
+   "call_idx": 5,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 3,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 5,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 3,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 5,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 3,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 5,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-25",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "1,-2",
+   "stated": "-2, 1",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-408",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-408",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} \\frac{1}{5} \\\\ -\\frac{18}{5} \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-408",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} 0.2 \\\\ -3.6 \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "GE_R2",
+   "item_id": "math-23",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-92",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-92",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "\\frac{448}{15625}",
+   "stated": "\\frac{2240}{78125}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-25",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "1,-2",
+   "stated": "-2, 1",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-25",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "1,-2",
+   "stated": "-2, 1",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "12\\pi",
+   "stated": "12\\pi \\text{ inches per second}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-408",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+   "stated": "\\begin{pmatrix} 0.2 \\\\ -3.6 \\end{pmatrix}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-388",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-388",
+   "seed": 3,
+   "call_idx": 4,
+   "gold": "\\frac{11}{2}",
+   "stated": "5.5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-23",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-23",
+   "seed": 2,
+   "call_idx": 4,
+   "gold": "x=5",
+   "stated": "5",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "config": "HIER_M3",
+   "item_id": "math-273",
+   "seed": 1,
+   "call_idx": 4,
+   "gold": "1250",
+   "stated": "1250 \\text{ dollars}",
+   "verdict": "equal_but_marked_wrong"
+  }
+ ],
+ "flips": [],
+ "disagreements": [
+  {
+   "case": "h6dc86c1ad",
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-22",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "cap",
+    "stated_differs_earlier_boxed"
+   ],
+   "reading_status": "answer",
+   "reading": "5",
+   "reading_note": "garbled text; \\boxed{5} stated three times, then loop of empty \\boxed{} until cut off",
+   "harness_extracted": "",
+   "hit_cap": true,
+   "class": "extractor_nonfinal_expression"
+  },
+  {
+   "case": "h1e45d23f0",
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-311",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "cap"
+   ],
+   "reading_status": "truncated",
+   "reading": null,
+   "reading_note": "boxed 2 only in critique of agents; own solution cut off in repetition loop",
+   "harness_extracted": "2",
+   "hit_cap": true,
+   "class": "truncated"
+  },
+  {
+   "case": "h29b36d679",
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-421",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "reading_status": "none",
+   "reading": null,
+   "reading_note": "degenerate text; two inconsistent garbled boxes, no concrete answer",
+   "harness_extracted": "ax^3 + bx^2 + cx + 1 = . 12",
+   "hit_cap": false,
+   "class": "no_answer_stated"
+  },
+  {
+   "case": "h7d68be905",
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-479",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "reading_status": "answer",
+   "reading": "2",
+   "reading_note": "final answer boxed 2, then critique quotes agents' boxed 7",
+   "harness_extracted": "7",
+   "hit_cap": false,
+   "class": "extractor_nonfinal_expression"
+  },
+  {
+   "case": "ha3768f057",
+   "config": "GE_R2",
+   "item_id": "math-62",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "cap",
+    "stated_differs_earlier_boxed"
+   ],
+   "reading_status": "truncated",
+   "reading": null,
+   "reading_note": "degenerate text, empty boxes, cut off in repetition",
+   "harness_extracted": "",
+   "hit_cap": true,
+   "class": "truncated"
+  },
+  {
+   "case": "h4d9a9f4dd",
+   "config": "HIER_M3",
+   "item_id": "math-417",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed"
+   ],
+   "reading_status": "truncated",
+   "reading": null,
+   "reading_note": "degenerate text, ends inside unfinished box '\\boxed{1.\\boxed'",
+   "harness_extracted": "\\boxed{1",
+   "hit_cap": false,
+   "class": "truncated"
+  },
+  {
+   "case": "ha6c5cb039",
+   "config": "HIER_M3",
+   "item_id": "math-419",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "reading_status": "answer",
+   "reading": "\\begin{pmatrix} 0 \\\\ 30 \\\\ -30 \\end{pmatrix}",
+   "reading_note": "boxed vector stated as the answer; second box gives its magnitude 30\\sqrt{2}",
+   "harness_extracted": "30\\sqrt{2}",
+   "hit_cap": false,
+   "class": "extractor_nonfinal_expression"
+  },
+  {
+   "case": "hb02b312d1",
+   "config": "SC_k12",
+   "item_id": "math-188",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "reading_status": "answer",
+   "reading": "3",
+   "reading_note": "answer stated in prose ('The correct root is x = 3'), then cut off at the final '\\(' statement",
+   "harness_extracted": null,
+   "hit_cap": true,
+   "class": "extractor_none_answer_stated"
+  },
+  {
+   "case": "h56b56d618",
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 6,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "reading_status": "answer",
+   "reading": "12\\pi",
+   "reading_note": "two boxed values (12\\pi exact, 37.68 approx); prose commits to 12\\pi",
+   "harness_extracted": "37.68",
+   "hit_cap": false,
+   "class": "extractor_nonfinal_expression"
+  },
+  {
+   "case": "hca0ae8f0e",
+   "config": "SC_k12",
+   "item_id": "math-398",
+   "seed": 1,
+   "call_idx": 2,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "reading_status": "answer",
+   "reading": "Ian",
+   "reading_note": "three boxed earnings values; final answer stated in prose: Ian earns the most",
+   "harness_extracted": "39.36",
+   "hit_cap": false,
+   "class": "extractor_nonfinal_expression"
+  },
+  {
+   "case": "h42b5a56a9",
+   "config": "SC_k12",
+   "item_id": "math-408",
+   "seed": 1,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "reading_status": "answer",
+   "reading": "\\begin{pmatrix} -\\frac{133}{50} \\\\ \\frac{153}{50} \\end{pmatrix}",
+   "reading_note": "text ends inside the box at '\\end{pmatrix' (closing braces missing); matrix entries complete",
+   "harness_extracted": null,
+   "hit_cap": true,
+   "class": "extractor_none_answer_stated"
+  },
+  {
+   "case": "hddb430604",
+   "config": "SC_k12",
+   "item_id": "math-422",
+   "seed": 3,
+   "call_idx": 7,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "reading_status": "none",
+   "reading": null,
+   "reading_note": "two boxed sets offered as final with 'or'",
+   "harness_extracted": "\\{0, -\\sqrt{2}, -\\sqrt{2}\\}",
+   "hit_cap": false,
+   "class": "no_answer_stated"
+  },
+  {
+   "case": "h288512baf",
+   "config": "SC_k12",
+   "item_id": "math-78",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "reading_status": "none",
+   "reading": null,
+   "reading_note": "two boxed ordered pairs offered as final with 'or'",
+   "harness_extracted": "(-\\sqrt{6}, 2\\sqrt{6} - 3)",
+   "hit_cap": false,
+   "class": "no_answer_stated"
+  },
+  {
+   "case": "h1484ca33f",
+   "config": "SC_k12",
+   "item_id": "math-78",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "reading_status": "none",
+   "reading": null,
+   "reading_note": "two boxed ordered pairs joined by 'or'",
+   "harness_extracted": "(-1 - \\sqrt{2}, -1 + 2\\sqrt{2})",
+   "hit_cap": false,
+   "class": "no_answer_stated"
+  },
+  {
+   "case": "hcdf0147b9",
+   "config": "SC_k12",
+   "item_id": "math-78",
+   "seed": 2,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "reading_status": "none",
+   "reading": null,
+   "reading_note": "two boxed alternatives offered as final",
+   "harness_extracted": "\\left(-\\frac{\\sqrt{3}}{3}, -3\\right)",
+   "hit_cap": false,
+   "class": "no_answer_stated"
+  }
+ ]
+}

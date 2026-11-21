@@ -1,0 +1,7068 @@
+{
+ "meta": {
+  "script": "scripts/aaibd_revision_stats.py",
+  "B": 10000,
+  "rng_seed": 0,
+  "numpy": "2.0.2",
+  "python": "3.9.6"
+ },
+ "A": {
+  "method": "diff = sampling minus coordination. Accuracy in percentage points; tokens = mean total tokens per query. Item-level: paired bootstrap over items of seed-averaged values (stats.paired_test resampling). Hierarchical: stats.hier_paired_test (items, then seeds within item). 10,000 replicates, seed 0. Token CI: item-level paired bootstrap only. Holm: within each task block, over all sampling x coordination pairs, separately per bootstrap. Classification uses unadjusted 95% CIs; 'cheaper' = lower mean total tokens (point estimate), and every such token CI is reported.",
+  "tasks": {
+   "gsm8k_n80": {
+    "file": "gsm8k_matrix.jsonl",
+    "item_subset": null,
+    "configs": {
+     "SA": {
+      "acc_pct": 78.75,
+      "tokens": 385.7,
+      "n_items": 80,
+      "seeds": [
+       1
+      ]
+     },
+     "SC_k2": {
+      "acc_pct": 77.5,
+      "tokens": 804.725,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k4": {
+      "acc_pct": 82.5,
+      "tokens": 1612.51875,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k8": {
+      "acc_pct": 86.25,
+      "tokens": 3224.41875,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k12": {
+      "acc_pct": 85.625,
+      "tokens": 4844.00625,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N3_R1": {
+      "acc_pct": 78.125,
+      "tokens": 4872.63125,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GE_R2": {
+      "acc_pct": 80.0,
+      "tokens": 3347.6875,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIER_M3": {
+      "acc_pct": 68.75,
+      "tokens": 2237.53125,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N2_R1": {
+      "acc_pct": 75.0,
+      "tokens": 2557.425,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GE_R1": {
+      "acc_pct": 78.75,
+      "tokens": 1877.0875,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIER_M2": {
+      "acc_pct": 65.0,
+      "tokens": 1457.36875,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GES_R2": {
+      "acc_pct": 76.875,
+      "tokens": 2115.525,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIERC_M3": {
+      "acc_pct": 66.25,
+      "tokens": 2576.5375,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N3_R2": {
+      "acc_pct": 75.625,
+      "tokens": 8758.8125,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     }
+    },
+    "pairs": [
+     {
+      "sampling": "SA",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 0.625,
+       "lo_pp": -6.875000000000001,
+       "hi_pp": 7.5,
+       "p": 0.9052,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 0.625,
+       "lo_pp": -7.5,
+       "hi_pp": 8.75,
+       "p": 0.9308,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -4486.93125,
+      "tok_lo": -4716.52828125,
+      "tok_hi": -4266.171875,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": -1.25,
+       "lo_pp": -8.75,
+       "hi_pp": 6.25,
+       "p": 0.8194,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": -1.25,
+       "lo_pp": -9.375,
+       "hi_pp": 6.875000000000001,
+       "p": 0.8066,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -2961.9875,
+      "tok_lo": -3195.53859375,
+      "tok_hi": -2741.1623437499998,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 10.0,
+       "lo_pp": 2.5,
+       "hi_pp": 17.5,
+       "p": 0.0134,
+       "n_items": 80,
+       "p_holm": 0.268
+      },
+      "acc_hier": {
+       "diff_pp": 10.0,
+       "lo_pp": 1.875,
+       "hi_pp": 18.75,
+       "p": 0.0234,
+       "n_items": 80,
+       "p_holm": 0.5382
+      },
+      "tok_diff": -1851.83125,
+      "tok_lo": -2001.370625,
+      "tok_hi": -1712.435,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "DEBATE_N2_R1",
+      "acc_item": {
+       "diff_pp": 3.75,
+       "lo_pp": -5.0,
+       "hi_pp": 12.5,
+       "p": 0.4376,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 3.75,
+       "lo_pp": -5.625,
+       "hi_pp": 13.125,
+       "p": 0.4746,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -2171.725,
+      "tok_lo": -2286.1814062500002,
+      "tok_hi": -2063.69234375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "GE_R1",
+      "acc_item": {
+       "diff_pp": 0.0,
+       "lo_pp": -6.875000000000001,
+       "hi_pp": 6.875000000000001,
+       "p": 1.0,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 0.0,
+       "lo_pp": -6.875000000000001,
+       "hi_pp": 7.5,
+       "p": 1.0,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1491.3875,
+      "tok_lo": -1611.2801562500001,
+      "tok_hi": -1377.70625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "HIER_M2",
+      "acc_item": {
+       "diff_pp": 13.750000000000002,
+       "lo_pp": 5.0,
+       "hi_pp": 22.5,
+       "p": 0.0016,
+       "n_items": 80,
+       "p_holm": 0.046400000000000004
+      },
+      "acc_hier": {
+       "diff_pp": 13.750000000000002,
+       "lo_pp": 4.375,
+       "hi_pp": 23.125,
+       "p": 0.005,
+       "n_items": 80,
+       "p_holm": 0.165
+      },
+      "tok_diff": -1071.66875,
+      "tok_lo": -1151.04625,
+      "tok_hi": -996.8875,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "GES_R2",
+      "acc_item": {
+       "diff_pp": 1.875,
+       "lo_pp": -5.0,
+       "hi_pp": 8.75,
+       "p": 0.658,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 1.875,
+       "lo_pp": -5.625,
+       "hi_pp": 9.375,
+       "p": 0.675,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1729.825,
+      "tok_lo": -2000.96984375,
+      "tok_hi": -1475.31109375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "HIERC_M3",
+      "acc_item": {
+       "diff_pp": 12.5,
+       "lo_pp": 5.0,
+       "hi_pp": 20.625,
+       "p": 0.0004,
+       "n_items": 80,
+       "p_holm": 0.0132
+      },
+      "acc_hier": {
+       "diff_pp": 12.5,
+       "lo_pp": 4.375,
+       "hi_pp": 21.25,
+       "p": 0.002,
+       "n_items": 80,
+       "p_holm": 0.07200000000000001
+      },
+      "tok_diff": -2190.8375,
+      "tok_lo": -2389.3884375,
+      "tok_hi": -2008.4176562500002,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "DEBATE_N3_R2",
+      "acc_item": {
+       "diff_pp": 3.125,
+       "lo_pp": -3.75,
+       "hi_pp": 10.0,
+       "p": 0.4268,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 3.125,
+       "lo_pp": -4.375,
+       "hi_pp": 11.25,
+       "p": 0.4664,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -8373.1125,
+      "tok_lo": -8735.0728125,
+      "tok_hi": -8012.959218749999,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": -0.625,
+       "lo_pp": -6.875000000000001,
+       "hi_pp": 5.625,
+       "p": 0.9258,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": -0.625,
+       "lo_pp": -8.75,
+       "hi_pp": 6.875000000000001,
+       "p": 0.9156,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -4067.90625,
+      "tok_lo": -4272.44234375,
+      "tok_hi": -3869.7614062499997,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": -2.5,
+       "lo_pp": -7.5,
+       "hi_pp": 1.875,
+       "p": 0.3376,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": -2.5,
+       "lo_pp": -8.75,
+       "hi_pp": 3.75,
+       "p": 0.5004,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -2542.9625,
+      "tok_lo": -2755.8020312500003,
+      "tok_hi": -2343.1101562500003,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 8.75,
+       "lo_pp": 1.25,
+       "hi_pp": 16.25,
+       "p": 0.0204,
+       "n_items": 80,
+       "p_holm": 0.3672
+      },
+      "acc_hier": {
+       "diff_pp": 8.75,
+       "lo_pp": 0.0,
+       "hi_pp": 18.125,
+       "p": 0.0618,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1432.80625,
+      "tok_lo": -1565.13671875,
+      "tok_hi": -1309.6809375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "DEBATE_N2_R1",
+      "acc_item": {
+       "diff_pp": 2.5,
+       "lo_pp": -5.0,
+       "hi_pp": 9.375,
+       "p": 0.5438,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 2.5,
+       "lo_pp": -6.25,
+       "hi_pp": 11.25,
+       "p": 0.6292,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1752.7,
+      "tok_lo": -1844.75015625,
+      "tok_hi": -1665.8428125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "GE_R1",
+      "acc_item": {
+       "diff_pp": -1.25,
+       "lo_pp": -6.25,
+       "hi_pp": 3.125,
+       "p": 0.678,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": -1.25,
+       "lo_pp": -7.5,
+       "hi_pp": 5.0,
+       "p": 0.7568,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1072.3625,
+      "tok_lo": -1170.33765625,
+      "tok_hi": -979.84296875,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "HIER_M2",
+      "acc_item": {
+       "diff_pp": 12.5,
+       "lo_pp": 4.375,
+       "hi_pp": 20.625,
+       "p": 0.0022,
+       "n_items": 80,
+       "p_holm": 0.0616
+      },
+      "acc_hier": {
+       "diff_pp": 12.5,
+       "lo_pp": 3.125,
+       "hi_pp": 21.875,
+       "p": 0.0098,
+       "n_items": 80,
+       "p_holm": 0.2842
+      },
+      "tok_diff": -652.64375,
+      "tok_lo": -717.155,
+      "tok_hi": -593.005,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "GES_R2",
+      "acc_item": {
+       "diff_pp": 0.625,
+       "lo_pp": -2.5,
+       "hi_pp": 3.75,
+       "p": 0.8592,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 0.625,
+       "lo_pp": -5.0,
+       "hi_pp": 6.25,
+       "p": 0.9088,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1310.8,
+      "tok_lo": -1563.61859375,
+      "tok_hi": -1073.7914062500001,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "HIERC_M3",
+      "acc_item": {
+       "diff_pp": 11.25,
+       "lo_pp": 3.75,
+       "hi_pp": 19.375,
+       "p": 0.006,
+       "n_items": 80,
+       "p_holm": 0.132
+      },
+      "acc_hier": {
+       "diff_pp": 11.25,
+       "lo_pp": 1.875,
+       "hi_pp": 20.625,
+       "p": 0.02,
+       "n_items": 80,
+       "p_holm": 0.48
+      },
+      "tok_diff": -1771.8125,
+      "tok_lo": -1952.79046875,
+      "tok_hi": -1606.3765625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "DEBATE_N3_R2",
+      "acc_item": {
+       "diff_pp": 1.875,
+       "lo_pp": -5.0,
+       "hi_pp": 9.375,
+       "p": 0.6782,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 1.875,
+       "lo_pp": -6.875000000000001,
+       "hi_pp": 10.625,
+       "p": 0.729,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -7954.0875,
+      "tok_lo": -8297.20125,
+      "tok_hi": -7613.54484375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 4.375,
+       "lo_pp": -0.625,
+       "hi_pp": 10.0,
+       "p": 0.118,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 4.375,
+       "lo_pp": -2.5,
+       "hi_pp": 11.25,
+       "p": 0.274,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -3260.1125,
+      "tok_lo": -3425.50109375,
+      "tok_hi": -3098.5531250000004,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 2.5,
+       "lo_pp": -1.875,
+       "hi_pp": 7.5,
+       "p": 0.3428,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 2.5,
+       "lo_pp": -3.75,
+       "hi_pp": 8.75,
+       "p": 0.5012,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1735.16875,
+      "tok_lo": -1916.36890625,
+      "tok_hi": -1567.27640625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 13.750000000000002,
+       "lo_pp": 7.5,
+       "hi_pp": 20.0,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 13.750000000000002,
+       "lo_pp": 6.25,
+       "hi_pp": 21.875,
+       "p": 0.0002,
+       "n_items": 80,
+       "p_holm": 0.0074
+      },
+      "tok_diff": -625.0125,
+      "tok_lo": -734.40671875,
+      "tok_hi": -522.4996875,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "DEBATE_N2_R1",
+      "acc_item": {
+       "diff_pp": 7.5,
+       "lo_pp": 1.25,
+       "hi_pp": 13.750000000000002,
+       "p": 0.0226,
+       "n_items": 80,
+       "p_holm": 0.3842
+      },
+      "acc_hier": {
+       "diff_pp": 7.5,
+       "lo_pp": 0.0,
+       "hi_pp": 15.625,
+       "p": 0.0702,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -944.90625,
+      "tok_lo": -1006.2203125,
+      "tok_hi": -886.79953125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "GE_R1",
+      "acc_item": {
+       "diff_pp": 3.75,
+       "lo_pp": -0.625,
+       "hi_pp": 8.125,
+       "p": 0.1038,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 3.75,
+       "lo_pp": -1.875,
+       "hi_pp": 9.375,
+       "p": 0.2316,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -264.56875,
+      "tok_lo": -338.40765625,
+      "tok_hi": -194.62484375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "HIER_M2",
+      "acc_item": {
+       "diff_pp": 17.5,
+       "lo_pp": 10.625,
+       "hi_pp": 25.0,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 17.5,
+       "lo_pp": 9.375,
+       "hi_pp": 26.25,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": 155.15,
+      "tok_lo": 101.193125,
+      "tok_hi": 209.87609375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "GES_R2",
+      "acc_item": {
+       "diff_pp": 5.625,
+       "lo_pp": 1.875,
+       "hi_pp": 10.0,
+       "p": 0.003,
+       "n_items": 80,
+       "p_holm": 0.078
+      },
+      "acc_hier": {
+       "diff_pp": 5.625,
+       "lo_pp": 0.0,
+       "hi_pp": 11.25,
+       "p": 0.0612,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -503.00625,
+      "tok_lo": -739.328125,
+      "tok_hi": -281.9779687500002,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "HIERC_M3",
+      "acc_item": {
+       "diff_pp": 16.25,
+       "lo_pp": 10.0,
+       "hi_pp": 23.125,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 16.25,
+       "lo_pp": 8.125,
+       "hi_pp": 24.375,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": -964.01875,
+      "tok_lo": -1124.84921875,
+      "tok_hi": -815.6159375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "DEBATE_N3_R2",
+      "acc_item": {
+       "diff_pp": 6.875000000000001,
+       "lo_pp": 1.25,
+       "hi_pp": 12.5,
+       "p": 0.016,
+       "n_items": 80,
+       "p_holm": 0.304
+      },
+      "acc_hier": {
+       "diff_pp": 6.875000000000001,
+       "lo_pp": 0.0,
+       "hi_pp": 14.374999999999998,
+       "p": 0.0674,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -7146.29375,
+      "tok_lo": -7450.901562499999,
+      "tok_hi": -6843.245,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 8.125,
+       "lo_pp": 3.125,
+       "hi_pp": 13.125,
+       "p": 0.0004,
+       "n_items": 80,
+       "p_holm": 0.0132
+      },
+      "acc_hier": {
+       "diff_pp": 8.125,
+       "lo_pp": 1.25,
+       "hi_pp": 15.0,
+       "p": 0.0178,
+       "n_items": 80,
+       "p_holm": 0.4628
+      },
+      "tok_diff": -1648.2125,
+      "tok_lo": -1751.8884375,
+      "tok_hi": -1545.5679687499999,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 6.25,
+       "lo_pp": 1.875,
+       "hi_pp": 11.25,
+       "p": 0.0056,
+       "n_items": 80,
+       "p_holm": 0.1288
+      },
+      "acc_hier": {
+       "diff_pp": 6.25,
+       "lo_pp": 0.625,
+       "hi_pp": 12.5,
+       "p": 0.0456,
+       "n_items": 80,
+       "p_holm": 0.9576
+      },
+      "tok_diff": -123.26875,
+      "tok_lo": -259.87953125,
+      "tok_hi": 8.69921874999992,
+      "tok_p": 0.068
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 17.5,
+       "lo_pp": 11.25,
+       "hi_pp": 24.375,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 17.5,
+       "lo_pp": 10.0,
+       "hi_pp": 25.624999999999996,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": 986.8875,
+      "tok_lo": 874.57109375,
+      "tok_hi": 1099.69625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "DEBATE_N2_R1",
+      "acc_item": {
+       "diff_pp": 11.25,
+       "lo_pp": 5.0,
+       "hi_pp": 17.5,
+       "p": 0.0008,
+       "n_items": 80,
+       "p_holm": 0.024800000000000003
+      },
+      "acc_hier": {
+       "diff_pp": 11.25,
+       "lo_pp": 3.75,
+       "hi_pp": 19.375,
+       "p": 0.0052,
+       "n_items": 80,
+       "p_holm": 0.1664
+      },
+      "tok_diff": 666.99375,
+      "tok_lo": 590.2610937500001,
+      "tok_hi": 744.22015625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "GE_R1",
+      "acc_item": {
+       "diff_pp": 7.5,
+       "lo_pp": 2.5,
+       "hi_pp": 13.125,
+       "p": 0.0014,
+       "n_items": 80,
+       "p_holm": 0.042
+      },
+      "acc_hier": {
+       "diff_pp": 7.5,
+       "lo_pp": 1.875,
+       "hi_pp": 13.765624999999773,
+       "p": 0.0118,
+       "n_items": 80,
+       "p_holm": 0.3186
+      },
+      "tok_diff": 1347.33125,
+      "tok_lo": 1259.25578125,
+      "tok_hi": 1438.9637500000001,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "HIER_M2",
+      "acc_item": {
+       "diff_pp": 21.25,
+       "lo_pp": 13.750000000000002,
+       "hi_pp": 28.749999999999996,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 21.25,
+       "lo_pp": 12.5,
+       "hi_pp": 30.625000000000004,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": 1767.05,
+      "tok_lo": 1659.49890625,
+      "tok_hi": 1877.4990625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "GES_R2",
+      "acc_item": {
+       "diff_pp": 9.375,
+       "lo_pp": 4.375,
+       "hi_pp": 15.0,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 9.375,
+       "lo_pp": 3.125,
+       "hi_pp": 16.25,
+       "p": 0.0036,
+       "n_items": 80,
+       "p_holm": 0.1224
+      },
+      "tok_diff": 1108.89375,
+      "tok_lo": 895.938125,
+      "tok_hi": 1313.88203125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "HIERC_M3",
+      "acc_item": {
+       "diff_pp": 20.0,
+       "lo_pp": 12.5,
+       "hi_pp": 27.500000000000004,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 20.0,
+       "lo_pp": 11.25,
+       "hi_pp": 28.749999999999996,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": 647.88125,
+      "tok_lo": 499.70859375,
+      "tok_hi": 790.63859375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "DEBATE_N3_R2",
+      "acc_item": {
+       "diff_pp": 10.625,
+       "lo_pp": 5.0,
+       "hi_pp": 16.875,
+       "p": 0.0002,
+       "n_items": 80,
+       "p_holm": 0.0068000000000000005
+      },
+      "acc_hier": {
+       "diff_pp": 10.625,
+       "lo_pp": 3.75,
+       "hi_pp": 18.125,
+       "p": 0.0024,
+       "n_items": 80,
+       "p_holm": 0.08399999999999999
+      },
+      "tok_diff": -5534.39375,
+      "tok_lo": -5773.863125,
+      "tok_hi": -5294.649375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 7.5,
+       "lo_pp": 1.875,
+       "hi_pp": 13.125,
+       "p": 0.0072,
+       "n_items": 80,
+       "p_holm": 0.1512
+      },
+      "acc_hier": {
+       "diff_pp": 7.5,
+       "lo_pp": 0.625,
+       "hi_pp": 14.374999999999998,
+       "p": 0.0384,
+       "n_items": 80,
+       "p_holm": 0.8447999999999999
+      },
+      "tok_diff": -28.625,
+      "tok_lo": -121.68890625,
+      "tok_hi": 66.00031249999991,
+      "tok_p": 0.5626
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 5.625,
+       "lo_pp": 0.625,
+       "hi_pp": 11.25,
+       "p": 0.037,
+       "n_items": 80,
+       "p_holm": 0.592
+      },
+      "acc_hier": {
+       "diff_pp": 5.625,
+       "lo_pp": -0.625,
+       "hi_pp": 11.875,
+       "p": 0.0906,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": 1496.31875,
+      "tok_lo": 1360.8359375,
+      "tok_hi": 1638.5501562499999,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 16.875,
+       "lo_pp": 10.0,
+       "hi_pp": 23.75,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 16.875,
+       "lo_pp": 9.375,
+       "hi_pp": 25.0,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": 2606.475,
+      "tok_lo": 2436.9646875,
+      "tok_hi": 2782.338125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "DEBATE_N2_R1",
+      "acc_item": {
+       "diff_pp": 10.625,
+       "lo_pp": 3.75,
+       "hi_pp": 17.5,
+       "p": 0.0022,
+       "n_items": 80,
+       "p_holm": 0.0616
+      },
+      "acc_hier": {
+       "diff_pp": 10.625,
+       "lo_pp": 3.125,
+       "hi_pp": 18.75,
+       "p": 0.008,
+       "n_items": 80,
+       "p_holm": 0.24
+      },
+      "tok_diff": 2286.58125,
+      "tok_lo": 2134.00078125,
+      "tok_hi": 2444.53234375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "GE_R1",
+      "acc_item": {
+       "diff_pp": 6.875000000000001,
+       "lo_pp": 1.875,
+       "hi_pp": 12.5,
+       "p": 0.0038,
+       "n_items": 80,
+       "p_holm": 0.0912
+      },
+      "acc_hier": {
+       "diff_pp": 6.875000000000001,
+       "lo_pp": 1.25,
+       "hi_pp": 13.125,
+       "p": 0.0182,
+       "n_items": 80,
+       "p_holm": 0.4628
+      },
+      "tok_diff": 2966.91875,
+      "tok_lo": 2806.58984375,
+      "tok_hi": 3132.8828125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "HIER_M2",
+      "acc_item": {
+       "diff_pp": 20.625,
+       "lo_pp": 13.125,
+       "hi_pp": 28.125,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 20.625,
+       "lo_pp": 11.875,
+       "hi_pp": 30.0,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": 3386.6375,
+      "tok_lo": 3196.97953125,
+      "tok_hi": 3578.4009374999996,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "GES_R2",
+      "acc_item": {
+       "diff_pp": 8.75,
+       "lo_pp": 4.375,
+       "hi_pp": 14.374999999999998,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 8.75,
+       "lo_pp": 3.125,
+       "hi_pp": 15.0,
+       "p": 0.0058,
+       "n_items": 80,
+       "p_holm": 0.1798
+      },
+      "tok_diff": 2728.48125,
+      "tok_lo": 2504.69171875,
+      "tok_hi": 2952.35390625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "HIERC_M3",
+      "acc_item": {
+       "diff_pp": 19.375,
+       "lo_pp": 11.875,
+       "hi_pp": 27.500000000000004,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 19.375,
+       "lo_pp": 10.625,
+       "hi_pp": 28.125,
+       "p": 0.0,
+       "n_items": 80,
+       "p_holm": 0.0
+      },
+      "tok_diff": 2267.46875,
+      "tok_lo": 2080.660625,
+      "tok_hi": 2457.38765625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "DEBATE_N3_R2",
+      "acc_item": {
+       "diff_pp": 10.0,
+       "lo_pp": 3.125,
+       "hi_pp": 16.875,
+       "p": 0.0034,
+       "n_items": 80,
+       "p_holm": 0.08499999999999999
+      },
+      "acc_hier": {
+       "diff_pp": 10.0,
+       "lo_pp": 2.5,
+       "hi_pp": 18.125,
+       "p": 0.0108,
+       "n_items": 80,
+       "p_holm": 0.3024
+      },
+      "tok_diff": -3914.80625,
+      "tok_lo": -4101.43625,
+      "tok_hi": -3729.3376562500002,
+      "tok_p": 0.0
+     }
+    ],
+    "classification": {
+     "DEBATE_N3_R1": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8",
+       "SC_k12"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k8",
+        "SC_k12"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k8"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SC_k8",
+        "SC_k12"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k4",
+       "SC_k8",
+       "SC_k12"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     },
+     "GE_R2": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k8"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SC_k8"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SC_k4",
+       "SC_k8"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     },
+     "HIER_M3": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_accuracy_not_distinguishable": [],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k4"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SA",
+        "SC_k4"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SC_k2"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k4"
+       ]
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     },
+     "DEBATE_N2_R1": {
+      "role": "swept",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k4"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "verdict": "robustly dominated under item-level bootstrap only"
+     },
+     "GE_R1": {
+      "role": "swept",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k4"
+      ],
+      "verdict": "cheaper sampling config exists, accuracy not distinguishable"
+     },
+     "HIER_M2": {
+      "role": "swept",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SA",
+        "SC_k2"
+       ],
+       "cheaper_accuracy_not_distinguishable": [],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SA"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SA",
+        "SC_k2"
+       ],
+       "cheaper_accuracy_not_distinguishable": [],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     },
+     "GES_R2": {
+      "role": "repaired",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k4"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "verdict": "robustly dominated under item-level bootstrap only"
+     },
+     "HIERC_M3": {
+      "role": "repaired",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_accuracy_not_distinguishable": [],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SA",
+        "SC_k4"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_accuracy_not_distinguishable": [],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k4"
+       ]
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     },
+     "DEBATE_N3_R2": {
+      "role": "repaired",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8",
+       "SC_k12"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8",
+       "SC_k12"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k4",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k8"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SC_k8",
+        "SC_k12"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8",
+       "SC_k12"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     }
+    }
+   },
+   "math_1024": {
+    "file": "math500_trunc.jsonl",
+    "item_subset": null,
+    "configs": {
+     "SA": {
+      "acc_pct": 78.33333333333333,
+      "tokens": 539.7333333333333,
+      "n_items": 60,
+      "seeds": [
+       1
+      ]
+     },
+     "SC_k8": {
+      "acc_pct": 86.66666666666667,
+      "tokens": 4417.9,
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k12": {
+      "acc_pct": 91.66666666666666,
+      "tokens": 6659.133333333333,
+      "n_items": 60,
+      "seeds": [
+       1
+      ]
+     },
+     "DEBATE_N3_R1": {
+      "acc_pct": 79.16666666666666,
+      "tokens": 6888.541666666667,
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GE_R2": {
+      "acc_pct": 77.5,
+      "tokens": 5010.358333333334,
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIER_M3": {
+      "acc_pct": 73.33333333333333,
+      "tokens": 3837.133333333333,
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     }
+    },
+    "pairs": [
+     {
+      "sampling": "SA",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": -0.8333333333333334,
+       "lo_pp": -10.0,
+       "hi_pp": 8.333333333333332,
+       "p": 0.9338,
+       "n_items": 60,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": -0.8333333333333334,
+       "lo_pp": -10.833333333333334,
+       "hi_pp": 9.166666666666666,
+       "p": 0.9414,
+       "n_items": 60,
+       "p_holm": 1.0
+      },
+      "tok_diff": -6348.808333333333,
+      "tok_lo": -6749.220625,
+      "tok_hi": -5964.933541666666,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 0.8333333333333334,
+       "lo_pp": -8.333333333333332,
+       "hi_pp": 10.0,
+       "p": 0.92,
+       "n_items": 60,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 0.8333333333333334,
+       "lo_pp": -9.166666666666666,
+       "hi_pp": 10.833333333333334,
+       "p": 0.9296,
+       "n_items": 60,
+       "p_holm": 1.0
+      },
+      "tok_diff": -4470.625,
+      "tok_lo": -4837.8475,
+      "tok_hi": -4121.721666666667,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 5.0,
+       "lo_pp": -7.5,
+       "hi_pp": 16.666666666666664,
+       "p": 0.4492,
+       "n_items": 60,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 5.0,
+       "lo_pp": -8.333333333333332,
+       "hi_pp": 17.5,
+       "p": 0.4918,
+       "n_items": 60,
+       "p_holm": 1.0
+      },
+      "tok_diff": -3297.4,
+      "tok_lo": -3672.301875,
+      "tok_hi": -2936.0439583333336,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 7.5,
+       "lo_pp": 0.8333333333333334,
+       "hi_pp": 15.0,
+       "p": 0.0418,
+       "n_items": 60,
+       "p_holm": 0.1672
+      },
+      "acc_hier": {
+       "diff_pp": 7.5,
+       "lo_pp": -0.8333333333333334,
+       "hi_pp": 15.833333333333332,
+       "p": 0.0958,
+       "n_items": 60,
+       "p_holm": 0.3832
+      },
+      "tok_diff": -2470.641666666667,
+      "tok_lo": -2638.2591666666667,
+      "tok_hi": -2313.6056249999997,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 9.166666666666666,
+       "lo_pp": 3.3333333333333335,
+       "hi_pp": 15.833333333333332,
+       "p": 0.003,
+       "n_items": 60,
+       "p_holm": 0.015
+      },
+      "acc_hier": {
+       "diff_pp": 9.166666666666666,
+       "lo_pp": 1.6666666666666667,
+       "hi_pp": 17.5,
+       "p": 0.026,
+       "n_items": 60,
+       "p_holm": 0.13
+      },
+      "tok_diff": -592.4583333333334,
+      "tok_lo": -769.560625,
+      "tok_hi": -415.6891666666667,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 13.333333333333334,
+       "lo_pp": 5.833333333333333,
+       "hi_pp": 21.666666666666668,
+       "p": 0.0006,
+       "n_items": 60,
+       "p_holm": 0.0042
+      },
+      "acc_hier": {
+       "diff_pp": 13.333333333333334,
+       "lo_pp": 4.166666666666666,
+       "hi_pp": 23.333333333333332,
+       "p": 0.0052,
+       "n_items": 60,
+       "p_holm": 0.0312
+      },
+      "tok_diff": 580.7666666666667,
+      "tok_lo": 327.79020833333334,
+      "tok_hi": 834.7189583333331,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 12.5,
+       "lo_pp": 5.0,
+       "hi_pp": 20.833333333333336,
+       "p": 0.0006,
+       "n_items": 60,
+       "p_holm": 0.0042
+      },
+      "acc_hier": {
+       "diff_pp": 12.5,
+       "lo_pp": 4.166666666666666,
+       "hi_pp": 21.666666666666668,
+       "p": 0.0036,
+       "n_items": 60,
+       "p_holm": 0.0252
+      },
+      "tok_diff": -229.40833333333333,
+      "tok_lo": -409.56104166666665,
+      "tok_hi": -46.42333333333335,
+      "tok_p": 0.0118
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 14.166666666666666,
+       "lo_pp": 7.5,
+       "hi_pp": 21.666666666666668,
+       "p": 0.0,
+       "n_items": 60,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 14.166666666666666,
+       "lo_pp": 5.833333333333333,
+       "hi_pp": 22.5,
+       "p": 0.0004,
+       "n_items": 60,
+       "p_holm": 0.0032
+      },
+      "tok_diff": 1648.775,
+      "tok_lo": 1420.2241666666666,
+      "tok_hi": 1875.78375,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k12",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 18.333333333333332,
+       "lo_pp": 9.166666666666666,
+       "hi_pp": 27.500000000000004,
+       "p": 0.0,
+       "n_items": 60,
+       "p_holm": 0.0
+      },
+      "acc_hier": {
+       "diff_pp": 18.333333333333332,
+       "lo_pp": 8.333333333333332,
+       "hi_pp": 28.333333333333332,
+       "p": 0.0002,
+       "n_items": 60,
+       "p_holm": 0.0018000000000000002
+      },
+      "tok_diff": 2822.0,
+      "tok_lo": 2507.50375,
+      "tok_hi": 3132.6647916666666,
+      "tok_p": 0.0
+     }
+    ],
+    "classification": {
+     "DEBATE_N3_R1": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k8",
+       "SC_k12"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k8",
+       "SC_k12"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k8",
+        "SC_k12"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k12"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SC_k12"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k8"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k12"
+       ]
+      },
+      "point_estimate_dominated_by": [
+       "SC_k8",
+       "SC_k12"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     },
+     "GE_R2": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k8"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k8"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k8"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": [
+        "SC_k8"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SC_k8"
+       ],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k8"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     },
+     "HIER_M3": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA"
+      ],
+      "verdict": "cheaper sampling config exists, accuracy not distinguishable"
+     }
+    }
+   },
+   "mmlu_n80": {
+    "file": "mmlu_matrix.jsonl",
+    "item_subset": null,
+    "configs": {
+     "SA": {
+      "acc_pct": 65.0,
+      "tokens": 294.9125,
+      "n_items": 80,
+      "seeds": [
+       1
+      ]
+     },
+     "SC_k2": {
+      "acc_pct": 65.625,
+      "tokens": 598.08125,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k4": {
+      "acc_pct": 65.625,
+      "tokens": 1199.29375,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k8": {
+      "acc_pct": 66.25,
+      "tokens": 2394.09375,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N3_R1": {
+      "acc_pct": 63.74999999999999,
+      "tokens": 3188.725,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GE_R2": {
+      "acc_pct": 60.0,
+      "tokens": 2074.7375,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIER_M3": {
+      "acc_pct": 58.12500000000001,
+      "tokens": 2717.59375,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     }
+    },
+    "pairs": [
+     {
+      "sampling": "SA",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 1.25,
+       "lo_pp": -7.5,
+       "hi_pp": 10.0,
+       "p": 0.8422,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 1.25,
+       "lo_pp": -8.125,
+       "hi_pp": 10.625,
+       "p": 0.8432,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -2893.8125,
+      "tok_lo": -3176.8767187500002,
+      "tok_hi": -2627.2035937500004,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 5.0,
+       "lo_pp": -2.5,
+       "hi_pp": 12.515624999999773,
+       "p": 0.2264,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 5.0,
+       "lo_pp": -3.125,
+       "hi_pp": 13.125,
+       "p": 0.2624,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1779.825,
+      "tok_lo": -2021.7025,
+      "tok_hi": -1556.5046874999998,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SA",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 6.875000000000001,
+       "lo_pp": -3.125,
+       "hi_pp": 17.5,
+       "p": 0.2138,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 6.875000000000001,
+       "lo_pp": -3.75,
+       "hi_pp": 18.125,
+       "p": 0.2398,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -2422.68125,
+      "tok_lo": -2648.32609375,
+      "tok_hi": -2205.8625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 1.875,
+       "lo_pp": -6.875000000000001,
+       "hi_pp": 10.625,
+       "p": 0.7262,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 1.875,
+       "lo_pp": -8.125,
+       "hi_pp": 11.25,
+       "p": 0.7438,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -2590.64375,
+      "tok_lo": -2839.8125,
+      "tok_hi": -2357.27453125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 5.625,
+       "lo_pp": -1.875,
+       "hi_pp": 13.125,
+       "p": 0.166,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 5.625,
+       "lo_pp": -3.125,
+       "hi_pp": 14.374999999999998,
+       "p": 0.211,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1476.65625,
+      "tok_lo": -1684.5506249999999,
+      "tok_hi": -1283.8364062500002,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k2",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 7.5,
+       "lo_pp": -1.875,
+       "hi_pp": 17.5,
+       "p": 0.1466,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 7.5,
+       "lo_pp": -3.125,
+       "hi_pp": 18.125,
+       "p": 0.1798,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -2119.5125,
+      "tok_lo": -2323.106875,
+      "tok_hi": -1925.2354687499999,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 1.875,
+       "lo_pp": -6.25,
+       "hi_pp": 10.0,
+       "p": 0.7016,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 1.875,
+       "lo_pp": -7.5,
+       "hi_pp": 10.625,
+       "p": 0.7282,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1989.43125,
+      "tok_lo": -2169.99703125,
+      "tok_hi": -1820.751875,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 5.625,
+       "lo_pp": -1.875,
+       "hi_pp": 13.750000000000002,
+       "p": 0.168,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 5.625,
+       "lo_pp": -3.125,
+       "hi_pp": 14.374999999999998,
+       "p": 0.2136,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -875.44375,
+      "tok_lo": -1026.2693749999999,
+      "tok_hi": -735.3978125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k4",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 7.5,
+       "lo_pp": -1.875,
+       "hi_pp": 16.875,
+       "p": 0.1226,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 7.5,
+       "lo_pp": -2.5,
+       "hi_pp": 17.5,
+       "p": 0.1602,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -1518.3,
+      "tok_lo": -1694.43796875,
+      "tok_hi": -1345.6371875,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 2.5,
+       "lo_pp": -5.0,
+       "hi_pp": 10.0,
+       "p": 0.5542,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 2.5,
+       "lo_pp": -6.25,
+       "hi_pp": 11.25,
+       "p": 0.616,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -794.63125,
+      "tok_lo": -874.87671875,
+      "tok_hi": -716.12390625,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "GE_R2",
+      "acc_item": {
+       "diff_pp": 6.25,
+       "lo_pp": -1.25,
+       "hi_pp": 13.765624999999773,
+       "p": 0.1296,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 6.25,
+       "lo_pp": -2.5,
+       "hi_pp": 15.0,
+       "p": 0.1784,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": 319.35625,
+      "tok_lo": 206.98078124999998,
+      "tok_hi": 432.28875,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "HIER_M3",
+      "acc_item": {
+       "diff_pp": 8.125,
+       "lo_pp": -1.25,
+       "hi_pp": 18.125,
+       "p": 0.1084,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "acc_hier": {
+       "diff_pp": 8.125,
+       "lo_pp": -2.5,
+       "hi_pp": 18.75,
+       "p": 0.1436,
+       "n_items": 80,
+       "p_holm": 1.0
+      },
+      "tok_diff": -323.5,
+      "tok_lo": -526.3656249999999,
+      "tok_hi": -114.75281250000005,
+      "tok_p": 0.0024
+     }
+    ],
+    "classification": {
+     "DEBATE_N3_R1": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "verdict": "cheaper sampling config exists, accuracy not distinguishable"
+     },
+     "GE_R2": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4"
+      ],
+      "verdict": "cheaper sampling config exists, accuracy not distinguishable"
+     },
+     "HIER_M3": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SA",
+        "SC_k2",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "cheaper_but_significantly_less_accurate": [],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SA",
+       "SC_k2",
+       "SC_k4",
+       "SC_k8"
+      ],
+      "verdict": "cheaper sampling config exists, accuracy not distinguishable"
+     }
+    }
+   },
+   "gsm8k_n200": {
+    "file": "gsm8k_scale200.jsonl",
+    "item_subset": null,
+    "configs": {
+     "SA": {
+      "acc_pct": 76.0,
+      "tokens": 400.63,
+      "n_items": 200,
+      "seeds": [
+       1
+      ]
+     },
+     "SC_k8": {
+      "acc_pct": 86.0,
+      "tokens": 3224.32,
+      "n_items": 200,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N3_R1": {
+      "acc_pct": 81.5,
+      "tokens": 4865.8,
+      "n_items": 200,
+      "seeds": [
+       1,
+       2
+      ]
+     }
+    },
+    "pairs": [
+     {
+      "sampling": "SA",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": -5.5,
+       "lo_pp": -10.5,
+       "hi_pp": -0.75,
+       "p": 0.0306,
+       "n_items": 200,
+       "p_holm": 0.0306
+      },
+      "acc_hier": {
+       "diff_pp": -5.5,
+       "lo_pp": -10.75,
+       "hi_pp": -0.493750000000091,
+       "p": 0.039,
+       "n_items": 200,
+       "p_holm": 0.0488
+      },
+      "tok_diff": -4465.17,
+      "tok_lo": -4597.3086875,
+      "tok_hi": -4336.39225,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 4.5,
+       "lo_pp": 1.5,
+       "hi_pp": 7.5,
+       "p": 0.0046,
+       "n_items": 200,
+       "p_holm": 0.0092
+      },
+      "acc_hier": {
+       "diff_pp": 4.5,
+       "lo_pp": 0.75,
+       "hi_pp": 8.5,
+       "p": 0.0244,
+       "n_items": 200,
+       "p_holm": 0.0488
+      },
+      "tok_diff": -1641.48,
+      "tok_lo": -1703.3505624999998,
+      "tok_hi": -1582.5691875,
+      "tok_p": 0.0
+     }
+    ],
+    "classification": {
+     "DEBATE_N3_R1": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k8"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k8"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [
+        "SC_k8"
+       ],
+       "cheaper_accuracy_not_distinguishable": [],
+       "cheaper_but_significantly_less_accurate": [
+        "SA"
+       ],
+       "robust_after_holm": [
+        "SC_k8"
+       ]
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [
+        "SC_k8"
+       ],
+       "cheaper_accuracy_not_distinguishable": [],
+       "cheaper_but_significantly_less_accurate": [
+        "SA"
+       ],
+       "robust_after_holm": [
+        "SC_k8"
+       ]
+      },
+      "point_estimate_dominated_by": [
+       "SC_k8"
+      ],
+      "verdict": "robustly dominated (both bootstraps)"
+     }
+    }
+   },
+   "gsm8k_n200_run_on_the_80_matrix_items": {
+    "file": "gsm8k_scale200.jsonl",
+    "item_subset": "the 80 item_ids of gsm8k_matrix.jsonl",
+    "configs": {
+     "SA": {
+      "acc_pct": 72.5,
+      "tokens": 392.075,
+      "n_items": 80,
+      "seeds": [
+       1
+      ]
+     },
+     "SC_k8": {
+      "acc_pct": 84.375,
+      "tokens": 3183.33125,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N3_R1": {
+      "acc_pct": 81.25,
+      "tokens": 4842.7125,
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     }
+    },
+    "pairs": [
+     {
+      "sampling": "SA",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": -8.75,
+       "lo_pp": -16.875,
+       "hi_pp": -1.25,
+       "p": 0.029,
+       "n_items": 80,
+       "p_holm": 0.058
+      },
+      "acc_hier": {
+       "diff_pp": -8.75,
+       "lo_pp": -17.5,
+       "hi_pp": -0.625,
+       "p": 0.0448,
+       "n_items": 80,
+       "p_holm": 0.0896
+      },
+      "tok_diff": -4450.6375,
+      "tok_lo": -4663.184375,
+      "tok_hi": -4245.46078125,
+      "tok_p": 0.0
+     },
+     {
+      "sampling": "SC_k8",
+      "coord": "DEBATE_N3_R1",
+      "acc_item": {
+       "diff_pp": 3.125,
+       "lo_pp": -2.5,
+       "hi_pp": 8.125,
+       "p": 0.3024,
+       "n_items": 80,
+       "p_holm": 0.3024
+      },
+      "acc_hier": {
+       "diff_pp": 3.125,
+       "lo_pp": -3.125,
+       "hi_pp": 10.0,
+       "p": 0.3952,
+       "n_items": 80,
+       "p_holm": 0.3952
+      },
+      "tok_diff": -1659.38125,
+      "tok_lo": -1753.2409375,
+      "tok_hi": -1567.21796875,
+      "tok_p": 0.0
+     }
+    ],
+    "classification": {
+     "DEBATE_N3_R1": {
+      "role": "headline",
+      "cheaper_sampling": [
+       "SA",
+       "SC_k8"
+      ],
+      "cheaper_with_token_ci_excluding_0": [
+       "SA",
+       "SC_k8"
+      ],
+      "acc_item": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SC_k8"
+       ],
+       "cheaper_but_significantly_less_accurate": [
+        "SA"
+       ],
+       "robust_after_holm": []
+      },
+      "acc_hier": {
+       "robustly_dominated_by": [],
+       "cheaper_accuracy_not_distinguishable": [
+        "SC_k8"
+       ],
+       "cheaper_but_significantly_less_accurate": [
+        "SA"
+       ],
+       "robust_after_holm": []
+      },
+      "point_estimate_dominated_by": [
+       "SC_k8"
+      ],
+      "verdict": "cheaper sampling config exists, accuracy not distinguishable"
+     }
+    }
+   }
+  }
+ },
+ "B": {
+  "method": "Per-config means: per-record values averaged over seeds within item, then over items. latency_s is the logged sum of per-call wall-clock latencies (calls issued one at a time; client.cost_of). Price-weighted cost = in_tokens + r * out_tokens (r = output:input price ratio; r=1 equals total tokens). Idealized critical path = depth x (latency_s / n_calls) per record, depth: SA/SC 1, DEBATE R+1, HIER 3, GE/GES/HIERC n_calls; not a measurement. serial_latency_s_seed1_only uses seed-1 records' latency (accuracy still seed-averaged), because some seed-2 runs were made under machine load. Pareto frontier on point estimates (analyze.pareto_frontier: not dominated by a config with >= accuracy and <= cost, one strict).",
+  "tasks": {
+   "gsm8k_n80": {
+    "file": "gsm8k_matrix.jsonl",
+    "configs": {
+     "SA": {
+      "acc_pct": 78.75,
+      "total_tokens": 385.7,
+      "in_tokens": 128.6,
+      "out_tokens": 257.1,
+      "n_calls": 1.0,
+      "serial_latency_s": 9.107241249999998,
+      "serial_latency_s_per_seed": {
+       "1": 9.107241249999998
+      },
+      "critical_path_s_idealized": 9.107241249999998,
+      "price_weighted": {
+       "r1": 385.7,
+       "r3": 899.9,
+       "r4": 1157.0,
+       "r5": 1414.1
+      },
+      "n_items": 80,
+      "seeds": [
+       1
+      ]
+     },
+     "SC_k2": {
+      "acc_pct": 77.5,
+      "total_tokens": 804.725,
+      "in_tokens": 257.2,
+      "out_tokens": 547.525,
+      "n_calls": 2.0,
+      "serial_latency_s": 16.19683,
+      "serial_latency_s_per_seed": {
+       "1": 16.510377499999997,
+       "2": 15.883282500000002
+      },
+      "critical_path_s_idealized": 8.098415,
+      "price_weighted": {
+       "r1": 804.725,
+       "r3": 1899.775,
+       "r4": 2447.3,
+       "r5": 2994.825
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k4": {
+      "acc_pct": 82.5,
+      "total_tokens": 1612.51875,
+      "in_tokens": 514.4,
+      "out_tokens": 1098.11875,
+      "n_calls": 4.0,
+      "serial_latency_s": 39.075551250000004,
+      "serial_latency_s_per_seed": {
+       "1": 38.89157125,
+       "2": 39.25953125
+      },
+      "critical_path_s_idealized": 9.768887812500001,
+      "price_weighted": {
+       "r1": 1612.51875,
+       "r3": 3808.75625,
+       "r4": 4906.875,
+       "r5": 6004.99375
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k8": {
+      "acc_pct": 86.25,
+      "total_tokens": 3224.41875,
+      "in_tokens": 1028.8,
+      "out_tokens": 2195.61875,
+      "n_calls": 8.0,
+      "serial_latency_s": 78.986689375,
+      "serial_latency_s_per_seed": {
+       "1": 78.3672475,
+       "2": 79.60613125
+      },
+      "critical_path_s_idealized": 9.873336171875,
+      "price_weighted": {
+       "r1": 3224.41875,
+       "r3": 7615.65625,
+       "r4": 9811.275,
+       "r5": 12006.89375
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N3_R1": {
+      "acc_pct": 78.125,
+      "total_tokens": 4872.63125,
+      "in_tokens": 2913.38125,
+      "out_tokens": 1959.25,
+      "n_calls": 6.0,
+      "serial_latency_s": 65.97696499999999,
+      "serial_latency_s_per_seed": {
+       "1": 67.36665,
+       "2": 64.58728
+      },
+      "critical_path_s_idealized": 21.992321666666665,
+      "price_weighted": {
+       "r1": 4872.63125,
+       "r3": 8791.13125,
+       "r4": 10750.38125,
+       "r5": 12709.63125
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GE_R2": {
+      "acc_pct": 80.0,
+      "total_tokens": 3347.6875,
+      "in_tokens": 2149.08125,
+      "out_tokens": 1198.60625,
+      "n_calls": 5.0,
+      "serial_latency_s": 44.91782,
+      "serial_latency_s_per_seed": {
+       "1": 46.508545000000005,
+       "2": 43.327095
+      },
+      "critical_path_s_idealized": 44.91782,
+      "price_weighted": {
+       "r1": 3347.6875,
+       "r3": 5744.9,
+       "r4": 6943.50625,
+       "r5": 8142.1125
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIER_M3": {
+      "acc_pct": 68.75,
+      "total_tokens": 2237.53125,
+      "in_tokens": 1494.98125,
+      "out_tokens": 742.55,
+      "n_calls": 5.0,
+      "serial_latency_s": 24.55503375,
+      "serial_latency_s_per_seed": {
+       "1": 23.762575,
+       "2": 25.3474925
+      },
+      "critical_path_s_idealized": 14.733020250000001,
+      "price_weighted": {
+       "r1": 2237.53125,
+       "r3": 3722.63125,
+       "r4": 4465.18125,
+       "r5": 5207.73125
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k12": {
+      "acc_pct": 85.625,
+      "total_tokens": 4844.00625,
+      "in_tokens": 1543.2,
+      "out_tokens": 3300.80625,
+      "n_calls": 12.0,
+      "serial_latency_s": 136.999596875,
+      "serial_latency_s_per_seed": {
+       "1": 117.98561125,
+       "2": 156.01358249999998
+      },
+      "critical_path_s_idealized": 11.416633072916666,
+      "price_weighted": {
+       "r1": 4844.00625,
+       "r3": 11445.61875,
+       "r4": 14746.425,
+       "r5": 18047.23125
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N2_R1": {
+      "acc_pct": 75.0,
+      "total_tokens": 2557.425,
+      "in_tokens": 1247.74375,
+      "out_tokens": 1309.68125,
+      "n_calls": 4.0,
+      "serial_latency_s": 275.61741937500005,
+      "serial_latency_s_per_seed": {
+       "1": 48.3421525,
+       "2": 502.89268624999994
+      },
+      "critical_path_s_idealized": 137.80870968750003,
+      "price_weighted": {
+       "r1": 2557.425,
+       "r3": 5176.7875,
+       "r4": 6486.46875,
+       "r5": 7796.15
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GE_R1": {
+      "acc_pct": 78.75,
+      "total_tokens": 1877.0875,
+      "in_tokens": 1141.95,
+      "out_tokens": 735.1375,
+      "n_calls": 3.0,
+      "serial_latency_s": 26.208572500000002,
+      "serial_latency_s_per_seed": {
+       "1": 26.9249075,
+       "2": 25.492237499999998
+      },
+      "critical_path_s_idealized": 26.208572500000002,
+      "price_weighted": {
+       "r1": 1877.0875,
+       "r3": 3347.3625,
+       "r4": 4082.5,
+       "r5": 4817.6375
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIER_M2": {
+      "acc_pct": 65.0,
+      "total_tokens": 1457.36875,
+      "in_tokens": 974.275,
+      "out_tokens": 483.09375,
+      "n_calls": 4.0,
+      "serial_latency_s": 17.80432125,
+      "serial_latency_s_per_seed": {
+       "1": 17.8853825,
+       "2": 17.723260000000003
+      },
+      "critical_path_s_idealized": 13.3532409375,
+      "price_weighted": {
+       "r1": 1457.36875,
+       "r3": 2423.55625,
+       "r4": 2906.65,
+       "r5": 3389.74375
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GES_R2": {
+      "acc_pct": 76.875,
+      "total_tokens": 2115.525,
+      "in_tokens": 1307.59375,
+      "out_tokens": 807.93125,
+      "n_calls": 3.25,
+      "serial_latency_s": 113.48099375,
+      "serial_latency_s_per_seed": {
+       "1": 195.63363125,
+       "2": 31.328356250000002
+      },
+      "critical_path_s_idealized": 113.48099375,
+      "price_weighted": {
+       "r1": 2115.525,
+       "r3": 3731.3875,
+       "r4": 4539.31875,
+       "r5": 5347.25
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIERC_M3": {
+      "acc_pct": 66.25,
+      "total_tokens": 2576.5375,
+      "in_tokens": 2011.61875,
+      "out_tokens": 564.91875,
+      "n_calls": 5.0,
+      "serial_latency_s": 21.901253750000002,
+      "serial_latency_s_per_seed": {
+       "1": 21.588565,
+       "2": 22.2139425
+      },
+      "critical_path_s_idealized": 21.901253750000002,
+      "price_weighted": {
+       "r1": 2576.5375,
+       "r3": 3706.375,
+       "r4": 4271.29375,
+       "r5": 4836.2125
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "DEBATE_N3_R2": {
+      "acc_pct": 75.625,
+      "total_tokens": 8758.8125,
+      "in_tokens": 5673.99375,
+      "out_tokens": 3084.81875,
+      "n_calls": 9.0,
+      "serial_latency_s": 124.434704375,
+      "serial_latency_s_per_seed": {
+       "1": 123.6320125,
+       "2": 125.23739625
+      },
+      "critical_path_s_idealized": 41.478234791666665,
+      "price_weighted": {
+       "r1": 8758.8125,
+       "r3": 14928.45,
+       "r4": 18013.26875,
+       "r5": 21098.0875
+      },
+      "n_items": 80,
+      "seeds": [
+       1,
+       2
+      ]
+     }
+    },
+    "cost_models": {
+     "total_tokens": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.5111657721255964,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 1.0382297584642193,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.6939332088923004,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "output_tokens": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 0.892345267137111,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.5459081864736307,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.3381962373932177,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r1": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.5111657721255964,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 1.0382297584642193,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.6939332088923004,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r3": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.1543497974977535,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.7543539008867424,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.488812930599382,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r4": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.09571704493045,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.7077068219981604,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.45510713439384787,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r5": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.058527835311277,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.678119809297055,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.43372843621606966,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "serial_latency_s": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 0.8352921931790991,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.5686758155763001,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.31087559111917773,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "serial_latency_s_seed1_only": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 0.8596276142019662,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.5934691658016954,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.30322074282371597,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "critical_path_s_idealized": {
+      "frontier": {
+       "headline_set": [
+        "SC_k2",
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "all_configs": [
+        "SC_k2",
+        "SA",
+        "SC_k4",
+        "SC_k8"
+       ],
+       "focal_4": [
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 2.227445848477598,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 4.549406524610401,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 1.4922028373720533,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       }
+      }
+     }
+    },
+    "price_ratio_break_even_sc8": {
+     "DEBATE_N3_R1": {
+      "sc8_cheaper_iff_r_below": 7.973055871387395
+     },
+     "GE_R2": {
+      "sc8_cheaper_iff_r_below": 1.1236381188801547
+     },
+     "HIER_M3": {
+      "sc8_cheaper_iff_r_below": 0.32082532227053956
+     }
+    }
+   },
+   "math_1024": {
+    "file": "math500_trunc.jsonl",
+    "configs": {
+     "SA": {
+      "acc_pct": 78.33333333333333,
+      "total_tokens": 539.7333333333333,
+      "in_tokens": 98.71666666666667,
+      "out_tokens": 441.01666666666665,
+      "n_calls": 1.0,
+      "serial_latency_s": 13.136993333333333,
+      "serial_latency_s_per_seed": {
+       "1": 13.136993333333333
+      },
+      "critical_path_s_idealized": 13.136993333333333,
+      "price_weighted": {
+       "r1": 539.7333333333333,
+       "r3": 1421.7666666666667,
+       "r4": 1862.7833333333333,
+       "r5": 2303.8
+      },
+      "n_items": 60,
+      "seeds": [
+       1
+      ]
+     },
+     "SC_k8": {
+      "acc_pct": 86.66666666666667,
+      "total_tokens": 4417.9,
+      "in_tokens": 789.7333333333333,
+      "out_tokens": 3628.1666666666665,
+      "n_calls": 8.0,
+      "serial_latency_s": 136.460795,
+      "serial_latency_s_per_seed": {
+       "1": 133.97017333333335,
+       "2": 138.95141666666666
+      },
+      "critical_path_s_idealized": 17.057599375,
+      "price_weighted": {
+       "r1": 4417.9,
+       "r3": 11674.233333333334,
+       "r4": 15302.4,
+       "r5": 18930.566666666666
+      },
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "SC_k12": {
+      "acc_pct": 91.66666666666666,
+      "total_tokens": 6659.133333333333,
+      "in_tokens": 1184.6,
+      "out_tokens": 5474.533333333334,
+      "n_calls": 12.0,
+      "serial_latency_s": 195.35117499999998,
+      "serial_latency_s_per_seed": {
+       "1": 195.35117499999998
+      },
+      "critical_path_s_idealized": 16.279264583333333,
+      "price_weighted": {
+       "r1": 6659.133333333333,
+       "r3": 17608.2,
+       "r4": 23082.733333333334,
+       "r5": 28557.266666666666
+      },
+      "n_items": 60,
+      "seeds": [
+       1
+      ]
+     },
+     "DEBATE_N3_R1": {
+      "acc_pct": 79.16666666666666,
+      "total_tokens": 6888.541666666667,
+      "in_tokens": 3788.258333333333,
+      "out_tokens": 3100.2833333333333,
+      "n_calls": 6.0,
+      "serial_latency_s": 334.1154358333334,
+      "serial_latency_s_per_seed": {
+       "1": 112.60498166666667,
+       "2": 555.62589
+      },
+      "critical_path_s_idealized": 111.37181194444445,
+      "price_weighted": {
+       "r1": 6888.541666666667,
+       "r3": 13089.108333333334,
+       "r4": 16189.391666666666,
+       "r5": 19289.675
+      },
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "GE_R2": {
+      "acc_pct": 77.5,
+      "total_tokens": 5010.358333333334,
+      "in_tokens": 3009.1916666666666,
+      "out_tokens": 2001.1666666666667,
+      "n_calls": 5.0,
+      "serial_latency_s": 76.14446333333332,
+      "serial_latency_s_per_seed": {
+       "1": 72.38584833333334,
+       "2": 79.90307833333334
+      },
+      "critical_path_s_idealized": 76.14446333333332,
+      "price_weighted": {
+       "r1": 5010.358333333334,
+       "r3": 9012.691666666668,
+       "r4": 11013.858333333334,
+       "r5": 13015.025
+      },
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     },
+     "HIER_M3": {
+      "acc_pct": 73.33333333333333,
+      "total_tokens": 3837.133333333333,
+      "in_tokens": 2272.608333333333,
+      "out_tokens": 1564.525,
+      "n_calls": 5.0,
+      "serial_latency_s": 76.09208916666668,
+      "serial_latency_s_per_seed": {
+       "1": 59.932518333333334,
+       "2": 92.25166
+      },
+      "critical_path_s_idealized": 45.65525350000001,
+      "price_weighted": {
+       "r1": 3837.133333333333,
+       "r3": 6966.183333333333,
+       "r4": 8530.708333333334,
+       "r5": 10095.233333333334
+      },
+      "n_items": 60,
+      "seeds": [
+       1,
+       2
+      ]
+     }
+    },
+    "cost_models": {
+     "total_tokens": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.5592344024687448,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 1.1341040615073528,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.8685423693006482,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "output_tokens": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "DEBATE_N3_R1",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "DEBATE_N3_R1",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "DEBATE_N3_R1",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 0.8545041113510038,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.551564150856723,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.4312164086545087,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r1": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.5592344024687448,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 1.1341040615073528,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.8685423693006482,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r3": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.1211963954806454,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.7720157212322294,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.5967144166497729,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r4": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.0579642191203122,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.7197471202774293,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.5574751890770947,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "price_r5": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 1.0189697614264057,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.6875137564115883,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.5332768696834221,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "serial_latency_s": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 2.448435360744699,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.5579951614185842,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.5576113576552642,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "serial_latency_s_seed1_only": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "DEBATE_N3_R1",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "DEBATE_N3_R1",
+        "SC_k8",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "HIER_M3",
+        "GE_R2",
+        "DEBATE_N3_R1",
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 0.8405227735765662,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 0.5403131647312939,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 0.44735717542302694,
+        "sc8_cheaper": false,
+        "sc8_more_accurate": true
+       }
+      }
+     },
+     "critical_path_s_idealized": {
+      "frontier": {
+       "headline_set": [
+        "SA",
+        "SC_k12"
+       ],
+       "all_configs": [
+        "SA",
+        "SC_k12"
+       ],
+       "focal_4": [
+        "SC_k8"
+       ]
+      },
+      "sc8_vs_coord": {
+       "DEBATE_N3_R1": {
+        "coord_cost_over_sc8_cost": 6.529160961985863,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "GE_R2": {
+        "coord_cost_over_sc8_cost": 4.4639612913486735,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       },
+       "HIER_M3": {
+        "coord_cost_over_sc8_cost": 2.676534516745268,
+        "sc8_cheaper": true,
+        "sc8_more_accurate": true
+       }
+      }
+     }
+    },
+    "price_ratio_break_even_sc8": {
+     "DEBATE_N3_R1": {
+      "sc8_cheaper_iff_r_below": 5.680279733526979
+     },
+     "GE_R2": {
+      "sc8_cheaper_iff_r_below": 1.364141569350543
+     },
+     "HIER_M3": {
+      "sc8_cheaper_iff_r_below": 0.7185719419957437
+     }
+    }
+   }
+  }
+ },
+ "C": {
+  "definitions": {
+   "round0_majority": "harness/topologies.py:81-83 (trace hook) and harness/traces.py:44: init_answer = topologies._majority(round-0 answers of the N=3 agents); init_correct = task score of that answer. Round 0 = three independent calls on the unmodified task prompt, T=0.7, seeds seed*1000+a (a=0,1,2), i.e. the same prompt, temperature and seed derivation as SC samples 0..2 (topologies.py:54 vs 77).",
+   "final": "majority of the round-1 (post-critique) answers, same _majority (topologies.py:103); final_correct = its score.",
+   "ties": "_majority (topologies.py:17-28): None answers are dropped; votes are compared as str(answer) with no normalization; Counter.most_common(1) returns, among equally frequent answers, the one first seen in agent order (agent 0 first). All-None -> None (scored wrong). So a 1-1-1 split returns agent 0's answer (or the first non-None).",
+   "gsm8k_source_note": "GSM8K round-0 data come from results/mechanistic.jsonl, written by harness/mechanistic.py, a standalone re-implementation of the same prompts, seeds (seed 1) and _majority (mechanistic.py:9,29); it logs init_correct/final_correct only, not the per-agent answers or tokens."
+  },
+  "tasks": {
+   "gsm8k_n80": {
+    "source": "results/mechanistic.jsonl (wf=debate, seed 1, 640 cap)",
+    "n_items": 80,
+    "round0_majority_acc_pct": 81.25,
+    "final_acc_pct": 77.5,
+    "final_minus_round0": {
+     "diff_pp": -3.75,
+     "lo_pp": -12.5,
+     "hi_pp": 5.0,
+     "p": 0.477,
+     "n_items": 80
+    },
+    "fixed": 5,
+    "broken": 8,
+    "n_init_wrong": 15,
+    "n_init_right": 65,
+    "round0_all_distinct_answers_items(init_unique==3)": 11,
+    "round0_vote_wrong_with_a_correct_agent(correct_minority_init)": 7,
+    "round0_tokens_estimate_INFERRED": 1209.1570312499998,
+    "round0_tokens_note": "not logged in mechanistic.jsonl; INFERRED as 3/8 of matrix SC_k8 mean total tokens (identical prompt and sampling).",
+    "full_debate_tokens_matrix": 4872.63125,
+    "matrix_reference_same_items": {
+     "DEBATE_N3_R1_seed1_acc_pct": 73.75,
+     "SC_k8_seed1_acc_pct": 86.25,
+     "SC_k8_seedavg_acc_pct": 86.25,
+     "mechanistic_final_vs_matrix_debate_seed1_agreement_items": 67
+    }
+   },
+   "math_traces": {
+    "source": "results/math500_traces_mac.jsonl, results/math500_traces_mac_b.jsonl (wf=debate, seed 1, 1024 cap)",
+    "n_items": 80,
+    "round0_majority_acc_pct": 83.75,
+    "final_acc_pct": 78.75,
+    "final_minus_round0": {
+     "diff_pp": -5.0,
+     "lo_pp": -12.5,
+     "hi_pp": 1.25,
+     "p": 0.209,
+     "n_items": 80
+    },
+    "fixed": 2,
+    "broken": 6,
+    "n_init_wrong": 13,
+    "n_init_right": 67,
+    "files": [
+     "results/math500_traces_mac.jsonl",
+     "results/math500_traces_mac_b.jsonl"
+    ],
+    "cap": "1024 cap",
+    "init_final_answer_equals_recomputed_majority_mismatches": 0,
+    "round0_vote_type_counts": {
+     "clear": 66,
+     "tie": 14
+    },
+    "final_vote_type_counts": {
+     "clear": 80
+    },
+    "round0_vote_wrong_with_a_correct_agent": 4,
+    "round0_any_agent_correct_items": 71,
+    "round0_mean_single_agent_acc_pct": 76.25,
+    "round0_tokens_mean": 1739.9125,
+    "full_debate_tokens_mean": 7077.7,
+    "round0_items_where_equivalent_answers_split_the_vote_(str differs, _math_norm equal)": 4,
+    "matrix_reference_on_common_items": {
+     "matrix_file": "results/math500_trunc.jsonl",
+     "n_common": 60,
+     "round0_acc_pct_on_common": 86.66666666666667,
+     "final_acc_pct_on_common": 80.0,
+     "final_minus_round0_on_common": {
+      "diff_pp": -6.666666666666667,
+      "lo_pp": -15.0,
+      "hi_pp": 0.0,
+      "p": 0.134,
+      "n_items": 60
+     },
+     "matrix_DEBATE_N3_R1_seed1_acc_pct": 81.66666666666667,
+     "matrix_SC_k8_seedavg_acc_pct": 86.66666666666667,
+     "matrix_SA_acc_pct": 78.33333333333333
+    }
+   },
+   "mmlu_n80": {
+    "source": "results/mmlu_traces_mac.jsonl (wf=debate, seed 1, 640 cap)",
+    "n_items": 80,
+    "round0_majority_acc_pct": 62.5,
+    "final_acc_pct": 56.25,
+    "final_minus_round0": {
+     "diff_pp": -6.25,
+     "lo_pp": -15.0,
+     "hi_pp": 2.5,
+     "p": 0.206,
+     "n_items": 80
+    },
+    "fixed": 4,
+    "broken": 9,
+    "n_init_wrong": 30,
+    "n_init_right": 50,
+    "files": [
+     "results/mmlu_traces_mac.jsonl"
+    ],
+    "cap": "640 cap",
+    "init_final_answer_equals_recomputed_majority_mismatches": 0,
+    "round0_vote_type_counts": {
+     "clear": 78,
+     "tie": 2
+    },
+    "final_vote_type_counts": {
+     "clear": 78,
+     "tie": 1,
+     "all_none": 1
+    },
+    "round0_vote_wrong_with_a_correct_agent": 6,
+    "round0_any_agent_correct_items": 56,
+    "round0_mean_single_agent_acc_pct": 63.74999999999999,
+    "round0_tokens_mean": 912.45,
+    "full_debate_tokens_mean": 3232.2875,
+    "matrix_reference_on_common_items": {
+     "matrix_file": "results/mmlu_matrix.jsonl",
+     "n_common": 80,
+     "round0_acc_pct_on_common": 62.5,
+     "final_acc_pct_on_common": 56.25,
+     "final_minus_round0_on_common": {
+      "diff_pp": -6.25,
+      "lo_pp": -15.0,
+      "hi_pp": 2.5,
+      "p": 0.206,
+      "n_items": 80
+     },
+     "matrix_DEBATE_N3_R1_seed1_acc_pct": 65.0,
+     "matrix_SC_k8_seedavg_acc_pct": 66.25,
+     "matrix_SA_acc_pct": 65.0
+    }
+   },
+   "mmlu_pro_eng_n150_NOT_IN_AAIBD_PAPER": {
+    "source": "results/mmlu_pro_eng_traces_mac.jsonl, results/mmlu_pro_eng_traces_mac_b.jsonl (wf=debate, seed 1, 1024 cap)",
+    "n_items": 150,
+    "round0_majority_acc_pct": 32.0,
+    "final_acc_pct": 33.33333333333333,
+    "final_minus_round0": {
+     "diff_pp": 1.3333333333333335,
+     "lo_pp": -6.0,
+     "hi_pp": 8.666666666666668,
+     "p": 0.775,
+     "n_items": 150
+    },
+    "fixed": 18,
+    "broken": 16,
+    "n_init_wrong": 102,
+    "n_init_right": 48,
+    "files": [
+     "results/mmlu_pro_eng_traces_mac.jsonl",
+     "results/mmlu_pro_eng_traces_mac_b.jsonl"
+    ],
+    "cap": "1024 cap",
+    "init_final_answer_equals_recomputed_majority_mismatches": 0,
+    "round0_vote_type_counts": {
+     "clear": 112,
+     "tie": 38
+    },
+    "final_vote_type_counts": {
+     "clear": 146,
+     "tie": 4
+    },
+    "round0_vote_wrong_with_a_correct_agent": 25,
+    "round0_any_agent_correct_items": 73,
+    "round0_mean_single_agent_acc_pct": 29.333333333333332,
+    "round0_tokens_mean": 2426.9533333333334,
+    "full_debate_tokens_mean": 8068.166666666667
+   }
+  }
+ },
+ "D": {
+  "sa_vs_sc8": {
+   "gsm8k_n80": {
+    "file": "results/gsm8k_matrix.jsonl",
+    "base": "SA (seed 1, greedy)",
+    "other": "SC_k8",
+    "per_seed": {
+     "1": {
+      "n_items": 80,
+      "fixed(SA wrong, other right)": 7,
+      "broken(SA right, other wrong)": 1,
+      "net": 6,
+      "SA_right": 63,
+      "SA_wrong": 17
+     },
+     "2": {
+      "n_items": 80,
+      "fixed(SA wrong, other right)": 7,
+      "broken(SA right, other wrong)": 1,
+      "net": 6,
+      "SA_right": 63,
+      "SA_wrong": 17
+     }
+    },
+    "seed_avg": {
+     "fixed": 7.0,
+     "broken": 1.0
+    },
+    "broken_in_all_seeds": 0,
+    "broken_in_any_seed": 2,
+    "fixed_in_all_seeds": 4,
+    "fixed_in_any_seed": 10
+   },
+   "gsm8k_n200": {
+    "file": "results/gsm8k_scale200.jsonl",
+    "base": "SA (seed 1, greedy)",
+    "other": "SC_k8",
+    "per_seed": {
+     "1": {
+      "n_items": 200,
+      "fixed(SA wrong, other right)": 24,
+      "broken(SA right, other wrong)": 5,
+      "net": 19,
+      "SA_right": 152,
+      "SA_wrong": 48
+     },
+     "2": {
+      "n_items": 200,
+      "fixed(SA wrong, other right)": 25,
+      "broken(SA right, other wrong)": 4,
+      "net": 21,
+      "SA_right": 152,
+      "SA_wrong": 48
+     }
+    },
+    "seed_avg": {
+     "fixed": 24.5,
+     "broken": 4.5
+    },
+    "broken_in_all_seeds": 2,
+    "broken_in_any_seed": 7,
+    "fixed_in_all_seeds": 19,
+    "fixed_in_any_seed": 30
+   },
+   "math_1024": {
+    "file": "results/math500_trunc.jsonl",
+    "base": "SA (seed 1, greedy)",
+    "other": "SC_k8",
+    "per_seed": {
+     "1": {
+      "n_items": 60,
+      "fixed(SA wrong, other right)": 8,
+      "broken(SA right, other wrong)": 2,
+      "net": 6,
+      "SA_right": 47,
+      "SA_wrong": 13
+     },
+     "2": {
+      "n_items": 60,
+      "fixed(SA wrong, other right)": 5,
+      "broken(SA right, other wrong)": 1,
+      "net": 4,
+      "SA_right": 47,
+      "SA_wrong": 13
+     }
+    },
+    "seed_avg": {
+     "fixed": 6.5,
+     "broken": 1.5
+    },
+    "broken_in_all_seeds": 1,
+    "broken_in_any_seed": 2,
+    "fixed_in_all_seeds": 5,
+    "fixed_in_any_seed": 8
+   }
+  },
+  "sa_vs_debate_same_form": {
+   "gsm8k_n80": {
+    "file": "results/gsm8k_matrix.jsonl",
+    "base": "SA (seed 1, greedy)",
+    "other": "DEBATE_N3_R1",
+    "per_seed": {
+     "1": {
+      "n_items": 80,
+      "fixed(SA wrong, other right)": 6,
+      "broken(SA right, other wrong)": 10,
+      "net": -4,
+      "SA_right": 63,
+      "SA_wrong": 17
+     },
+     "2": {
+      "n_items": 80,
+      "fixed(SA wrong, other right)": 7,
+      "broken(SA right, other wrong)": 4,
+      "net": 3,
+      "SA_right": 63,
+      "SA_wrong": 17
+     }
+    },
+    "seed_avg": {
+     "fixed": 6.5,
+     "broken": 7.0
+    },
+    "broken_in_all_seeds": 1,
+    "broken_in_any_seed": 13,
+    "fixed_in_all_seeds": 3,
+    "fixed_in_any_seed": 10
+   },
+   "gsm8k_n200": {
+    "file": "results/gsm8k_scale200.jsonl",
+    "base": "SA (seed 1, greedy)",
+    "other": "DEBATE_N3_R1",
+    "per_seed": {
+     "1": {
+      "n_items": 200,
+      "fixed(SA wrong, other right)": 20,
+      "broken(SA right, other wrong)": 10,
+      "net": 10,
+      "SA_right": 152,
+      "SA_wrong": 48
+     },
+     "2": {
+      "n_items": 200,
+      "fixed(SA wrong, other right)": 23,
+      "broken(SA right, other wrong)": 11,
+      "net": 12,
+      "SA_right": 152,
+      "SA_wrong": 48
+     }
+    },
+    "seed_avg": {
+     "fixed": 21.5,
+     "broken": 10.5
+    },
+    "broken_in_all_seeds": 6,
+    "broken_in_any_seed": 15,
+    "fixed_in_all_seeds": 12,
+    "fixed_in_any_seed": 31
+   },
+   "math_1024": {
+    "file": "results/math500_trunc.jsonl",
+    "base": "SA (seed 1, greedy)",
+    "other": "DEBATE_N3_R1",
+    "per_seed": {
+     "1": {
+      "n_items": 60,
+      "fixed(SA wrong, other right)": 6,
+      "broken(SA right, other wrong)": 4,
+      "net": 2,
+      "SA_right": 47,
+      "SA_wrong": 13
+     },
+     "2": {
+      "n_items": 60,
+      "fixed(SA wrong, other right)": 5,
+      "broken(SA right, other wrong)": 6,
+      "net": -1,
+      "SA_right": 47,
+      "SA_wrong": 13
+     }
+    },
+    "seed_avg": {
+     "fixed": 5.5,
+     "broken": 5.0
+    },
+    "broken_in_all_seeds": 2,
+    "broken_in_any_seed": 8,
+    "fixed_in_all_seeds": 3,
+    "fixed_in_any_seed": 8
+   }
+  },
+  "per_sample": {
+   "sc_k8_per_sample_answers_logged": {
+    "gsm8k_matrix.jsonl": false,
+    "gsm8k_scale200.jsonl": false,
+    "math500_trunc.jsonl": false,
+    "math500_matrix.jsonl": false,
+    "mmlu_matrix.jsonl": false
+   },
+   "note": "SC_k8 per-sample answers are NOT logged: the matrix records have no 'raw' field (runner.run_config log_raw defaults to False, runner.py:50,74-75; scripts/run_matrix.py does not set it). Only the vote (pred) is stored. Two partial substitutes exist and are reported below: (i) the SC k=2 agreement probes (run with log_raw=True, scripts/run_probe.py), a separate re-run of SC_k2 seed 1, not the matrix records; (ii) debate round 0, a 3-sample majority vote with per-agent answers logged (section C).",
+   "sc_k2_probes": {
+    "gsm8k_probe.jsonl": {
+     "configs_seeds": [
+      [
+       "SC_k2",
+       1
+      ]
+     ],
+     "n_items": 80,
+     "samples_disagree": 17,
+     "vote_wrong_while_a_sample_correct": 4,
+     "pred_equal_to_matrix_SC_k2_seed1_pred": 75,
+     "cap": "640"
+    },
+    "gsm8k_probe_fresh.jsonl": {
+     "configs_seeds": [
+      [
+       "SC_k2",
+       7
+      ]
+     ],
+     "n_items": 80,
+     "samples_disagree": 19,
+     "vote_wrong_while_a_sample_correct": 9,
+     "pred_equal_to_matrix_SC_k2_seed1_pred": 59,
+     "cap": "640"
+    },
+    "math500_probe.jsonl": {
+     "configs_seeds": [
+      [
+       "SC_k2",
+       1
+      ]
+     ],
+     "n_items": 60,
+     "samples_disagree": 15,
+     "vote_wrong_while_a_sample_correct": 3,
+     "pred_equal_to_matrix_SC_k2_seed1_pred": 58,
+     "cap": "640"
+    },
+    "mmlu_probe.jsonl": {
+     "configs_seeds": [
+      [
+       "SC_k2",
+       1
+      ]
+     ],
+     "n_items": 80,
+     "samples_disagree": 12,
+     "vote_wrong_while_a_sample_correct": 4,
+     "pred_equal_to_matrix_SC_k2_seed1_pred": 77,
+     "cap": "640"
+    }
+   }
+  }
+ },
+ "E": {
+  "parse_failure_definition": "gsm8k_extract (harness/tasks.py:73-78) returns the number after 'answer is', else the LAST number anywhere in the text, else None. pred is JSON null exactly when the output contains no number at all; gsm8k_score (tasks.py:81-83) scores None as wrong. 'Parse failure' below = pred is None. Outputs that lack 'The answer is N.' but contain any number are parsed (fallback); raw texts are not logged, so the fallback cases cannot be separated from compliant outputs.",
+  "families": {
+   "llama3.2_3b": {
+    "file": "results/gsm8k_llama3b.jsonl",
+    "configs": {
+     "SA": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 70.0,
+      "acc_ci95": [
+       57.99999999999999,
+       82.0
+      ],
+      "total_tokens": 304.14,
+      "in_tokens": 120.08,
+      "out_tokens": 184.06,
+      "n_calls": 1.0,
+      "out_tokens_per_call": 184.06,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "SA_records_hitting_640_output_cap": 0
+     },
+     "SC_k2": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 74.0,
+      "acc_ci95": [
+       62.0,
+       86.0
+      ],
+      "total_tokens": 646.96,
+      "in_tokens": 240.16,
+      "out_tokens": 406.8,
+      "n_calls": 2.0,
+      "out_tokens_per_call": 203.4,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "SC_k4": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 80.0,
+      "acc_ci95": [
+       68.0,
+       90.0
+      ],
+      "total_tokens": 1301.12,
+      "in_tokens": 480.32,
+      "out_tokens": 820.8,
+      "n_calls": 4.0,
+      "out_tokens_per_call": 205.2,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "SC_k8": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 82.0,
+      "acc_ci95": [
+       72.0,
+       92.0
+      ],
+      "total_tokens": 2593.24,
+      "in_tokens": 960.64,
+      "out_tokens": 1632.6,
+      "n_calls": 8.0,
+      "out_tokens_per_call": 204.075,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "DEBATE_N3_R1": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 57.99999999999999,
+      "acc_ci95": [
+       44.0,
+       72.0
+      ],
+      "total_tokens": 4253.2,
+      "in_tokens": 2560.66,
+      "out_tokens": 1692.54,
+      "n_calls": 6.0,
+      "out_tokens_per_call": 282.09,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "wrong_split": {
+       "wrong": 21,
+       "unparseable": 0,
+       "parsed_but_wrong": 21,
+       "parsed_wrong_descriptors_INFERRED_heuristics": {
+        "pred_is_a_number_in_question": 7,
+        "SA_correct_on_item": 10,
+        "pred_equals_SA_pred": 2,
+        "pred_within_1pct_of_gold": 0
+       },
+       "examples_parsed_wrong_first8_by_item_index": [
+        {
+         "item_id": "gsm8k-23",
+         "pred": 0,
+         "gold": 8,
+         "SA_pred": 8
+        },
+        {
+         "item_id": "gsm8k-120",
+         "pred": 56,
+         "gold": 240,
+         "SA_pred": 260
+        },
+        {
+         "item_id": "gsm8k-175",
+         "pred": 9,
+         "gold": 15,
+         "SA_pred": 15
+        },
+        {
+         "item_id": "gsm8k-204",
+         "pred": 36,
+         "gold": 98,
+         "SA_pred": 98
+        },
+        {
+         "item_id": "gsm8k-259",
+         "pred": 84,
+         "gold": 168,
+         "SA_pred": 168
+        },
+        {
+         "item_id": "gsm8k-399",
+         "pred": 2,
+         "gold": 12,
+         "SA_pred": 2
+        },
+        {
+         "item_id": "gsm8k-554",
+         "pred": 60,
+         "gold": 54,
+         "SA_pred": 48
+        },
+        {
+         "item_id": "gsm8k-590",
+         "pred": 610,
+         "gold": 319,
+         "SA_pred": 408
+        }
+       ],
+       "items_SA_right_but_this_config_wrong": 10,
+       "items_SA_wrong_but_this_config_right": 4
+      }
+     },
+     "GE_R2": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 44.0,
+      "acc_ci95": [
+       30.0,
+       57.99999999999999
+      ],
+      "total_tokens": 3246.74,
+      "in_tokens": 2032.16,
+      "out_tokens": 1214.58,
+      "n_calls": 5.0,
+      "out_tokens_per_call": 242.91600000000003,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "wrong_split": {
+       "wrong": 28,
+       "unparseable": 0,
+       "parsed_but_wrong": 28,
+       "parsed_wrong_descriptors_INFERRED_heuristics": {
+        "pred_is_a_number_in_question": 11,
+        "SA_correct_on_item": 15,
+        "pred_equals_SA_pred": 0,
+        "pred_within_1pct_of_gold": 0
+       },
+       "examples_parsed_wrong_first8_by_item_index": [
+        {
+         "item_id": "gsm8k-23",
+         "pred": 10,
+         "gold": 8,
+         "SA_pred": 8
+        },
+        {
+         "item_id": "gsm8k-120",
+         "pred": 60,
+         "gold": 240,
+         "SA_pred": 260
+        },
+        {
+         "item_id": "gsm8k-175",
+         "pred": 13,
+         "gold": 15,
+         "SA_pred": 15
+        },
+        {
+         "item_id": "gsm8k-192",
+         "pred": 115,
+         "gold": 91,
+         "SA_pred": 91
+        },
+        {
+         "item_id": "gsm8k-197",
+         "pred": 4627,
+         "gold": 6277,
+         "SA_pred": 6277
+        },
+        {
+         "item_id": "gsm8k-399",
+         "pred": 7,
+         "gold": 12,
+         "SA_pred": 2
+        },
+        {
+         "item_id": "gsm8k-446",
+         "pred": 5,
+         "gold": 2,
+         "SA_pred": 50
+        },
+        {
+         "item_id": "gsm8k-465",
+         "pred": 25,
+         "gold": 30,
+         "SA_pred": 30
+        }
+       ],
+       "items_SA_right_but_this_config_wrong": 15,
+       "items_SA_wrong_but_this_config_right": 2
+      }
+     },
+     "HIER_M3": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 57.99999999999999,
+      "acc_ci95": [
+       44.0,
+       72.0
+      ],
+      "total_tokens": 1667.72,
+      "in_tokens": 1110.38,
+      "out_tokens": 557.34,
+      "n_calls": 5.0,
+      "out_tokens_per_call": 111.46800000000002,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "wrong_split": {
+       "wrong": 21,
+       "unparseable": 0,
+       "parsed_but_wrong": 21,
+       "parsed_wrong_descriptors_INFERRED_heuristics": {
+        "pred_is_a_number_in_question": 2,
+        "SA_correct_on_item": 12,
+        "pred_equals_SA_pred": 1,
+        "pred_within_1pct_of_gold": 2
+       },
+       "examples_parsed_wrong_first8_by_item_index": [
+        {
+         "item_id": "gsm8k-23",
+         "pred": 92,
+         "gold": 8,
+         "SA_pred": 8
+        },
+        {
+         "item_id": "gsm8k-175",
+         "pred": 32.88,
+         "gold": 15,
+         "SA_pred": 15
+        },
+        {
+         "item_id": "gsm8k-192",
+         "pred": 130,
+         "gold": 91,
+         "SA_pred": 91
+        },
+        {
+         "item_id": "gsm8k-265",
+         "pred": 409500,
+         "gold": 9500,
+         "SA_pred": 9500
+        },
+        {
+         "item_id": "gsm8k-474",
+         "pred": 3,
+         "gold": 80,
+         "SA_pred": 80
+        },
+        {
+         "item_id": "gsm8k-554",
+         "pred": 60,
+         "gold": 54,
+         "SA_pred": 48
+        },
+        {
+         "item_id": "gsm8k-590",
+         "pred": 316,
+         "gold": 319,
+         "SA_pred": 408
+        },
+        {
+         "item_id": "gsm8k-883",
+         "pred": 32.5,
+         "gold": 25,
+         "SA_pred": 25
+        }
+       ],
+       "items_SA_right_but_this_config_wrong": 12,
+       "items_SA_wrong_but_this_config_right": 6
+      }
+     }
+    }
+   },
+   "gemma2_2b": {
+    "file": "results/gsm8k_gemma2b.jsonl",
+    "configs": {
+     "SA": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 56.00000000000001,
+      "acc_ci95": [
+       42.0,
+       70.0
+      ],
+      "total_tokens": 281.34,
+      "in_tokens": 108.16,
+      "out_tokens": 173.18,
+      "n_calls": 1.0,
+      "out_tokens_per_call": 173.18,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "SA_records_hitting_640_output_cap": 0
+     },
+     "SC_k2": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 60.0,
+      "acc_ci95": [
+       46.0,
+       74.0
+      ],
+      "total_tokens": 567.34,
+      "in_tokens": 216.32,
+      "out_tokens": 351.02,
+      "n_calls": 2.0,
+      "out_tokens_per_call": 175.51,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "SC_k4": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 60.0,
+      "acc_ci95": [
+       46.0,
+       74.0
+      ],
+      "total_tokens": 1131.88,
+      "in_tokens": 432.64,
+      "out_tokens": 699.24,
+      "n_calls": 4.0,
+      "out_tokens_per_call": 174.81,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "SC_k8": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 62.0,
+      "acc_ci95": [
+       48.0,
+       76.0
+      ],
+      "total_tokens": 2259.22,
+      "in_tokens": 865.28,
+      "out_tokens": 1393.94,
+      "n_calls": 8.0,
+      "out_tokens_per_call": 174.2425,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "DEBATE_N3_R1": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 54.0,
+      "acc_ci95": [
+       40.0,
+       68.0
+      ],
+      "total_tokens": 3337.2,
+      "in_tokens": 2072.62,
+      "out_tokens": 1264.58,
+      "n_calls": 6.0,
+      "out_tokens_per_call": 210.76333333333332,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "wrong_split": {
+       "wrong": 23,
+       "unparseable": 0,
+       "parsed_but_wrong": 23,
+       "parsed_wrong_descriptors_INFERRED_heuristics": {
+        "pred_is_a_number_in_question": 1,
+        "SA_correct_on_item": 7,
+        "pred_equals_SA_pred": 8,
+        "pred_within_1pct_of_gold": 1
+       },
+       "examples_parsed_wrong_first8_by_item_index": [
+        {
+         "item_id": "gsm8k-175",
+         "pred": 5,
+         "gold": 15,
+         "SA_pred": 10
+        },
+        {
+         "item_id": "gsm8k-192",
+         "pred": 106,
+         "gold": 91,
+         "SA_pred": 56
+        },
+        {
+         "item_id": "gsm8k-197",
+         "pred": 6267,
+         "gold": 6277,
+         "SA_pred": 6267
+        },
+        {
+         "item_id": "gsm8k-259",
+         "pred": 124,
+         "gold": 168,
+         "SA_pred": 104
+        },
+        {
+         "item_id": "gsm8k-265",
+         "pred": 10500,
+         "gold": 9500,
+         "SA_pred": 10500
+        },
+        {
+         "item_id": "gsm8k-446",
+         "pred": 10,
+         "gold": 2,
+         "SA_pred": 10
+        },
+        {
+         "item_id": "gsm8k-590",
+         "pred": 220,
+         "gold": 319,
+         "SA_pred": 316
+        },
+        {
+         "item_id": "gsm8k-604",
+         "pred": 10,
+         "gold": 12,
+         "SA_pred": 10
+        }
+       ],
+       "items_SA_right_but_this_config_wrong": 7,
+       "items_SA_wrong_but_this_config_right": 6
+      }
+     },
+     "GE_R2": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 56.00000000000001,
+      "acc_ci95": [
+       42.0,
+       70.0
+      ],
+      "total_tokens": 2331.86,
+      "in_tokens": 1538.6,
+      "out_tokens": 793.26,
+      "n_calls": 5.0,
+      "out_tokens_per_call": 158.65200000000002,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "wrong_split": {
+       "wrong": 22,
+       "unparseable": 0,
+       "parsed_but_wrong": 22,
+       "parsed_wrong_descriptors_INFERRED_heuristics": {
+        "pred_is_a_number_in_question": 5,
+        "SA_correct_on_item": 6,
+        "pred_equals_SA_pred": 7,
+        "pred_within_1pct_of_gold": 0
+       },
+       "examples_parsed_wrong_first8_by_item_index": [
+        {
+         "item_id": "gsm8k-23",
+         "pred": 2,
+         "gold": 8,
+         "SA_pred": 8
+        },
+        {
+         "item_id": "gsm8k-175",
+         "pred": 200,
+         "gold": 15,
+         "SA_pred": 10
+        },
+        {
+         "item_id": "gsm8k-192",
+         "pred": 35,
+         "gold": 91,
+         "SA_pred": 56
+        },
+        {
+         "item_id": "gsm8k-259",
+         "pred": 96,
+         "gold": 168,
+         "SA_pred": 104
+        },
+        {
+         "item_id": "gsm8k-265",
+         "pred": 10500,
+         "gold": 9500,
+         "SA_pred": 10500
+        },
+        {
+         "item_id": "gsm8k-446",
+         "pred": 10,
+         "gold": 2,
+         "SA_pred": 10
+        },
+        {
+         "item_id": "gsm8k-554",
+         "pred": 86,
+         "gold": 54,
+         "SA_pred": 54
+        },
+        {
+         "item_id": "gsm8k-590",
+         "pred": 16,
+         "gold": 319,
+         "SA_pred": 316
+        }
+       ],
+       "items_SA_right_but_this_config_wrong": 6,
+       "items_SA_wrong_but_this_config_right": 6
+      }
+     },
+     "HIER_M3": {
+      "n_items": 50,
+      "n_records": 50,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 38.0,
+      "acc_ci95": [
+       26.0,
+       52.0
+      ],
+      "total_tokens": 1624.32,
+      "in_tokens": 1046.82,
+      "out_tokens": 577.5,
+      "n_calls": 5.0,
+      "out_tokens_per_call": 115.5,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "wrong_split": {
+       "wrong": 31,
+       "unparseable": 0,
+       "parsed_but_wrong": 31,
+       "parsed_wrong_descriptors_INFERRED_heuristics": {
+        "pred_is_a_number_in_question": 7,
+        "SA_correct_on_item": 12,
+        "pred_equals_SA_pred": 4,
+        "pred_within_1pct_of_gold": 1
+       },
+       "examples_parsed_wrong_first8_by_item_index": [
+        {
+         "item_id": "gsm8k-23",
+         "pred": 2,
+         "gold": 8,
+         "SA_pred": 8
+        },
+        {
+         "item_id": "gsm8k-175",
+         "pred": 6.25,
+         "gold": 15,
+         "SA_pred": 10
+        },
+        {
+         "item_id": "gsm8k-192",
+         "pred": 10,
+         "gold": 91,
+         "SA_pred": 56
+        },
+        {
+         "item_id": "gsm8k-197",
+         "pred": 6267,
+         "gold": 6277,
+         "SA_pred": 6267
+        },
+        {
+         "item_id": "gsm8k-259",
+         "pred": 96,
+         "gold": 168,
+         "SA_pred": 104
+        },
+        {
+         "item_id": "gsm8k-350",
+         "pred": 7.5,
+         "gold": 8,
+         "SA_pred": 7.5
+        },
+        {
+         "item_id": "gsm8k-446",
+         "pred": 10,
+         "gold": 2,
+         "SA_pred": 10
+        },
+        {
+         "item_id": "gsm8k-465",
+         "pred": 35,
+         "gold": 30,
+         "SA_pred": 30
+        }
+       ],
+       "items_SA_right_but_this_config_wrong": 12,
+       "items_SA_wrong_but_this_config_right": 3
+      }
+     }
+    }
+   },
+   "qwen2.5_3b_reference": {
+    "file": "results/gsm8k_matrix.jsonl",
+    "configs": {
+     "SA": {
+      "n_items": 80,
+      "n_records": 80,
+      "seeds": [
+       1
+      ],
+      "acc_pct": 78.75,
+      "acc_ci95": [
+       70.0,
+       87.5
+      ],
+      "total_tokens": 385.7,
+      "in_tokens": 128.6,
+      "out_tokens": 257.1,
+      "n_calls": 1.0,
+      "out_tokens_per_call": 257.1,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0,
+      "SA_records_hitting_640_output_cap": 0
+     },
+     "SC_k2": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 77.5,
+      "acc_ci95": [
+       69.375,
+       85.0
+      ],
+      "total_tokens": 804.725,
+      "in_tokens": 257.2,
+      "out_tokens": 547.525,
+      "n_calls": 2.0,
+      "out_tokens_per_call": 273.7625,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "SC_k4": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 82.5,
+      "acc_ci95": [
+       75.0,
+       89.375
+      ],
+      "total_tokens": 1612.51875,
+      "in_tokens": 514.4,
+      "out_tokens": 1098.11875,
+      "n_calls": 4.0,
+      "out_tokens_per_call": 274.5296875,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "SC_k8": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 86.25,
+      "acc_ci95": [
+       79.375,
+       92.5
+      ],
+      "total_tokens": 3224.41875,
+      "in_tokens": 1028.8,
+      "out_tokens": 2195.61875,
+      "n_calls": 8.0,
+      "out_tokens_per_call": 274.45234375,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "DEBATE_N3_R1": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 78.125,
+      "acc_ci95": [
+       70.625,
+       85.0
+      ],
+      "total_tokens": 4872.63125,
+      "in_tokens": 2913.38125,
+      "out_tokens": 1959.25,
+      "n_calls": 6.0,
+      "out_tokens_per_call": 326.5416666666667,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "GE_R2": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 80.0,
+      "acc_ci95": [
+       71.875,
+       87.5
+      ],
+      "total_tokens": 3347.6875,
+      "in_tokens": 2149.08125,
+      "out_tokens": 1198.60625,
+      "n_calls": 5.0,
+      "out_tokens_per_call": 239.72125,
+      "parse_fail_records": 1,
+      "parse_fail_rate_pct": 0.625
+     },
+     "HIER_M3": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 68.75,
+      "acc_ci95": [
+       59.375,
+       77.5
+      ],
+      "total_tokens": 2237.53125,
+      "in_tokens": 1494.98125,
+      "out_tokens": 742.55,
+      "n_calls": 5.0,
+      "out_tokens_per_call": 148.51,
+      "parse_fail_records": 8,
+      "parse_fail_rate_pct": 5.0
+     },
+     "SC_k12": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 85.625,
+      "acc_ci95": [
+       78.125,
+       92.5
+      ],
+      "total_tokens": 4844.00625,
+      "in_tokens": 1543.2,
+      "out_tokens": 3300.80625,
+      "n_calls": 12.0,
+      "out_tokens_per_call": 275.0671875,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "DEBATE_N2_R1": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 75.0,
+      "acc_ci95": [
+       66.875,
+       82.5
+      ],
+      "total_tokens": 2557.425,
+      "in_tokens": 1247.74375,
+      "out_tokens": 1309.68125,
+      "n_calls": 4.0,
+      "out_tokens_per_call": 327.4203125,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "GE_R1": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 78.75,
+      "acc_ci95": [
+       70.0,
+       86.875
+      ],
+      "total_tokens": 1877.0875,
+      "in_tokens": 1141.95,
+      "out_tokens": 735.1375,
+      "n_calls": 3.0,
+      "out_tokens_per_call": 245.04583333333335,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     },
+     "HIER_M2": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 65.0,
+      "acc_ci95": [
+       56.25,
+       73.75
+      ],
+      "total_tokens": 1457.36875,
+      "in_tokens": 974.275,
+      "out_tokens": 483.09375,
+      "n_calls": 4.0,
+      "out_tokens_per_call": 120.7734375,
+      "parse_fail_records": 16,
+      "parse_fail_rate_pct": 10.0
+     },
+     "GES_R2": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 76.875,
+      "acc_ci95": [
+       68.125,
+       85.0
+      ],
+      "total_tokens": 2115.525,
+      "in_tokens": 1307.59375,
+      "out_tokens": 807.93125,
+      "n_calls": 3.25,
+      "out_tokens_per_call": 224.446875,
+      "parse_fail_records": 1,
+      "parse_fail_rate_pct": 0.625
+     },
+     "HIERC_M3": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 66.25,
+      "acc_ci95": [
+       56.875,
+       75.0
+      ],
+      "total_tokens": 2576.5375,
+      "in_tokens": 2011.61875,
+      "out_tokens": 564.91875,
+      "n_calls": 5.0,
+      "out_tokens_per_call": 112.98375000000001,
+      "parse_fail_records": 9,
+      "parse_fail_rate_pct": 5.625
+     },
+     "DEBATE_N3_R2": {
+      "n_items": 80,
+      "n_records": 160,
+      "seeds": [
+       1,
+       2
+      ],
+      "acc_pct": 75.625,
+      "acc_ci95": [
+       66.875,
+       83.75
+      ],
+      "total_tokens": 8758.8125,
+      "in_tokens": 5673.99375,
+      "out_tokens": 3084.81875,
+      "n_calls": 9.0,
+      "out_tokens_per_call": 342.7576388888889,
+      "parse_fail_records": 0,
+      "parse_fail_rate_pct": 0.0
+     }
+    }
+   }
+  }
+ },
+ "F": {
+  "file": "harness/topologies.py",
+  "majority_function_lines": "17-28",
+  "code": "17: def _majority(answers):\n18:     \"\"\"Most common non-None answer; None if all None.\"\"\"\n19:     vals = [a for a in answers if a is not None]\n20:     if not vals:\n21:         return None\n22:     # Counter on stringified to handle floats/ints uniformly, map back.\n23:     c = Counter(str(v) for v in vals)\n24:     top = c.most_common(1)[0][0]\n25:     for v in vals:\n26:         if str(v) == top:\n27:             return v\n28:     return vals[0]",
+  "callers": {
+   "SC": "topologies.py:57",
+   "DEBATE final vote": "topologies.py:103",
+   "DEBATE round-0/round majorities (trace hook)": "topologies.py:83, 102"
+  },
+  "rule": "None answers are discarded; remaining answers are counted by str(); Counter.most_common(1) (CPython: heapq.nlargest with n=1 -> max(), which keeps the first maximal item in insertion order) returns the answer whose first occurrence is earliest among the tied answers. SC k=2 with two different answers -> sample 0 (seed*1000+0); with sample 0 unparseable -> sample 1. SC k=8 4-4 or 3-3-2 splits -> the tied answer seen first in sample order. DEBATE 1-1-1 -> agent 0's answer. No normalization before voting (MATH: equivalent answers in different strings are different votes).",
+  "unit_checks": {
+   "_majority(['7','9'])": "7",
+   "_majority([None,'9'])": "9",
+   "_majority(['a','b','c'])": "a",
+   "_majority(['a','b','b','a'])": "a",
+   "_majority(['b','a','a','b'])": "b",
+   "_majority([None,None,None])": null
+  },
+  "empirical_k2_probe_logs": {
+   "gsm8k_probe.jsonl": {
+    "k2_disagreements": 17,
+    "vote_equals_first_non_None_sample": 17
+   },
+   "gsm8k_probe_fresh.jsonl": {
+    "k2_disagreements": 19,
+    "vote_equals_first_non_None_sample": 19
+   },
+   "math500_probe.jsonl": {
+    "k2_disagreements": 15,
+    "vote_equals_first_non_None_sample": 15
+   },
+   "math500_probe_fresh.jsonl": {
+    "k2_disagreements": 15,
+    "vote_equals_first_non_None_sample": 15
+   },
+   "mmlu_probe.jsonl": {
+    "k2_disagreements": 12,
+    "vote_equals_first_non_None_sample": 12
+   },
+   "mmlu_probe_fresh.jsonl": {
+    "k2_disagreements": 12,
+    "vote_equals_first_non_None_sample": 12
+   }
+  }
+ },
+ "G": {
+  "4873": {
+   "value": 4872.63125,
+   "file": "results/gsm8k_matrix.jsonl",
+   "config": "DEBATE_N3_R1",
+   "n_items": 80,
+   "seeds": [
+    1,
+    2
+   ],
+   "tex_lines": [
+    211,
+    315,
+    357
+   ]
+  },
+  "4866": {
+   "value": 4865.8,
+   "file": "results/gsm8k_scale200.jsonl",
+   "config": "DEBATE_N3_R1",
+   "n_items": 200,
+   "seeds": [
+    1,
+    2
+   ],
+   "tex_lines": [
+    370
+   ]
+  },
+  "SC_k8_tokens_both_files": {
+   "n80": 3224.41875,
+   "n200": 3224.32
+  },
+  "relation": "the 200-item run contains the 80 matrix items but is a separate run (RTX 4060 per scripts/emit_throughput.py docstring): 16 of 400 overlapping (item, config, seed) records have identical total_tokens."
+ },
+ "H": {
+  "task_prompts": {
+   "gsm8k": "harness/tasks.py:67-70",
+   "math500": "harness/tasks.py:144-147",
+   "mmlu": "harness/tasks.py:193-196",
+   "format_reminders": "harness/tasks.py:486,489,492"
+  },
+  "SA_prompt": "harness/topologies.py:42 (task['prompt'](question)), greedy T=0",
+  "SC_prompt": "harness/topologies.py:51 (same task prompt as SA), T=0.7",
+  "debate_round0": "harness/topologies.py:71 (same task prompt as SA), T=0.7",
+  "debate_critique_prompt": "harness/topologies.py:91-93",
+  "ge_generator": "harness/topologies.py:221-223 (same task prompt as SA)",
+  "ge_critic_prompt": "harness/topologies.py:230-232 (raw question, NOT the task prompt)",
+  "ge_reviser_prompt": "harness/topologies.py:236-237 (task prompt + previous attempt + feedback + reminder)",
+  "hier_planner_prompt": "harness/topologies.py:317-319 (raw question, NOT the task prompt)",
+  "hier_executor_prompt": "harness/topologies.py:325-326 (raw question + plan)",
+  "hier_aggregator_prompt": "harness/topologies.py:332-334 (task prompt + executor outputs + reminder), T=0",
+  "repaired_variants": {
+   "GES critic/reviser": "harness/topologies.py:249-281",
+   "HIERC": "harness/topologies.py:282-311"
+  },
+  "system_prompt": "None set by the harness for any configuration: client.generate posts only {model, prompt, stream, options} to Ollama /api/generate (harness/client.py:39-44); the OpenAI-compatible backend sends the prompt as a single user message with no system prompt (harness/openai_client.py:16,157). Whatever template/default system text the Ollama model file applies is therefore identical across SA, SC and the coordination configs (INFERRED from the request body; the server-side template is not logged).",
+  "unused_constant": "FORMAT_REMINDER at harness/topologies.py:13 is defined but not referenced anywhere in harness/.",
+  "shared_with_SA": "Identical task prompt string task['prompt'](question) is the full prompt of SA, SC and debate round 0 and the GE draft; it is the prefix of the debate critique prompt, the GE reviser prompt and the HIER aggregator prompt. The GE critic and the HIER planner/executors use the raw question without the task instruction."
+ },
+ "I": {
+  "sources": [
+   "paper/eaai/CRITERION_PREDICTIVE.md (protocol, sections 3-6; post hoc section)",
+   "paper/eaai/sections/criterion.tex (lines 87-112)",
+   "paper/eaai/criterion_predictive_table.tex (per-cell, post hoc)",
+   "paper/eaai/criterion_splits_table.tex (pre-specified pilot-split results)",
+   "paper/eaai/criterion_pooled_table.tex",
+   "results/analysis/criterion_predictive.json (read only)"
+  ],
+  "preregistered_primary": {
+   "R1_plugin_decision_accuracy_pct": 66.44444444444446,
+   "never_adopt_pct": 74.8888888888889,
+   "always_adopt_pct": 25.11111111111111,
+   "best_constant_pct": 74.8888888888889,
+   "R2_transfer_pct": 82.83333333333334,
+   "R3_a_lt_half_screen_pct": 87.66666666666667,
+   "MAE_R1_pts": 6.259074074074074,
+   "MAE_R2_pts": 7.943629795062386,
+   "MAE_zero_predictor_pts": 3.8537037037037036,
+   "MAE_pooled_delta_pts": 4.164776847256686,
+   "corr_R1_median": -0.033901331599588184,
+   "corr_R2_median": 0.277296546280693,
+   "design": "9 cells x 200 pilot splits, pilot m=30, decision correct iff (adopt and holdout Delta>0) or (skip and Delta<=0)",
+   "blind_cells_only_R1_never_R3_pct": [
+    54.50000000000001,
+    63.583333333333336,
+    82.75
+   ]
+  },
+  "per_cell_posthoc": {
+   "gsm8k_qwen_debate": {
+    "n": 80,
+    "a": 0.8125,
+    "fix": 5,
+    "cor": 8,
+    "delta": -0.0375,
+    "delta_ci": [
+     -0.125,
+     0.05
+    ],
+    "mcnemar_p": 0.5810546875,
+    "screen_adopt": false,
+    "screen_right": true
+   },
+   "gsm8k_qwen_ge": {
+    "n": 80,
+    "a": 0.8125,
+    "fix": 1,
+    "cor": 4,
+    "delta": -0.0375,
+    "delta_ci": [
+     -0.1,
+     0.0125
+    ],
+    "mcnemar_p": 0.375,
+    "screen_adopt": false,
+    "screen_right": true
+   },
+   "gsm8k_llama70b_debate": {
+    "n": 80,
+    "a": 0.9125,
+    "fix": 0,
+    "cor": 1,
+    "delta": -0.0125,
+    "delta_ci": [
+     -0.0375,
+     0.0
+    ],
+    "mcnemar_p": 1.0,
+    "screen_adopt": false,
+    "screen_right": true
+   },
+   "math_qwen_debate": {
+    "n": 80,
+    "a": 0.8375,
+    "fix": 2,
+    "cor": 6,
+    "delta": -0.05,
+    "delta_ci": [
+     -0.125,
+     0.0125
+    ],
+    "mcnemar_p": 0.2890625,
+    "screen_adopt": false,
+    "screen_right": true
+   },
+   "math_qwen_ge": {
+    "n": 80,
+    "a": 0.7875,
+    "fix": 6,
+    "cor": 5,
+    "delta": 0.0125,
+    "delta_ci": [
+     -0.075,
+     0.0875
+    ],
+    "mcnemar_p": 1.0,
+    "screen_adopt": false,
+    "screen_right": false
+   },
+   "mmlu_qwen_debate": {
+    "n": 80,
+    "a": 0.625,
+    "fix": 4,
+    "cor": 9,
+    "delta": -0.0625,
+    "delta_ci": [
+     -0.15,
+     0.025
+    ],
+    "mcnemar_p": 0.266845703125,
+    "screen_adopt": false,
+    "screen_right": true
+   },
+   "mmlu_qwen_ge": {
+    "n": 80,
+    "a": 0.65,
+    "fix": 4,
+    "cor": 9,
+    "delta": -0.0625,
+    "delta_ci": [
+     -0.15,
+     0.025
+    ],
+    "mcnemar_p": 0.266845703125,
+    "screen_adopt": false,
+    "screen_right": true
+   },
+   "eng_qwen_debate": {
+    "n": 150,
+    "a": 0.32,
+    "fix": 18,
+    "cor": 16,
+    "delta": 0.013333333333333334,
+    "delta_ci": [
+     -0.06,
+     0.08666666666666667
+    ],
+    "mcnemar_p": 0.8641662404406816,
+    "screen_adopt": true,
+    "screen_right": true
+   },
+   "eng_qwen_ge": {
+    "n": 150,
+    "a": 0.3,
+    "fix": 17,
+    "cor": 13,
+    "delta": 0.02666666666666667,
+    "delta_ci": [
+     -0.04,
+     0.1
+    ],
+    "mcnemar_p": 0.584664711728692,
+    "screen_adopt": true,
+    "screen_right": true
+   }
+  },
+  "posthoc_summary": {
+   "screen_right": 8,
+   "misses": [
+    "math_qwen_ge"
+   ],
+   "cells_with_CI_excluding_0": 0,
+   "groups": {
+    "high_a": {
+     "cells": [
+      "gsm8k_qwen_debate",
+      "gsm8k_qwen_ge",
+      "gsm8k_llama70b_debate",
+      "math_qwen_debate",
+      "math_qwen_ge",
+      "mmlu_qwen_debate",
+      "mmlu_qwen_ge"
+     ],
+     "n": 560,
+     "delta": -0.03571428571428571,
+     "delta_ci": [
+      -0.06607142857142857,
+      -0.005357142857142857
+     ],
+     "n_neg": 6,
+     "n_pos": 1,
+     "n_ci_excl_0": 0
+    },
+    "low_a": {
+     "cells": [
+      "eng_qwen_debate",
+      "eng_qwen_ge"
+     ],
+     "n": 300,
+     "delta": 0.02,
+     "delta_ci": [
+      -0.03666666666666667,
+      0.07333333333333333
+     ],
+     "n_neg": 0,
+     "n_pos": 2,
+     "n_ci_excl_0": 0
+    },
+    "high_a_blind": {
+     "cells": [
+      "math_qwen_debate",
+      "math_qwen_ge",
+      "mmlu_qwen_debate",
+      "mmlu_qwen_ge"
+     ],
+     "n": 320,
+     "delta": -0.040625,
+     "delta_ci": [
+      -0.084375,
+      0.003125
+     ],
+     "n_neg": 3,
+     "n_pos": 1,
+     "n_ci_excl_0": 0
+    }
+   }
+  },
+  "math_levels": {
+   "loader": "harness/tasks.py:130-141 math_load(max_level=3): keeps MATH-500 rows with level <= 3",
+   "tasks_data/math500.jsonl_level_counts": {
+    "1": 43,
+    "2": 90,
+    "3": 105,
+    "4": 128,
+    "5": 134
+   },
+   "levels_of_items_in_each_results_math500_log": {
+    "math500_matrix.jsonl": {
+     "1": 7,
+     "2": 25,
+     "3": 28
+    },
+    "math500_trunc.jsonl": {
+     "1": 7,
+     "2": 25,
+     "3": 28
+    },
+    "math500_probe.jsonl": {
+     "1": 7,
+     "2": 25,
+     "3": 28
+    },
+    "math500_probe_fresh.jsonl": {
+     "1": 7,
+     "2": 25,
+     "3": 28
+    },
+    "math500_traces_mac.jsonl": {
+     "1": 7,
+     "2": 25,
+     "3": 23
+    },
+    "math500_traces_mac_b.jsonl": {
+     "1": 3,
+     "2": 7,
+     "3": 16
+    },
+    "smoke_math500.jsonl": {
+     "1": 4,
+     "2": 3,
+     "3": 5
+    }
+   },
+   "level_4_5_runs": "none: every item in the listed MATH logs is level 1-3; levels 4-5 exist only as unused rows of tasks_data/math500.jsonl"
+  }
+ },
+ "J": {
+  "method": "Recomputed from the logs with the paper's aggregation. 'reproduced' = equal after rounding to the printed precision (bootstrap CI bounds within 1 point for Table II, which uses B=2,000 as analyze.aggregate).",
+  "checks": [
+   {
+    "tex_line": "205-211",
+    "claim": "Table II gsm8k_matrix.jsonl SA",
+    "paper": [
+     78.8,
+     70,
+     88,
+     386
+    ],
+    "recomputed": [
+     78.75,
+     70.0,
+     87.5,
+     385.7
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II gsm8k_matrix.jsonl SC_k2",
+    "paper": [
+     77.5,
+     69,
+     85,
+     805
+    ],
+    "recomputed": [
+     77.5,
+     69.375,
+     85.0,
+     804.725
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II gsm8k_matrix.jsonl SC_k4",
+    "paper": [
+     82.5,
+     75,
+     89,
+     1613
+    ],
+    "recomputed": [
+     82.5,
+     75.625,
+     89.375,
+     1612.51875
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [76,89]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II gsm8k_matrix.jsonl SC_k8",
+    "paper": [
+     86.2,
+     79,
+     92,
+     3224
+    ],
+    "recomputed": [
+     86.25,
+     79.375,
+     92.5,
+     3224.41875
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II gsm8k_matrix.jsonl GE_R2",
+    "paper": [
+     80.0,
+     72,
+     88,
+     3348
+    ],
+    "recomputed": [
+     80.0,
+     71.875,
+     87.5,
+     3347.6875
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II gsm8k_matrix.jsonl HIER_M3",
+    "paper": [
+     68.8,
+     59,
+     78,
+     2238
+    ],
+    "recomputed": [
+     68.75,
+     60.0,
+     76.875,
+     2237.53125
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [60,77]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II gsm8k_matrix.jsonl DEBATE_N3_R1",
+    "paper": [
+     78.1,
+     71,
+     85,
+     4873
+    ],
+    "recomputed": [
+     78.125,
+     70.625,
+     85.0,
+     4872.63125
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II mmlu_matrix.jsonl SA",
+    "paper": [
+     65.0,
+     54,
+     75,
+     295
+    ],
+    "recomputed": [
+     65.0,
+     55.00000000000001,
+     75.0,
+     294.9125
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [55,75]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II mmlu_matrix.jsonl SC_k2",
+    "paper": [
+     65.6,
+     56,
+     76,
+     598
+    ],
+    "recomputed": [
+     65.625,
+     55.625,
+     75.625,
+     598.08125
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II mmlu_matrix.jsonl SC_k4",
+    "paper": [
+     65.6,
+     55,
+     76,
+     1199
+    ],
+    "recomputed": [
+     65.625,
+     55.625,
+     75.625,
+     1199.29375
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [56,76]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II mmlu_matrix.jsonl SC_k8",
+    "paper": [
+     66.2,
+     56,
+     76,
+     2394
+    ],
+    "recomputed": [
+     66.25,
+     56.25,
+     76.25,
+     2394.09375
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II mmlu_matrix.jsonl GE_R2",
+    "paper": [
+     60.0,
+     50,
+     69,
+     2075
+    ],
+    "recomputed": [
+     60.0,
+     50.0,
+     69.375,
+     2074.7375
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II mmlu_matrix.jsonl HIER_M3",
+    "paper": [
+     58.1,
+     49,
+     68,
+     2718
+    ],
+    "recomputed": [
+     58.12500000000001,
+     48.125,
+     66.875,
+     2717.59375
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [48,67]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II mmlu_matrix.jsonl DEBATE_N3_R1",
+    "paper": [
+     63.7,
+     54,
+     72,
+     3189
+    ],
+    "recomputed": [
+     63.74999999999999,
+     55.00000000000001,
+     72.5,
+     3188.725
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [55,72]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II math500_trunc.jsonl SA",
+    "paper": [
+     78.3,
+     68,
+     88,
+     540
+    ],
+    "recomputed": [
+     78.33333333333333,
+     68.33333333333333,
+     88.33333333333333,
+     539.7333333333333
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II math500_trunc.jsonl SC_k8",
+    "paper": [
+     86.7,
+     78,
+     94,
+     4418
+    ],
+    "recomputed": [
+     86.66666666666667,
+     77.5,
+     94.16666666666667,
+     4417.9
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II math500_trunc.jsonl GE_R2",
+    "paper": [
+     77.5,
+     69,
+     86,
+     5010
+    ],
+    "recomputed": [
+     77.5,
+     69.16666666666667,
+     85.02083333333321,
+     5010.358333333334
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [69,85]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II math500_trunc.jsonl HIER_M3",
+    "paper": [
+     73.3,
+     63,
+     82,
+     3837
+    ],
+    "recomputed": [
+     73.33333333333333,
+     63.33333333333333,
+     82.5,
+     3837.133333333333
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II math500_trunc.jsonl DEBATE_N3_R1",
+    "paper": [
+     79.2,
+     70,
+     88,
+     6889
+    ],
+    "recomputed": [
+     79.16666666666666,
+     70.8125,
+     86.66666666666667,
+     6888.541666666667
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [71,87]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II math500_matrix.jsonl SC_k2",
+    "paper": [
+     75.0,
+     64,
+     85,
+     1057
+    ],
+    "recomputed": [
+     75.0,
+     65.0,
+     85.0,
+     1056.5833333333333
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [65,85]"
+   },
+   {
+    "tex_line": "205-211",
+    "claim": "Table II math500_matrix.jsonl SC_k4",
+    "paper": [
+     80.0,
+     70,
+     88,
+     2125
+    ],
+    "recomputed": [
+     80.0,
+     70.83333333333334,
+     88.33333333333333,
+     2124.616666666667
+    ],
+    "reproduced": true,
+    "note": "CI rounds to [71,88]"
+   },
+   {
+    "tex_line": "226-228",
+    "claim": "Table domination HIER_M3 by SA",
+    "paper": [
+     10.0,
+     1852
+    ],
+    "recomputed": [
+     10.0,
+     1851.83125
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "226-228",
+    "claim": "Table domination DEBATE_N3_R1 by SA",
+    "paper": [
+     0.6,
+     4487
+    ],
+    "recomputed": [
+     0.625,
+     4486.931250000001
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "226-228",
+    "claim": "Table domination GE_R2 by SC_k4",
+    "paper": [
+     2.5,
+     1735
+    ],
+    "recomputed": [
+     2.5,
+     1735.16875
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "270-275",
+    "claim": "Hierarchical SC_k8 vs debate/GE/HIER gsm8k: deltas and Holm p",
+    "paper": {
+     "delta": [
+      8.1,
+      6.2,
+      17.5
+     ],
+     "holm_p": [
+      0.036,
+      0.046,
+      0.001
+     ]
+    },
+    "recomputed": {
+     "delta": [
+      8.125,
+      6.25,
+      17.5
+     ],
+     "raw_p": [
+      0.0178,
+      0.0456,
+      0.0
+     ],
+     "holm_p": [
+      0.0356,
+      0.0456,
+      0.0
+     ]
+    },
+    "reproduced": true,
+    "note": "paper prints '<0.001' for GSM8K HIER"
+   },
+   {
+    "tex_line": "270-275",
+    "claim": "Hierarchical SC_k8 vs debate/GE/HIER math: deltas and Holm p",
+    "paper": {
+     "delta": [
+      7.5,
+      9.2,
+      13.3
+     ],
+     "holm_p": [
+      0.096,
+      0.052,
+      0.016
+     ]
+    },
+    "recomputed": {
+     "delta": [
+      7.5,
+      9.166666666666666,
+      13.333333333333334
+     ],
+     "raw_p": [
+      0.0958,
+      0.026,
+      0.0052
+     ],
+     "holm_p": [
+      0.0958,
+      0.052,
+      0.0156
+     ]
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "276",
+    "claim": "MMLU hierarchical gaps p>=0.43",
+    "paper": ">=0.43",
+    "recomputed": {
+     "raw_p": [
+      0.616,
+      0.1784,
+      0.1436
+     ],
+     "holm_p": [
+      0.616,
+      0.4308,
+      0.4308
+     ]
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "157-158",
+    "claim": "GSM8K SC_k8 vs coordination 'seed-aware, Holm-corrected ... p from 0.0001 to 0.022'",
+    "paper": [
+     0.0001,
+     0.022
+    ],
+    "recomputed": {
+     "item_raw": [
+      0.0004,
+      0.0056,
+      0.0
+     ],
+     "item_holm": [
+      0.0008,
+      0.0056,
+      0.0
+     ],
+     "hier_raw": [
+      0.0178,
+      0.0456,
+      0.0
+     ],
+     "hier_holm": [
+      0.0356,
+      0.0456,
+      0.0
+     ]
+    },
+    "reproduced": false,
+    "note": "compare: the same paper gives hierarchical Holm p=0.036/0.046/<0.001 at lines 270-271"
+   },
+   {
+    "tex_line": "325-327",
+    "claim": "output tokens SC_k4",
+    "paper": [
+     82.5,
+     1098
+    ],
+    "recomputed": [
+     82.5,
+     1098.11875
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "325-327",
+    "claim": "output tokens DEBATE_N3_R1",
+    "paper": [
+     78.1,
+     1959
+    ],
+    "recomputed": [
+     78.125,
+     1959.25
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "325-327",
+    "claim": "output tokens GE_R2",
+    "paper": [
+     80.0,
+     1199
+    ],
+    "recomputed": [
+     80.0,
+     1198.60625
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "325-327",
+    "claim": "output tokens SA",
+    "paper": [
+     78.8,
+     257
+    ],
+    "recomputed": [
+     78.75,
+     257.1
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "325-327",
+    "claim": "output tokens HIER_M3",
+    "paper": [
+     68.8,
+     743
+    ],
+    "recomputed": [
+     68.75,
+     742.55
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "313-317",
+    "claim": "Table latency SA",
+    "paper": [
+     9.1,
+     9.1,
+     561,
+     0.25
+    ],
+    "recomputed": {
+     "serial": 9.107241249999998,
+     "par_depth_x_mean_lat_over_mean_calls": 9.107241249999998,
+     "par_per_record": 9.107241249999998,
+     "p95_records": 560.6999999999999,
+     "p95_item_means": 560.6999999999999,
+     "cv_records": 0.2520856090644069,
+     "cv_records_ddof1": 0.2536760703250655,
+     "cv_item_means": 0.2520856090644069
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "313-317",
+    "claim": "Table latency SC_k8",
+    "paper": [
+     79.0,
+     9.9,
+     4494,
+     0.25
+    ],
+    "recomputed": {
+     "serial": 78.986689375,
+     "par_depth_x_mean_lat_over_mean_calls": 9.873336171875,
+     "par_per_record": 9.873336171875,
+     "p95_records": 4571.3,
+     "p95_item_means": 4493.724999999999,
+     "cv_records": 0.2485481767695995,
+     "cv_records_ddof1": 0.24932854973144775,
+     "cv_item_means": 0.2462077706949853
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "313-317",
+    "claim": "Table latency DEBATE_N3_R1",
+    "paper": [
+     66.0,
+     22.0,
+     6745,
+     0.23
+    ],
+    "recomputed": {
+     "serial": 65.97696499999999,
+     "par_depth_x_mean_lat_over_mean_calls": 21.992321666666665,
+     "par_per_record": 21.992321666666665,
+     "p95_records": 7066.599999999999,
+     "p95_item_means": 6745.4,
+     "cv_records": 0.24105700638165709,
+     "cv_records_ddof1": 0.2418138591274276,
+     "cv_item_means": 0.2283924593635985
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "313-317",
+    "claim": "Table latency GE_R2",
+    "paper": [
+     44.9,
+     44.9,
+     5413,
+     0.33
+    ],
+    "recomputed": {
+     "serial": 44.91782,
+     "par_depth_x_mean_lat_over_mean_calls": 44.91782,
+     "par_per_record": 44.91782,
+     "p95_records": 5422.749999999996,
+     "p95_item_means": 5413.2,
+     "cv_records": 0.35410231748405285,
+     "cv_records_ddof1": 0.35521410143629845,
+     "cv_item_means": 0.32959444302582996
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "313-317",
+    "claim": "Table latency HIER_M3",
+    "paper": [
+     24.6,
+     14.7,
+     3730,
+     0.32
+    ],
+    "recomputed": {
+     "serial": 24.55503375,
+     "par_depth_x_mean_lat_over_mean_calls": 14.73302025,
+     "par_per_record": 14.733020250000001,
+     "p95_records": 3805.4999999999986,
+     "p95_item_means": 3730.0499999999993,
+     "cv_records": 0.348678457649977,
+     "cv_records_ddof1": 0.3497732121730859,
+     "cv_item_means": 0.3233340389828609
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "367-369",
+    "claim": "n=200 SC_k8 acc [CI]",
+    "paper": [
+     86.0,
+     81.2,
+     90.0
+    ],
+    "recomputed": {
+     "B2000": [
+      86.0,
+      81.25,
+      90.0
+     ],
+     "B10000": [
+      81.5,
+      90.25
+     ]
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "367-369",
+    "claim": "n=200 SA acc [CI]",
+    "paper": [
+     76.0,
+     70.0,
+     81.5
+    ],
+    "recomputed": {
+     "B2000": [
+      76.0,
+      70.0,
+      81.5
+     ],
+     "B10000": [
+      70.0,
+      82.0
+     ]
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "367-369",
+    "claim": "n=200 DEBATE_N3_R1 acc [CI]",
+    "paper": [
+     81.5,
+     76.5,
+     86.0
+    ],
+    "recomputed": {
+     "B2000": [
+      81.5,
+      76.5,
+      86.0
+     ],
+     "B10000": [
+      76.5,
+      86.0
+     ]
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "368",
+    "claim": "n=200 SC_k8 - SA +10.0 p<0.001",
+    "paper": [
+     10.0,
+     "<0.001"
+    ],
+    "recomputed": {
+     "diff_pp": 10.0,
+     "lo_pp": 5.5,
+     "hi_pp": 14.75,
+     "p": 0.0,
+     "n_items": 200
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "369",
+    "claim": "n=200 SC_k8 - debate +4.5 p=0.005",
+    "paper": [
+     4.5,
+     0.005
+    ],
+    "recomputed": {
+     "diff_pp": 4.5,
+     "lo_pp": 1.5,
+     "hi_pp": 7.5,
+     "p": 0.0046,
+     "n_items": 200,
+     "p_holm": 0.0092
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "379-380",
+    "claim": "MATH 1024 item-level SC_k8 - DEBATE_N3_R1",
+    "paper": [
+     7.5,
+     0.042
+    ],
+    "recomputed": {
+     "diff_pp": 7.5,
+     "lo_pp": 0.8333333333333334,
+     "hi_pp": 15.0,
+     "p": 0.0418,
+     "n_items": 60,
+     "p_holm": 0.1672
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "379-380",
+    "claim": "MATH 1024 item-level SC_k8 - GE_R2",
+    "paper": [
+     9.2,
+     0.003
+    ],
+    "recomputed": {
+     "diff_pp": 9.166666666666666,
+     "lo_pp": 3.3333333333333335,
+     "hi_pp": 15.833333333333332,
+     "p": 0.003,
+     "n_items": 60,
+     "p_holm": 0.015
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "379-380",
+    "claim": "MATH 1024 item-level SC_k8 - HIER_M3",
+    "paper": [
+     13.3,
+     0.001
+    ],
+    "recomputed": {
+     "diff_pp": 13.333333333333334,
+     "lo_pp": 5.833333333333333,
+     "hi_pp": 21.666666666666668,
+     "p": 0.0006,
+     "n_items": 60,
+     "p_holm": 0.0042
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "394-398",
+    "claim": "Table trunc SA",
+    "paper": [
+     68.3,
+     78.3
+    ],
+    "recomputed": [
+     68.33333333333333,
+     78.33333333333333
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "394-398",
+    "claim": "Table trunc SC_k8",
+    "paper": [
+     83.3,
+     86.7
+    ],
+    "recomputed": [
+     83.33333333333334,
+     86.66666666666667
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "394-398",
+    "claim": "Table trunc DEBATE_N3_R1",
+    "paper": [
+     75.0,
+     79.2
+    ],
+    "recomputed": [
+     75.0,
+     79.16666666666666
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "394-398",
+    "claim": "Table trunc GE_R2",
+    "paper": [
+     73.3,
+     77.5
+    ],
+    "recomputed": [
+     73.33333333333333,
+     77.5
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "394-398",
+    "claim": "Table trunc HIER_M3",
+    "paper": [
+     71.7,
+     73.3
+    ],
+    "recomputed": [
+     71.66666666666667,
+     73.33333333333333
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "381-382",
+    "claim": "'Roughly one to five points of each 640-cap gap was a truncation artifact'",
+    "paper": "1 to 5 points per gap",
+    "recomputed": {
+     "SA": {
+      "gap_640": 15.000000000000002,
+      "gap_1024": 8.333333333333337,
+      "shrink": 6.666666666666664
+     },
+     "DEBATE_N3_R1": {
+      "gap_640": 8.333333333333337,
+      "gap_1024": 7.500000000000007,
+      "shrink": 0.8333333333333304
+     },
+     "GE_R2": {
+      "gap_640": 10.000000000000009,
+      "gap_1024": 9.166666666666668,
+      "shrink": 0.833333333333341
+     },
+     "HIER_M3": {
+      "gap_640": 11.66666666666667,
+      "gap_1024": 13.333333333333341,
+      "shrink": -1.6666666666666714
+     }
+    },
+    "reproduced": false,
+    "note": "coordination gaps change by +0.8 (debate), +0.8 (GE), -1.7 (HIER gap widens); SA gap shrinks 6.7"
+   },
+   {
+    "tex_line": "475-476",
+    "claim": "Table cross-family Llama",
+    "paper": [
+     70.0,
+     80.0,
+     82.0,
+     58.0,
+     44.0,
+     58.0
+    ],
+    "recomputed": [
+     70.0,
+     80.0,
+     82.0,
+     57.99999999999999,
+     44.0,
+     57.99999999999999
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "475-476",
+    "claim": "Table cross-family Gemma",
+    "paper": [
+     56.0,
+     60.0,
+     62.0,
+     54.0,
+     56.0,
+     38.0
+    ],
+    "recomputed": [
+     56.00000000000001,
+     60.0,
+     62.0,
+     54.0,
+     56.00000000000001,
+     38.0
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "485",
+    "claim": "debate initial acc 81.2, fixes 5/15, corrupts 8/65",
+    "paper": [
+     81.2,
+     5,
+     15,
+     8,
+     65
+    ],
+    "recomputed": [
+     81.25,
+     5,
+     15,
+     8,
+     65
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "485",
+    "claim": "GE critic flags 58% wrong / 43% correct; fixes 1/31; corrupts 4/129",
+    "paper": [
+     58,
+     43,
+     1,
+     31,
+     4,
+     129
+    ],
+    "recomputed": [
+     58.06451612903226,
+     42.63565891472868,
+     1,
+     31,
+     4,
+     129
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "444",
+    "claim": "parse-failure rates: 0% SA/SC GSM8K+MMLU; 1% GE; 5-10% HIER; MATH 640 SA 15%, multi-agent 8-12%; <=3% at 1024",
+    "paper": "see claim",
+    "recomputed": {
+     "gsm8k_matrix.jsonl": {
+      "SA": 0.0,
+      "SC_k2": 0.0,
+      "SC_k4": 0.0,
+      "SC_k8": 0.0,
+      "DEBATE_N3_R1": 0.0,
+      "GE_R2": 0.625,
+      "HIER_M3": 5.0,
+      "SC_k12": 0.0,
+      "DEBATE_N2_R1": 0.0,
+      "GE_R1": 0.0,
+      "HIER_M2": 10.0,
+      "GES_R2": 0.625,
+      "HIERC_M3": 5.625,
+      "DEBATE_N3_R2": 0.0
+     },
+     "mmlu_matrix.jsonl": {
+      "SA": 0.0,
+      "SC_k2": 0.0,
+      "SC_k4": 0.0,
+      "SC_k8": 0.0,
+      "DEBATE_N3_R1": 0.0,
+      "GE_R2": 0.625,
+      "HIER_M3": 10.0
+     },
+     "math500_matrix.jsonl": {
+      "SA": 15.0,
+      "SC_k2": 8.333333333333332,
+      "SC_k4": 4.166666666666666,
+      "SC_k8": 1.6666666666666667,
+      "DEBATE_N3_R1": 7.5,
+      "GE_R2": 11.666666666666666,
+      "HIER_M3": 7.5
+     },
+     "math500_trunc.jsonl": {
+      "SA": 1.6666666666666667,
+      "SC_k8": 0.0,
+      "SC_k12": 0.0,
+      "DEBATE_N3_R1": 0.0,
+      "GE_R2": 1.6666666666666667,
+      "HIER_M3": 0.8333333333333334
+     }
+    },
+    "reproduced": true,
+    "note": "percent of records with pred None; MATH 640 debate and HIER are 7.5% (round to 8)"
+   },
+   {
+    "tex_line": "30-31, 194-195",
+    "claim": "MATH: SC_k8 vs debate and GE 'positive but short of significance at n=60'",
+    "paper": "not significant",
+    "recomputed": {
+     "DEBATE_N3_R1": {
+      "item_p": 0.0418,
+      "item_p_holm_3": 0.0418,
+      "hier_p": 0.0958,
+      "hier_p_holm_3": 0.0958
+     },
+     "GE_R2": {
+      "item_p": 0.003,
+      "item_p_holm_3": 0.006,
+      "hier_p": 0.026,
+      "hier_p_holm_3": 0.052
+     }
+    },
+    "reproduced": null,
+    "note": "holds under the seed-aware Holm test (0.096, 0.052); item-level p are 0.042 and 0.003 (line 379-380 states these)"
+   },
+   {
+    "tex_line": "444",
+    "claim": "HIER parseable-only GSM8K accuracy 72.4%",
+    "paper": 72.4,
+    "recomputed": {
+     "acc_pct_among_parsed_records": 72.36842105263158,
+     "n_parsed_records": 152
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "430-432",
+    "claim": "Scale table 3B on the 50 items SA",
+    "paper": [
+     84.0,
+     391
+    ],
+    "recomputed": [
+     84.0,
+     390.9
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "430-432",
+    "claim": "Scale table 3B on the 50 items SC_k8",
+    "paper": [
+     88.0,
+     3212
+    ],
+    "recomputed": [
+     88.0,
+     3211.8
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "430-432",
+    "claim": "Scale table 3B on the 50 items DEBATE_N3_R1",
+    "paper": [
+     83.0,
+     4840
+    ],
+    "recomputed": [
+     83.0,
+     4839.72
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "430-432",
+    "claim": "Scale table 7B SA",
+    "paper": [
+     86.0,
+     328
+    ],
+    "recomputed": [
+     86.0,
+     327.92
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "430-432",
+    "claim": "Scale table 7B SC_k8",
+    "paper": [
+     91.0,
+     2705
+    ],
+    "recomputed": [
+     91.0,
+     2704.61
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "430-432",
+    "claim": "Scale table 7B DEBATE_N3_R1",
+    "paper": [
+     88.0,
+     3563
+    ],
+    "recomputed": [
+     88.0,
+     3563.01
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "358-359",
+    "claim": "Diversity table DEBATED_N3_R1",
+    "paper": [
+     76.9,
+     5398
+    ],
+    "recomputed": [
+     76.875,
+     5398.11875
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "358-359",
+    "claim": "Diversity table DEBATEH_N3_R1",
+    "paper": [
+     73.1,
+     3855
+    ],
+    "recomputed": [
+     73.125,
+     3855.08125
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "334-335",
+    "claim": "diverse debate vs homogeneous debate p=0.77",
+    "paper": 0.77,
+    "recomputed": {
+     "diff_pp": -1.25,
+     "lo_pp": -7.5,
+     "hi_pp": 5.0,
+     "p": 0.7676,
+     "n_items": 80
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "335",
+    "claim": "diverse debate vs SA p=0.57",
+    "paper": 0.57,
+    "recomputed": {
+     "diff_pp": -1.875,
+     "lo_pp": -7.5,
+     "hi_pp": 3.75,
+     "p": 0.5732,
+     "n_items": 80
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "337-338",
+    "claim": "SC_k8 - hetero debate +13.1, item p<0.001",
+    "paper": [
+     13.1,
+     "<0.001"
+    ],
+    "recomputed": {
+     "diff_pp": 13.125,
+     "lo_pp": 6.25,
+     "hi_pp": 20.0,
+     "p": 0.0002,
+     "n_items": 80
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "fixedimpl_table.tex (input at 440)",
+    "claim": "SC_k8 - GES_R2",
+    "paper": [
+     9.4,
+     "<0.001"
+    ],
+    "recomputed": {
+     "diff_pp": 9.375,
+     "lo_pp": 4.375,
+     "hi_pp": 15.0,
+     "p": 0.0,
+     "n_items": 80
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "fixedimpl_table.tex (input at 440)",
+    "claim": "SC_k8 - HIERC_M3",
+    "paper": [
+     20.0,
+     "<0.001"
+    ],
+    "recomputed": {
+     "diff_pp": 20.0,
+     "lo_pp": 12.5,
+     "hi_pp": 27.500000000000004,
+     "p": 0.0,
+     "n_items": 80
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "fixedimpl_table.tex (input at 440)",
+    "claim": "SC_k8 - DEBATE_N3_R2",
+    "paper": [
+     10.6,
+     "<0.001"
+    ],
+    "recomputed": {
+     "diff_pp": 10.625,
+     "lo_pp": 5.0,
+     "hi_pp": 16.875,
+     "p": 0.0002,
+     "n_items": 80
+    },
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "439",
+    "claim": "gated GE 37% cheaper than GE",
+    "paper": 37,
+    "recomputed": 36.80637753673245,
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "442",
+    "claim": "MMLU macro SC_k8 65.1 / micro 66.2; SA macro 63.9 / micro 65.0",
+    "paper": [
+     65.1,
+     66.2,
+     63.9,
+     65.0
+    ],
+    "recomputed": [
+     65.09624304267162,
+     66.25,
+     63.93552875695734,
+     65.0
+    ],
+    "reproduced": true,
+    "note": ""
+   },
+   {
+    "tex_line": "34-35,161",
+    "claim": "independent resampling lifts accuracy +7 to +8 points on mathematics",
+    "paper": [
+     7,
+     8
+    ],
+    "recomputed": [
+     7.5,
+     8.333333333333343
+    ],
+    "reproduced": true,
+    "note": "MATH 1024 SC_k8-SA = 8.33 (rounds to 8); GSM8K = 7.5"
+   },
+   {
+    "tex_line": "297",
+    "claim": "critical path ~10s SC_k8, 22s debate, 45s GE",
+    "paper": [
+     10,
+     22,
+     45
+    ],
+    "recomputed": [
+     9.873336171875,
+     21.992321666666665,
+     44.91782
+    ],
+    "reproduced": true,
+    "note": ""
+   }
+  ],
+  "not_checked": [
+   "router numbers (lines 284-288: 86.5%/796, 83.3%/1306, n_test 26/31/21, 2/6/7 escalations)",
+   "scale interaction -2.0 [-12,8] p=0.76 (line 414-415)",
+   "positioning table (line 102)",
+   "figures"
+  ]
+ }
+}

@@ -1,0 +1,460 @@
+{
+ "gsmM": {
+  "file": "gsm8k_matrix.jsonl",
+  "task": "GSM8K",
+  "hardware": "Apple M4",
+  "cap": 640,
+  "configs": {
+   "SA": {
+    "n_records": 80,
+    "calls_per_query": 1.0,
+    "s_per_query": 9.107241250000003,
+    "queries_per_hour": 395.2898469665552,
+    "out_tok_s": 28.230283237528152,
+    "total_tok_s": 42.35091499305565,
+    "s_per_call": 9.107241250000003
+   },
+   "SC_k2": {
+    "n_records": 160,
+    "calls_per_query": 2.0,
+    "s_per_query": 16.19683,
+    "queries_per_hour": 222.26571495780348,
+    "out_tok_s": 33.80445432840871,
+    "total_tok_s": 49.68410485261623,
+    "s_per_call": 8.098415
+   },
+   "SC_k4": {
+    "n_records": 160,
+    "calls_per_query": 4.0,
+    "s_per_query": 39.075551250000025,
+    "queries_per_hour": 92.12921852254094,
+    "out_tok_s": 28.102450634013753,
+    "total_tok_s": 41.26669230290127,
+    "s_per_call": 9.768887812500006
+   },
+   "SC_k8": {
+    "n_records": 160,
+    "calls_per_query": 8.0,
+    "s_per_query": 78.98668937500001,
+    "queries_per_hour": 45.57729952332237,
+    "out_tok_s": 27.797325946603515,
+    "total_tok_s": 40.82230532149075,
+    "s_per_call": 9.873336171875001
+   },
+   "DEBATE_N3_R1": {
+    "n_records": 160,
+    "calls_per_query": 6.0,
+    "s_per_query": 65.976965,
+    "queries_per_hour": 54.564498382124725,
+    "out_tok_s": 29.695970404216073,
+    "total_tok_s": 73.85352221036538,
+    "s_per_call": 10.996160833333334
+   },
+   "GE_R2": {
+    "n_records": 160,
+    "calls_per_query": 5.0,
+    "s_per_query": 44.91782,
+    "queries_per_hour": 80.14636507292651,
+    "out_tok_s": 26.684426136442063,
+    "total_tok_s": 74.52916236807575,
+    "s_per_call": 8.983564
+   },
+   "HIER_M3": {
+    "n_records": 160,
+    "calls_per_query": 5.0,
+    "s_per_query": 24.555033750000007,
+    "queries_per_hour": 146.60945029244763,
+    "out_tok_s": 30.240235365182496,
+    "total_tok_s": 91.12311849296478,
+    "s_per_call": 4.911006750000001
+   }
+  }
+ },
+ "mathM": {
+  "file": "math500_matrix.jsonl",
+  "task": "MATH",
+  "hardware": "Apple M4",
+  "cap": 640,
+  "configs": {
+   "SA": {
+    "n_records": 60,
+    "calls_per_query": 1.0,
+    "s_per_query": 15.227231666666666,
+    "queries_per_hour": 236.4185479544925,
+    "out_tok_s": 27.625945140608287,
+    "total_tok_s": 34.10884819400856,
+    "s_per_call": 15.227231666666666
+   },
+   "SC_k2": {
+    "n_records": 120,
+    "calls_per_query": 2.0,
+    "s_per_query": 25.215592500000003,
+    "queries_per_hour": 142.76880465925993,
+    "out_tok_s": 34.072171811945324,
+    "total_tok_s": 41.90198320080455,
+    "s_per_call": 12.607796250000002
+   },
+   "SC_k4": {
+    "n_records": 120,
+    "calls_per_query": 4.0,
+    "s_per_query": 55.38770083333331,
+    "queries_per_hour": 64.99637908482121,
+    "out_tok_s": 31.229857422769303,
+    "total_tok_s": 38.358997299054415,
+    "s_per_call": 13.846925208333328
+   },
+   "SC_k8": {
+    "n_records": 120,
+    "calls_per_query": 8.0,
+    "s_per_query": 97.34931416666663,
+    "queries_per_hour": 36.980229710058666,
+    "out_tok_s": 35.44632059854352,
+    "total_tok_s": 43.558687286420465,
+    "s_per_call": 12.168664270833329
+   },
+   "DEBATE_N3_R1": {
+    "n_records": 120,
+    "calls_per_query": 6.0,
+    "s_per_query": 94.37036250000003,
+    "queries_per_hour": 38.1475699004547,
+    "out_tok_s": 30.492359293416925,
+    "total_tok_s": 68.4770072807551,
+    "s_per_call": 15.728393750000004
+   },
+   "GE_R2": {
+    "n_records": 120,
+    "calls_per_query": 5.0,
+    "s_per_query": 72.59250666666668,
+    "queries_per_hour": 49.59189543530479,
+    "out_tok_s": 26.505605353573678,
+    "total_tok_s": 66.5857293259653,
+    "s_per_call": 14.518501333333337
+   },
+   "HIER_M3": {
+    "n_records": 120,
+    "calls_per_query": 5.0,
+    "s_per_query": 50.863142499999995,
+    "queries_per_hour": 70.77816711777099,
+    "out_tok_s": 30.15739737276359,
+    "total_tok_s": 74.48533745891406,
+    "s_per_call": 10.1726285
+   }
+  }
+ },
+ "mmluM": {
+  "file": "mmlu_matrix.jsonl",
+  "task": "MMLU",
+  "hardware": "Apple M4",
+  "cap": 640,
+  "configs": {
+   "SA": {
+    "n_records": 80,
+    "calls_per_query": 1.0,
+    "s_per_query": 3.4033912500000008,
+    "queries_per_hour": 1057.7684831269396,
+    "out_tok_s": 31.95342292779297,
+    "total_tok_s": 86.65254105004823,
+    "s_per_call": 3.4033912500000008
+   },
+   "SC_k2": {
+    "n_records": 160,
+    "calls_per_query": 2.0,
+    "s_per_query": 6.251808125000002,
+    "queries_per_hour": 575.8334113940836,
+    "out_tok_s": 36.11055321695433,
+    "total_tok_s": 95.66532402176048,
+    "s_per_call": 3.125904062500001
+   },
+   "SC_k4": {
+    "n_records": 160,
+    "calls_per_query": 4.0,
+    "s_per_query": 12.685848750000009,
+    "queries_per_hour": 283.78077580343194,
+    "out_tok_s": 35.8386544692171,
+    "total_tok_s": 94.5379196642242,
+    "s_per_call": 3.171462187500002
+   },
+   "SC_k8": {
+    "n_records": 160,
+    "calls_per_query": 8.0,
+    "s_per_query": 27.96252187500001,
+    "queries_per_hour": 128.74375265911164,
+    "out_tok_s": 32.35737298819725,
+    "total_tok_s": 85.61794822020141,
+    "s_per_call": 3.4953152343750014
+   },
+   "DEBATE_N3_R1": {
+    "n_records": 160,
+    "calls_per_query": 6.0,
+    "s_per_query": 39.69201937499999,
+    "queries_per_hour": 90.69833323389587,
+    "out_tok_s": 24.025138176784946,
+    "total_tok_s": 80.33667851145961,
+    "s_per_call": 6.615336562499999
+   },
+   "GE_R2": {
+    "n_records": 160,
+    "calls_per_query": 5.0,
+    "s_per_query": 19.756628125000002,
+    "queries_per_hour": 182.2173286465096,
+    "out_tok_s": 25.997287935488735,
+    "total_tok_s": 105.01475691464935,
+    "s_per_call": 3.951325625000001
+   },
+   "HIER_M3": {
+    "n_records": 160,
+    "calls_per_query": 5.0,
+    "s_per_query": 28.29972937499999,
+    "queries_per_hour": 127.20969703619299,
+    "out_tok_s": 28.69130793587316,
+    "total_tok_s": 96.02896600137544,
+    "s_per_call": 5.659945874999998
+   }
+  }
+ },
+ "gsmG": {
+  "file": "gsm8k_scale200.jsonl",
+  "task": "GSM8K ($n{=}200$)",
+  "hardware": "RTX 4060",
+  "cap": 640,
+  "configs": {
+   "SA": {
+    "n_records": 200,
+    "calls_per_query": 1.0,
+    "s_per_query": 3.1472320000000007,
+    "queries_per_hour": 1143.862289148051,
+    "out_tok_s": 86.45692468810687,
+    "total_tok_s": 127.29598580593992,
+    "s_per_call": 3.1472320000000007
+   },
+   "SC_k8": {
+    "n_records": 400,
+    "calls_per_query": 8.0,
+    "s_per_query": 23.431232249999997,
+    "queries_per_hour": 153.64108731413393,
+    "out_tok_s": 93.72447750800644,
+    "total_tok_s": 137.60778629130783,
+    "s_per_call": 2.9289040312499997
+   },
+   "DEBATE_N3_R1": {
+    "n_records": 400,
+    "calls_per_query": 6.0,
+    "s_per_query": 21.08323175,
+    "queries_per_hour": 170.75181085556298,
+    "out_tok_s": 93.4320707260641,
+    "total_tok_s": 230.79004479472175,
+    "s_per_call": 3.513871958333333
+   }
+  }
+ },
+ "engG": {
+  "file": "mmlu_pro_eng_matrix.jsonl",
+  "task": "MMLU-Pro eng.",
+  "hardware": "RTX 4060",
+  "cap": 1024,
+  "configs": {
+   "SA": {
+    "n_records": 150,
+    "calls_per_query": 1.0,
+    "s_per_query": 5.772463333333331,
+    "queries_per_hour": 623.650561660851,
+    "out_tok_s": 79.76490683642285,
+    "total_tok_s": 144.18685494754124,
+    "s_per_call": 5.772463333333331
+   },
+   "SC_k2": {
+    "n_records": 300,
+    "calls_per_query": 2.0,
+    "s_per_query": 11.462869333333336,
+    "queries_per_hour": 314.057492527758,
+    "out_tok_s": 81.5930089406352,
+    "total_tok_s": 146.47612372097174,
+    "s_per_call": 5.731434666666668
+   },
+   "SC_k4": {
+    "n_records": 300,
+    "calls_per_query": 4.0,
+    "s_per_query": 22.065235000000005,
+    "queries_per_hour": 163.15257915902546,
+    "out_tok_s": 80.72049387494248,
+    "total_tok_s": 148.13393104582838,
+    "s_per_call": 5.516308750000001
+   },
+   "SC_k8": {
+    "n_records": 300,
+    "calls_per_query": 8.0,
+    "s_per_query": 45.17929666666664,
+    "queries_per_hour": 79.68251534681562,
+    "out_tok_s": 80.06292557748986,
+    "total_tok_s": 145.91137577838944,
+    "s_per_call": 5.64741208333333
+   },
+   "DEBATE_N3_R1": {
+    "n_records": 300,
+    "calls_per_query": 6.0,
+    "s_per_query": 35.142594333333314,
+    "queries_per_hour": 102.4397904677556,
+    "out_tok_s": 77.69783037171524,
+    "total_tok_s": 225.06752323531276,
+    "s_per_call": 5.857099055555553
+   },
+   "GE_R2": {
+    "n_records": 300,
+    "calls_per_query": 5.0,
+    "s_per_query": 19.680232666666658,
+    "queries_per_hour": 182.9246666426607,
+    "out_tok_s": 77.98789912680236,
+    "total_tok_s": 270.00747857012135,
+    "s_per_call": 3.936046533333332
+   },
+   "HIER_M3": {
+    "n_records": 300,
+    "calls_per_query": 5.0,
+    "s_per_query": 23.97951333333333,
+    "queries_per_hour": 150.12815105783355,
+    "out_tok_s": 86.18231618267484,
+    "total_tok_s": 254.0179436502326,
+    "s_per_call": 4.795902666666666
+   }
+  }
+ },
+ "codeG": {
+  "file": "humaneval_matrix_pc.jsonl",
+  "task": "HumanEval",
+  "hardware": "RTX 4060",
+  "cap": 1024,
+  "configs": {
+   "SA": {
+    "n_records": 164,
+    "calls_per_query": 1.0,
+    "s_per_query": 2.842656097560975,
+    "queries_per_hour": 1266.4212189046832,
+    "out_tok_s": 95.39558073907178,
+    "total_tok_s": 164.07276259149597,
+    "s_per_call": 2.842656097560975
+   },
+   "SC_k2": {
+    "n_records": 328,
+    "calls_per_query": 2.0,
+    "s_per_query": 5.793957012195124,
+    "queries_per_hour": 621.3370227674658,
+    "out_tok_s": 95.27009822418529,
+    "total_tok_s": 162.65948663186128,
+    "s_per_call": 2.896978506097562
+   },
+   "SC_k4": {
+    "n_records": 328,
+    "calls_per_query": 4.0,
+    "s_per_query": 11.610419817073167,
+    "queries_per_hour": 310.06630739623955,
+    "out_tok_s": 95.32989671257505,
+    "total_tok_s": 162.58865663063332,
+    "s_per_call": 2.9026049542682917
+   },
+   "SC_k8": {
+    "n_records": 328,
+    "calls_per_query": 8.0,
+    "s_per_query": 23.360396951219506,
+    "queries_per_hour": 154.10697033605268,
+    "out_tok_s": 95.25906767736548,
+    "total_tok_s": 162.1160171251893,
+    "s_per_call": 2.9200496189024383
+   },
+   "DEBATE_N3_R1": {
+    "n_records": 328,
+    "calls_per_query": 6.0,
+    "s_per_query": 25.454384146341447,
+    "queries_per_hour": 141.42946768238457,
+    "out_tok_s": 91.12007874440151,
+    "total_tok_s": 232.0509261066965,
+    "s_per_call": 4.242397357723575
+   },
+   "GE_R2": {
+    "n_records": 328,
+    "calls_per_query": 5.0,
+    "s_per_query": 10.530995731707314,
+    "queries_per_hour": 341.84801624797143,
+    "out_tok_s": 91.57491129698263,
+    "total_tok_s": 305.72989733616214,
+    "s_per_call": 2.1061991463414627
+   },
+   "HIER_M3": {
+    "n_records": 328,
+    "calls_per_query": 5.0,
+    "s_per_query": 19.28474481707318,
+    "queries_per_hour": 186.6760506373331,
+    "out_tok_s": 89.65999490024043,
+    "total_tok_s": 229.74133652305696,
+    "s_per_call": 3.856948963414636
+   }
+  }
+ },
+ "matched_gsm8k": {
+  "SA": {
+   "m4": {
+    "n_records": 80,
+    "calls_per_query": 1.0,
+    "s_per_query": 9.107241250000003,
+    "queries_per_hour": 395.2898469665552,
+    "out_tok_s": 28.230283237528152,
+    "total_tok_s": 42.35091499305565,
+    "s_per_call": 9.107241250000003
+   },
+   "rtx4060": {
+    "n_records": 80,
+    "calls_per_query": 1.0,
+    "s_per_query": 3.40975,
+    "queries_per_hour": 1055.795879463304,
+    "out_tok_s": 77.27106092822055,
+    "total_tok_s": 114.98643595571524,
+    "s_per_call": 3.40975
+   },
+   "speedup_qph": 2.670941051396731,
+   "n_items": 80
+  },
+  "SC_k8": {
+   "m4": {
+    "n_records": 160,
+    "calls_per_query": 8.0,
+    "s_per_query": 78.98668937500001,
+    "queries_per_hour": 45.57729952332237,
+    "out_tok_s": 27.797325946603515,
+    "total_tok_s": 40.82230532149075,
+    "s_per_call": 9.873336171875001
+   },
+   "rtx4060": {
+    "n_records": 160,
+    "calls_per_query": 8.0,
+    "s_per_query": 23.18304687500001,
+    "queries_per_hour": 155.28588711443902,
+    "out_tok_s": 92.93563790889756,
+    "total_tok_s": 137.31289364871282,
+    "s_per_call": 2.897880859375001
+   },
+   "speedup_qph": 3.4070883693970866,
+   "n_items": 80
+  },
+  "DEBATE_N3_R1": {
+   "m4": {
+    "n_records": 160,
+    "calls_per_query": 6.0,
+    "s_per_query": 65.976965,
+    "queries_per_hour": 54.564498382124725,
+    "out_tok_s": 29.695970404216073,
+    "total_tok_s": 73.85352221036538,
+    "s_per_call": 10.996160833333334
+   },
+   "rtx4060": {
+    "n_records": 160,
+    "calls_per_query": 6.0,
+    "s_per_query": 20.91398624999999,
+    "queries_per_hour": 172.1336122615076,
+    "out_tok_s": 93.3185322334235,
+    "total_tok_s": 231.55377660248783,
+    "s_per_call": 3.4856643749999985
+   },
+   "speedup_qph": 3.154681475416961,
+   "n_items": 80
+  }
+ }
+}

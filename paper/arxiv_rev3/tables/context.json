@@ -1,0 +1,237 @@
+{
+ "ctx": 4096,
+ "files": {
+  "gsm8k_qwen3b_coord_trace.jsonl": {
+   "calls": 1920,
+   "max": {
+    "total": 2176,
+    "in": 1536,
+    "out": 640,
+    "config": "DEBATE_N3_R1",
+    "item": "gsm8k-1011",
+    "call": 4
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "power/gsm8k_qwen3b_s1.jsonl": {
+   "calls": 2516,
+   "max": {
+    "total": 2115,
+    "in": 1475,
+    "out": 640,
+    "config": "DEBATE_N3_R1",
+    "item": "gsm8k-108",
+    "call": 5
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "power/gsm8k_qwen3b_s2.jsonl": {
+   "calls": 2520,
+   "max": {
+    "total": 2122,
+    "in": 1515,
+    "out": 607,
+    "config": "DEBATE_N3_R1",
+    "item": "gsm8k-1011",
+    "call": 5
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "power/gsm8k_qwen3b_s3.jsonl": {
+   "calls": 2520,
+   "max": {
+    "total": 2176,
+    "in": 1536,
+    "out": 640,
+    "config": "DEBATE_N3_R1",
+    "item": "gsm8k-1011",
+    "call": 5
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "math500_traces_mac.jsonl": {
+   "calls": 599,
+   "max": {
+    "total": 3207,
+    "in": 2183,
+    "out": 1024,
+    "config": "DEBATE_N3_R1",
+    "item": "math-325",
+    "call": 5
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "math500_traces_mac_b.jsonl": {
+   "calls": 286,
+   "max": {
+    "total": 3124,
+    "in": 2222,
+    "out": 902,
+    "config": "DEBATE_N3_R1",
+    "item": "math-143",
+    "call": 5
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "math500_qwen3b_coord_trace.jsonl": {
+   "calls": 1440,
+   "max": {
+    "total": 3976,
+    "in": 2952,
+    "out": 1024,
+    "config": "HIER_M3",
+    "item": "math-51",
+    "call": 4
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "mmlu_traces_mac.jsonl": {
+   "calls": 880,
+   "max": {
+    "total": 2133,
+    "in": 1493,
+    "out": 640,
+    "config": "DEBATE_N3_R1",
+    "item": "mmlu-4",
+    "call": 3
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "mmlu_pro_eng_traces_mac.jsonl": {
+   "calls": 836,
+   "max": {
+    "total": 4644,
+    "in": 3792,
+    "out": 852,
+    "config": "DEBATE_N3_R1",
+    "item": "mmlupro-12015",
+    "call": 3
+   },
+   "over": [
+    {
+     "config": "DEBATE_N3_R1",
+     "item": "mmlupro-12015",
+     "call": 3,
+     "in": 3792,
+     "out": 852
+    },
+    {
+     "config": "DEBATE_N3_R1",
+     "item": "mmlupro-12015",
+     "call": 4,
+     "in": 3668,
+     "out": 852
+    },
+    {
+     "config": "DEBATE_N3_R1",
+     "item": "mmlupro-12015",
+     "call": 5,
+     "in": 3499,
+     "out": 852
+    }
+   ],
+   "records_over": 1
+  },
+  "mmlu_pro_eng_traces_mac_b.jsonl": {
+   "calls": 819,
+   "max": {
+    "total": 3704,
+    "in": 2680,
+    "out": 1024,
+    "config": "DEBATE_N3_R1",
+    "item": "mmlupro-11824",
+    "call": 4
+   },
+   "over": [],
+   "records_over": 0
+  },
+  "humaneval_matrix_pc.jsonl": {
+   "calls": 10004,
+   "max": {
+    "total": 3714,
+    "in": 3005,
+    "out": 709,
+    "config": "HIER_M3",
+    "item": "humaneval-94",
+    "call": 4
+   },
+   "over": [],
+   "records_over": 0
+  }
+ },
+ "groups": {
+  "Gsm": {
+   "max": {
+    "total": 2176,
+    "in": 1536,
+    "out": 640,
+    "config": "DEBATE_N3_R1",
+    "item": "gsm8k-1011",
+    "call": 4
+   },
+   "calls": 9476,
+   "over": 0,
+   "records_over": 0
+  },
+  "Math": {
+   "max": {
+    "total": 3976,
+    "in": 2952,
+    "out": 1024,
+    "config": "HIER_M3",
+    "item": "math-51",
+    "call": 4
+   },
+   "calls": 2325,
+   "over": 0,
+   "records_over": 0
+  },
+  "Mmlu": {
+   "max": {
+    "total": 2133,
+    "in": 1493,
+    "out": 640,
+    "config": "DEBATE_N3_R1",
+    "item": "mmlu-4",
+    "call": 3
+   },
+   "calls": 880,
+   "over": 0,
+   "records_over": 0
+  },
+  "Eng": {
+   "max": {
+    "total": 4644,
+    "in": 3792,
+    "out": 852,
+    "config": "DEBATE_N3_R1",
+    "item": "mmlupro-12015",
+    "call": 3
+   },
+   "calls": 1655,
+   "over": 3,
+   "records_over": 1
+  },
+  "Code": {
+   "max": {
+    "total": 3714,
+    "in": 3005,
+    "out": 709,
+    "config": "HIER_M3",
+    "item": "humaneval-94",
+    "call": 4
+   },
+   "calls": 10004,
+   "over": 0,
+   "records_over": 0
+  }
+ }
+}

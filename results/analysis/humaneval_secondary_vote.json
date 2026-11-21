@@ -1,0 +1,48 @@
+{
+ "items_with_examples": 76,
+ "distinct_candidates_run": 929,
+ "local_rescore_n": 1258,
+ "local_rescore_agree": 1258,
+ "local_python": "3.9.6",
+ "backend": "macos",
+ "SC_k2": {
+  "n": 328,
+  "acc_primary": 63.41463414634146,
+  "acc_secondary": 63.41463414634146,
+  "changed": 0,
+  "fallback": 176,
+  "per_sample_pass": 63.26219512195122,
+  "any_sample_pass": 73.47560975609755,
+  "all_distinct": 85.36585365853658
+ },
+ "SC_k4": {
+  "n": 328,
+  "acc_primary": 62.80487804878049,
+  "acc_secondary": 65.54878048780488,
+  "changed": 38,
+  "fallback": 176,
+  "per_sample_pass": 62.19512195121951,
+  "any_sample_pass": 82.01219512195122,
+  "all_distinct": 70.1219512195122
+ },
+ "SC_k8": {
+  "n": 328,
+  "acc_primary": 64.9390243902439,
+  "acc_secondary": 66.46341463414635,
+  "changed": 63,
+  "fallback": 176,
+  "per_sample_pass": 62.99542682926829,
+  "any_sample_pass": 89.02439024390245,
+  "all_distinct": 47.25609756097561
+ },
+ "DEBATE_N3_R1": {
+  "n": 328,
+  "acc_primary": 48.78048780487805,
+  "acc_secondary": 49.08536585365854,
+  "changed": 11,
+  "fallback": 194,
+  "per_sample_pass": 39.83739837398374,
+  "any_sample_pass": 51.52439024390244,
+  "all_distinct": 36.28048780487805
+ }
+}

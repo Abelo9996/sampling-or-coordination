@@ -1,0 +1,5076 @@
+{
+ "inputs": [
+  "results/power/math500hard_qwen3b_s1.jsonl",
+  "results/power/math500hard_qwen3b_s1_sh0of2.jsonl",
+  "results/power/math500hard_qwen3b_s1_sh1of2.jsonl",
+  "results/power/math500hard_qwen3b_s2.jsonl",
+  "results/power/math500hard_qwen3b_s2_sh0of2.jsonl",
+  "results/power/math500hard_qwen3b_s2_sh1of2.jsonl",
+  "results/power/math500hard_qwen3b_s3.jsonl",
+  "results/power/math500hard_qwen3b_s3_sh0of2.jsonl",
+  "results/power/math500hard_qwen3b_s3_sh1of2.jsonl"
+ ],
+ "flag_counts": {
+  "SA": {
+   "deciding": 262,
+   "flagged": 10,
+   "no_boxed": 10,
+   "cap": 10
+  },
+  "SC_k12": {
+   "deciding": 9432,
+   "flagged": 207,
+   "no_boxed": 144,
+   "cap": 144,
+   "stated_differs_answer_phrase": 44,
+   "stated_differs_earlier_boxed": 34
+  },
+  "DEBATE_N3_R1": {
+   "deciding": 2358,
+   "flagged": 200,
+   "stated_differs_earlier_boxed": 97,
+   "stated_differs_answer_phrase": 152,
+   "no_boxed": 22,
+   "cap": 24
+  },
+  "GE_R2": {
+   "deciding": 786,
+   "flagged": 28,
+   "no_boxed": 12,
+   "cap": 12,
+   "stated_differs_answer_phrase": 15,
+   "stated_differs_earlier_boxed": 2
+  },
+  "HIER_M3": {
+   "deciding": 786,
+   "flagged": 27,
+   "no_boxed": 17,
+   "cap": 14,
+   "stated_differs_answer_phrase": 4,
+   "stated_differs_earlier_boxed": 8
+  }
+ },
+ "replication": {
+  "calls_logged_extracted_ne_math_extract": 0,
+  "records_logged_pred_ne_recomputed_vote": 0
+ },
+ "read_plan": {
+  "mode": "all",
+  "n": 472
+ },
+ "key": {
+  "h14c962127": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he46825fc7": {
+   "config": "SC_k12",
+   "item_id": "math-329",
+   "seed": 3,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3997a3a47": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-134",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h79cdd8dd2": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-294",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h623119b10": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-313",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h613f0aee6": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-305",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h118a921e5": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-188",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h7d68be905": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-479",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3488830f3": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hfdaf45c77": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h6d9ded1b4": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-332",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd1a3e3556": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 3,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha79acb242": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-67",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h974ecfe8d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-50",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h4d9a9f4dd": {
+   "config": "HIER_M3",
+   "item_id": "math-417",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed"
+   ],
+   "read": true
+  },
+  "hbf0e66508": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-321",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd4dd497af": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-154",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h82aa45dc8": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h7ae034da1": {
+   "config": "SC_k12",
+   "item_id": "math-125",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h671c0313f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-67",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h24defda31": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-104",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc83db9d7c": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-245",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf5b024c05": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb51756562": {
+   "config": "SC_k12",
+   "item_id": "math-217",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h6a8855ee0": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hb65236767": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-264",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h02e6c3bbc": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-488",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h8397c49c2": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-224",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "haaa4daf1b": {
+   "config": "HIER_M3",
+   "item_id": "math-15",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7238925d1": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-301",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h44a2a5ca2": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-470",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h86086f338": {
+   "config": "SC_k12",
+   "item_id": "math-391",
+   "seed": 2,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hd603e0a79": {
+   "config": "SC_k12",
+   "item_id": "math-217",
+   "seed": 2,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h9c93208e7": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-364",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h78974f059": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 2,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h011ca256f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-239",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hb376e14bd": {
+   "config": "SC_k12",
+   "item_id": "math-136",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h76aca1f20": {
+   "config": "SC_k12",
+   "item_id": "math-96",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha3ed65b68": {
+   "config": "SC_k12",
+   "item_id": "math-349",
+   "seed": 3,
+   "call_idx": 9,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc1c98ebe3": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hac3904425": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-71",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h59afbfe1f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-80",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h9ab95cb3a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-136",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "heaee78015": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-263",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3de0dfc3a": {
+   "config": "SA",
+   "item_id": "math-9",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h70561d3a9": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-242",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h7a4f45f96": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-197",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h2d196bfc7": {
+   "config": "GE_R2",
+   "item_id": "math-417",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha1801488d": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h76d031018": {
+   "config": "SA",
+   "item_id": "math-331",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1dbf449e1": {
+   "config": "SC_k12",
+   "item_id": "math-245",
+   "seed": 3,
+   "call_idx": 9,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h8359b1cf1": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-346",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h41d745463": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-323",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h7013cd292": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcf2d6925c": {
+   "config": "SC_k12",
+   "item_id": "math-125",
+   "seed": 2,
+   "call_idx": 9,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h51501d761": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-224",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hea1ba544f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-26",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcdae8d533": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-25",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h96c5190c6": {
+   "config": "SC_k12",
+   "item_id": "math-217",
+   "seed": 1,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h2614440ae": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-332",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3804b1303": {
+   "config": "SC_k12",
+   "item_id": "math-50",
+   "seed": 3,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h40cdbda75": {
+   "config": "SC_k12",
+   "item_id": "math-281",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h2588690fe": {
+   "config": "SC_k12",
+   "item_id": "math-412",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h9ee03c064": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-257",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h21916e43b": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-165",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6f3f9fb21": {
+   "config": "SA",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hf3913da44": {
+   "config": "SC_k12",
+   "item_id": "math-400",
+   "seed": 3,
+   "call_idx": 7,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h609763c9d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-93",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h133d0b8f7": {
+   "config": "SC_k12",
+   "item_id": "math-60",
+   "seed": 1,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h04fe0f639": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-220",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc7a7f423e": {
+   "config": "SC_k12",
+   "item_id": "math-239",
+   "seed": 2,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hca592f9a3": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-201",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc90ca45ea": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-287",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h63b842218": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-425",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h1e30bebbb": {
+   "config": "SC_k12",
+   "item_id": "math-140",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h98ef7b015": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-479",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hcafc9b6f9": {
+   "config": "SC_k12",
+   "item_id": "math-240",
+   "seed": 2,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h92f80e804": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-488",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3e6e930ae": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h81ce933bb": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-408",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd4513516d": {
+   "config": "SC_k12",
+   "item_id": "math-24",
+   "seed": 1,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb063e3804": {
+   "config": "HIER_M3",
+   "item_id": "math-1",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h5f197a787": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-263",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hde7ca723b": {
+   "config": "SC_k12",
+   "item_id": "math-294",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hd329be72a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-220",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h9352c1177": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-130",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "haca7b2a0d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-498",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha5d7ceffa": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-25",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h59503529d": {
+   "config": "SC_k12",
+   "item_id": "math-385",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "he09595dfa": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-299",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hfadea8d8a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-71",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hbdf662652": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-134",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7d217ab23": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-248",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h17055f0fe": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-104",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc145e862d": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcd6971eb4": {
+   "config": "SA",
+   "item_id": "math-475",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb549e2c8c": {
+   "config": "SC_k12",
+   "item_id": "math-382",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h876745122": {
+   "config": "SC_k12",
+   "item_id": "math-168",
+   "seed": 3,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h8c8ab61cf": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h294646c4b": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h65f56f141": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-424",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hb6d92eb64": {
+   "config": "SC_k12",
+   "item_id": "math-400",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h6d95c2fa7": {
+   "config": "SC_k12",
+   "item_id": "math-26",
+   "seed": 2,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h0731fc34d": {
+   "config": "SC_k12",
+   "item_id": "math-96",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h73c74bed5": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1d9147971": {
+   "config": "SC_k12",
+   "item_id": "math-64",
+   "seed": 3,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1f641e2c0": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 1,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h618ffcc41": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h7f414804c": {
+   "config": "SC_k12",
+   "item_id": "math-284",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcdf0147b9": {
+   "config": "SC_k12",
+   "item_id": "math-78",
+   "seed": 2,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd7af90f89": {
+   "config": "SC_k12",
+   "item_id": "math-323",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "ha78772ffd": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-356",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h448500223": {
+   "config": "SC_k12",
+   "item_id": "math-216",
+   "seed": 2,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h055a58d3d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-222",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "ha6c5cb039": {
+   "config": "HIER_M3",
+   "item_id": "math-419",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h6b9a9544d": {
+   "config": "HIER_M3",
+   "item_id": "math-317",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed"
+   ],
+   "read": true
+  },
+  "h294ec9c5f": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 6,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd10e743e9": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-417",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h4f645b221": {
+   "config": "SC_k12",
+   "item_id": "math-450",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h45e6ea388": {
+   "config": "SC_k12",
+   "item_id": "math-409",
+   "seed": 1,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h091bdeb80": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-417",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h26a089495": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-224",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hbf4aac212": {
+   "config": "SC_k12",
+   "item_id": "math-68",
+   "seed": 2,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h19d6086c3": {
+   "config": "GE_R2",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hde89a5819": {
+   "config": "SC_k12",
+   "item_id": "math-373",
+   "seed": 2,
+   "call_idx": 9,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc940b0880": {
+   "config": "HIER_M3",
+   "item_id": "math-104",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h111a370a8": {
+   "config": "GE_R2",
+   "item_id": "math-422",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "haa2c9fdc1": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-200",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7e7ed20da": {
+   "config": "GE_R2",
+   "item_id": "math-33",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "he820dbb5d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-41",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h58403037b": {
+   "config": "SC_k12",
+   "item_id": "math-244",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hca3137a0d": {
+   "config": "SC_k12",
+   "item_id": "math-151",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h7e6b3841b": {
+   "config": "SC_k12",
+   "item_id": "math-365",
+   "seed": 3,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h0873b9a08": {
+   "config": "SA",
+   "item_id": "math-421",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h386cf1a7d": {
+   "config": "SC_k12",
+   "item_id": "math-224",
+   "seed": 1,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc6a085aee": {
+   "config": "SC_k12",
+   "item_id": "math-166",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h996731a60": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-482",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hb0ef2d37f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h5943ed4a9": {
+   "config": "GE_R2",
+   "item_id": "math-481",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hca0ae8f0e": {
+   "config": "SC_k12",
+   "item_id": "math-398",
+   "seed": 1,
+   "call_idx": 2,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hbe4ec30c3": {
+   "config": "SC_k12",
+   "item_id": "math-166",
+   "seed": 1,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hba8f5c1db": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-26",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h9f28eb512": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-240",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h42b5a56a9": {
+   "config": "SC_k12",
+   "item_id": "math-408",
+   "seed": 1,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hfc6582fdd": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-382",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h80ad8f8a9": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-346",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "habcb0ab80": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hbff3ae109": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h440f8ade9": {
+   "config": "SC_k12",
+   "item_id": "math-239",
+   "seed": 3,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb02b312d1": {
+   "config": "SC_k12",
+   "item_id": "math-188",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h89a0d4fea": {
+   "config": "SC_k12",
+   "item_id": "math-297",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb84832b40": {
+   "config": "GE_R2",
+   "item_id": "math-313",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h52c5752f0": {
+   "config": "GE_R2",
+   "item_id": "math-166",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hadb9b3278": {
+   "config": "HIER_M3",
+   "item_id": "math-285",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "cap"
+   ],
+   "read": true
+  },
+  "hd952c44a8": {
+   "config": "SC_k12",
+   "item_id": "math-145",
+   "seed": 2,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hee4834f6d": {
+   "config": "SC_k12",
+   "item_id": "math-481",
+   "seed": 1,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h9b875faeb": {
+   "config": "SC_k12",
+   "item_id": "math-80",
+   "seed": 1,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h24835a987": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-300",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf5ea218db": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h5035b9a9e": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-195",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h51be07879": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-244",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hfdaa39b68": {
+   "config": "SC_k12",
+   "item_id": "math-7",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hde91aa2a4": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-375",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6dc86c1ad": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-22",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "cap",
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "he90b4c3de": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-126",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "haac9ea1a9": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-490",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "he04ad1161": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h14f2357a2": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-442",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h0bdcfe633": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-257",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h9bde5ec28": {
+   "config": "GE_R2",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "he9f437a96": {
+   "config": "GE_R2",
+   "item_id": "math-311",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he1660731f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-408",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3c45ecf44": {
+   "config": "SC_k12",
+   "item_id": "math-217",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h2204689ac": {
+   "config": "GE_R2",
+   "item_id": "math-281",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6643b1fc4": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc6c39457d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-311",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb00a5f1e9": {
+   "config": "HIER_M3",
+   "item_id": "math-329",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h852af65de": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-287",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h5f42c4a27": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-324",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc17777bd3": {
+   "config": "SC_k12",
+   "item_id": "math-194",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hbea7fdc07": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-444",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hcf585387f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-55",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7e9ff19e1": {
+   "config": "SC_k12",
+   "item_id": "math-301",
+   "seed": 2,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h246f8e303": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-47",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h100fe2c98": {
+   "config": "SC_k12",
+   "item_id": "math-217",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hbef1d85bd": {
+   "config": "SC_k12",
+   "item_id": "math-92",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h4c4ce1a70": {
+   "config": "SC_k12",
+   "item_id": "math-150",
+   "seed": 1,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1770f996e": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-425",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h29b6b1f70": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-422",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "cap"
+   ],
+   "read": true
+  },
+  "hfc19d9a35": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-52",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h2d01f1176": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-382",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h42ec52f5e": {
+   "config": "SA",
+   "item_id": "math-239",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h2254d578f": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h531e508f0": {
+   "config": "HIER_M3",
+   "item_id": "math-422",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h05c1e9e6a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-415",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h4f328540b": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 1,
+   "call_idx": 8,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h58f929852": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-287",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h646957bc4": {
+   "config": "SC_k12",
+   "item_id": "math-349",
+   "seed": 3,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf36650246": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-432",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hb99bc97cf": {
+   "config": "SC_k12",
+   "item_id": "math-263",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc911243ea": {
+   "config": "SA",
+   "item_id": "math-126",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h4360f3b4a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-220",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h27990f21a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-22",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h4343afbbc": {
+   "config": "SC_k12",
+   "item_id": "math-400",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h20a2f3ef8": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-44",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h9518f71da": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-22",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h3ef4e8651": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-84",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6c9c3b994": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-34",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h2d8db4e28": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-52",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h0ae70c323": {
+   "config": "SC_k12",
+   "item_id": "math-151",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h08c0c6cc7": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-379",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h633ab4274": {
+   "config": "HIER_M3",
+   "item_id": "math-302",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h8e2794e77": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 1,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h511f5265d": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha82c13da4": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-240",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h201e6f81e": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-239",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h56b56d618": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 6,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "he7e331845": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h030348937": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc085861de": {
+   "config": "SC_k12",
+   "item_id": "math-248",
+   "seed": 3,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h036e0a6c9": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h567350532": {
+   "config": "SC_k12",
+   "item_id": "math-24",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h9fa3ed4d0": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hca5f1a923": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-461",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h509d0fa8e": {
+   "config": "HIER_M3",
+   "item_id": "math-244",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h84831032f": {
+   "config": "HIER_M3",
+   "item_id": "math-109",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h05de2cc34": {
+   "config": "SC_k12",
+   "item_id": "math-220",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf02d529f1": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-166",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7dacfccf7": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h156b3c460": {
+   "config": "SC_k12",
+   "item_id": "math-422",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "haa6cad3f4": {
+   "config": "GE_R2",
+   "item_id": "math-412",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hf6a2cc2bb": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 11,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd70c38b70": {
+   "config": "SC_k12",
+   "item_id": "math-147",
+   "seed": 3,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hfb79eea5e": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hd006ca81a": {
+   "config": "GE_R2",
+   "item_id": "math-432",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h939e2f6c3": {
+   "config": "SC_k12",
+   "item_id": "math-202",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h4f4f75996": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 1,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc5f9f07ab": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-240",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "ha95bcca0d": {
+   "config": "SC_k12",
+   "item_id": "math-150",
+   "seed": 2,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hfa5bae71f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-294",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h97dca7e58": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 2,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hfa013a420": {
+   "config": "HIER_M3",
+   "item_id": "math-448",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hd2b7ad000": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-466",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h121b8cd25": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-52",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h676e82663": {
+   "config": "SC_k12",
+   "item_id": "math-64",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha3768f057": {
+   "config": "GE_R2",
+   "item_id": "math-62",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "cap",
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h8b731140b": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-44",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h6872648ae": {
+   "config": "SC_k12",
+   "item_id": "math-460",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h40755a1a2": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-443",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3f1a508aa": {
+   "config": "SC_k12",
+   "item_id": "math-333",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he12fee650": {
+   "config": "GE_R2",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha027cd679": {
+   "config": "SC_k12",
+   "item_id": "math-385",
+   "seed": 1,
+   "call_idx": 2,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h63a07ad20": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-301",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h4f81799bc": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-330",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf0e276ebe": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-332",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h69e20ff00": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-287",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h266cc720f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h7d099c079": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h45e59afa6": {
+   "config": "GE_R2",
+   "item_id": "math-71",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3ecbb2860": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-220",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h62c151184": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1f76f6fa9": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-311",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "he2e635249": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-281",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h288512baf": {
+   "config": "SC_k12",
+   "item_id": "math-78",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "ha9731b33d": {
+   "config": "GE_R2",
+   "item_id": "math-200",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc36a22800": {
+   "config": "SC_k12",
+   "item_id": "math-434",
+   "seed": 1,
+   "call_idx": 7,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6868cbcb2": {
+   "config": "SC_k12",
+   "item_id": "math-349",
+   "seed": 2,
+   "call_idx": 7,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h64c59e458": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-313",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h860ae8bfd": {
+   "config": "SC_k12",
+   "item_id": "math-284",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h360591673": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 1,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h8bed863e8": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 3,
+   "call_idx": 7,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h1ee636a73": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-220",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hcec923c5b": {
+   "config": "SC_k12",
+   "item_id": "math-136",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hd59e8c086": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-415",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hada48333d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-436",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h2406a1bb3": {
+   "config": "SC_k12",
+   "item_id": "math-145",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcb55564ca": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-419",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc17af10d1": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-394",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed"
+   ],
+   "read": true
+  },
+  "h0c3ebfd2a": {
+   "config": "SC_k12",
+   "item_id": "math-96",
+   "seed": 3,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb2595d3a0": {
+   "config": "SC_k12",
+   "item_id": "math-400",
+   "seed": 3,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hbd69769da": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcd715e218": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h0db4937d7": {
+   "config": "SC_k12",
+   "item_id": "math-240",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h12d5734ca": {
+   "config": "SC_k12",
+   "item_id": "math-333",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1d9c2f64d": {
+   "config": "SC_k12",
+   "item_id": "math-231",
+   "seed": 2,
+   "call_idx": 0,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h807d09b35": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h16e6de350": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-394",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he58311d83": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hddb430604": {
+   "config": "SC_k12",
+   "item_id": "math-422",
+   "seed": 3,
+   "call_idx": 7,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h5647dd31c": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-277",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h905ca1362": {
+   "config": "SC_k12",
+   "item_id": "math-9",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h2a120c644": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-479",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h09503398a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-280",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h15d942661": {
+   "config": "SC_k12",
+   "item_id": "math-217",
+   "seed": 3,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "haac5189d4": {
+   "config": "GE_R2",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he61db5d94": {
+   "config": "SC_k12",
+   "item_id": "math-454",
+   "seed": 3,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h5fa0c29f3": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-425",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc449947fd": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h642240267": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-482",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h60a939631": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-104",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h29b36d679": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-421",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h47b89c5b5": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-137",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "ha62f90211": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb20e05979": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-112",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h464f273c7": {
+   "config": "SC_k12",
+   "item_id": "math-473",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hac44901a7": {
+   "config": "SC_k12",
+   "item_id": "math-400",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h83e45f91e": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hf141c8d5a": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h203540b12": {
+   "config": "SC_k12",
+   "item_id": "math-475",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h8e815d894": {
+   "config": "SC_k12",
+   "item_id": "math-421",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h0f2fc6e9f": {
+   "config": "SC_k12",
+   "item_id": "math-317",
+   "seed": 2,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hecf78c0b7": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-200",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hae4b6bc01": {
+   "config": "SC_k12",
+   "item_id": "math-385",
+   "seed": 1,
+   "call_idx": 6,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "ha472f24c4": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-103",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hd5ef394e7": {
+   "config": "HIER_M3",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h073f21da1": {
+   "config": "HIER_M3",
+   "item_id": "math-408",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h8588f4f0c": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-392",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hc1b7a22ec": {
+   "config": "SC_k12",
+   "item_id": "math-320",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7a8b08b59": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha3fc77f8f": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h4271d08e2": {
+   "config": "SC_k12",
+   "item_id": "math-398",
+   "seed": 1,
+   "call_idx": 6,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hcba85b101": {
+   "config": "GE_R2",
+   "item_id": "math-252",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc7ceee5e2": {
+   "config": "SC_k12",
+   "item_id": "math-327",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h4d3e76fbf": {
+   "config": "SC_k12",
+   "item_id": "math-154",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h39ea23f1d": {
+   "config": "HIER_M3",
+   "item_id": "math-400",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hbc8f28305": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-460",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h21592fee8": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-242",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h192841559": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-109",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h3aef07edb": {
+   "config": "SC_k12",
+   "item_id": "math-142",
+   "seed": 3,
+   "call_idx": 9,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h125058195": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-365",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h8d53d4ec8": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-470",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h4af8f9056": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-80",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h1e45d23f0": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-311",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "cap"
+   ],
+   "read": true
+  },
+  "h74391245f": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "ha886e5cc0": {
+   "config": "SC_k12",
+   "item_id": "math-50",
+   "seed": 2,
+   "call_idx": 11,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hf92da62cc": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-15",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h462a9692e": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-158",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7d77892a9": {
+   "config": "GE_R2",
+   "item_id": "math-145",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h60733a774": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-279",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h7a8bf7e67": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-197",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hdbcbdce81": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-428",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h97b9c2b57": {
+   "config": "HIER_M3",
+   "item_id": "math-303",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hca05d44a5": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-50",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h2b0d4dd03": {
+   "config": "SC_k12",
+   "item_id": "math-323",
+   "seed": 1,
+   "call_idx": 2,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "had0bd1516": {
+   "config": "SC_k12",
+   "item_id": "math-248",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h4cf29d0c1": {
+   "config": "SC_k12",
+   "item_id": "math-475",
+   "seed": 1,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcbea920a8": {
+   "config": "SC_k12",
+   "item_id": "math-412",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hfbd082b1e": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-294",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h9a10e1230": {
+   "config": "HIER_M3",
+   "item_id": "math-22",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed"
+   ],
+   "read": true
+  },
+  "h881093870": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-34",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h81f34596c": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-423",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h1b56fa63c": {
+   "config": "SC_k12",
+   "item_id": "math-357",
+   "seed": 1,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h66a4a6d0f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-273",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h4e9e71dfe": {
+   "config": "SC_k12",
+   "item_id": "math-349",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h25cf2418e": {
+   "config": "SC_k12",
+   "item_id": "math-118",
+   "seed": 2,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hccb0a69a4": {
+   "config": "SC_k12",
+   "item_id": "math-359",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h74005f1f1": {
+   "config": "SC_k12",
+   "item_id": "math-264",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h354701a3a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-294",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h2a5c3ad08": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-418",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h520152a60": {
+   "config": "HIER_M3",
+   "item_id": "math-394",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h168cab8b0": {
+   "config": "SC_k12",
+   "item_id": "math-425",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h3b66312da": {
+   "config": "GE_R2",
+   "item_id": "math-417",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h66b0742d0": {
+   "config": "HIER_M3",
+   "item_id": "math-242",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hb27810fea": {
+   "config": "GE_R2",
+   "item_id": "math-412",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed"
+   ],
+   "read": true
+  },
+  "hd1eb0cff9": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-442",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h3937ad71c": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-294",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h1484ca33f": {
+   "config": "SC_k12",
+   "item_id": "math-78",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h123204940": {
+   "config": "GE_R2",
+   "item_id": "math-408",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h05d5adc4e": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1e5030439": {
+   "config": "SC_k12",
+   "item_id": "math-297",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h60b6b1c5f": {
+   "config": "HIER_M3",
+   "item_id": "math-248",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hdf04ed7a2": {
+   "config": "SA",
+   "item_id": "math-412",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h2090298bc": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-460",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6e30a8b89": {
+   "config": "SC_k12",
+   "item_id": "math-49",
+   "seed": 3,
+   "call_idx": 6,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h836aacb42": {
+   "config": "HIER_M3",
+   "item_id": "math-150",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he1b8d347f": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-299",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h7def59610": {
+   "config": "HIER_M3",
+   "item_id": "math-285",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb04128661": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-257",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h2b8321139": {
+   "config": "SC_k12",
+   "item_id": "math-50",
+   "seed": 2,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hff8db151c": {
+   "config": "SC_k12",
+   "item_id": "math-248",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h32dc6cd2a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-301",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "hd0d1bea24": {
+   "config": "SA",
+   "item_id": "math-436",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc7e6347ec": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-80",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd95e097f7": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-313",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf4bf6785c": {
+   "config": "HIER_M3",
+   "item_id": "math-417",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed"
+   ],
+   "read": true
+  },
+  "hcb4955ee0": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 1,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he57976065": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-301",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h0eeb702de": {
+   "config": "SC_k12",
+   "item_id": "math-136",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hbedf93085": {
+   "config": "GE_R2",
+   "item_id": "math-214",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h0a23cdd84": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-12",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h32c62a103": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-33",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h5453e3dd2": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1365c8cdc": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-470",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h1b1d8bb47": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-55",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h9f40f0c21": {
+   "config": "SC_k12",
+   "item_id": "math-202",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "he6d317425": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1918a7326": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-423",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hc58e4c672": {
+   "config": "SC_k12",
+   "item_id": "math-292",
+   "seed": 2,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcbd3a8386": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 0,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h68865caf8": {
+   "config": "SC_k12",
+   "item_id": "math-436",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hba6926ac8": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-134",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h078be3512": {
+   "config": "SC_k12",
+   "item_id": "math-478",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h3fa97c5d2": {
+   "config": "SC_k12",
+   "item_id": "math-422",
+   "seed": 1,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h81b7912e2": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-229",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6ae12a9ed": {
+   "config": "SC_k12",
+   "item_id": "math-490",
+   "seed": 3,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha3acb648c": {
+   "config": "SC_k12",
+   "item_id": "math-163",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h0c2379e75": {
+   "config": "SC_k12",
+   "item_id": "math-118",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h864b0beac": {
+   "config": "GE_R2",
+   "item_id": "math-302",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h261f53f9d": {
+   "config": "GE_R2",
+   "item_id": "math-409",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h27dd0cbf7": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-380",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf8f312c94": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd025dc741": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-62",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h1b80b5b68": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-173",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h33a0fe713": {
+   "config": "SC_k12",
+   "item_id": "math-236",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h9ac528f0a": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-15",
+   "seed": 3,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hdc411c7d9": {
+   "config": "SC_k12",
+   "item_id": "math-425",
+   "seed": 1,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h1bf0800c8": {
+   "config": "SC_k12",
+   "item_id": "math-422",
+   "seed": 3,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb86cb7cbd": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-202",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h76ee4437c": {
+   "config": "SC_k12",
+   "item_id": "math-222",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "heb911db2d": {
+   "config": "HIER_M3",
+   "item_id": "math-147",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h57b712660": {
+   "config": "SC_k12",
+   "item_id": "math-329",
+   "seed": 3,
+   "call_idx": 7,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf6a0423bc": {
+   "config": "SC_k12",
+   "item_id": "math-145",
+   "seed": 2,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h23abeefd7": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-50",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h81b59f7a0": {
+   "config": "SC_k12",
+   "item_id": "math-490",
+   "seed": 2,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "ha8ad0294c": {
+   "config": "SC_k12",
+   "item_id": "math-26",
+   "seed": 3,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcdabcc16d": {
+   "config": "SC_k12",
+   "item_id": "math-96",
+   "seed": 2,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h6b5e9e9eb": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-461",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h706df4832": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 1,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h5b250f74e": {
+   "config": "GE_R2",
+   "item_id": "math-277",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h60f868ff4": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-126",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h9c1e41dc4": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-380",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h8caa28954": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-50",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h482496e42": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-31",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h6b3dfd361": {
+   "config": "SC_k12",
+   "item_id": "math-287",
+   "seed": 3,
+   "call_idx": 2,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed"
+   ],
+   "read": true
+  },
+  "h5abf92ca7": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h21e7fa83e": {
+   "config": "GE_R2",
+   "item_id": "math-22",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h3b8955133": {
+   "config": "SC_k12",
+   "item_id": "math-364",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hf89132170": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-382",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "ha52151dd4": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h2505a4dfe": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-222",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hbc0393e9d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-31",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h16f12e945": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-222",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hd2f69d0ca": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-292",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h6a294336c": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h0b3e9dd1d": {
+   "config": "SC_k12",
+   "item_id": "math-126",
+   "seed": 3,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he84dcb4af": {
+   "config": "SC_k12",
+   "item_id": "math-26",
+   "seed": 3,
+   "call_idx": 7,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h52c423616": {
+   "config": "SC_k12",
+   "item_id": "math-422",
+   "seed": 3,
+   "call_idx": 9,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc0ce8485d": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-365",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hccadfafac": {
+   "config": "SC_k12",
+   "item_id": "math-302",
+   "seed": 2,
+   "call_idx": 6,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hcbc5b546c": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-55",
+   "seed": 1,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "hcff8cfd00": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-276",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h32a6d2416": {
+   "config": "SC_k12",
+   "item_id": "math-249",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h401f0d2f8": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-288",
+   "seed": 3,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "he904ec42b": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-376",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h551724f88": {
+   "config": "SC_k12",
+   "item_id": "math-297",
+   "seed": 3,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h9a92b4d14": {
+   "config": "SC_k12",
+   "item_id": "math-236",
+   "seed": 1,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h8d47c0ac0": {
+   "config": "SC_k12",
+   "item_id": "math-60",
+   "seed": 3,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hb2e3f5448": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-166",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h14a0a901b": {
+   "config": "HIER_M3",
+   "item_id": "math-9",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h74fc86172": {
+   "config": "SA",
+   "item_id": "math-292",
+   "seed": 1,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h99af072cc": {
+   "config": "SC_k12",
+   "item_id": "math-450",
+   "seed": 1,
+   "call_idx": 1,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h5b17bd73b": {
+   "config": "DEBATE_N3_R1",
+   "item_id": "math-200",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h806b86f79": {
+   "config": "SC_k12",
+   "item_id": "math-436",
+   "seed": 2,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hbceea0589": {
+   "config": "HIER_M3",
+   "item_id": "math-417",
+   "seed": 2,
+   "call_idx": 4,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hfb443c68e": {
+   "config": "SC_k12",
+   "item_id": "math-126",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hbfc97ae0e": {
+   "config": "SC_k12",
+   "item_id": "math-436",
+   "seed": 1,
+   "call_idx": 10,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "he65ca8c9d": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 3,
+   "call_idx": 0,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "h20da2d636": {
+   "config": "SC_k12",
+   "item_id": "math-285",
+   "seed": 1,
+   "call_idx": 8,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hd06dcf9db": {
+   "config": "SC_k12",
+   "item_id": "math-407",
+   "seed": 2,
+   "call_idx": 3,
+   "flag_reasons": [
+    "stated_differs_earlier_boxed",
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h25bba66ea": {
+   "config": "SC_k12",
+   "item_id": "math-240",
+   "seed": 2,
+   "call_idx": 2,
+   "flag_reasons": [
+    "no_boxed",
+    "cap"
+   ],
+   "read": true
+  },
+  "hc7c1cd85d": {
+   "config": "SC_k12",
+   "item_id": "math-313",
+   "seed": 2,
+   "call_idx": 5,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  },
+  "h11e956ba3": {
+   "config": "GE_R2",
+   "item_id": "math-166",
+   "seed": 3,
+   "call_idx": 4,
+   "flag_reasons": [
+    "stated_differs_answer_phrase"
+   ],
+   "read": true
+  }
+ }
+}

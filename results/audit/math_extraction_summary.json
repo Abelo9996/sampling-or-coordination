@@ -1,0 +1,546 @@
+{
+ "input": "results/math500_qwen3b_coord_trace.jsonl",
+ "reader": "AI assistant (Claude), reading math_extraction_cases.json only; blind to workflow, item, gold and harness reading at reading time; no human check",
+ "readings_file_sha256_at_analysis": "2bfdf8f11c7bc5697edf9bd508a72c75dfd750d61b9c988c4bb79b8e956c4de1",
+ "deciding_calls_rule": {
+  "SC_k8": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "DEBATE_N3_R1": [
+   3,
+   4,
+   5
+  ],
+  "GE_R2": [
+   4
+  ],
+  "HIER_M3": [
+   4
+  ]
+ },
+ "equivalence_reading_vs_harness": "harness.tasks.math_score(reading, extracted) or math_score(extracted, reading); both None = agree",
+ "rescoring": "vote = harness.topologies._majority over readings of the deciding calls (SC_k8, DEBATE_N3_R1); reading of the last call (GE_R2, HIER_M3); scored against gold with harness.tasks.math_score",
+ "n_cases": 780,
+ "auto_resolved": 690,
+ "manual": 90,
+ "spot_check": {
+  "n": 30,
+  "sampling": "random.Random(7).sample(sorted(auto ids), 30)",
+  "case_ids": [
+   "c78897648",
+   "c3556828f",
+   "c96254e28",
+   "cf41f036f",
+   "c12020c1c",
+   "c1b3c7388",
+   "ccb800c84",
+   "c21d3270c",
+   "c89879136",
+   "cdbafa210",
+   "c171a528f",
+   "cbe09a82f",
+   "c4c44c632",
+   "c0d8a991f",
+   "c1f6f1d33",
+   "ca304e1e9",
+   "c9e59989c",
+   "c19b8b00c",
+   "c59d85bbb",
+   "c1ff0a75f",
+   "cd03a557c",
+   "ca079b993",
+   "c172d2d1e",
+   "cd47c38c0",
+   "c2c2a9755",
+   "c4e5c7ee2",
+   "ceb331362",
+   "ce965c68b",
+   "c17f42352",
+   "cd8fa1553"
+  ],
+  "agreed_with_auto_reading": 30,
+  "disagreed": 0
+ },
+ "clerical_fixes": [],
+ "replication": {
+  "calls_where_logged_extracted_differs_from_math_extract": 0,
+  "records_logged_pred_vs_recomputed_vote": {
+   "match": 240,
+   "correct_match": 240
+  }
+ },
+ "per_workflow": {
+  "SC_k8": {
+   "records": 60,
+   "logged_acc": 0.8833,
+   "rescored_acc": 0.8833,
+   "rescored_acc_cutoff_as_truncated": 0.8833,
+   "logged_acc_scorer_fixed": 0.9167,
+   "rescored_acc_scorer_fixed": 0.9167,
+   "logged_correct": 53,
+   "rescored_correct": 53,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 480,
+   "auto_resolved_calls": 468,
+   "misread_calls": 2,
+   "misread_share": 0.0042,
+   "cap_calls": 6,
+   "cap_share": 0.0125,
+   "no_final_answer_calls": 6,
+   "no_final_answer_share": 0.0125,
+   "reading_none_calls": 1,
+   "reading_truncated_calls": 5,
+   "reading_cut_off_after_answer_calls": 1,
+   "harness_none_calls": 6,
+   "disagreement_classes": {
+    "extractor_none_answer_stated": 1,
+    "no_answer_stated": 1
+   }
+  },
+  "DEBATE_N3_R1": {
+   "records": 60,
+   "logged_acc": 0.8167,
+   "rescored_acc": 0.8167,
+   "rescored_acc_cutoff_as_truncated": 0.8167,
+   "logged_acc_scorer_fixed": 0.85,
+   "rescored_acc_scorer_fixed": 0.85,
+   "logged_correct": 49,
+   "rescored_correct": 49,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 180,
+   "auto_resolved_calls": 117,
+   "misread_calls": 0,
+   "misread_share": 0.0,
+   "cap_calls": 4,
+   "cap_share": 0.0222,
+   "no_final_answer_calls": 2,
+   "no_final_answer_share": 0.0111,
+   "reading_none_calls": 0,
+   "reading_truncated_calls": 2,
+   "reading_cut_off_after_answer_calls": 2,
+   "harness_none_calls": 2,
+   "disagreement_classes": {}
+  },
+  "GE_R2": {
+   "records": 60,
+   "logged_acc": 0.7667,
+   "rescored_acc": 0.7667,
+   "rescored_acc_cutoff_as_truncated": 0.7667,
+   "logged_acc_scorer_fixed": 0.8,
+   "rescored_acc_scorer_fixed": 0.8,
+   "logged_correct": 46,
+   "rescored_correct": 46,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 60,
+   "auto_resolved_calls": 48,
+   "misread_calls": 0,
+   "misread_share": 0.0,
+   "cap_calls": 2,
+   "cap_share": 0.0333,
+   "no_final_answer_calls": 2,
+   "no_final_answer_share": 0.0333,
+   "reading_none_calls": 0,
+   "reading_truncated_calls": 2,
+   "reading_cut_off_after_answer_calls": 0,
+   "harness_none_calls": 2,
+   "disagreement_classes": {}
+  },
+  "HIER_M3": {
+   "records": 60,
+   "logged_acc": 0.7833,
+   "rescored_acc": 0.7833,
+   "rescored_acc_cutoff_as_truncated": 0.7833,
+   "logged_acc_scorer_fixed": 0.8167,
+   "rescored_acc_scorer_fixed": 0.8167,
+   "logged_correct": 47,
+   "rescored_correct": 47,
+   "flip_wrong_to_right": 0,
+   "flip_right_to_wrong": 0,
+   "deciding_calls": 60,
+   "auto_resolved_calls": 57,
+   "misread_calls": 1,
+   "misread_share": 0.0167,
+   "cap_calls": 1,
+   "cap_share": 0.0167,
+   "no_final_answer_calls": 0,
+   "no_final_answer_share": 0.0,
+   "reading_none_calls": 0,
+   "reading_truncated_calls": 0,
+   "reading_cut_off_after_answer_calls": 1,
+   "harness_none_calls": 0,
+   "disagreement_classes": {
+    "extractor_nonfinal_expression": 1
+   }
+  }
+ },
+ "gaps": {
+  "SC_k8_minus_DEBATE_N3_R1": {
+   "logged": 0.0667,
+   "rescored": 0.0667,
+   "rescored_cutoff_as_truncated": 0.0667,
+   "logged_scorer_fixed": 0.0667,
+   "rescored_scorer_fixed": 0.0667
+  },
+  "SC_k8_minus_GE_R2": {
+   "logged": 0.1167,
+   "rescored": 0.1167,
+   "rescored_cutoff_as_truncated": 0.1167,
+   "logged_scorer_fixed": 0.1167,
+   "rescored_scorer_fixed": 0.1167
+  },
+  "SC_k8_minus_HIER_M3": {
+   "logged": 0.1,
+   "rescored": 0.1,
+   "rescored_cutoff_as_truncated": 0.1,
+   "logged_scorer_fixed": 0.1,
+   "rescored_scorer_fixed": 0.1
+  },
+  "DEBATE_N3_R1_minus_GE_R2": {
+   "logged": 0.05,
+   "rescored": 0.05,
+   "rescored_cutoff_as_truncated": 0.05,
+   "logged_scorer_fixed": 0.05,
+   "rescored_scorer_fixed": 0.05
+  },
+  "DEBATE_N3_R1_minus_HIER_M3": {
+   "logged": 0.0333,
+   "rescored": 0.0333,
+   "rescored_cutoff_as_truncated": 0.0333,
+   "logged_scorer_fixed": 0.0333,
+   "rescored_scorer_fixed": 0.0333
+  },
+  "GE_R2_minus_HIER_M3": {
+   "logged": -0.0167,
+   "rescored": -0.0167,
+   "rescored_cutoff_as_truncated": -0.0167,
+   "logged_scorer_fixed": -0.0167,
+   "rescored_scorer_fixed": -0.0167
+  }
+ },
+ "misread_rate_SC_samples": {
+  "misread": 2,
+  "calls": 480,
+  "rate": 0.0042
+ },
+ "misread_rate_coordination_final_calls": {
+  "misread": 1,
+  "calls": 300,
+  "rate": 0.0033
+ },
+ "scorer_problems": {
+  "SC_k8": {
+   "calls_unequal_marked_right": 1,
+   "records_logged_pred": 2,
+   "records_logged_pred_equal_marked_wrong": 2,
+   "calls_equal_marked_wrong": 16
+  },
+  "DEBATE_N3_R1": {
+   "records_logged_pred": 2,
+   "records_logged_pred_equal_marked_wrong": 2,
+   "calls_equal_marked_wrong": 6
+  },
+  "GE_R2": {
+   "records_logged_pred": 2,
+   "records_logged_pred_equal_marked_wrong": 2,
+   "calls_equal_marked_wrong": 2
+  },
+  "HIER_M3": {
+   "records_logged_pred": 2,
+   "records_logged_pred_equal_marked_wrong": 2,
+   "calls_equal_marked_wrong": 2
+  }
+ },
+ "scorer_problem_rules": {
+  "equal_but_marked_wrong": [
+   [
+    "math-227",
+    "C"
+   ],
+   [
+    "math-227",
+    "\\text{C}"
+   ],
+   [
+    "math-255",
+    "E"
+   ],
+   [
+    "math-255",
+    "\\text{E}"
+   ]
+  ],
+  "unequal_but_marked_right": [
+   [
+    "math-176",
+    "0.0000671875"
+   ]
+  ]
+ },
+ "scorer_problem_calls": [
+  {
+   "item_id": "math-227",
+   "config": "DEBATE_N3_R1",
+   "call_idx": 3,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "DEBATE_N3_R1",
+   "call_idx": 4,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "DEBATE_N3_R1",
+   "call_idx": 5,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "DEBATE_N3_R1",
+   "call_idx": 3,
+   "gold": "\\text{(E)}",
+   "stated": "\\text{E}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "DEBATE_N3_R1",
+   "call_idx": 4,
+   "gold": "\\text{(E)}",
+   "stated": "\\text{E}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "DEBATE_N3_R1",
+   "call_idx": 5,
+   "gold": "\\text{(E)}",
+   "stated": "\\text{E}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "GE_R2",
+   "call_idx": 4,
+   "gold": "\\text{(C)}",
+   "stated": "\\text{C}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "GE_R2",
+   "call_idx": 4,
+   "gold": "\\text{(E)}",
+   "stated": "E",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "HIER_M3",
+   "call_idx": 4,
+   "gold": "\\text{(C)}",
+   "stated": "\\text{C}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "HIER_M3",
+   "call_idx": 4,
+   "gold": "\\text{(E)}",
+   "stated": "E",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-176",
+   "config": "SC_k8",
+   "call_idx": 6,
+   "gold": ".0000672",
+   "stated": "0.0000671875",
+   "verdict": "unequal_but_marked_right"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 0,
+   "gold": "\\text{(C)}",
+   "stated": "\\text{C}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 1,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 2,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 3,
+   "gold": "\\text{(C)}",
+   "stated": "\\text{C}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 4,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 5,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 6,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-227",
+   "config": "SC_k8",
+   "call_idx": 7,
+   "gold": "\\text{(C)}",
+   "stated": "C",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 0,
+   "gold": "\\text{(E)}",
+   "stated": "E",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 1,
+   "gold": "\\text{(E)}",
+   "stated": "\\text{E}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 2,
+   "gold": "\\text{(E)}",
+   "stated": "\\text{E}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 3,
+   "gold": "\\text{(E)}",
+   "stated": "\\text{E}",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 4,
+   "gold": "\\text{(E)}",
+   "stated": "E",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 5,
+   "gold": "\\text{(E)}",
+   "stated": "E",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 6,
+   "gold": "\\text{(E)}",
+   "stated": "E",
+   "verdict": "equal_but_marked_wrong"
+  },
+  {
+   "item_id": "math-255",
+   "config": "SC_k8",
+   "call_idx": 7,
+   "gold": "\\text{(E)}",
+   "stated": "\\text{E}",
+   "verdict": "equal_but_marked_wrong"
+  }
+ ],
+ "flips": [],
+ "disagreements": [
+  {
+   "case": "cea22b324",
+   "config": "HIER_M3",
+   "item_id": "math-51",
+   "call_idx": 4,
+   "reading_status": "answer",
+   "reading": "x^5 - x^4 - x^2 + x - 1",
+   "reading_note": "states quotient x^5 - x^4 - x^2 + x - 1, cut off inside the final \\boxed{x^",
+   "harness_extracted": ":",
+   "hit_cap": true,
+   "class": "extractor_nonfinal_expression"
+  },
+  {
+   "case": "c54a61727",
+   "config": "SC_k8",
+   "item_id": "math-458",
+   "call_idx": 2,
+   "reading_status": "none",
+   "reading": null,
+   "reading_note": "ends 'the final answer in \\boxed{36} or \\boxed{49}'; two candidates, no single final answer",
+   "harness_extracted": "49",
+   "hit_cap": false,
+   "class": "no_answer_stated"
+  },
+  {
+   "case": "cb9141e14",
+   "config": "SC_k8",
+   "item_id": "math-51",
+   "call_idx": 6,
+   "reading_status": "answer",
+   "reading": "x^5 - x^4 + x^3 - x^2 + x - 1",
+   "reading_note": "states 'The quotient is x^5 - x^4 + x^3 - x^2 + x - 1' then is cut off while restating it",
+   "harness_extracted": null,
+   "hit_cap": true,
+   "class": "extractor_none_answer_stated"
+  }
+ ]
+}

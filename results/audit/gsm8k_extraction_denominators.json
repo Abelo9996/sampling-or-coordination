@@ -1,0 +1,19 @@
+{
+ "answer_bearing_calls": {
+  "gpu|SA": 100,
+  "gpu|SC_k8": 2400,
+  "gpu|DEBATE_N3_R1": 900,
+  "gpu|GE_R2": 300,
+  "gpu|HIER_M3": 300,
+  "mac|DEBATE_N3_R1": 240,
+  "mac|GE_R2": 80,
+  "mac|HIER_M3": 80,
+  "mac|SC_k8": 96
+ },
+ "template_only_outputs": {
+  "gpu|HIER_M3": 71,
+  "gpu|GE_R2": 1,
+  "mac|GE_R2": 1,
+  "mac|HIER_M3": 15
+ }
+}
