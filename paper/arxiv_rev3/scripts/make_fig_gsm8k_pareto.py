@@ -28,13 +28,22 @@ from matplotlib.legend_handler import HandlerTuple  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 
 import eaai_lib as E  # noqa: E402
+from item_ci import item_ci  # noqa: E402
 
 YLIM = (55, 95)
 GSM_W = 0.6 * FS.FULL_W
 
 
 def main():
-    agg = E.analyze.aggregate(E.load("gsm8k_matrix.jsonl"))
+    rows = E.load("gsm8k_matrix.jsonl")
+    agg = E.analyze.aggregate(rows)
+    # error bars with the paper's item bootstrap (scripts/item_ci.py: B = 10,000, seed 0; items in
+    # the log order of aggregate and of the July matrix table), not aggregate's B = 2,000
+    for c, d in E.analyze.per_item_table(rows).items():
+        corr = [v[0] for v in d.values()]
+        assert abs(sum(corr) / len(corr) - agg[c]["accuracy"]) < 1e-12, c
+        lo, hi = item_ci(corr)
+        agg[c] = dict(agg[c], acc_lo=lo, acc_hi=hi)
     rs = json.load(open(os.path.join(FS.ROOT, "paper", "aaibd", "revision_stats.json")))
     ref = rs["A"]["tasks"]["gsm8k_n80"]["configs"]
     rr = json.load(open(os.path.join(FS.REV3, "tables", "review_revision.json")))

@@ -23,7 +23,10 @@ Writes (inside paper/arxiv_rev3):
   tables/rev3/rr_confirm_table.tex           the confirmatory family C1 to C5
 Run: /usr/bin/python3 paper/arxiv_rev3/scripts/emit_rev3_reruns.py
 """
-import json, os, re
+import json, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from item_ci import ci_cell  # noqa: E402  shared accuracy-interval format (scripts/item_ci.py)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REV3 = os.path.dirname(HERE)
@@ -154,7 +157,7 @@ for task, tn in (("gsm8k", "Gsm"), ("mmlu", "Mmlu"), ("proeng", "Eng"), ("code",
     for c, v in cfg.items():
         n = MN[c]
         mac(f"Rr{tn}{n}Acc", f"{v['acc']:.1f}")
-        mac(f"Rr{tn}{n}CI", f"[{v['lo']:.0f},{v['hi']:.0f}]")
+        mac(f"Rr{tn}{n}CI", ci_cell(v["lo"], v["hi"]))
         mac(f"Rr{tn}{n}Tok", tok(v["total_tokens"]))
         mac(f"Rr{tn}{n}Out", tok(v["out_tokens"]))
     for (a, w), t in tests.items():
@@ -213,7 +216,7 @@ if r5:
     R5J = J["r5"]
     for cfg, v in R5J["easy_cap2048"].items():
         n_ = MN[cfg]
-        mac(f"RrFv{n_}Acc", f"{v['acc']:.1f}"); mac(f"RrFv{n_}CI", f"[{v['lo']:.0f},{v['hi']:.0f}]")
+        mac(f"RrFv{n_}Acc", f"{v['acc']:.1f}"); mac(f"RrFv{n_}CI", ci_cell(v["lo"], v["hi"]))
         mac(f"RrFv{n_}Tok", tok(v["total_tokens"]))
     for k, t in R5J["within_R5"].items():
         w, a = k.split("|")
@@ -401,7 +404,7 @@ for c in ["SA", "SC_k2", "SC_k4", "SC_k8", "SC_k12", "DEBATE_N3_R1", "GE_R2", "H
         if c in cfg:
             v = cfg[c]
             dag = "$^\\dagger$" if (task, c) in CROSS else ""
-            cells += [f"{v['acc']:.1f}{dag} {{\\footnotesize[{v['lo']:.0f},{v['hi']:.0f}]}}", tok(v["total_tokens"])]
+            cells += [f"{v['acc']:.1f}{dag} {{\\footnotesize{ci_cell(v['lo'], v['hi'])}}}", tok(v["total_tokens"])]
         else:
             cells += ["--", "--"]
     rows.append(" & ".join(cells) + " \\\\")
@@ -625,8 +628,8 @@ for c in ["SA", "SC_k2", "SC_k4", "SC_k8", "DEBATE_N3_R1", "GE_R2", "HIERFIX_M3"
     h = H.get(c)
     np1 = f"{h['no_program_v1_pct']:.1f}" if h else "--"
     np2 = f"{h['no_program_v2_pct']:.1f}" if h else "--"
-    he.append(" & ".join([LBL.get(c, CN.get(c)), f"{a2['acc']:.1f} {{\\footnotesize[{a2['lo']:.0f},{a2['hi']:.0f}]}}",
-                          f"{a1['acc']:.1f} {{\\footnotesize[{a1['lo']:.0f},{a1['hi']:.0f}]}}", tok(a2["total_tokens"]),
+    he.append(" & ".join([LBL.get(c, CN.get(c)), f"{a2['acc']:.1f} {{\\footnotesize{ci_cell(a2['lo'], a2['hi'])}}}",
+                          f"{a1['acc']:.1f} {{\\footnotesize{ci_cell(a1['lo'], a1['hi'])}}}", tok(a2["total_tokens"]),
                           tok(a2["out_tokens"]), np2, np1]) + " \\\\")
 write("rr_humaneval_table.tex", he, "HumanEval R3 (164 x 2; SA one seed): v2 and v1 extractors.")
 

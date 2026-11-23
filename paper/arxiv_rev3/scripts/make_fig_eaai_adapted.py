@@ -38,6 +38,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 
 import eaai_lib as E  # noqa: E402
+from item_ci import rr_config  # noqa: E402
 
 COL = FS.COL
 TAB = os.path.join(FS.REV3, "tables")
@@ -204,6 +205,12 @@ def fig_code_energy():
 def fig_proeng_pareto():
     agg, _ = E.agg_task("mmlu_pro_eng")
     check_cfg("proeng", agg)
+    # error bars: the accuracy intervals of Table 1 and tab:proeng (scripts/item_ci.py; B = 10,000,
+    # seed 0), not the B = 2,000 intervals of harness.analyze.aggregate
+    for c, a in agg.items():
+        d = rr_config("proeng", c)
+        assert f"{a['accuracy'] * 100:.1f}" == f"{d['acc']:.1f}", (c, a["accuracy"], d["acc"])
+        agg[c] = dict(a, acc_lo=d["lo"] / 100, acc_hi=d["hi"] / 100)
     fig, ax = plt.subplots(figsize=(0.75 * FS.FULL_W, 3.0))
     hull = E.frontier_panel(ax, agg, xpad=(0.8, 1.6))
     names = {"SA": "SA", "SC_k2": "SC $k{=}2$", "SC_k4": "SC $k{=}4$", "SC_k8": "SC $k{=}8$"}

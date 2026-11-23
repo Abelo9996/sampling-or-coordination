@@ -24,6 +24,9 @@ and from generated JSON. The original emit scripts are not touched.
 5. Layout only: the 95% item-bootstrap accuracy intervals of the MATH levels 4 to 5 table, read
    from tables/hard_math_ci.json (scripts/emit_hard_ci.py) after asserting each accuracy cell,
    and every bracketed interval set at \\footnotesize (8 pt) instead of \\tiny or \\scriptsize.
+6. Interval agreement: the accuracy intervals of the MMLU-Pro engineering table and of the MMLU
+   column of the July matrix table are the ones of Table 1 (scripts/item_ci.py), after asserting
+   each accuracy cell.
 """
 import json, os, re, sys
 from collections import Counter
@@ -155,6 +158,40 @@ for l in t.splitlines():
 assert seen == set(HC), (seen, set(HC))
 t = "\n".join(rows_out) + "\n"
 open(os.path.join(DST, "hard_math_table.tex"), "w").write(t)
+
+# 2d. accuracy intervals of runs that Table 1 also prints (MMLU-Pro engineering 150 x 2 and the
+# MMLU column, 80 x 2): the rev2 fragments carry intervals from other bootstrap calls (B = 2,000 in
+# scripts/emit_mmlu_pro_eng.py via harness.analyze.aggregate; B = 10,000 but file item order in
+# scripts/aaibd_emit_tables.py), so they could differ from Table 1 by a point. Each interval is
+# re-rendered from the shared source of Table 1 (scripts/item_ci.py: rev3_reruns_analysis.json,
+# B = 10,000, seed 0) after asserting the accuracy cell; point estimates are not touched.
+sys.path.insert(0, HERE)
+from item_ci import rr_config, ci_cell  # noqa: E402
+IV = re.compile(r"^(\{\\(?:tiny|scriptsize|footnotesize))\[\d+,\d+\]\}$")
+RR_ROW = {"SA": "SA", "SC $k{=}2$": "SC_k2", "SC $k{=}4$": "SC_k4", "SC $k{=}8$": "SC_k8",
+          "debate": "DEBATE_N3_R1", "GE": "GE_R2", "HIER": "HIER_M3"}
+
+
+def rr_interval(path, task, col, expect):
+    rows_out, seen = [], []
+    for l in open(path).read().splitlines():
+        cells = l.split(" & ")
+        if cells[0] in RR_ROW and len(cells) > col:
+            cfg = RR_ROW[cells[0]]
+            d = rr_config(task, cfg)
+            acc, ivl = cells[col].split(" ", 1)
+            m = IV.match(ivl)
+            assert m and acc == f"{d['acc']:.1f}", (path, cells[0], cells[col], d["acc"])
+            cells[col] = f"{acc} {m.group(1)}{ci_cell(d['lo'], d['hi'])}}}"
+            seen.append(cfg)
+            l = " & ".join(cells)
+        rows_out.append(l)
+    assert sorted(seen) == sorted(expect), (path, seen)
+    open(path, "w").write("\n".join(rows_out) + "\n")
+
+
+rr_interval(os.path.join(DST, "mmlu_pro_eng_table.tex"), "proeng", 1, list(RR_ROW.values()))
+rr_interval(os.path.join(DST, "poster_main_table.tex"), "mmlu", 3, list(RR_ROW.values()))
 
 # == 3. Table 1 ==
 rows = [l for l in open(os.path.join(SRC, "poster_main_table.tex")).read().splitlines()
