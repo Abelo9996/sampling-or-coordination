@@ -12,6 +12,8 @@ figure cannot disagree. Formatting: whole points, ci_cell().
   rr_config(task, cfg)  -> {"acc", "lo", "hi", ...} in percent (task: gsm8k, mmlu, proeng, code_v2, code_v1)
   ci_cell(lo, hi)       -> "[lo,hi]" rounded to whole points (the paper's table format)
   item_ci(corr)         -> (lo, hi) in [0, 1] with the stated method, for runs not in the JSON
+  item_ci_by_id(d)      -> the same over {item_id: value} in sorted id order
+                           (harness.analyze.item_bootstrap_ci; scripts/emit_humaneval.py uses it)
 """
 import json
 import os
@@ -45,3 +47,12 @@ def item_ci(corr):
     sys.path.insert(0, ROOT)
     from harness import analyze
     return analyze._bootstrap_ci(corr, B=B, seed=SEED)
+
+
+def item_ci_by_id(per_item):
+    """95% item-bootstrap interval over {item_id: value}, items in sorted id order."""
+    import sys
+    sys.path.insert(0, ROOT)
+    from harness import analyze
+    assert analyze.ITEM_CI_B == B
+    return analyze.item_bootstrap_ci(per_item, B=B, seed=SEED)

@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 
 import eaai_lib as E  # noqa: E402
-from item_ci import rr_config  # noqa: E402
+from item_ci import item_ci_by_id, rr_config  # noqa: E402
 
 COL = FS.COL
 TAB = os.path.join(FS.REV3, "tables")
@@ -177,6 +177,12 @@ def fig_code_energy():
     agg = E.analyze.aggregate(rows)
     main = ["SA", "SC_k2", "SC_k4", "SC_k8", "DEBATE_N3_R1", "GE_R2", "HIER_M3"]
     agg = {c: agg[c] for c in main}
+    # error bars: the paper's item bootstrap (scripts/item_ci.py; B = 10,000, seed 0, sorted item
+    # order), the intervals of tab:code-orig (scripts/emit_humaneval.py), not aggregate's B = 2,000
+    for c, d in E.analyze.per_item_table(rows).items():
+        if c in agg:
+            lo, hi = item_ci_by_id({i: v[0] for i, v in d.items()})
+            agg[c] = dict(agg[c], acc_lo=lo, acc_hi=hi)
     en = defaultdict(lambda: defaultdict(list))
     for r in rows:
         en[r["config"]][r["item_id"]].append(r["energy_j"])

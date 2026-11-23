@@ -55,6 +55,16 @@ def _bootstrap_ci(x, B=2000, alpha=0.05, seed=0):
             float(np.percentile(means, 100 * (1 - alpha / 2))))
 
 
+ITEM_CI_B = 10000  # the paper's item bootstrap: 10,000 resamples, numpy seed 0
+
+
+def item_bootstrap_ci(per_item, B=ITEM_CI_B, seed=0):
+    """95% item-bootstrap interval of the mean of per-item values (already averaged over seeds),
+    with the items in sorted id order, so the interval does not depend on log order.
+    per_item: {item_id: value}."""
+    return _bootstrap_ci([per_item[i] for i in sorted(per_item)], B=B, seed=seed)
+
+
 def aggregate(rows):
     """config -> dict(accuracy, acc_lo, acc_hi, tokens, tok_lo, tok_hi, n_items,
     usd_per_item, topology)."""
