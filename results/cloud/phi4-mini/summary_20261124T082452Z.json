@@ -1,0 +1,64 @@
+{
+ "hf_id": "microsoft/Phi-4-mini-instruct",
+ "thinking": false,
+ "started": "20261124T082452Z",
+ "status": "done",
+ "ready_s": 150.1,
+ "driver_rc": 0,
+ "progress": {
+  "units_done": 9594,
+  "units_failed": 0,
+  "units_skipped_deadline": 0,
+  "calls": 53874,
+  "in_tokens": 13045503,
+  "out_tokens": 11626138,
+  "hit_cap_calls": 406,
+  "think_unclosed_calls": 0,
+  "model": "microsoft/Phi-4-mini-instruct",
+  "thinking": false,
+  "caps": {
+   "gsm8k": 640,
+   "math500": 1024
+  },
+  "status": "done",
+  "elapsed_s": 24240.3,
+  "units_total": 9594,
+  "units_todo_at_start": 9594,
+  "units_in_files": 9594,
+  "per_task_seed": {
+   "gsm8k_s1": [
+    2500,
+    2500
+   ],
+   "gsm8k_s2": [
+    2000,
+    2000
+   ],
+   "gsm8k_s3": [
+    2000,
+    2000
+   ],
+   "math500_s1": [
+    1190,
+    1190
+   ],
+   "math500_s2": [
+    952,
+    952
+   ],
+   "math500_s3": [
+    952,
+    952
+   ]
+  },
+  "seeds_complete": [
+   1,
+   2,
+   3
+  ],
+  "out_tok_per_s": 479.6,
+  "hit_cap_rate": 0.0075,
+  "updated": "2026-11-24T15:11:23Z",
+  "eta_s": 0.0
+ }
+}

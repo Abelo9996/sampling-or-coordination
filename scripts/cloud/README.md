@@ -156,5 +156,8 @@ against debate, truncation) and writes `results/extra/cross_model_analysis.json`
 of an item is used only when all four workflow records exist (the Qwen3-8B run stopped mid-seed);
 a seed-1-only sensitivity is added for such runs. When the Kaggle results land in
 `results/cloud/phi4-mini` and `results/cloud/qwen25-3b`, rerun it and `sh paper/eaai_rev3/build.sh`;
-unchanged (model, task) inputs are reused from the JSON. The raw Qwen3 logs are committed as
-`results/cloud/qwen3_raw_logs.tar.xz` (`tar -xJf results/cloud/qwen3_raw_logs.tar.xz -C results/cloud`).
+unchanged (model, task) inputs are reused from the JSON (the Kaggle runs landed on 24 Nov: 3 seeds
+each, 9,594 units, 0 failures, vLLM 0.9.2 V0 engine, fp16, prefix caching off, one T4 per model).
+The raw logs are committed compressed: `results/cloud/qwen3_raw_logs.tar.xz` (Qwen3) and
+`results/cloud/nonthinking_raw_logs.tar.xz` (Phi-4-mini, Qwen2.5-3B); extract either with
+`tar -xJf results/cloud/<archive> -C results/cloud`.

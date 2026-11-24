@@ -1,0 +1,64 @@
+{
+ "hf_id": "Qwen/Qwen2.5-3B-Instruct",
+ "thinking": false,
+ "started": "20261124T082452Z",
+ "status": "done",
+ "ready_s": 145.1,
+ "driver_rc": 0,
+ "progress": {
+  "units_done": 9594,
+  "units_failed": 0,
+  "units_skipped_deadline": 0,
+  "calls": 53874,
+  "in_tokens": 17660150,
+  "out_tokens": 15592259,
+  "hit_cap_calls": 791,
+  "think_unclosed_calls": 0,
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "thinking": false,
+  "caps": {
+   "gsm8k": 640,
+   "math500": 1024
+  },
+  "status": "done",
+  "elapsed_s": 30502.9,
+  "units_total": 9594,
+  "units_todo_at_start": 9594,
+  "units_in_files": 9594,
+  "per_task_seed": {
+   "gsm8k_s1": [
+    2500,
+    2500
+   ],
+   "gsm8k_s2": [
+    2000,
+    2000
+   ],
+   "gsm8k_s3": [
+    2000,
+    2000
+   ],
+   "math500_s1": [
+    1190,
+    1190
+   ],
+   "math500_s2": [
+    952,
+    952
+   ],
+   "math500_s3": [
+    952,
+    952
+   ]
+  },
+  "seeds_complete": [
+   1,
+   2,
+   3
+  ],
+  "out_tok_per_s": 511.2,
+  "hit_cap_rate": 0.0147,
+  "updated": "2026-11-24T16:55:40Z",
+  "eta_s": 0.0
+ }
+}

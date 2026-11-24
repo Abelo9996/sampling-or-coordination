@@ -53,8 +53,8 @@ A (model, task) whose input files (names and sizes) are unchanged is reused from
 tests are deterministic); --fresh recomputes everything (about 30 min for the two Qwen3 models on
 8 cores). Raw Qwen3 logs are committed compressed: tar -xJf results/cloud/qwen3_raw_logs.tar.xz -C
 results/cloud. New models (Kaggle: unzip results_nonthinking.zip into results/cloud/) appear in
-every macro and table on the next run; the abstract and highlights name the Qwen3 result only and
-are not generated, so re-read them if the printed headline counts change.
+every macro and table on the next run (all four models present since 24 Nov 2026); the abstract,
+highlights and arXiv takeaways are hand-written, so re-read them if the printed headline counts change.
 """
 import argparse
 import importlib.util
@@ -101,7 +101,7 @@ MODELS = [  # dir, label, macro key, mode
     ("qwen3-4b", "Qwen3-4B", "QwFour", "thinking"),
     ("qwen3-8b", "Qwen3-8B", "QwEight", "thinking"),
     ("phi4-mini", "Phi-4-mini", "Phi", "non-thinking"),
-    ("qwen25-3b", "Qwen2.5-3B bf16", "QwThree", "non-thinking"),
+    ("qwen25-3b", "Qwen2.5-3B fp16", "QwThree", "non-thinking"),
 ]
 TASKS = [("gsm8k", "GSM8K", "Gsm", 500), ("math500", "MATH L1-3", "Math", 238)]
 WLBL = {"DEBATE_N3_R1": "Deb", "GE_R2": "Ge", "HIERFIX_M3": "Hier"}
@@ -488,27 +488,42 @@ def emit(J):
     nm("XmIncompleteText", ("; ".join(inc) if inc else "every run is complete"))
     t = "; ".join(sens) if sens else "every run is complete, so no seed-1-only check is needed"
     nm("XmSensText", t[0].upper() + t[1:] + ".")
-    # cost structure of the thinking models against the paper's 4-bit run
-    TH = [R for d, lbl, mk, mode, tn, tl, tk, R in cells_of(J) if mode == "thinking"]
-    if TH:
+    # cost structure per model group (thinking: XmThink*, non-thinking: XmNt*) against the paper's 4-bit run
+    for gmode, gp in (("thinking", "XmThink"), ("non-thinking", "XmNt")):
+        TH = [R for d, lbl, mk, mode, tn, tl, tk, R in cells_of(J) if mode == gmode]
+        if not TH:
+            continue
+        nm(f"{gp}Models", andlist([m[1] for m in present if m[3] == gmode]))
         sh = lambda c: [R["configs"][c]["out_share_pct"] for R in TH]
-        nm("XmThinkShareSc", rng(sh("SC_k8")))
-        nm("XmThinkShareDeb", rng(sh("DEBATE_N3_R1")))
-        nm("XmThinkBe", rng([R["break_even"]["SC_k8"]["point"] for R in TH], "{:.2f}"))
-        nm("XmThinkDebOverSc", rng([R["configs"]["DEBATE_N3_R1"]["total_tokens"] / R["configs"]["SC_k8"]["total_tokens"]
-                                    for R in TH], "{:.2f}"))
+        nm(f"{gp}ShareSc", rng(sh("SC_k8")))
+        nm(f"{gp}ShareDeb", rng(sh("DEBATE_N3_R1")))
+        bes = [R["break_even"]["SC_k8"]["point"] for R in TH]
+        fin = [x for x in bes if x != "inf"]
+        nm(f"{gp}Be", (rng(fin, "{:.2f}") if fin else "") + (r" (and $\infty$)" if fin and len(fin) < len(bes)
+                                                            else r"$\infty$" if not fin else ""))
+        nm(f"{gp}DebOverSc", rng([R["configs"]["DEBATE_N3_R1"]["total_tokens"] / R["configs"]["SC_k8"]["total_tokens"]
+                                  for R in TH], "{:.2f}"))
         acc = [R["configs"][c]["acc"] for R in TH for c in ALL]
-        nm("XmThinkAcc", rng(acc, "{:.1f}"))
-        nm("XmThinkMaxGap", f1(max(abs(R["tests"][f"{w}|SC_k8"]["diff"]) for R in TH for w in COORD)))
-        nm("XmThinkCap", rng([v["hit_cap_pct"] for R in TH for v in R["truncation"].values()], "{:.1f}"))
-        nm("XmThinkScFourCheaper", word(sum(R["break_even"]["SC_k4"]["point"] == "inf" and
-                                            R["break_even"]["SC_k4"]["d_in_debate_minus_sc"] > 0 for R in TH)))
-        nm("XmThinkNcells", word(len(TH)))
-        nm("XmThinkScFourMatch", word(sum(R["tests"]["DEBATE_N3_R1|SC_k4"]["ci95"][0] <= 0 <= R["tests"]["DEBATE_N3_R1|SC_k4"]["ci95"][1]
-                                          for R in TH)))
+        nm(f"{gp}Acc", rng(acc, "{:.1f}"))
+        nm(f"{gp}MaxGap", f1(max(abs(R["tests"][f"{w}|SC_k8"]["diff"]) for R in TH for w in COORD)))
+        nm(f"{gp}Cap", rng([v["hit_cap_pct"] for R in TH for v in R["truncation"].values()], "{:.1f}"))
+        nm(f"{gp}ScFourCheaper", word(sum(R["break_even"]["SC_k4"]["point"] == "inf" and
+                                          R["break_even"]["SC_k4"]["d_in_debate_minus_sc"] > 0 for R in TH)))
+        nm(f"{gp}Ncells", word(len(TH)))
+        nm(f"{gp}ScFourMatch", word(sum(R["tests"]["DEBATE_N3_R1|SC_k4"]["ci95"][0] <= 0 <= R["tests"]["DEBATE_N3_R1|SC_k4"]["ci95"][1]
+                                        for R in TH)))
         tms = [R["token_multiple"]["DEBATE_N3_R1"]["multiple"] for R in TH]
-        nm("XmThinkTmDebNA", word(sum(t is None for t in tms)))
-        nm("XmThinkTmDeb", rng([t for t in tms if t is not None], "{:.1f}") if any(t is not None for t in tms) else "n/a")
+        nm(f"{gp}TmDebNA", word(sum(t is None for t in tms)))
+        nm(f"{gp}TmDeb", rng([t for t in tms if t is not None], "{:.1f}") if any(t is not None for t in tms) else "n/a")
+        # SC k=8 more accurate than debate, detectably (95% interval of SC k=8 minus debate above zero)
+        nm(f"{gp}ScBeatsDeb", word(sum(R["tests"]["DEBATE_N3_R1|SC_k8"]["ci95"][1] < 0 for R in TH)))
+        # SC k=4 detectably more accurate than debate
+        nm(f"{gp}ScFourBeatsDeb", word(sum(R["tests"]["DEBATE_N3_R1|SC_k4"]["ci95"][1] < 0 for R in TH)))
+        # verdict counts over the group's workflow, model and task combinations
+        nm(f"{gp}NWcells", word(3 * len(TH)))
+        for vk, U in (("verdict_total", "Tot"), ("verdict_output", "Out")):
+            for v in ("R", "C", "N"):
+                nm(f"{gp}N{v}{U}", word(sum(R[vk][w]["verdict"] == v for R in TH for w in COORD)))
     # reference: the paper's 4-bit Qwen2.5-3B runs (GSM8K 500 x 3; MATH L1-3 238 x 3, cap 1,024)
     G = json.load(open(os.path.join(ROOT, "results/extra/rev3_reruns_analysis.json")))["tasks"]["gsm8k"]["configs"]
     Mx = json.load(open(os.path.join(PAPER_IN, "tables/math_easy.json")))["configs"]
