@@ -1,0 +1,943 @@
+{
+ "cross_run_logs": {
+  "gsm8k HIER": [
+   "HIERFIX_M3"
+  ],
+  "mmlu HIER": [
+   "HIERFIX_M3"
+  ],
+  "proeng HIER": [
+   "HIERFIX_M3"
+  ],
+  "math45 Du": [
+   "DU_DEBATE_N3_R2"
+  ],
+  "gsm8k Du/HIER extra": [
+   "DU_DEBATE_N3_R2",
+   "HIERFIX_M3"
+  ]
+ },
+ "drift": {
+  "gsm8k_hierfix": {
+   "task": "GSM8K",
+   "config": "HIER",
+   "runs": "R1 vs published-debate run",
+   "hw": "same GPU",
+   "n": 100,
+   "seeds": 3,
+   "diff": 1.0,
+   "p": 0.7126,
+   "ci95": [
+    -5.0,
+    7.0
+   ],
+   "ci90": [
+    -4.0,
+    6.0
+   ],
+   "p_any_gain": 0.6465,
+   "p_gain_margin": 0.112,
+   "p_loss_margin": 0.0284
+  },
+  "gsm8k_SA": {
+   "task": "GSM8K",
+   "config": "SA",
+   "runs": "500-item run vs 200-item run",
+   "hw": "same GPU",
+   "n": 200,
+   "seeds": "1/1",
+   "diff": -0.5,
+   "p": 0.8948,
+   "ci95": [
+    -5.5,
+    4.5
+   ],
+   "ci90": [
+    -5.0,
+    4.0
+   ],
+   "p_any_gain": 0.4474,
+   "p_gain_margin": 0.0239,
+   "p_loss_margin": 0.0593
+  },
+  "gsm8k_SC_k8": {
+   "task": "GSM8K",
+   "config": "SC $k{=}8$",
+   "runs": "500-item run vs 200-item run",
+   "hw": "same GPU",
+   "n": 200,
+   "seeds": "3/2",
+   "diff": -0.5,
+   "p": 0.752,
+   "ci95": [
+    -3.67,
+    2.58
+   ],
+   "ci90": [
+    -3.08,
+    2.17
+   ],
+   "p_any_gain": 0.376,
+   "p_gain_margin": 0.0004,
+   "p_loss_margin": 0.0027
+  },
+  "gsm8k_DEBATE_N3_R1": {
+   "task": "GSM8K",
+   "config": "debate",
+   "runs": "500-item run vs 200-item run",
+   "hw": "same GPU",
+   "n": 200,
+   "seeds": "3/2",
+   "diff": -1.5,
+   "p": 0.4632,
+   "ci95": [
+    -5.5,
+    2.58
+   ],
+   "ci90": [
+    -4.83,
+    1.92
+   ],
+   "p_any_gain": 0.2316,
+   "p_gain_margin": 0.0012,
+   "p_loss_margin": 0.0435
+  },
+  "code_SA": {
+   "task": "HumanEval",
+   "config": "SA",
+   "runs": "rerun vs first run",
+   "hw": "same GPU",
+   "n": 164,
+   "seeds": 2,
+   "diff": -1.22,
+   "ci95": [
+    -6.1,
+    3.66
+   ],
+   "p": 0.713
+  },
+  "code_SC_k2": {
+   "task": "HumanEval",
+   "config": "SC $k{=}2$",
+   "runs": "rerun vs first run",
+   "hw": "same GPU",
+   "n": 164,
+   "seeds": 2,
+   "diff": 0.91,
+   "ci95": [
+    -5.18,
+    7.01
+   ],
+   "p": 0.8056
+  },
+  "code_SC_k4": {
+   "task": "HumanEval",
+   "config": "SC $k{=}4$",
+   "runs": "rerun vs first run",
+   "hw": "same GPU",
+   "n": 164,
+   "seeds": 2,
+   "diff": 3.05,
+   "ci95": [
+    -3.05,
+    9.15
+   ],
+   "p": 0.3506
+  },
+  "code_SC_k8": {
+   "task": "HumanEval",
+   "config": "SC $k{=}8$",
+   "runs": "rerun vs first run",
+   "hw": "same GPU",
+   "n": 164,
+   "seeds": 2,
+   "diff": 0.61,
+   "ci95": [
+    -4.57,
+    5.79
+   ],
+   "p": 0.8654
+  },
+  "code_DEBATE_N3_R1": {
+   "task": "HumanEval",
+   "config": "debate",
+   "runs": "rerun vs first run",
+   "hw": "same GPU",
+   "n": 164,
+   "seeds": 2,
+   "diff": 3.35,
+   "ci95": [
+    -4.88,
+    11.28
+   ],
+   "p": 0.4364
+  },
+  "code_GE_R2": {
+   "task": "HumanEval",
+   "config": "GE",
+   "runs": "rerun vs first run",
+   "hw": "same GPU",
+   "n": 164,
+   "seeds": 2,
+   "diff": 0.3,
+   "ci95": [
+    -7.32,
+    7.62
+   ],
+   "p": 0.9888
+  },
+  "m4_SA": {
+   "task": "GSM8K",
+   "config": "SA",
+   "runs": "4060 rerun vs M4 matrix",
+   "hw": "across machines",
+   "n": 80,
+   "seeds": "",
+   "diff": -7.5,
+   "ci95": null,
+   "p": null
+  },
+  "m4_SC_k8": {
+   "task": "GSM8K",
+   "config": "SC $k{=}8$",
+   "runs": "4060 rerun vs M4 matrix",
+   "hw": "across machines",
+   "n": 80,
+   "seeds": "",
+   "diff": -1.67,
+   "ci95": null,
+   "p": null
+  },
+  "m4_DEBATE_N3_R1": {
+   "task": "GSM8K",
+   "config": "debate",
+   "runs": "4060 rerun vs M4 matrix",
+   "hw": "across machines",
+   "n": 80,
+   "seeds": "",
+   "diff": 0.21,
+   "ci95": null,
+   "p": null
+  },
+  "m4_GE_R2": {
+   "task": "GSM8K",
+   "config": "GE",
+   "runs": "4060 rerun vs M4 matrix",
+   "hw": "across machines",
+   "n": 80,
+   "seeds": "",
+   "diff": -0.83,
+   "ci95": null,
+   "p": null
+  },
+  "m4_HIER_M3": {
+   "task": "GSM8K",
+   "config": "HIER (original)",
+   "runs": "4060 rerun vs M4 matrix",
+   "hw": "across machines",
+   "n": 80,
+   "seeds": "",
+   "diff": -12.5,
+   "ci95": null,
+   "p": null
+  }
+ },
+ "drift_max": {
+  "same_gpu_any": 3.35,
+  "same_gpu_sampling": 3.05,
+  "across_machines_any": 12.5,
+  "same_gpu_max_cfg": [
+   "code_DEBATE_N3_R1"
+  ],
+  "across_max_cfg": [
+   "m4_HIER_M3"
+  ]
+ },
+ "claims": [
+  {
+   "id": "gsm8k_hier_total",
+   "task": "gsm8k",
+   "claim": "HIER verdict, total tokens",
+   "unit": "total",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ],
+    "margin": 7.33
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ]
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [
+    "SC_k4"
+   ],
+   "drift_ok": true,
+   "outcome": "survives"
+  },
+  {
+   "id": "gsm8k_hier_output",
+   "task": "gsm8k",
+   "claim": "HIER verdict, output tokens",
+   "unit": "output",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ],
+    "margin": 2.27
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ]
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": false,
+   "outcome": "changes"
+  },
+  {
+   "id": "gsm8k_hier_price2",
+   "task": "gsm8k",
+   "claim": "HIER verdict, price $r{=}2$",
+   "unit": "price2",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ],
+    "margin": 7.33
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ]
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [
+    "SC_k4"
+   ],
+   "drift_ok": true,
+   "outcome": "survives"
+  },
+  {
+   "id": "gsm8k_hier_price3",
+   "task": "gsm8k",
+   "claim": "HIER verdict, price $r{=}3$",
+   "unit": "price3",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ],
+    "margin": 2.27
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ]
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": false,
+   "outcome": "changes"
+  },
+  {
+   "id": "gsm8k_hier_price4",
+   "task": "gsm8k",
+   "claim": "HIER verdict, price $r{=}4$",
+   "unit": "price4",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ],
+    "margin": 2.27
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ]
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": false,
+   "outcome": "changes"
+  },
+  {
+   "id": "gsm8k_hier_price5",
+   "task": "gsm8k",
+   "claim": "HIER verdict, price $r{=}5$",
+   "unit": "price5",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ],
+    "margin": 2.27
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ]
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": false,
+   "outcome": "changes"
+  },
+  {
+   "id": "gsm8k_hier_energy",
+   "task": "gsm8k",
+   "claim": "HIER verdict, modeled energy",
+   "unit": "energy",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ],
+    "margin": 2.27
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "R",
+    "robust_by": [
+     "SA",
+     "SC_k2"
+    ]
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": false,
+   "outcome": "changes"
+  },
+  {
+   "id": "mmlu_hier_total",
+   "task": "mmlu",
+   "claim": "HIER verdict, total tokens",
+   "unit": "total",
+   "hw": "across machines",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 12.5,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "mmlu_hier_output",
+   "task": "mmlu",
+   "claim": "HIER verdict, output tokens",
+   "unit": "output",
+   "hw": "across machines",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 12.5,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "mmlu_hier_price2",
+   "task": "mmlu",
+   "claim": "HIER verdict, price $r{=}2$",
+   "unit": "price2",
+   "hw": "across machines",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 12.5,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "mmlu_hier_price3",
+   "task": "mmlu",
+   "claim": "HIER verdict, price $r{=}3$",
+   "unit": "price3",
+   "hw": "across machines",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 12.5,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "mmlu_hier_price4",
+   "task": "mmlu",
+   "claim": "HIER verdict, price $r{=}4$",
+   "unit": "price4",
+   "hw": "across machines",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 12.5,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "mmlu_hier_price5",
+   "task": "mmlu",
+   "claim": "HIER verdict, price $r{=}5$",
+   "unit": "price5",
+   "hw": "across machines",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 12.5,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "mmlu_hier_energy",
+   "task": "mmlu",
+   "claim": "HIER verdict, modeled energy",
+   "unit": "energy",
+   "hw": "across machines",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 12.5,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "proeng_hier_total",
+   "task": "proeng",
+   "claim": "HIER verdict, total tokens",
+   "unit": "total",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "proeng_hier_output",
+   "task": "proeng",
+   "claim": "HIER verdict, output tokens",
+   "unit": "output",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "proeng_hier_price2",
+   "task": "proeng",
+   "claim": "HIER verdict, price $r{=}2$",
+   "unit": "price2",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "proeng_hier_price3",
+   "task": "proeng",
+   "claim": "HIER verdict, price $r{=}3$",
+   "unit": "price3",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "proeng_hier_price4",
+   "task": "proeng",
+   "claim": "HIER verdict, price $r{=}4$",
+   "unit": "price4",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "proeng_hier_price5",
+   "task": "proeng",
+   "claim": "HIER verdict, price $r{=}5$",
+   "unit": "price5",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "proeng_hier_energy",
+   "task": "proeng",
+   "claim": "HIER verdict, modeled energy",
+   "unit": "energy",
+   "hw": "same GPU",
+   "cross": {
+    "verdict": "C",
+    "robust_by": [],
+    "margin": null
+   },
+   "within": {
+    "workflow": "HIER_M3 (original HIER, same run as sampling)",
+    "verdict": "C",
+    "robust_by": []
+   },
+   "drift_bound": 3.35,
+   "robust_beyond_drift": [],
+   "drift_ok": null,
+   "outcome": "survives"
+  },
+  {
+   "id": "C1",
+   "task": "gsm8k",
+   "claim": "C1: HIER minus SC $k{=}4$",
+   "hw": "same GPU",
+   "cross": {
+    "diff": -9.93,
+    "ci95": [
+     -12.54,
+     -7.33
+    ],
+    "margin": 7.33
+   },
+   "within": {
+    "workflow": "HIER_M3",
+    "diff": -23.93,
+    "ci95": [
+     -27.33,
+     -20.53
+    ]
+   },
+   "drift_bound": 3.35,
+   "drift_ok": true,
+   "outcome": "survives"
+  },
+  {
+   "id": "gsm8k_hier_bound",
+   "task": "gsm8k",
+   "claim": "HIER: any gain over SC $k{=}8$ excluded",
+   "hw": "same GPU",
+   "cross": {
+    "diff": -11.53,
+    "upper": -9.33,
+    "any_excluded": true,
+    "five_excluded": true
+   },
+   "within": {
+    "workflow": "HIER_M3",
+    "diff": -25.53,
+    "upper": -22.6,
+    "any_excluded": true,
+    "five_excluded": true
+   },
+   "drift_bound": 3.35,
+   "outcome": "survives"
+  },
+  {
+   "id": "mmlu_hier_bound",
+   "task": "mmlu",
+   "claim": "HIER: any gain over SC $k{=}8$ excluded",
+   "hw": "across machines",
+   "cross": {
+    "diff": -10.0,
+    "upper": -1.88,
+    "any_excluded": true,
+    "five_excluded": true
+   },
+   "within": {
+    "workflow": "HIER_M3",
+    "diff": -8.12,
+    "upper": 0.62,
+    "any_excluded": false,
+    "five_excluded": true
+   },
+   "drift_bound": 12.5,
+   "outcome": "changes"
+  },
+  {
+   "id": "proeng_hier_bound",
+   "task": "proeng",
+   "claim": "HIER: gain over SC $k{=}8$ at most +2.3",
+   "hw": "same GPU",
+   "cross": {
+    "diff": -4.0,
+    "upper": 2.33,
+    "any_excluded": false,
+    "five_excluded": true
+   },
+   "within": {
+    "workflow": "HIER_M3",
+    "diff": -3.33,
+    "upper": 3.67,
+    "any_excluded": false,
+    "five_excluded": true
+   },
+   "drift_bound": 3.35,
+   "outcome": "changes"
+  },
+  {
+   "id": "du45",
+   "task": "math45",
+   "claim": "Du et al.\\ debate minus SC $k{=}8$",
+   "hw": "same GPU",
+   "cross": {
+    "diff": -5.6,
+    "ci95": [
+     -9.41,
+     -1.91
+    ],
+    "margin": 1.91
+   },
+   "within": null,
+   "drift_bound": 3.35,
+   "drift_ok": false,
+   "outcome": "uncheckable"
+  },
+  {
+   "id": "gsm8k_xw_hierfix",
+   "task": "gsm8k",
+   "claim": "HIER (published-debate run) minus SC $k{=}8$",
+   "hw": "same GPU",
+   "cross": {
+    "diff": -14.333333333333337,
+    "ci95": [
+     -21.333333333333336,
+     -7.333333333333335
+    ],
+    "margin": 7.333333333333335
+   },
+   "within": {
+    "workflow": "HIER_M3",
+    "diff": -27.333333333333336,
+    "ci95": [
+     -35.333333333333336,
+     -19.666666666666668
+    ]
+   },
+   "drift_bound": 3.35,
+   "outcome": "survives"
+  },
+  {
+   "id": "gsm8k_xw_du",
+   "task": "gsm8k",
+   "claim": "Du et al.\\ debate minus SC $k{=}8$",
+   "hw": "same GPU",
+   "cross": {
+    "diff": -0.666666666666667,
+    "ci95": [
+     -5.000000000000002,
+     3.6666666666666665
+    ],
+    "margin": null
+   },
+   "within": null,
+   "drift_bound": 3.35,
+   "outcome": "uncheckable"
+  },
+  {
+   "id": "C5",
+   "task": "math",
+   "claim": "C5: debate's difficulty interaction",
+   "hw": "same GPU",
+   "cross": {
+    "diff": -4.2,
+    "ci95": [
+     -9.17,
+     0.73
+    ],
+    "p": 0.094
+   },
+   "within": {
+    "contrast": "level 5 minus level 4, MATH L4-5 run",
+    "diff": 4.97,
+    "ci95": [
+     -2.86,
+     12.94
+    ],
+    "p": 0.2186
+   },
+   "no_detectable_gain_cross": true,
+   "no_detectable_gain_within": true,
+   "sign_cross": -1,
+   "sign_within": 1,
+   "outcome": "changes"
+  }
+ ],
+ "within_run_already": {
+  "gsm8k": {
+   "DEBATE_N3_R1": "R",
+   "GE_R2": "R"
+  },
+  "mmlu": {
+   "DEBATE_N3_R1": "C",
+   "GE_R2": "C"
+  },
+  "proeng": {
+   "DEBATE_N3_R1": "R",
+   "GE_R2": "C"
+  },
+  "code_v2": {
+   "DEBATE_N3_R1": "R",
+   "GE_R2": "C",
+   "HIERFIX_M3": "C"
+  }
+ }
+}

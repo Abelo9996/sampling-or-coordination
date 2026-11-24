@@ -1,0 +1,5 @@
+# Raw per-record logs and vLLM server logs are large; they are committed as compressed archives
+# (qwen3_raw_logs.tar.xz: tar -xJf results/cloud/qwen3_raw_logs.tar.xz -C results/cloud).
+*/gsm8k_s*.jsonl
+*/math500_s*.jsonl
+*/vllm_*.log

@@ -20,9 +20,11 @@ without a model call. Re-running the experiments needs Ollama and the models bel
 
 | Path | What |
 |---|---|
-| `harness/` | Evaluation harness: Ollama client with exact token accounting (`client.py`), task loaders, prompts and scorers (`tasks.py`), the workflows (`topologies.py`: SA, SC, DEBATE, GE, HIER and variants), statistics (`stats.py`: seed-aware hierarchical bootstrap), HumanEval sandbox (`sandbox.py`), GPU energy attribution (`energy.py`), hosted-API client for the 70B probe (`openai_client.py`) |
+| `harness/` | Evaluation harness: Ollama client with exact token accounting (`client.py`), task loaders, prompts and scorers (`tasks.py`), the workflows (`topologies.py`: SA, SC, DEBATE, GE, HIER and variants), statistics (`stats.py`: seed-aware hierarchical bootstrap), HumanEval sandbox (`sandbox.py`), GPU energy attribution (`energy.py`), hosted-API client for the 70B probe (`openai_client.py`), OpenAI-compatible vLLM backend for the cross-model replication (`vllm_client.py`, `AGENTS_BACKEND=vllm`) |
 | `configs/matrix.py` | The configuration matrix (which workflows and parameters are run) |
 | `scripts/run_*.py`, `scripts/run_*.sh` | Run drivers (model calls); see "Re-running experiments" |
+| `scripts/cloud/` | Cross-model replication on rented GPUs: vLLM driver, budget plan, Modal and Kaggle launchers, and `cross_model_analysis.py` (the paper's tests on every model under `results/cloud/`); see "Cross-model replication" |
+| `scripts/within_run_check.py` | Within-run check of every comparison whose arms come from different runs, and the run-to-run drift of identical configurations |
 | `scripts/extra_workflows.py`, `scripts/rev3_workflows.py` | Du et al. debate reimplementation and the repaired planner-executor (HIERFIX) |
 | `scripts/analyze_*.py`, `scripts/emit_*.py`, `scripts/criterion_predictive*.py`, `scripts/aaibd_*.py`, `scripts/make_*.py` | Analysis and emitters (logs to JSON, LaTeX macros and table fragments, figures) |
 | `paper/arxiv_long/scripts/` | Emitters for the audit, equivalence, hard-MATH, extra-workflow, context and review tables |
@@ -86,8 +88,10 @@ python3 reproduce/check_rev3.py         # compares them with the reference copie
    `emit_rev3_tables.py`, `emit_rev3_reruns.py` (rerun macros `rev3_reruns_macros.tex` and the
    `tables/rev3/rr_*.tex` fragments), `emit_token_multiple.py` (token multiples,
    `token_multiple_macros.tex`), `emit_table_bodies.py` (the tabular of each whole-table
-   fragment, `tables/rev3/tabular_*.tex`, for the merged tables), then the figures and the
-   flow table (`make_fig_eaai_adapted.py`).
+   fragment, `tables/rev3/tabular_*.tex`, for the merged tables), `scripts/within_run_check.py`
+   (within-run check, `within_run_macros.tex`, `tables/within_run_*.tex`),
+   `scripts/cloud/cross_model_analysis.py` (cross-model replication, `cross_model_macros.tex`,
+   `tables/cross_model_*.tex`), then the figures and the flow table (`make_fig_eaai_adapted.py`).
 
 Stage outputs of steps 2 and 3 are written under `paper/` (to `paper/*.tex`,
 `paper/eaai/`, `paper/aaibd/`, `paper/arxiv_long/`); `check_rev3.py` maps each reference
@@ -129,6 +133,8 @@ manuscript (not included) and into `harness/tasks.py`.
 | Fig. 1 `fig:overview` | `fig_forest.pdf` | `make_fig_forest.py` | via macros and `tables/math_easy.json` |
 | Fig. 2 `fig:workflows`, Fig. 3 `fig:frontier`, Fig. 4 `fig:gsm8k` | `fig_workflows.pdf`, `fig_frontier.pdf`, `fig_gsm8k_pareto.pdf` | `make_fig_workflows.py`, `make_fig_frontier.py`, `make_fig_gsm8k_pareto.py` | matrices, `power/math500_qwen3b_s*` |
 | `fig:crossover`, `fig:hard` | `fig_price_crossover.pdf`, `fig_hard_frontier.pdf` | `fig_price_crossover.py`, `fig_hard_frontier.py` | via `rev3_macros.tex`, `power/math500hard_*` |
+| `tab:withinrun`, `tab:wrsupp`, `tab:wrdrift` (within-run check of the cross-run comparisons; run-to-run drift) | `tables/within_run_main.tex`, `within_run_supp.tex`, `within_run_drift.tex`, macros `within_run_macros.tex` | `scripts/within_run_check.py` (`results/extra/within_run_check.json`) | `rev3/*`, `power/extra_*`, `power/gsm8k_qwen3b_*`, `gsm8k_scale200`, `rev3/humaneval_*`, `tables/audit.json` |
+| `tab:xmodel`, `tab:xmodel-supp`, `tab:xmodel-supp-math` (cross-model replication) | `tables/cross_model_table.tex`, `cross_model_supp_gsm8k.tex`, `cross_model_supp_math500.tex`, macros `cross_model_macros.tex` | `scripts/cloud/cross_model_analysis.py` (`results/extra/cross_model_analysis.json`) | `cloud/qwen3-4b/*`, `cloud/qwen3-8b/*` (in `cloud/qwen3_raw_logs.tar.xz`) |
 | All in-text numbers | `paper/arxiv_rev3/*_macros.tex` | the emitter named in each file's first line | |
 
 Table and figure files are under `paper/arxiv_rev3/`; scripts named without a path are in
@@ -160,7 +166,9 @@ of every model call, the cap, per-call tokens and the harness-extracted answer. 
 HumanEval run adds per-call GPU energy. The `host` field is a hardware label
 (`mac-m4`, `rtx4060-pc`, `rtx4060-pc-par6` = the RTX 4060 server with six parallel
 slots), not a network name. Appendix A of the paper (Table `tab:overview`) lists which log
-backs which experiment. No log is larger than 10 MB, so none is compressed.
+backs which experiment. No log is larger than 10 MB, so none is compressed, except the
+cross-model replication logs (`results/cloud/qwen3_raw_logs.tar.xz`, 35 MB; 358 MB unpacked;
+see "Cross-model replication").
 
 ### rev3 reruns (R1 to R5)
 
@@ -207,6 +215,46 @@ OLLAMA_URL=http://localhost:11435 AGENTS_HOST_LABEL=rtx4060-pc-par6 \
 resume and a STOP file; set `GPU_SSH` (SSH alias of the GPU host) and `GPU_START_CMD`
 (command that starts a six-slot Ollama server there) for your machine. The R5 runs use the
 8,192-context alias `qwen2.5:3b-instruct-ctx8k`.
+
+## Cross-model replication (Qwen3-4B, Qwen3-8B)
+
+The GSM8K (first 500 items) and MATH levels 1 to 3 (238 items) runs were repeated with two
+further models, Qwen/Qwen3-4B and Qwen/Qwen3-8B with thinking on, served by vLLM 0.9.2 at 16-bit
+precision on rented H100 GPUs, with the same harness, prompts, extraction, seeds and record
+schema (SA greedy seed 1; SC k=8, whose first 2 and 4 calls give SC k=2 and 4; debate N=3 R=1;
+GE R=2; the repaired HIER). The think block counts as output tokens and is not passed to other
+agents. Caps: 4,096 on GSM8K, 8,192 on MATH. Qwen3-8B on MATH stopped at its budget cap: seed 1
+on all 238 items and seed 2 on the 135 items with all four workflow records (a seed of an item is
+used only when every workflow record exists, so every comparison is paired).
+
+Records are in `results/cloud/qwen3_raw_logs.tar.xz` (per-record logs with the raw text of every
+call, and the vLLM server logs); `results/cloud/<model>/` holds the run summaries and progress
+files. Analysis (no model call):
+
+```bash
+tar -xJf results/cloud/qwen3_raw_logs.tar.xz -C results/cloud    # optional, see below
+python3 scripts/cloud/cross_model_analysis.py --outdir paper/arxiv_rev3
+python3 reproduce/check_rev3.py      # the cross-model files are in its sha256 list
+```
+
+The script applies the paper's tests (hierarchical paired bootstrap, 10,000 replicates, seed 0),
+the R/C/N verdict under total and output tokens, the token multiple, the break-even price ratio
+and truncation shares to every model directory under `results/cloud/`, and writes
+`results/extra/cross_model_analysis.json`, `cross_model_macros.tex` and `tables/cross_model_*.tex`.
+A (model, task) whose logs are unchanged, or not unpacked, is taken from that JSON;
+`--fresh` recomputes everything (about 30 minutes on 8 cores, logs unpacked). Under total tokens
+no coordination workflow was detectably more accurate than every cheaper sampling configuration
+in any of the 12 workflow, model and task combinations; under output tokens HIER on Qwen3-8B,
+MATH levels 1 to 3, was (against SA and SC k=2). The runs themselves need a GPU and an
+OpenAI-compatible server: `scripts/cloud/README.md` describes the driver
+(`run_cloud_campaign.py`), the budget plan and the Modal and Kaggle launchers. Logs of further
+models (`results/cloud/phi4-mini`, `results/cloud/qwen25-3b`) enter every macro and table on
+the next run of the script.
+
+`scripts/within_run_check.py` repeats each comparison whose arms come from different runs (the
+repaired HIER on GSM8K, MMLU and MMLU-Pro engineering, the Du et al. debate, and C5) within one
+run and compares its margin with the run-to-run drift of identical configurations
+(`results/extra/within_run_check.json`; `--reuse-drift` takes the drift tests from that JSON).
 
 ## Hardware, model and software versions
 

@@ -91,6 +91,12 @@ if os.environ.get("AGENTS_BACKEND", "").strip().lower() == "openai":
     from . import openai_client as _openai_client
     ollama_generate = generate
     generate = _openai_client.generate
+# Self-hosted OpenAI-compatible server (vLLM; Ollama /v1 for local tests),
+# selected by AGENTS_BACKEND=vllm. See harness/vllm_client.py.
+elif os.environ.get("AGENTS_BACKEND", "").strip().lower() == "vllm":
+    from . import vllm_client as _vllm_client
+    ollama_generate = generate
+    generate = _vllm_client.generate
 
 
 if __name__ == "__main__":

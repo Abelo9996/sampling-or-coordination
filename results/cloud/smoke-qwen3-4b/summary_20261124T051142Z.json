@@ -1,0 +1,7 @@
+{
+ "hf_id": "Qwen/Qwen3-4B",
+ "thinking": true,
+ "started": "20261124T051142Z",
+ "status": "error",
+ "error": "RuntimeError: vLLM exited with code 1 before ready"
+}

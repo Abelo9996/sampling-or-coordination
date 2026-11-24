@@ -44,6 +44,8 @@ run paper/arxiv_rev3/scripts/emit_rev3_tables.py
 run paper/arxiv_rev3/scripts/emit_rev3_reruns.py
 run paper/arxiv_rev3/scripts/emit_token_multiple.py
 run paper/arxiv_rev3/scripts/emit_table_bodies.py   # tabulars of whole-table fragments for the merged tables
+run scripts/within_run_check.py --outdir paper/arxiv_rev3   # within-run check of the cross-run comparisons
+run scripts/cloud/cross_model_analysis.py --outdir paper/arxiv_rev3   # cross-model replication (cached per model unless its logs changed)
 for s in make_fig_forest make_fig_workflows make_fig_frontier make_fig_gsm8k_pareto \
          make_fig_eaai_adapted fig_hard_frontier fig_price_crossover fig_drift fig_energy; do
   run paper/arxiv_rev3/scripts/$s.py
