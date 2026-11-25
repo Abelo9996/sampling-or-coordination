@@ -1,5 +1,6 @@
 # Raw per-record logs and vLLM server logs are large; they are committed as compressed archives
-# (qwen3_raw_logs.tar.xz and nonthinking_raw_logs.tar.xz, for Phi-4-mini and Qwen2.5-3B:
+# (qwen3_raw_logs.tar.xz, nonthinking_raw_logs.tar.xz for Phi-4-mini and Qwen2.5-3B, and
+# hardmath_raw_logs.tar.xz for Qwen3-4B on MATH levels 4 and 5:
 # tar -xJf results/cloud/<archive> -C results/cloud).
 */gsm8k_s*.jsonl
 */math500_s*.jsonl

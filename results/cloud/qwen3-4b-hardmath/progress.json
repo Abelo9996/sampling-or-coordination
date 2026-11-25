@@ -1,0 +1,32 @@
+{
+ "units_done": 646,
+ "units_failed": 0,
+ "units_skipped_deadline": 590,
+ "calls": 3081,
+ "in_tokens": 1529403,
+ "out_tokens": 11007055,
+ "hit_cap_calls": 431,
+ "think_unclosed_calls": 383,
+ "model": "Qwen/Qwen3-4B",
+ "thinking": true,
+ "caps": {
+  "gsm8k": 4096,
+  "math500": 8192
+ },
+ "status": "hard_deadline",
+ "elapsed_s": 3311.6,
+ "units_total": 1310,
+ "units_todo_at_start": 1310,
+ "units_in_files": 646,
+ "per_task_seed": {
+  "math500_s1": [
+   646,
+   1310
+  ]
+ },
+ "seeds_complete": [],
+ "out_tok_per_s": 3323.8,
+ "hit_cap_rate": 0.1399,
+ "updated": "2026-11-24T22:51:54Z",
+ "eta_s": 3404.0
+}

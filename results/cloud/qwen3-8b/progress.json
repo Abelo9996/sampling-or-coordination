@@ -1,54 +1,34 @@
 {
- "units_done": 6265,
+ "units_done": 377,
  "units_failed": 0,
- "units_skipped_deadline": 3306,
- "calls": 33882,
- "in_tokens": 8340389,
- "out_tokens": 40481867,
- "hit_cap_calls": 768,
- "think_unclosed_calls": 662,
+ "units_skipped_deadline": 0,
+ "calls": 2280,
+ "in_tokens": 895015,
+ "out_tokens": 5954282,
+ "hit_cap_calls": 157,
+ "think_unclosed_calls": 121,
  "model": "Qwen/Qwen3-8B",
  "thinking": true,
  "caps": {
   "gsm8k": 4096,
   "math500": 8192
  },
- "status": "hard_deadline",
- "elapsed_s": 7121.8,
- "units_total": 9594,
- "units_todo_at_start": 9594,
- "units_in_files": 6265,
+ "status": "done",
+ "elapsed_s": 1679.6,
+ "units_total": 952,
+ "units_todo_at_start": 377,
+ "units_in_files": 952,
  "per_task_seed": {
-  "gsm8k_s1": [
-   2500,
-   2500
-  ],
-  "gsm8k_s2": [
-   2000,
-   2000
-  ],
-  "gsm8k_s3": [
-   0,
-   2000
-  ],
-  "math500_s1": [
-   1190,
-   1190
-  ],
   "math500_s2": [
-   575,
-   952
-  ],
-  "math500_s3": [
-   0,
+   952,
    952
   ]
  },
  "seeds_complete": [
-  1
+  2
  ],
- "out_tok_per_s": 5684.2,
- "hit_cap_rate": 0.0227,
- "updated": "2026-11-24T07:25:10Z",
- "eta_s": 3784.0
+ "out_tok_per_s": 3545.1,
+ "hit_cap_rate": 0.0689,
+ "updated": "2026-11-24T21:38:01Z",
+ "eta_s": 0.0
 }

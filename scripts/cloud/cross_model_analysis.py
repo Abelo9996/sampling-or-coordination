@@ -13,9 +13,9 @@ HIERFIX_M3 (the HIER of the paper's main text).
 Which records are used. A seed s of item i is used only when every workflow record (SC_k8,
 DEBATE_N3_R1, GE_R2, HIERFIX_M3) exists for (i, s), and SA (i, 1) exists; so every comparison is
 paired on the same (item, seed) sets. Runs stopped by the budget guard therefore contribute the
-seeds that finished for every workflow of an item (Qwen3-8B MATH: seed 1 on all 238 items, seed 2
-on the items whose four workflow records all exist). When the seed sets differ between items a
-seed-1-only sensitivity analysis is added.
+seeds that finished for every workflow of an item. When the seed sets differ between items a
+seed-1-only sensitivity analysis is added (none since 24 Nov 2026: Qwen3-8B has seeds 1 and 2 complete
+on both tasks after its top-up run, the other models seeds 1 to 3).
 
 Statistics (as in the paper, scripts/analyze_rev3_reruns.py functions called unchanged where the
 seed sets are uniform):
@@ -381,6 +381,9 @@ def emit(J):
             nm(f"{p}VO{wl}", R["verdict_output"][w]["verdict"])
             tm = R["token_multiple"][w]["multiple"]
             nm(f"{p}Tm{wl}", "n/a" if tm is None else f1(tm))
+            for a, s in (("SA", "Sa"), ("SC_k2", "ScTwo"), ("SC_k4", "ScFour"), ("SC_k8", "Sc")):
+                t = R["tests"][f"{w}|{a}"]  # workflow minus sampling configuration, points, 95% interval
+                nm(f"{p}T{wl}{s}", f"{sg(t['diff'], '+')}, [{sg(t['ci95'][0])}, {sg(t['ci95'][1])}]")
         be = R["break_even"]["SC_k8"]
         nm(f"{p}Be", rstr(be))
         nm(f"{p}BeCI", "[" + ", ".join(r"\infty" if x == "inf" else f"{x:.2f}" for x in be["ci95"]) + "]")
@@ -410,6 +413,7 @@ def emit(J):
     for u, U, unit in (("total", "Tot", "total-token"), ("output", "Out", "output-token")):
         c = cnt[u]
         vs = ", ".join(f"{c[v]} {v}" for v in ("R", "C", "N") if c[v])
+        nm(f"XmVerdicts{U}", vs)
         if not H["N"][u]:
             t = (f"under {unit} cost, no coordination workflow was detectably more accurate than every sampling "
                  f"configuration of lower cost, in any of the {H['cells']} workflow, model and task combinations "

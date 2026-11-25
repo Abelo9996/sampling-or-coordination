@@ -1,7 +1,7 @@
 {
  "source": "results/cloud/<model>/{gsm8k,math500}_s*.jsonl",
  "script": "scripts/cloud/cross_model_analysis.py",
- "definitions": "Cross-model replication: the paper's analysis on every model present under results/cloud/.\n\nModels (a model is analysed when its directory holds task logs; nothing else changes when the\nKaggle runs drop in, rerun this script and rebuild paper/eaai_rev3):\n  results/cloud/qwen3-4b   Qwen/Qwen3-4B, thinking on      (Modal H100, vLLM bf16)\n  results/cloud/qwen3-8b   Qwen/Qwen3-8B, thinking on      (Modal H100, vLLM bf16)\n  results/cloud/phi4-mini  microsoft/Phi-4-mini-instruct    (Kaggle T4, vLLM fp16)\n  results/cloud/qwen25-3b  Qwen/Qwen2.5-3B-Instruct         (Kaggle T4, vLLM fp16)\nTasks: GSM8K first 500 test items; MATH-500 levels 1 to 3 (238 items). Workflows SA (greedy,\nseed 1), SC k=8 (k=2, 4 = its first 2, 4 calls, voted with the harness rule), DEBATE_N3_R1, GE_R2,\nHIERFIX_M3 (the HIER of the paper's main text).\n\nWhich records are used. A seed s of item i is used only when every workflow record (SC_k8,\nDEBATE_N3_R1, GE_R2, HIERFIX_M3) exists for (i, s), and SA (i, 1) exists; so every comparison is\npaired on the same (item, seed) sets. Runs stopped by the budget guard therefore contribute the\nseeds that finished for every workflow of an item (Qwen3-8B MATH: seed 1 on all 238 items, seed 2\non the items whose four workflow records all exist). When the seed sets differ between items a\nseed-1-only sensitivity analysis is added.\n\nStatistics (as in the paper, scripts/analyze_rev3_reruns.py functions called unchanged where the\nseed sets are uniform):\n  accuracy    mean over items of the per-item mean over seeds; 95% item bootstrap (10,000\n              resamples, numpy seed 0, items in sorted id order = harness.analyze.item_bootstrap_ci)\n  tests       harness.stats.hier_paired_test via scripts/analyze_hard_math.test (items resampled,\n              seeds within items, 10,000 replicates, seed 0); SA's single greedy value repeated\n              over the item's seeds, as in the paper\n  verdict     the paper's R/C/N rule (rr.finish_task), in total tokens and in output tokens:\n              among the sampling configurations (SA, SC k=2, 4, 8) cheaper than the workflow,\n              R if one is detectably more accurate (95% interval of its advantage above zero),\n              N if every cheaper one is detectably less accurate (or none is cheaper), C otherwise\n  token multiple  tokens of the workflow / tokens of the cheapest SC (k>=2) whose point accuracy\n              is at least the workflow's (paper/arxiv_rev3/scripts/emit_token_multiple.py);\n              undefined (null) when no SC configuration is that accurate\n  break-even  r* of SC k=8 against debate (scripts/analyze_rev3_costs.crossover): cost = input +\n              r x output tokens per query; SC k=8 is cheaper iff r < r* = (in_deb - in_SC8) /\n              (out_SC8 - out_deb); r* = inf when SC k=8 generates no more output than debate.\n              Bootstrap interval: the paper's function with uniform seed sets; with mixed seed\n              sets the same scheme (items, then seeds within item, independently per\n              configuration, 10,000 replicates, seed 0) in a loop, whose random draws differ.\n  truncation  per configuration: % of calls that hit the token cap (hit_cap), % of calls whose\n              think block never closed (thinking models), % of records with no extracted answer.\n\nDeviations from the paper: none in the tests; SC k=12 was not run on MATH (comparators k <= 8).\n\nWrites results/extra/cross_model_analysis.json and, in each --outdir (default paper/eaai_rev3 if present,\nelse paper/arxiv_rev3):\ncross_model_macros.tex, tables/cross_model_table.tex (main) and tables/cross_model_supp_{gsm8k,math500}.tex\n(CIs, tokens, truncation).\nRun: /usr/bin/python3 scripts/cloud/cross_model_analysis.py [--jobs 8] [--fresh] [--outdir DIR ...]\n  (from the repo root), then: sh paper/eaai_rev3/build.sh. The arXiv build (paper/arxiv_rev3/scripts/\n  build.sh) runs it with --outdir paper/arxiv_rev3, so new models enter both versions.\nA (model, task) whose input files (names and sizes) are unchanged is reused from the JSON (the\ntests are deterministic); --fresh recomputes everything (about 30 min for the two Qwen3 models on\n8 cores). Raw Qwen3 logs are committed compressed: tar -xJf results/cloud/qwen3_raw_logs.tar.xz -C\nresults/cloud. New models (Kaggle: unzip results_nonthinking.zip into results/cloud/) appear in\nevery macro and table on the next run (all four models present since 24 Nov 2026); the abstract,\nhighlights and arXiv takeaways are hand-written, so re-read them if the printed headline counts change.\n",
+ "definitions": "Cross-model replication: the paper's analysis on every model present under results/cloud/.\n\nModels (a model is analysed when its directory holds task logs; nothing else changes when the\nKaggle runs drop in, rerun this script and rebuild paper/eaai_rev3):\n  results/cloud/qwen3-4b   Qwen/Qwen3-4B, thinking on      (Modal H100, vLLM bf16)\n  results/cloud/qwen3-8b   Qwen/Qwen3-8B, thinking on      (Modal H100, vLLM bf16)\n  results/cloud/phi4-mini  microsoft/Phi-4-mini-instruct    (Kaggle T4, vLLM fp16)\n  results/cloud/qwen25-3b  Qwen/Qwen2.5-3B-Instruct         (Kaggle T4, vLLM fp16)\nTasks: GSM8K first 500 test items; MATH-500 levels 1 to 3 (238 items). Workflows SA (greedy,\nseed 1), SC k=8 (k=2, 4 = its first 2, 4 calls, voted with the harness rule), DEBATE_N3_R1, GE_R2,\nHIERFIX_M3 (the HIER of the paper's main text).\n\nWhich records are used. A seed s of item i is used only when every workflow record (SC_k8,\nDEBATE_N3_R1, GE_R2, HIERFIX_M3) exists for (i, s), and SA (i, 1) exists; so every comparison is\npaired on the same (item, seed) sets. Runs stopped by the budget guard therefore contribute the\nseeds that finished for every workflow of an item. When the seed sets differ between items a\nseed-1-only sensitivity analysis is added (none since 24 Nov 2026: Qwen3-8B has seeds 1 and 2 complete\non both tasks after its top-up run, the other models seeds 1 to 3).\n\nStatistics (as in the paper, scripts/analyze_rev3_reruns.py functions called unchanged where the\nseed sets are uniform):\n  accuracy    mean over items of the per-item mean over seeds; 95% item bootstrap (10,000\n              resamples, numpy seed 0, items in sorted id order = harness.analyze.item_bootstrap_ci)\n  tests       harness.stats.hier_paired_test via scripts/analyze_hard_math.test (items resampled,\n              seeds within items, 10,000 replicates, seed 0); SA's single greedy value repeated\n              over the item's seeds, as in the paper\n  verdict     the paper's R/C/N rule (rr.finish_task), in total tokens and in output tokens:\n              among the sampling configurations (SA, SC k=2, 4, 8) cheaper than the workflow,\n              R if one is detectably more accurate (95% interval of its advantage above zero),\n              N if every cheaper one is detectably less accurate (or none is cheaper), C otherwise\n  token multiple  tokens of the workflow / tokens of the cheapest SC (k>=2) whose point accuracy\n              is at least the workflow's (paper/arxiv_rev3/scripts/emit_token_multiple.py);\n              undefined (null) when no SC configuration is that accurate\n  break-even  r* of SC k=8 against debate (scripts/analyze_rev3_costs.crossover): cost = input +\n              r x output tokens per query; SC k=8 is cheaper iff r < r* = (in_deb - in_SC8) /\n              (out_SC8 - out_deb); r* = inf when SC k=8 generates no more output than debate.\n              Bootstrap interval: the paper's function with uniform seed sets; with mixed seed\n              sets the same scheme (items, then seeds within item, independently per\n              configuration, 10,000 replicates, seed 0) in a loop, whose random draws differ.\n  truncation  per configuration: % of calls that hit the token cap (hit_cap), % of calls whose\n              think block never closed (thinking models), % of records with no extracted answer.\n\nDeviations from the paper: none in the tests; SC k=12 was not run on MATH (comparators k <= 8).\n\nWrites results/extra/cross_model_analysis.json and, in each --outdir (default paper/eaai_rev3 if present,\nelse paper/arxiv_rev3):\ncross_model_macros.tex, tables/cross_model_table.tex (main) and tables/cross_model_supp_{gsm8k,math500}.tex\n(CIs, tokens, truncation).\nRun: /usr/bin/python3 scripts/cloud/cross_model_analysis.py [--jobs 8] [--fresh] [--outdir DIR ...]\n  (from the repo root), then: sh paper/eaai_rev3/build.sh. The arXiv build (paper/arxiv_rev3/scripts/\n  build.sh) runs it with --outdir paper/arxiv_rev3, so new models enter both versions.\nA (model, task) whose input files (names and sizes) are unchanged is reused from the JSON (the\ntests are deterministic); --fresh recomputes everything (about 30 min for the two Qwen3 models on\n8 cores). Raw Qwen3 logs are committed compressed: tar -xJf results/cloud/qwen3_raw_logs.tar.xz -C\nresults/cloud. New models (Kaggle: unzip results_nonthinking.zip into results/cloud/) appear in\nevery macro and table on the next run (all four models present since 24 Nov 2026); the abstract,\nhighlights and arXiv takeaways are hand-written, so re-read them if the printed headline counts change.\n",
  "models": {
   "qwen3-4b": {
    "label": "Qwen3-4B",
@@ -1839,69 +1839,69 @@
       },
       "SC_k2": {
        "acc": 91.80672268907563,
-       "lo": 88.23004201680672,
-       "hi": 94.9579831932773,
-       "total_tokens": 5344.346638655462,
-       "out_tokens": 5174.144957983193,
-       "no_answer_pct": 1.6085790884718498,
+       "lo": 88.23529411764706,
+       "hi": 95.16806722689076,
+       "total_tokens": 5393.01050420168,
+       "out_tokens": 5222.808823529412,
+       "no_answer_pct": 2.73109243697479,
        "in_tokens": 170.2016806722686,
-       "out_share_pct": 96.81529488672749
+       "out_share_pct": 96.8440320941399
       },
       "SC_k4": {
-       "acc": 93.0672268907563,
-       "lo": 89.70588235294117,
-       "hi": 96.21848739495799,
-       "total_tokens": 10757.949579831933,
-       "out_tokens": 10417.546218487394,
-       "no_answer_pct": 0.8042895442359249,
-       "in_tokens": 340.403361344539,
-       "out_share_pct": 96.83579701858152
+       "acc": 92.85714285714286,
+       "lo": 89.49579831932773,
+       "hi": 96.00840336134453,
+       "total_tokens": 10832.600840336134,
+       "out_tokens": 10492.197478991597,
+       "no_answer_pct": 1.680672268907563,
+       "in_tokens": 340.4033613445372,
+       "out_share_pct": 96.85760265367651
       },
       "SC_k8": {
-       "acc": 93.0672268907563,
-       "lo": 89.70588235294117,
-       "hi": 96.21848739495799,
-       "total_tokens": 21605.764705882353,
-       "out_tokens": 20924.95798319328,
-       "no_answer_pct": 0.8042895442359249,
+       "acc": 92.85714285714286,
+       "lo": 89.49579831932773,
+       "hi": 96.00840336134453,
+       "total_tokens": 21748.632352941175,
+       "out_tokens": 21067.8256302521,
+       "no_answer_pct": 1.680672268907563,
        "in_tokens": 680.8067226890744,
-       "out_share_pct": 96.84895798895876
+       "out_share_pct": 96.8696573115918
       },
       "DEBATE_N3_R1": {
        "acc": 93.69747899159664,
        "lo": 90.33613445378151,
        "hi": 96.63865546218487,
-       "total_tokens": 16017.808823529413,
-       "out_tokens": 12649.033613445377,
-       "no_answer_pct": 0.8042895442359249,
-       "in_tokens": 3368.7752100840353,
-       "out_share_pct": 78.96856400773456
+       "total_tokens": 15986.61344537815,
+       "out_tokens": 12618.985294117647,
+       "no_answer_pct": 1.050420168067227,
+       "in_tokens": 3367.6281512605037,
+       "out_share_pct": 78.93469956744272
       },
       "GE_R2": {
        "acc": 93.27731092436974,
        "lo": 89.91596638655463,
        "hi": 96.21848739495799,
-       "total_tokens": 12701.43487394958,
-       "out_tokens": 9459.699579831933,
-       "no_answer_pct": 0.8042895442359249,
-       "in_tokens": 3241.735294117647,
-       "out_share_pct": 74.47740884168616
+       "total_tokens": 12661.926470588236,
+       "out_tokens": 9393.151260504203,
+       "no_answer_pct": 1.2605042016806722,
+       "in_tokens": 3268.7752100840335,
+       "out_share_pct": 74.18421898376278
       },
       "HIERFIX_M3": {
-       "acc": 94.32773109243698,
-       "lo": 91.17647058823529,
-       "hi": 97.05882352941177,
-       "total_tokens": 12483.58193277311,
-       "out_tokens": 10054.5756302521,
-       "no_answer_pct": 0.8042895442359249,
-       "in_tokens": 2429.0063025210093,
-       "out_share_pct": 80.54239307594764
+       "acc": 93.0672268907563,
+       "lo": 89.91596638655463,
+       "hi": 96.00840336134453,
+       "total_tokens": 12688.344537815126,
+       "out_tokens": 10348.838235294117,
+       "no_answer_pct": 1.680672268907563,
+       "in_tokens": 2339.5063025210093,
+       "out_share_pct": 81.56176879065217
       }
      },
      "tests": {
       "DEBATE_N3_R1|SA": {
        "diff": 1.68,
-       "p": 0.0368,
+       "p": 0.036,
        "ci95": [
         0.42,
         3.36
@@ -1911,22 +1911,22 @@
         3.36
        ],
        "p_any_gain": 1.0,
-       "p_gain_margin": 0.001,
+       "p_gain_margin": 0.0004,
        "p_loss_margin": 0.0,
-       "dtok": -13352.556722689076,
+       "dtok": -13321.361344537816,
        "dtok_ci95": [
-        -14319.92405462185,
-        -12420.914023109244
+        -14283.036134453781,
+        -12409.035031512605
        ],
-       "dout": -10068.882352941177,
+       "dout": -10038.834033613446,
        "dout_ci95": [
-        -10980.03093487395,
-        -9213.050472689076
+        -10940.231197478992,
+        -9196.500577731093
        ]
       },
       "DEBATE_N3_R1|SC_k2": {
        "diff": 1.89,
-       "p": 0.0186,
+       "p": 0.009,
        "ci95": [
         0.42,
         3.78
@@ -1936,267 +1936,267 @@
         3.36
        ],
        "p_any_gain": 1.0,
-       "p_gain_margin": 0.0019,
+       "p_gain_margin": 0.0014,
        "p_loss_margin": 0.0,
-       "dtok": -10673.46218487395,
+       "dtok": -10593.60294117647,
        "dtok_ci95": [
-        -11436.848161764707,
-        -9950.35493697479
+        -11333.532457983194,
+        -9900.131670168068
        ],
-       "dout": -7474.888655462185,
+       "dout": -7396.176470588235,
        "dout_ci95": [
-        -8188.087500000001,
-        -6819.648214285714
+        -8088.039075630252,
+        -6773.858928571429
        ]
       },
       "DEBATE_N3_R1|SC_k4": {
-       "diff": 0.63,
-       "p": 0.3444,
+       "diff": 0.84,
+       "p": 0.1556,
        "ci95": [
         0.0,
-        1.68
+        2.1
        ],
        "ci90": [
         0.0,
-        1.47
+        1.89
        ],
        "p_any_gain": 1.0,
        "p_gain_margin": 0.0,
        "p_loss_margin": 0.0,
-       "dtok": -5259.859243697479,
+       "dtok": -5154.012605042017,
        "dtok_ci95": [
-        -5662.187132352941,
-        -4892.596113445378
+        -5514.24212184874,
+        -4823.278886554622
        ],
-       "dout": -2231.4873949579833,
+       "dout": -2126.7878151260506,
        "dout_ci95": [
-        -2614.3886554621845,
-        -1892.011554621849
+        -2459.6379201680675,
+        -1832.2954306722693
        ]
       },
       "DEBATE_N3_R1|SC_k8": {
-       "diff": 0.63,
-       "p": 0.3444,
+       "diff": 0.84,
+       "p": 0.1556,
        "ci95": [
         0.0,
-        1.68
+        2.1
        ],
        "ci90": [
         0.0,
-        1.47
+        1.89
        ],
        "p_any_gain": 1.0,
        "p_gain_margin": 0.0,
        "p_loss_margin": 0.0,
-       "dtok": 5587.955882352941,
+       "dtok": 5762.018907563025,
        "dtok_ci95": [
-        4883.821533613445,
-        6330.305619747899
+        5034.054096638656,
+        6517.5645483193275
        ],
-       "dout": 8275.9243697479,
+       "dout": 8448.840336134454,
        "dout_ci95": [
-        7523.562552521009,
-        9076.310661764704
+        7680.94837184874,
+        9252.611659663866
        ]
       },
       "GE_R2|SA": {
        "diff": 1.26,
-       "p": 0.2458,
+       "p": 0.1896,
        "ci95": [
         -0.42,
+        3.36
+       ],
+       "ci90": [
+        -0.21,
+        2.94
+       ],
+       "p_any_gain": 0.9438,
+       "p_gain_margin": 0.0001,
+       "p_loss_margin": 0.0,
+       "dtok": -9996.6743697479,
+       "dtok_ci95": [
+        -10714.249684873948,
+        -9311.377048319328
+       ],
+       "dout": -6813.0,
+       "dout_ci95": [
+        -7492.7181197478985,
+        -6183.368172268907
+       ]
+      },
+      "GE_R2|SC_k2": {
+       "diff": 1.47,
+       "p": 0.1022,
+       "ci95": [
+        -0.21,
         3.36
        ],
        "ci90": [
         0.0,
         2.94
        ],
-       "p_any_gain": 0.9537,
-       "p_gain_margin": 0.0004,
+       "p_any_gain": 0.9737,
+       "p_gain_margin": 0.0007,
        "p_loss_margin": 0.0,
-       "dtok": -10036.182773109243,
+       "dtok": -7268.915966386555,
        "dtok_ci95": [
-        -10812.492647058823,
-        -9315.66549369748
+        -7782.551890756303,
+        -6793.854516806723
        ],
-       "dout": -6879.548319327731,
+       "dout": -4170.34243697479,
        "dout_ci95": [
-        -7617.4367647058825,
-        -6209.503728991597
-       ]
-      },
-      "GE_R2|SC_k2": {
-       "diff": 1.47,
-       "p": 0.05,
-       "ci95": [
-        0.2,
-        3.15
-       ],
-       "ci90": [
-        0.42,
-        2.94
-       ],
-       "p_any_gain": 1.0,
-       "p_gain_margin": 0.0002,
-       "p_loss_margin": 0.0,
-       "dtok": -7357.088235294118,
-       "dtok_ci95": [
-        -7933.8267857142855,
-        -6833.82631302521
-       ],
-       "dout": -4285.55462184874,
-       "dout_ci95": [
-        -4846.670693277311,
-        -3798.5957457983195
+        -4662.725945378152,
+        -3739.264548319328
        ]
       },
       "GE_R2|SC_k4": {
-       "diff": 0.21,
-       "p": 0.93,
+       "diff": 0.42,
+       "p": 0.6536,
        "ci95": [
-        -1.05,
-        1.47
+        -0.84,
+        1.89
        ],
        "ci90": [
-        -0.84,
-        1.26
+        -0.63,
+        1.68
        ],
-       "p_any_gain": 0.7228,
+       "p_any_gain": 0.7859,
        "p_gain_margin": 0.0,
        "p_loss_margin": 0.0,
-       "dtok": -1943.485294117647,
+       "dtok": -1829.3256302521008,
        "dtok_ci95": [
-        -2288.6000525210084,
-        -1593.7897584033612
+        -2137.5115546218485,
+        -1512.0999474789917
        ],
-       "dout": 957.8466386554621,
+       "dout": 1099.046218487395,
        "dout_ci95": [
-        576.5267857142858,
-        1338.3055672268908
+        760.9386029411764,
+        1451.3496848739496
        ]
       },
       "GE_R2|SC_k8": {
-       "diff": 0.21,
-       "p": 0.93,
+       "diff": 0.42,
+       "p": 0.6536,
        "ci95": [
-        -1.05,
-        1.47
+        -0.84,
+        1.89
        ],
        "ci90": [
-        -0.84,
-        1.26
+        -0.63,
+        1.68
        ],
-       "p_any_gain": 0.7228,
+       "p_any_gain": 0.7859,
        "p_gain_margin": 0.0,
        "p_loss_margin": 0.0,
-       "dtok": 8904.329831932773,
+       "dtok": 9086.70588235294,
        "dtok_ci95": [
-        7976.577048319327,
-        9883.231302521008
+        8111.9516806722695,
+        10106.742331932774
        ],
-       "dout": 11465.258403361344,
+       "dout": 11674.6743697479,
        "dout_ci95": [
-        10485.293329831933,
-        12490.96018907563
+        10656.63261554622,
+        12742.520063025211
        ]
       },
       "HIERFIX_M3|SA": {
-       "diff": 2.31,
-       "p": 0.0172,
+       "diff": 1.05,
+       "p": 0.382,
        "ci95": [
-        0.42,
-        4.62
+        -1.05,
+        3.15
        ],
        "ci90": [
-        0.63,
-        4.2
+        -0.63,
+        2.94
        ],
-       "p_any_gain": 0.9969,
-       "p_gain_margin": 0.0137,
+       "p_any_gain": 0.8612,
+       "p_gain_margin": 0.0001,
        "p_loss_margin": 0.0,
-       "dtok": -9818.329831932773,
+       "dtok": -10023.09243697479,
        "dtok_ci95": [
-        -10446.734768907563,
-        -9232.239705882352
+        -10687.336712184875,
+        -9405.179411764706
        ],
-       "dout": -7474.424369747899,
+       "dout": -7768.686974789916,
        "dout_ci95": [
-        -8039.473056722689,
-        -6963.307563025211
+        -8387.778571428571,
+        -7203.692962184874
        ]
       },
       "HIERFIX_M3|SC_k2": {
-       "diff": 2.52,
-       "p": 0.011,
+       "diff": 1.26,
+       "p": 0.216,
        "ci95": [
-        0.63,
-        4.83
+        -0.63,
+        3.15
        ],
        "ci90": [
-        0.84,
-        4.41
+        -0.21,
+        2.94
        ],
-       "p_any_gain": 0.9972,
-       "p_gain_margin": 0.0204,
+       "p_any_gain": 0.9296,
+       "p_gain_margin": 0.0003,
        "p_loss_margin": 0.0,
-       "dtok": -7139.235294117647,
+       "dtok": -7295.334033613445,
        "dtok_ci95": [
-        -7615.221323529411,
-        -6687.571953781513
+        -7762.542489495799,
+        -6856.449789915966
        ],
-       "dout": -4880.430672268908,
+       "dout": -5126.029411764706,
        "dout_ci95": [
-        -5325.235084033614,
-        -4475.555567226891
+        -5572.796218487395,
+        -4714.240966386555
        ]
       },
       "HIERFIX_M3|SC_k4": {
-       "diff": 1.26,
-       "p": 0.1304,
+       "diff": 0.21,
+       "p": 0.9088,
        "ci95": [
-        -0.21,
-        2.94
+        -1.47,
+        1.89
        ],
        "ci90": [
-        0.0,
-        2.73
+        -1.05,
+        1.47
        ],
-       "p_any_gain": 0.9703,
-       "p_gain_margin": 0.0002,
+       "p_any_gain": 0.6452,
+       "p_gain_margin": 0.0,
        "p_loss_margin": 0.0,
-       "dtok": -1725.6323529411766,
+       "dtok": -1855.7436974789916,
        "dtok_ci95": [
-        -2179.2681722689076,
-        -1247.0434873949584
+        -2247.5936974789915,
+        -1438.5803571428573
        ],
-       "dout": 362.97058823529414,
+       "dout": 143.359243697479,
        "dout_ci95": [
-        -139.75688025210084,
-        892.3659663865545
+        -297.494012605042,
+        607.9231092436972
        ]
       },
       "HIERFIX_M3|SC_k8": {
-       "diff": 1.26,
-       "p": 0.1304,
+       "diff": 0.21,
+       "p": 0.9088,
        "ci95": [
-        -0.21,
-        2.94
+        -1.47,
+        1.89
        ],
        "ci90": [
-        0.0,
-        2.73
+        -1.05,
+        1.47
        ],
-       "p_any_gain": 0.9703,
-       "p_gain_margin": 0.0002,
+       "p_any_gain": 0.6452,
+       "p_gain_margin": 0.0,
        "p_loss_margin": 0.0,
-       "dtok": 9122.182773109243,
+       "dtok": 9060.28781512605,
        "dtok_ci95": [
-        7986.333981092437,
-        10340.815966386554
+        7968.513077731092,
+        10210.374842436975
        ],
-       "dout": 10870.382352941177,
+       "dout": 10718.987394957983,
        "dout_ci95": [
-        9660.166176470588,
-        12166.900262605042
+        9570.737447478992,
+        11927.154411764704
        ]
       }
      },
@@ -2258,7 +2258,7 @@
         "SC_k2"
        ],
        "robust_by": [],
-       "verdict": "N",
+       "verdict": "C",
        "cheapest_robust": null
       }
      },
@@ -2271,604 +2271,13 @@
      "items_excluded": [],
      "seed_items": {
       "1": 238,
-      "2": 135
+      "2": 238
      },
      "seeds_present_in_files": [
       1,
       2
      ],
-     "records_unused": 35,
-     "uniform_seeds": false,
-     "token_multiple": {
-      "DEBATE_N3_R1": {
-       "multiple": null,
-       "comparator": null,
-       "note": "no SC configuration at least as accurate"
-      },
-      "GE_R2": {
-       "multiple": null,
-       "comparator": null,
-       "note": "no SC configuration at least as accurate"
-      },
-      "HIERFIX_M3": {
-       "multiple": null,
-       "comparator": null,
-       "note": "no SC configuration at least as accurate"
-      }
-     },
-     "matched": {
-      "DEBATE_N3_R1|total_tokens": {
-       "comparator": "SC_k4",
-       "diff": 0.63,
-       "ci95": [
-        0.0,
-        1.68
-       ],
-       "win": false
-      },
-      "DEBATE_N3_R1|out_tokens": {
-       "comparator": "SC_k4",
-       "diff": 0.63,
-       "ci95": [
-        0.0,
-        1.68
-       ],
-       "win": false
-      },
-      "GE_R2|total_tokens": {
-       "comparator": "SC_k4",
-       "diff": 0.21,
-       "ci95": [
-        -1.05,
-        1.47
-       ],
-       "win": false
-      },
-      "GE_R2|out_tokens": {
-       "comparator": "SC_k2",
-       "diff": 1.47,
-       "ci95": [
-        0.2,
-        3.15
-       ],
-       "win": true
-      },
-      "HIERFIX_M3|total_tokens": {
-       "comparator": "SC_k4",
-       "diff": 1.26,
-       "ci95": [
-        -0.21,
-        2.94
-       ],
-       "win": false
-      },
-      "HIERFIX_M3|out_tokens": {
-       "comparator": "SC_k2",
-       "diff": 2.52,
-       "ci95": [
-        0.63,
-        4.83
-       ],
-       "win": true
-      }
-     },
-     "break_even": {
-      "SC_k8": {
-       "point": 0.32479374717592274,
-       "ci95": [
-        0.2989636606187035,
-        0.35382688329748857
-       ],
-       "share_infinite": 0.0,
-       "d_in_debate_minus_sc": 2687.9684873949577,
-       "d_out_sc_minus_debate": 8275.924369747901,
-       "method": "loop (mixed seed sets)"
-      },
-      "SC_k4": {
-       "point": "inf",
-       "ci95": [
-        "inf",
-        "inf"
-       ],
-       "share_infinite": 1.0,
-       "d_in_debate_minus_sc": 3028.371848739496,
-       "d_out_sc_minus_debate": -2231.4873949579833,
-       "method": "loop (mixed seed sets)"
-      }
-     },
-     "truncation": {
-      "SA": {
-       "calls": 238,
-       "hit_cap_pct": 2.941176470588235,
-       "think_unclosed_pct": 2.941176470588235,
-       "records_any_cap_pct": 2.941176470588235,
-       "no_answer_pct": 2.941176470588235
-      },
-      "SC_k8": {
-       "calls": 2984,
-       "hit_cap_pct": 2.613941018766756,
-       "think_unclosed_pct": 2.0107238605898123,
-       "records_any_cap_pct": 5.361930294906166,
-       "no_answer_pct": 0.8042895442359249
-      },
-      "DEBATE_N3_R1": {
-       "calls": 2238,
-       "hit_cap_pct": 1.8319928507596068,
-       "think_unclosed_pct": 1.3851653261840928,
-       "records_any_cap_pct": 3.485254691689008,
-       "no_answer_pct": 0.8042895442359249
-      },
-      "GE_R2": {
-       "calls": 1865,
-       "hit_cap_pct": 2.037533512064343,
-       "think_unclosed_pct": 1.876675603217158,
-       "records_any_cap_pct": 3.753351206434316,
-       "no_answer_pct": 0.8042895442359249
-      },
-      "HIERFIX_M3": {
-       "calls": 1865,
-       "hit_cap_pct": 0.96514745308311,
-       "think_unclosed_pct": 0.6970509383378015,
-       "records_any_cap_pct": 2.1447721179624666,
-       "no_answer_pct": 0.8042895442359249
-      }
-     }
-    }
-   },
-   "sensitivity_seed1_only": {
-    "math500": {
-     "n_items": 238,
-     "configs": {
-      "SA": {
-       "acc": 92.01680672268907,
-       "lo": 88.23529411764706,
-       "hi": 95.37815126050421,
-       "total_tokens": 2665.252100840336,
-       "out_tokens": 2580.1512605042017,
-       "no_answer_pct": 2.941176470588235,
-       "in_tokens": 85.1008403361343,
-       "out_share_pct": 96.80702473475951
-      },
-      "SC_k2": {
-       "acc": 91.59663865546219,
-       "lo": 87.81512605042016,
-       "hi": 94.9579831932773,
-       "total_tokens": 5350.390756302521,
-       "out_tokens": 5180.189075630252,
-       "no_answer_pct": 2.5210084033613445,
-       "in_tokens": 170.2016806722695,
-       "out_share_pct": 96.81889251786369
-      },
-      "SC_k4": {
-       "acc": 92.85714285714286,
-       "lo": 89.49579831932773,
-       "hi": 96.21848739495799,
-       "total_tokens": 10713.289915966387,
-       "out_tokens": 10372.88655462185,
-       "no_answer_pct": 1.2605042016806722,
-       "in_tokens": 340.4033613445372,
-       "out_share_pct": 96.82260665010827
-      },
-      "SC_k8": {
-       "acc": 92.85714285714286,
-       "lo": 89.49579831932773,
-       "hi": 96.21848739495799,
-       "total_tokens": 21526.361344537814,
-       "out_tokens": 20845.55462184874,
-       "no_answer_pct": 1.2605042016806722,
-       "in_tokens": 680.8067226890744,
-       "out_share_pct": 96.8373348760968
-      },
-      "DEBATE_N3_R1": {
-       "acc": 93.69747899159664,
-       "lo": 90.33613445378151,
-       "hi": 96.63865546218487,
-       "total_tokens": 15970.764705882353,
-       "out_tokens": 12607.579831932773,
-       "no_answer_pct": 1.2605042016806722,
-       "in_tokens": 3363.18487394958,
-       "out_share_pct": 78.94161653567627
-      },
-      "GE_R2": {
-       "acc": 93.27731092436974,
-       "lo": 89.91596638655463,
-       "hi": 96.21848739495799,
-       "total_tokens": 12612.378151260504,
-       "out_tokens": 9379.550420168067,
-       "no_answer_pct": 1.2605042016806722,
-       "in_tokens": 3232.827731092437,
-       "out_share_pct": 74.36781792996476
-      },
-      "HIERFIX_M3": {
-       "acc": 94.11764705882352,
-       "lo": 91.17647058823529,
-       "hi": 97.05882352941177,
-       "total_tokens": 12507.83613445378,
-       "out_tokens": 10093.29411764706,
-       "no_answer_pct": 1.2605042016806722,
-       "in_tokens": 2414.542016806721,
-       "out_share_pct": 80.69576551170444
-      }
-     },
-     "tests": {
-      "DEBATE_N3_R1|SA": {
-       "diff": 1.68,
-       "p": 0.0348,
-       "ci95": [
-        0.42,
-        3.36
-       ],
-       "ci90": [
-        0.42,
-        3.36
-       ],
-       "p_any_gain": 1.0,
-       "p_gain_margin": 0.0009,
-       "p_loss_margin": 0.0,
-       "dtok": -13305.512605042017,
-       "dtok_ci95": [
-        -14278.417226890757,
-        -12373.227415966387
-       ],
-       "dout": -10027.42857142857,
-       "dout_ci95": [
-        -10940.000315126052,
-        -9163.783823529411
-       ]
-      },
-      "DEBATE_N3_R1|SC_k2": {
-       "diff": 2.1,
-       "p": 0.0126,
-       "ci95": [
-        0.42,
-        4.2
-       ],
-       "ci90": [
-        0.84,
-        3.78
-       ],
-       "p_any_gain": 1.0,
-       "p_gain_margin": 0.0057,
-       "p_loss_margin": 0.0,
-       "dtok": -10620.373949579833,
-       "dtok_ci95": [
-        -11393.153571428573,
-        -9894.323949579833
-       ],
-       "dout": -7427.390756302521,
-       "dout_ci95": [
-        -8140.252100840336,
-        -6765.016176470588
-       ]
-      },
-      "DEBATE_N3_R1|SC_k4": {
-       "diff": 0.84,
-       "p": 0.2686,
-       "ci95": [
-        0.0,
-        2.1
-       ],
-       "ci90": [
-        0.0,
-        2.1
-       ],
-       "p_any_gain": 1.0,
-       "p_gain_margin": 0.0,
-       "p_loss_margin": 0.0,
-       "dtok": -5257.4747899159665,
-       "dtok_ci95": [
-        -5668.947899159663,
-        -4880.420588235294
-       ],
-       "dout": -2234.6932773109243,
-       "dout_ci95": [
-        -2622.2577731092433,
-        -1887.796323529412
-       ]
-      },
-      "DEBATE_N3_R1|SC_k8": {
-       "diff": 0.84,
-       "p": 0.2686,
-       "ci95": [
-        0.0,
-        2.1
-       ],
-       "ci90": [
-        0.0,
-        2.1
-       ],
-       "p_any_gain": 1.0,
-       "p_gain_margin": 0.0,
-       "p_loss_margin": 0.0,
-       "dtok": 5555.596638655462,
-       "dtok_ci95": [
-        4838.930462184874,
-        6306.553991596638
-       ],
-       "dout": 8237.974789915967,
-       "dout_ci95": [
-        7486.565651260505,
-        9046.257142857143
-       ]
-      },
-      "GE_R2|SA": {
-       "diff": 1.26,
-       "p": 0.2446,
-       "ci95": [
-        -0.42,
-        3.36
-       ],
-       "ci90": [
-        0.0,
-        2.94
-       ],
-       "p_any_gain": 0.9516,
-       "p_gain_margin": 0.0004,
-       "p_loss_margin": 0.0,
-       "dtok": -9947.126050420167,
-       "dtok_ci95": [
-        -10732.916386554622,
-        -9220.32699579832
-       ],
-       "dout": -6799.399159663865,
-       "dout_ci95": [
-        -7542.108718487395,
-        -6119.085084033613
-       ]
-      },
-      "GE_R2|SC_k2": {
-       "diff": 1.68,
-       "p": 0.036,
-       "ci95": [
-        0.42,
-        3.36
-       ],
-       "ci90": [
-        0.42,
-        3.36
-       ],
-       "p_any_gain": 1.0,
-       "p_gain_margin": 0.0008,
-       "p_loss_margin": 0.0,
-       "dtok": -7261.987394957983,
-       "dtok_ci95": [
-        -7845.612394957983,
-        -6725.217962184874
-       ],
-       "dout": -4199.361344537815,
-       "dout_ci95": [
-        -4765.984978991596,
-        -3703.020588235294
-       ]
-      },
-      "GE_R2|SC_k4": {
-       "diff": 0.42,
-       "p": 0.7802,
-       "ci95": [
-        -0.84,
-        2.1
-       ],
-       "ci90": [
-        -0.84,
-        1.68
-       ],
-       "p_any_gain": 0.8204,
-       "p_gain_margin": 0.0,
-       "p_loss_margin": 0.0,
-       "dtok": -1899.0882352941176,
-       "dtok_ci95": [
-        -2260.8022058823526,
-        -1529.8381302521009
-       ],
-       "dout": 993.3361344537815,
-       "dout_ci95": [
-        601.2954831932773,
-        1379.0193277310923
-       ]
-      },
-      "GE_R2|SC_k8": {
-       "diff": 0.42,
-       "p": 0.7802,
-       "ci95": [
-        -0.84,
-        2.1
-       ],
-       "ci90": [
-        -0.84,
-        1.68
-       ],
-       "p_any_gain": 0.8204,
-       "p_gain_margin": 0.0,
-       "p_loss_margin": 0.0,
-       "dtok": 8913.98319327731,
-       "dtok_ci95": [
-        7981.2601890756305,
-        9903.499894957984
-       ],
-       "dout": 11466.004201680673,
-       "dout_ci95": [
-        10487.08455882353,
-        12485.5118697479
-       ]
-      },
-      "HIERFIX_M3|SA": {
-       "diff": 2.1,
-       "p": 0.0664,
-       "ci95": [
-        0.0,
-        4.2
-       ],
-       "ci90": [
-        0.42,
-        3.78
-       ],
-       "p_any_gain": 0.9892,
-       "p_gain_margin": 0.011,
-       "p_loss_margin": 0.0,
-       "dtok": -9842.584033613446,
-       "dtok_ci95": [
-        -10487.064705882354,
-        -9249.486974789917
-       ],
-       "dout": -7513.142857142857,
-       "dout_ci95": [
-        -8100.309243697479,
-        -6991.99275210084
-       ]
-      },
-      "HIERFIX_M3|SC_k2": {
-       "diff": 2.52,
-       "p": 0.0328,
-       "ci95": [
-        0.42,
-        5.04
-       ],
-       "ci90": [
-        0.84,
-        4.62
-       ],
-       "p_any_gain": 0.9948,
-       "p_gain_margin": 0.0319,
-       "p_loss_margin": 0.0,
-       "dtok": -7157.44537815126,
-       "dtok_ci95": [
-        -7648.355777310924,
-        -6689.070693277311
-       ],
-       "dout": -4913.105042016807,
-       "dout_ci95": [
-        -5377.619222689076,
-        -4483.786764705883
-       ]
-      },
-      "HIERFIX_M3|SC_k4": {
-       "diff": 1.26,
-       "p": 0.2482,
-       "ci95": [
-        -0.42,
-        3.36
-       ],
-       "ci90": [
-        0.0,
-        2.94
-       ],
-       "p_any_gain": 0.9524,
-       "p_gain_margin": 0.0005,
-       "p_loss_margin": 0.0,
-       "dtok": -1794.546218487395,
-       "dtok_ci95": [
-        -2283.695798319328,
-        -1290.5953781512605
-       ],
-       "dout": 279.5924369747899,
-       "dout_ci95": [
-        -246.25399159663866,
-        827.736764705882
-       ]
-      },
-      "HIERFIX_M3|SC_k8": {
-       "diff": 1.26,
-       "p": 0.2482,
-       "ci95": [
-        -0.42,
-        3.36
-       ],
-       "ci90": [
-        0.0,
-        2.94
-       ],
-       "p_any_gain": 0.9524,
-       "p_gain_margin": 0.0005,
-       "p_loss_margin": 0.0,
-       "dtok": 9018.525210084033,
-       "dtok_ci95": [
-        7859.638655462185,
-        10262.523004201681
-       ],
-       "dout": 10752.26050420168,
-       "dout_ci95": [
-        9520.366176470588,
-        12065.077626050419
-       ]
-      }
-     },
-     "verdict_total": {
-      "DEBATE_N3_R1": {
-       "cheaper": [
-        "SA",
-        "SC_k2",
-        "SC_k4"
-       ],
-       "robust_by": [],
-       "verdict": "C",
-       "cheapest_robust": null
-      },
-      "GE_R2": {
-       "cheaper": [
-        "SA",
-        "SC_k2",
-        "SC_k4"
-       ],
-       "robust_by": [],
-       "verdict": "C",
-       "cheapest_robust": null
-      },
-      "HIERFIX_M3": {
-       "cheaper": [
-        "SA",
-        "SC_k2",
-        "SC_k4"
-       ],
-       "robust_by": [],
-       "verdict": "C",
-       "cheapest_robust": null
-      }
-     },
-     "verdict_output": {
-      "DEBATE_N3_R1": {
-       "cheaper": [
-        "SA",
-        "SC_k2",
-        "SC_k4"
-       ],
-       "robust_by": [],
-       "verdict": "C",
-       "cheapest_robust": null
-      },
-      "GE_R2": {
-       "cheaper": [
-        "SA",
-        "SC_k2"
-       ],
-       "robust_by": [],
-       "verdict": "C",
-       "cheapest_robust": null
-      },
-      "HIERFIX_M3": {
-       "cheaper": [
-        "SA",
-        "SC_k2"
-       ],
-       "robust_by": [],
-       "verdict": "C",
-       "cheapest_robust": null
-      }
-     },
-     "comparator": {
-      "DEBATE_N3_R1": "SC_k4",
-      "GE_R2": "SC_k4",
-      "HIERFIX_M3": "SC_k4"
-     },
-     "n_items_expected": 238,
-     "items_excluded": [],
-     "seed_items": {
-      "1": 238
-     },
-     "seeds_present_in_files": [
-      1,
-      2
-     ],
-     "records_unused": 575,
+     "records_unused": 0,
      "uniform_seeds": true,
      "token_multiple": {
       "DEBATE_N3_R1": {
@@ -2911,48 +2320,48 @@
        "diff": 0.42,
        "ci95": [
         -0.84,
-        2.1
+        1.89
        ],
        "win": false
       },
       "GE_R2|out_tokens": {
        "comparator": "SC_k2",
-       "diff": 1.68,
+       "diff": 1.47,
        "ci95": [
-        0.42,
+        -0.21,
         3.36
        ],
-       "win": true
+       "win": false
       },
       "HIERFIX_M3|total_tokens": {
        "comparator": "SC_k4",
-       "diff": 1.26,
+       "diff": 0.21,
        "ci95": [
-        -0.42,
-        3.36
+        -1.47,
+        1.89
        ],
        "win": false
       },
       "HIERFIX_M3|out_tokens": {
        "comparator": "SC_k2",
-       "diff": 2.52,
+       "diff": 1.26,
        "ci95": [
-        0.42,
-        5.04
+        -0.63,
+        3.15
        ],
-       "win": true
+       "win": false
       }
      },
      "break_even": {
       "SC_k8": {
-       "point": 0.32561135711946826,
+       "point": 0.3180106762202958,
        "ci95": [
-        0.29963862517756307,
-        0.3557820576962956
+        0.29187868491262975,
+        0.34742250650885503
        ],
        "share_infinite": 0.0,
-       "d_in_debate_minus_sc": 2682.378151260504,
-       "d_out_sc_minus_debate": 8237.974789915967,
+       "d_in_debate_minus_sc": 2686.8214285714284,
+       "d_out_sc_minus_debate": 8448.840336134454,
        "method": "scripts/analyze_rev3_costs.crossover"
       },
       "SC_k4": {
@@ -2962,8 +2371,8 @@
         "inf"
        ],
        "share_infinite": 1.0,
-       "d_in_debate_minus_sc": 3022.7815126050423,
-       "d_out_sc_minus_debate": -2234.693277310924,
+       "d_in_debate_minus_sc": 3027.2247899159665,
+       "d_out_sc_minus_debate": -2126.78781512605,
        "method": "scripts/analyze_rev3_costs.crossover"
       }
      },
@@ -2976,36 +2385,37 @@
        "no_answer_pct": 2.941176470588235
       },
       "SC_k8": {
-       "calls": 1904,
-       "hit_cap_pct": 3.9915966386554618,
-       "think_unclosed_pct": 3.0987394957983194,
-       "records_any_cap_pct": 7.563025210084033,
-       "no_answer_pct": 1.2605042016806722
+       "calls": 3808,
+       "hit_cap_pct": 4.30672268907563,
+       "think_unclosed_pct": 3.230042016806723,
+       "records_any_cap_pct": 7.9831932773109235,
+       "no_answer_pct": 1.680672268907563
       },
       "DEBATE_N3_R1": {
-       "calls": 1428,
-       "hit_cap_pct": 2.8711484593837535,
-       "think_unclosed_pct": 2.1708683473389354,
-       "records_any_cap_pct": 5.46218487394958,
-       "no_answer_pct": 1.2605042016806722
+       "calls": 2856,
+       "hit_cap_pct": 2.801120448179272,
+       "think_unclosed_pct": 2.2058823529411766,
+       "records_any_cap_pct": 5.6722689075630255,
+       "no_answer_pct": 1.050420168067227
       },
       "GE_R2": {
-       "calls": 1190,
-       "hit_cap_pct": 3.1932773109243695,
-       "think_unclosed_pct": 2.941176470588235,
-       "records_any_cap_pct": 5.88235294117647,
+       "calls": 2380,
+       "hit_cap_pct": 2.73109243697479,
+       "think_unclosed_pct": 2.3529411764705883,
+       "records_any_cap_pct": 4.831932773109244,
        "no_answer_pct": 1.2605042016806722
       },
       "HIERFIX_M3": {
-       "calls": 1190,
-       "hit_cap_pct": 1.4285714285714286,
-       "think_unclosed_pct": 1.0084033613445378,
-       "records_any_cap_pct": 2.941176470588235,
-       "no_answer_pct": 1.2605042016806722
+       "calls": 2380,
+       "hit_cap_pct": 2.5210084033613445,
+       "think_unclosed_pct": 1.8907563025210083,
+       "records_any_cap_pct": 4.201680672268908,
+       "no_answer_pct": 1.680672268907563
       }
      }
     }
    },
+   "sensitivity_seed1_only": {},
    "input_files": {
     "gsm8k": [
      [
@@ -3028,7 +2438,7 @@
      ],
      [
       "math500_s2.jsonl",
-      22771304
+      41739677
      ],
      [
       "math500_s3.jsonl",
@@ -5545,69 +4955,7 @@
   "cells": 24,
   "N": {
    "total": [],
-   "output": [
-    {
-     "model": "Qwen3-8B",
-     "task": "MATH L1-3",
-     "workflow": "HIERFIX_M3",
-     "cheaper": [
-      "SA",
-      "SC_k2"
-     ],
-     "gains": {
-      "SA": {
-       "diff": 2.31,
-       "p": 0.0172,
-       "ci95": [
-        0.42,
-        4.62
-       ],
-       "ci90": [
-        0.63,
-        4.2
-       ],
-       "p_any_gain": 0.9969,
-       "p_gain_margin": 0.0137,
-       "p_loss_margin": 0.0,
-       "dtok": -9818.329831932773,
-       "dtok_ci95": [
-        -10446.734768907563,
-        -9232.239705882352
-       ],
-       "dout": -7474.424369747899,
-       "dout_ci95": [
-        -8039.473056722689,
-        -6963.307563025211
-       ]
-      },
-      "SC_k2": {
-       "diff": 2.52,
-       "p": 0.011,
-       "ci95": [
-        0.63,
-        4.83
-       ],
-       "ci90": [
-        0.84,
-        4.41
-       ],
-       "p_any_gain": 0.9972,
-       "p_gain_margin": 0.0204,
-       "p_loss_margin": 0.0,
-       "dtok": -7139.235294117647,
-       "dtok_ci95": [
-        -7615.221323529411,
-        -6687.571953781513
-       ],
-       "dout": -4880.430672268908,
-       "dout_ci95": [
-        -5325.235084033614,
-        -4475.555567226891
-       ]
-      }
-     }
-    }
-   ]
+   "output": []
   },
   "R": {
    "total": [
@@ -5801,90 +5149,7 @@
   },
   "matched_win": {
    "total": [],
-   "output": [
-    {
-     "model": "Qwen3-8B",
-     "task": "MATH L1-3",
-     "workflow": "GE_R2",
-     "cheaper": [
-      "SA",
-      "SC_k2"
-     ],
-     "comparator": "SC_k2",
-     "diff": 1.47,
-     "ci95": [
-      0.2,
-      3.15
-     ]
-    },
-    {
-     "model": "Qwen3-8B",
-     "task": "MATH L1-3",
-     "workflow": "HIERFIX_M3",
-     "cheaper": [
-      "SA",
-      "SC_k2"
-     ],
-     "gains": {
-      "SA": {
-       "diff": 2.31,
-       "p": 0.0172,
-       "ci95": [
-        0.42,
-        4.62
-       ],
-       "ci90": [
-        0.63,
-        4.2
-       ],
-       "p_any_gain": 0.9969,
-       "p_gain_margin": 0.0137,
-       "p_loss_margin": 0.0,
-       "dtok": -9818.329831932773,
-       "dtok_ci95": [
-        -10446.734768907563,
-        -9232.239705882352
-       ],
-       "dout": -7474.424369747899,
-       "dout_ci95": [
-        -8039.473056722689,
-        -6963.307563025211
-       ]
-      },
-      "SC_k2": {
-       "diff": 2.52,
-       "p": 0.011,
-       "ci95": [
-        0.63,
-        4.83
-       ],
-       "ci90": [
-        0.84,
-        4.41
-       ],
-       "p_any_gain": 0.9972,
-       "p_gain_margin": 0.0204,
-       "p_loss_margin": 0.0,
-       "dtok": -7139.235294117647,
-       "dtok_ci95": [
-        -7615.221323529411,
-        -6687.571953781513
-       ],
-       "dout": -4880.430672268908,
-       "dout_ci95": [
-        -5325.235084033614,
-        -4475.555567226891
-       ]
-      }
-     },
-     "comparator": "SC_k2",
-     "diff": 2.52,
-     "ci95": [
-      0.63,
-      4.83
-     ]
-    }
-   ]
+   "output": []
   }
  }
 }

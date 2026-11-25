@@ -1,0 +1,702 @@
+{
+ "source": "results/energy/gsm8k_energy_pc.jsonl",
+ "script": "scripts/analyze_gsm8k_energy.py",
+ "definitions": "Measured GPU energy on GSM8K (results/energy/gsm8k_energy_pc.jsonl, scripts/run_gsm8k_energy.py).\n\nRun: RTX 4060 PC, Ollama 0.40.1, qwen2.5:3b-instruct (4-bit), one request at a time, board power\nfrom NVML (about one sample per 20 ms), joules per call by trapezoid integration over the call's\ninterval (harness/energy.py, as in the first HumanEval run); first 130 items of the main study's\n500 GSM8K items, seed 1, cap 640; SA, SC k=8 (k=2, 4 = its first calls), DEBATE_N3_R1, GE_R2,\nHIERFIX_M3. Idle baselines (60 s) in results/energy/gsm8k_energy_pc_idle.jsonl. Every record lists\nthe other GPU compute processes and Windows games seen at its end; the script requires both empty.\n\n1. Per-call fit, as for the HumanEval run in the paper (scripts/analyze_rev3_costs.fit_energy):\n   gross joules per call J = c + b_in x in + a_out x out, least squares with the intercept\n   constrained to c >= 0 (if the unconstrained c < 0, refit with c = 0); also the unconstrained fit\n   and the same fits on idle-subtracted (net) joules per call (gross minus start idle power times\n   the call's wall-clock time). Ratio a_out / b_in with a 95% interval from 10,000 item bootstrap\n   replicates (all calls of an item resampled together; numpy default_rng(0)).\n2. Measured joules per query per configuration (gross, as the HumanEval figures; net as a check),\n   against the energy modeled for the same calls from the HumanEval fit of the paper\n   (results/extra/rev3_costs_analysis.json \"energy_fit\").\n3. Cost-matched dominance verdicts (R/C/N; scripts/analyze_rev3_reruns functions, hierarchical\n   paired test, 10,000 replicates, seed 0, one seed per item) on these 130 items, with cost =\n   measured gross joules, measured net joules, modeled joules (HumanEval fit) and total tokens.\n\nWrites results/extra/gsm8k_energy_analysis.json and, in each --outdir (default paper/eaai_rev3 if\npresent, else paper/arxiv_rev3), gsm8k_energy_macros.tex and tables/gsm8k_energy_table.tex.\nRun: /usr/bin/python3 scripts/analyze_gsm8k_energy.py [--jobs 8] [--outdir DIR ...]\n",
+ "n_items": 130,
+ "n_records": 650,
+ "n_calls": 3250,
+ "idle_w": {
+  "start": 50.00250565190495,
+  "end": 50.60275529752863
+ },
+ "clean": {
+  "other_gpu_pids": 0,
+  "windows_games": 0,
+  "calls_without_energy": 0
+ },
+ "wall_h": 2.3093978611628216,
+ "hit_cap_calls": 34,
+ "input_sizes": [
+  3462039,
+  198
+ ],
+ "humaneval_fit": {
+  "per_out": 1.0927130295572494,
+  "per_in": 0.037676628643768174,
+  "intercept": 0.0,
+  "ratio": 29.002409952568495,
+  "n_calls": 10004
+ },
+ "units": {
+  "measured": "measured gross J",
+  "net": "measured net J",
+  "modeled": "modeled J (HumanEval fit)",
+  "tokens": "total tokens"
+ },
+ "verdicts": {
+  "measured": {
+   "DEBATE_N3_R1": {
+    "cheaper": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ],
+    "robust_by": [
+     "SC_k4"
+    ],
+    "verdict": "R",
+    "cheapest_robust": "SC_k4"
+   },
+   "GE_R2": {
+    "cheaper": [
+     "SA",
+     "SC_k2"
+    ],
+    "robust_by": [],
+    "verdict": "C",
+    "cheapest_robust": null
+   },
+   "HIERFIX_M3": {
+    "cheaper": [
+     "SA",
+     "SC_k2"
+    ],
+    "robust_by": [],
+    "verdict": "C",
+    "cheapest_robust": null
+   }
+  },
+  "net": {
+   "DEBATE_N3_R1": {
+    "cheaper": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ],
+    "robust_by": [
+     "SC_k4"
+    ],
+    "verdict": "R",
+    "cheapest_robust": "SC_k4"
+   },
+   "GE_R2": {
+    "cheaper": [
+     "SA",
+     "SC_k2"
+    ],
+    "robust_by": [],
+    "verdict": "C",
+    "cheapest_robust": null
+   },
+   "HIERFIX_M3": {
+    "cheaper": [
+     "SA",
+     "SC_k2"
+    ],
+    "robust_by": [],
+    "verdict": "C",
+    "cheapest_robust": null
+   }
+  },
+  "modeled": {
+   "DEBATE_N3_R1": {
+    "cheaper": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ],
+    "robust_by": [
+     "SC_k4"
+    ],
+    "verdict": "R",
+    "cheapest_robust": "SC_k4"
+   },
+   "GE_R2": {
+    "cheaper": [
+     "SA",
+     "SC_k2"
+    ],
+    "robust_by": [],
+    "verdict": "C",
+    "cheapest_robust": null
+   },
+   "HIERFIX_M3": {
+    "cheaper": [
+     "SA",
+     "SC_k2"
+    ],
+    "robust_by": [],
+    "verdict": "C",
+    "cheapest_robust": null
+   }
+  },
+  "tokens": {
+   "DEBATE_N3_R1": {
+    "cheaper": [
+     "SA",
+     "SC_k2",
+     "SC_k4",
+     "SC_k8"
+    ],
+    "robust_by": [
+     "SC_k4",
+     "SC_k8"
+    ],
+    "verdict": "R",
+    "cheapest_robust": "SC_k4"
+   },
+   "GE_R2": {
+    "cheaper": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ],
+    "robust_by": [
+     "SC_k4"
+    ],
+    "verdict": "R",
+    "cheapest_robust": "SC_k4"
+   },
+   "HIERFIX_M3": {
+    "cheaper": [
+     "SA",
+     "SC_k2",
+     "SC_k4"
+    ],
+    "robust_by": [
+     "SC_k4"
+    ],
+    "verdict": "R",
+    "cheapest_robust": "SC_k4"
+   }
+  }
+ },
+ "configs": {
+  "SA": {
+   "acc": 76.92307692307693,
+   "lo": 69.23076923076923,
+   "hi": 83.84615384615385,
+   "in_tokens": 129.36923076923077,
+   "out_tokens": 230.65384615384616,
+   "calls": 1.0,
+   "measured": 246.86651538461538,
+   "net": 131.757209160282,
+   "modeled": 256.9126594754232,
+   "tokens": 360.0230769230769,
+   "modeled_minus_measured_pct": 4.069464048275656,
+   "seconds": 2.3020707607269286
+  },
+  "SC_k2": {
+   "acc": 81.53846153846153,
+   "lo": 74.61538461538461,
+   "hi": 87.6923076923077,
+   "in_tokens": 258.73846153846154,
+   "out_tokens": 471.76153846153846,
+   "calls": 2.0,
+   "measured": 502.0185846153846,
+   "net": 268.45768907919074,
+   "modeled": 525.248372852141,
+   "tokens": 730.5,
+   "modeled_minus_measured_pct": 4.627276548846009,
+   "seconds": 4.670983833533067
+  },
+  "SC_k4": {
+   "acc": 88.46153846153845,
+   "lo": 83.07692307692308,
+   "hi": 93.84615384615384,
+   "in_tokens": 517.4769230769231,
+   "out_tokens": 944.2692307692307,
+   "calls": 4.0,
+   "measured": 1004.8230538461539,
+   "net": 537.4641360949516,
+   "modeled": 1051.3120777340287,
+   "tokens": 1461.746153846154,
+   "modeled_minus_measured_pct": 4.626588105231964,
+   "seconds": 9.346709962991568
+  },
+  "SC_k8": {
+   "acc": 88.46153846153845,
+   "lo": 83.07692307692308,
+   "hi": 93.84615384615384,
+   "in_tokens": 1034.9538461538461,
+   "out_tokens": 1905.7615384615385,
+   "calls": 8.0,
+   "measured": 2028.0567230769232,
+   "net": 1085.0205459084052,
+   "modeled": 2121.44403603097,
+   "tokens": 2940.7153846153847,
+   "modeled_minus_measured_pct": 4.6047682932833185,
+   "seconds": 18.85977842257573
+  },
+  "DEBATE_N3_R1": {
+   "acc": 82.3076923076923,
+   "lo": 75.38461538461539,
+   "hi": 88.46153846153845,
+   "in_tokens": 2729.392307692308,
+   "out_tokens": 1803.4384615384615,
+   "calls": 6.0,
+   "measured": 1990.444353846154,
+   "net": 1073.242814348984,
+   "modeled": 2073.475005327838,
+   "tokens": 4532.830769230769,
+   "modeled_minus_measured_pct": 4.171463086684298,
+   "seconds": 18.343111560894894
+  },
+  "GE_R2": {
+   "acc": 81.53846153846153,
+   "lo": 74.61538461538461,
+   "hi": 87.6923076923077,
+   "in_tokens": 1781.8153846153846,
+   "out_tokens": 877.9846153846154,
+   "calls": 5.0,
+   "measured": 969.1757692307692,
+   "net": 519.1703723395924,
+   "modeled": 1026.5180255394864,
+   "tokens": 2659.8,
+   "modeled_minus_measured_pct": 5.916600283375791,
+   "seconds": 8.999656937672542
+  },
+  "HIERFIX_M3": {
+   "acc": 75.38461538461539,
+   "lo": 67.6923076923077,
+   "hi": 82.3076923076923,
+   "in_tokens": 1316.323076923077,
+   "out_tokens": 605.7692307692307,
+   "calls": 5.0,
+   "measured": 664.9079538461538,
+   "net": 353.3188018112503,
+   "modeled": 711.5265471108636,
+   "tokens": 1922.0923076923077,
+   "modeled_minus_measured_pct": 7.011285245580989,
+   "seconds": 6.231470762766325
+  }
+ },
+ "fit_gross": {
+  "intercept": 0.0,
+  "per_in": 0.027490982650478144,
+  "per_out": 1.05936858721179,
+  "r2": 0.999115341639471,
+  "ratio": 38.53512988897705,
+  "ratio_ci95": [
+   37.39549521680492,
+   39.73598755213078
+  ],
+  "ols": {
+   "coef": [
+    -6.471800946197628,
+    0.03160573257261477,
+    1.0768226626115416
+   ],
+   "r2": 0.999601503963251
+  },
+  "n_calls": 3250
+ },
+ "fit_net": {
+  "intercept": 0.0,
+  "per_in": 0.01602560600509009,
+  "per_out": 0.56831665702534,
+  "r2": 0.9982623396508128,
+  "ratio": 35.46303689513083,
+  "ratio_ci95": [
+   34.21680232387729,
+   36.78718945315782
+  ],
+  "ols": {
+   "coef": [
+    -5.375933629773209,
+    0.019443607063592647,
+    0.582815241221328
+   ],
+   "r2": 0.9994017037113567
+  },
+  "n_calls": 3250
+ },
+ "tests": {
+  "DEBATE_N3_R1|SA": {
+   "diff": 5.38,
+   "p": 0.1432,
+   "ci95": [
+    -1.54,
+    12.31
+   ],
+   "ci90": [
+    0.0,
+    10.77
+   ],
+   "p_any_gain": 0.9533,
+   "p_gain_margin": 0.5466,
+   "p_loss_margin": 0.001,
+   "dtok": -4172.807692307692,
+   "dtok_ci95": [
+    -4357.881346153846,
+    -3994.2284615384615
+   ],
+   "dout": -1572.7846153846153,
+   "dout_ci95": [
+    -1653.5080769230767,
+    -1494.6275
+   ]
+  },
+  "DEBATE_N3_R1|SC_k2": {
+   "diff": 0.77,
+   "p": 0.9072,
+   "ci95": [
+    -5.38,
+    6.92
+   ],
+   "ci90": [
+    -4.62,
+    6.15
+   ],
+   "p_any_gain": 0.6435,
+   "p_gain_margin": 0.088,
+   "p_loss_margin": 0.0356,
+   "dtok": -3802.3307692307694,
+   "dtok_ci95": [
+    -3972.978076923077,
+    -3637.8975
+   ],
+   "dout": -1331.676923076923,
+   "dout_ci95": [
+    -1399.5848076923075,
+    -1265.014423076923
+   ]
+  },
+  "DEBATE_N3_R1|SC_k4": {
+   "diff": -6.15,
+   "p": 0.008,
+   "ci95": [
+    -10.77,
+    -1.54
+   ],
+   "ci90": [
+    -10.0,
+    -2.31
+   ],
+   "p_any_gain": 0.004,
+   "p_gain_margin": 0.0,
+   "p_loss_margin": 0.6785,
+   "dtok": -3071.0846153846155,
+   "dtok_ci95": [
+    -3214.1015384615384,
+    -2931.3767307692306
+   ],
+   "dout": -859.1692307692308,
+   "dout_ci95": [
+    -910.8623076923077,
+    -809.0844230769231
+   ]
+  },
+  "DEBATE_N3_R1|SC_k8": {
+   "diff": -6.15,
+   "p": 0.0,
+   "ci95": [
+    -10.77,
+    -2.31
+   ],
+   "ci90": [
+    -10.0,
+    -3.08
+   ],
+   "p_any_gain": 0.0,
+   "p_gain_margin": 0.0,
+   "p_loss_margin": 0.696,
+   "dtok": -1592.1153846153845,
+   "dtok_ci95": [
+    -1704.1398076923076,
+    -1481.7971153846154
+   ],
+   "dout": 102.32307692307693,
+   "dout_ci95": [
+    42.5825,
+    162.81673076923073
+   ]
+  },
+  "GE_R2|SA": {
+   "diff": 4.62,
+   "p": 0.209,
+   "ci95": [
+    -2.31,
+    11.54
+   ],
+   "ci90": [
+    -0.77,
+    10.0
+   ],
+   "p_any_gain": 0.9313,
+   "p_gain_margin": 0.4561,
+   "p_loss_margin": 0.0018,
+   "dtok": -2299.776923076923,
+   "dtok_ci95": [
+    -2433.5365384615384,
+    -2176.4688461538462
+   ],
+   "dout": -647.3307692307692,
+   "dout_ci95": [
+    -701.1601923076923,
+    -595.9844230769231
+   ]
+  },
+  "GE_R2|SC_k2": {
+   "diff": 0.0,
+   "p": 1.0,
+   "ci95": [
+    -3.08,
+    3.08
+   ],
+   "ci90": [
+    -2.31,
+    2.31
+   ],
+   "p_any_gain": 0.6056,
+   "p_gain_margin": 0.0005,
+   "p_loss_margin": 0.0008,
+   "dtok": -1929.3,
+   "dtok_ci95": [
+    -2051.6163461538463,
+    -1817.399423076923
+   ],
+   "dout": -406.2230769230769,
+   "dout_ci95": [
+    -454.01730769230767,
+    -361.0519230769231
+   ]
+  },
+  "GE_R2|SC_k4": {
+   "diff": -6.92,
+   "p": 0.0,
+   "ci95": [
+    -11.54,
+    -3.08
+   ],
+   "ci90": [
+    -10.77,
+    -3.08
+   ],
+   "p_any_gain": 0.0,
+   "p_gain_margin": 0.0,
+   "p_loss_margin": 0.7979,
+   "dtok": -1198.053846153846,
+   "dtok_ci95": [
+    -1303.8953846153845,
+    -1099.7196153846153
+   ],
+   "dout": 66.28461538461538,
+   "dout_ci95": [
+    18.375769230769233,
+    115.35499999999998
+   ]
+  },
+  "GE_R2|SC_k8": {
+   "diff": -6.92,
+   "p": 0.0032,
+   "ci95": [
+    -12.31,
+    -2.31
+   ],
+   "ci90": [
+    -11.54,
+    -3.08
+   ],
+   "p_any_gain": 0.0016,
+   "p_gain_margin": 0.0,
+   "p_loss_margin": 0.7747,
+   "dtok": 280.9153846153846,
+   "dtok_ci95": [
+    183.4919230769231,
+    378.8546153846154
+   ],
+   "dout": 1027.7769230769231,
+   "dout_ci95": [
+    950.905,
+    1109.413076923077
+   ]
+  },
+  "HIERFIX_M3|SA": {
+   "diff": -1.54,
+   "p": 0.724,
+   "ci95": [
+    -7.69,
+    4.62
+   ],
+   "ci90": [
+    -6.92,
+    3.85
+   ],
+   "p_any_gain": 0.362,
+   "p_gain_margin": 0.0235,
+   "p_loss_margin": 0.1406,
+   "dtok": -1562.0692307692307,
+   "dtok_ci95": [
+    -1653.135,
+    -1475.1603846153846
+   ],
+   "dout": -375.11538461538464,
+   "dout_ci95": [
+    -414.0009615384615,
+    -338.3226923076923
+   ]
+  },
+  "HIERFIX_M3|SC_k2": {
+   "diff": -6.15,
+   "p": 0.1192,
+   "ci95": [
+    -13.85,
+    1.54
+   ],
+   "ci90": [
+    -12.31,
+    0.0
+   ],
+   "p_any_gain": 0.0596,
+   "p_gain_margin": 0.0011,
+   "p_loss_margin": 0.6254,
+   "dtok": -1191.5923076923077,
+   "dtok_ci95": [
+    -1271.2936538461538,
+    -1114.9650000000001
+   ],
+   "dout": -134.0076923076923,
+   "dout_ci95": [
+    -167.28538461538463,
+    -101.94519230769232
+   ]
+  },
+  "HIERFIX_M3|SC_k4": {
+   "diff": -13.08,
+   "p": 0.0,
+   "ci95": [
+    -19.25,
+    -6.92
+   ],
+   "ci90": [
+    -18.46,
+    -7.69
+   ],
+   "p_any_gain": 0.0,
+   "p_gain_margin": 0.0,
+   "p_loss_margin": 0.9973,
+   "dtok": -460.34615384615387,
+   "dtok_ci95": [
+    -526.1413461538461,
+    -397.12884615384615
+   ],
+   "dout": 338.5,
+   "dout_ci95": [
+    298.8076923076923,
+    378.0853846153846
+   ]
+  },
+  "HIERFIX_M3|SC_k8": {
+   "diff": -13.08,
+   "p": 0.0,
+   "ci95": [
+    -20.0,
+    -6.92
+   ],
+   "ci90": [
+    -18.46,
+    -7.69
+   ],
+   "p_any_gain": 0.0,
+   "p_gain_margin": 0.0,
+   "p_loss_margin": 0.9954,
+   "dtok": 1018.623076923077,
+   "dtok_ci95": [
+    943.1836538461539,
+    1094.0882692307691
+   ],
+   "dout": 1299.9923076923078,
+   "dout_ci95": [
+    1223.145,
+    1379.9859615384614
+   ]
+  },
+  "SC_k8|SA": {
+   "diff": 11.54,
+   "p": 0.0004,
+   "ci95": [
+    5.38,
+    17.69
+   ],
+   "ci90": [
+    6.15,
+    16.92
+   ],
+   "p_any_gain": 0.9999,
+   "p_gain_margin": 0.9823,
+   "p_loss_margin": 0.0,
+   "dtok": -2580.6923076923076,
+   "dtok_ci95": [
+    -2691.4601923076925,
+    -2472.8128846153845
+   ],
+   "dout": -1675.1076923076923,
+   "dout_ci95": [
+    -1770.845,
+    -1583.4332692307696
+   ]
+  },
+  "SC_k4|SA": {
+   "diff": 11.54,
+   "p": 0.0,
+   "ci95": [
+    6.15,
+    17.69
+   ],
+   "ci90": [
+    6.92,
+    16.92
+   ],
+   "p_any_gain": 1.0,
+   "p_gain_margin": 0.989,
+   "p_loss_margin": 0.0,
+   "dtok": -1101.7230769230769,
+   "dtok_ci95": [
+    -1153.3801923076924,
+    -1052.1203846153846
+   ],
+   "dout": -713.6153846153846,
+   "dout_ci95": [
+    -759.0928846153846,
+    -670.4601923076923
+   ]
+  }
+ },
+ "frontier_measured": [
+  "SA",
+  "SC_k2",
+  "HIERFIX_M3",
+  "GE_R2",
+  "SC_k4",
+  "DEBATE_N3_R1",
+  "SC_k8"
+ ],
+ "frontier_net": [
+  "SA",
+  "SC_k2",
+  "HIERFIX_M3",
+  "GE_R2",
+  "SC_k4",
+  "DEBATE_N3_R1",
+  "SC_k8"
+ ],
+ "frontier_modeled": [
+  "SA",
+  "SC_k2",
+  "HIERFIX_M3",
+  "GE_R2",
+  "SC_k4",
+  "DEBATE_N3_R1",
+  "SC_k8"
+ ],
+ "frontier_tokens": [
+  "SA",
+  "SC_k2",
+  "SC_k4",
+  "HIERFIX_M3",
+  "GE_R2",
+  "SC_k8",
+  "DEBATE_N3_R1"
+ ]
+}

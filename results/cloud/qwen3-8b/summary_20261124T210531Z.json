@@ -1,0 +1,42 @@
+{
+ "hf_id": "Qwen/Qwen3-8B",
+ "thinking": true,
+ "started": "20261124T210531Z",
+ "status": "done",
+ "ready_s": 270.2,
+ "driver_rc": 0,
+ "progress": {
+  "units_done": 377,
+  "units_failed": 0,
+  "units_skipped_deadline": 0,
+  "calls": 2280,
+  "in_tokens": 895015,
+  "out_tokens": 5954282,
+  "hit_cap_calls": 157,
+  "think_unclosed_calls": 121,
+  "model": "Qwen/Qwen3-8B",
+  "thinking": true,
+  "caps": {
+   "gsm8k": 4096,
+   "math500": 8192
+  },
+  "status": "done",
+  "elapsed_s": 1679.6,
+  "units_total": 952,
+  "units_todo_at_start": 377,
+  "units_in_files": 952,
+  "per_task_seed": {
+   "math500_s2": [
+    952,
+    952
+   ]
+  },
+  "seeds_complete": [
+   2
+  ],
+  "out_tok_per_s": 3545.1,
+  "hit_cap_rate": 0.0689,
+  "updated": "2026-11-24T21:38:01Z",
+  "eta_s": 0.0
+ }
+}

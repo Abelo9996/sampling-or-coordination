@@ -135,6 +135,8 @@ manuscript (not included) and into `harness/tasks.py`.
 | `fig:crossover`, `fig:hard` | `fig_price_crossover.pdf`, `fig_hard_frontier.pdf` | `fig_price_crossover.py`, `fig_hard_frontier.py` | via `rev3_macros.tex`, `power/math500hard_*` |
 | `tab:withinrun`, `tab:wrsupp`, `tab:wrdrift` (within-run check of the cross-run comparisons; run-to-run drift) | `tables/within_run_main.tex`, `within_run_supp.tex`, `within_run_drift.tex`, macros `within_run_macros.tex` | `scripts/within_run_check.py` (`results/extra/within_run_check.json`) | `rev3/*`, `power/extra_*`, `power/gsm8k_qwen3b_*`, `gsm8k_scale200`, `rev3/humaneval_*`, `tables/audit.json` |
 | `tab:xmodel`, `tab:xmodel-supp`, `tab:xmodel-supp-math` (cross-model replication) | `tables/cross_model_table.tex`, `cross_model_supp_gsm8k.tex`, `cross_model_supp_math500.tex`, macros `cross_model_macros.tex` | `scripts/cloud/cross_model_analysis.py` (`results/extra/cross_model_analysis.json`) | `cloud/qwen3-4b/*`, `cloud/qwen3-8b/*` (in `cloud/qwen3_raw_logs.tar.xz`), `cloud/phi4-mini/*`, `cloud/qwen25-3b/*` (in `cloud/nonthinking_raw_logs.tar.xz`) |
+| `tab:gsmenergy` (measured energy on GSM8K) | `tables/gsm8k_energy_table.tex`, macros `gsm8k_energy_macros.tex` | `scripts/analyze_gsm8k_energy.py` (`results/extra/gsm8k_energy_analysis.json`) | `energy/gsm8k_energy_pc*.jsonl`; HumanEval fit from `results/extra/rev3_costs_analysis.json` |
+| `tab:hardthink` (hard MATH with Qwen3-4B thinking) | `tables/hardmath_thinking_table.tex`, macros `hardmath_thinking_macros.tex` | `scripts/cloud/hardmath_thinking_analysis.py` (`results/extra/hardmath_thinking_analysis.json`) | `cloud/qwen3-4b-hardmath/*` (in `cloud/hardmath_raw_logs.tar.xz`), `power/math500hard_qwen3b_s*` |
 | All in-text numbers | `paper/arxiv_rev3/*_macros.tex` | the emitter named in each file's first line | |
 
 Table and figure files are under `paper/arxiv_rev3/`; scripts named without a path are in
@@ -167,8 +169,9 @@ HumanEval run adds per-call GPU energy. The `host` field is a hardware label
 (`mac-m4`, `rtx4060-pc`, `rtx4060-pc-par6` = the RTX 4060 server with six parallel
 slots), not a network name. Appendix A of the paper (Table `tab:overview`) lists which log
 backs which experiment. No log is larger than 10 MB, so none is compressed, except the
-cross-model replication logs (`results/cloud/qwen3_raw_logs.tar.xz`, 35 MB, 358 MB unpacked;
-`results/cloud/nonthinking_raw_logs.tar.xz`, 10 MB, 139 MB unpacked; see "Cross-model
+cross-model replication logs (`results/cloud/qwen3_raw_logs.tar.xz`, 37 MB, 395 MB unpacked;
+`results/cloud/nonthinking_raw_logs.tar.xz`, 10 MB, 139 MB unpacked;
+`results/cloud/hardmath_raw_logs.tar.xz`, 3.8 MB, 35 MB unpacked; see "Cross-model
 replication").
 
 ### rev3 reruns (R1 to R5)
@@ -226,8 +229,9 @@ SC k=2 and 4; debate N=3 R=1; GE R=2; the repaired HIER):
 
 - Thinking models: Qwen/Qwen3-4B and Qwen/Qwen3-8B with thinking on, bf16, one rented H100 each,
   prefix caching on. The think block counts as output tokens and is not passed to other agents.
-  Caps: 4,096 on GSM8K, 8,192 on MATH. Qwen3-8B on MATH stopped at its budget cap: seed 1 on all
-  238 items and seed 2 on the 135 items with all four workflow records.
+  Caps: 4,096 on GSM8K, 8,192 on MATH. Qwen3-4B ran seeds 1 to 3; Qwen3-8B seeds 1 and 2 on
+  both tasks (its MATH seed 2 was completed by a top-up run, so every run has the same seeds on
+  every item).
 - Non-thinking models: microsoft/Phi-4-mini-instruct and Qwen/Qwen2.5-3B-Instruct (unquantized,
   not the 4-bit Ollama build of the main runs), fp16 on a Kaggle 2x T4 session (one T4 per
   model; the T4 has no bf16), vLLM's V0 engine with prefix caching off (its prefix-prefill kernel
@@ -236,15 +240,18 @@ SC k=2 and 4; debate N=3 R=1; GE R=2; the repaired HIER):
   `scripts/cloud/kaggle_nonthinking.ipynb`, built by `scripts/cloud/make_kaggle_notebook.py`.
 
 A seed of an item is used only when every workflow record exists, so every comparison is paired.
-Records are in `results/cloud/qwen3_raw_logs.tar.xz` (Qwen3) and
-`results/cloud/nonthinking_raw_logs.tar.xz` (Phi-4-mini, Qwen2.5-3B): per-record logs with the
+Records are in `results/cloud/qwen3_raw_logs.tar.xz` (Qwen3),
+`results/cloud/nonthinking_raw_logs.tar.xz` (Phi-4-mini, Qwen2.5-3B) and
+`results/cloud/hardmath_raw_logs.tar.xz` (Qwen3-4B on hard MATH, below): per-record logs with the
 raw text of every call, and the vLLM server logs; `results/cloud/<model>/` holds the run
 summaries and progress files. Analysis (no model call):
 
 ```bash
 tar -xJf results/cloud/qwen3_raw_logs.tar.xz -C results/cloud        # optional, see below
 tar -xJf results/cloud/nonthinking_raw_logs.tar.xz -C results/cloud  # optional, see below
+tar -xJf results/cloud/hardmath_raw_logs.tar.xz -C results/cloud     # optional, see below
 python3 scripts/cloud/cross_model_analysis.py --outdir paper/arxiv_rev3
+python3 scripts/cloud/hardmath_thinking_analysis.py --outdir paper/arxiv_rev3
 python3 reproduce/check_rev3.py      # the cross-model files are in its sha256 list
 ```
 
@@ -256,8 +263,18 @@ A (model, task) whose logs are unchanged, or not unpacked, is taken from that JS
 `--fresh` recomputes everything (logs unpacked). Under total tokens no coordination workflow
 was detectably more accurate than every cheaper sampling configuration in any of the 24
 workflow, model and task combinations (verdicts: 12 R, 12 C); every non-thinking combination
-was R. Under output tokens (6 R, 17 C, 1 N) HIER on Qwen3-8B, MATH levels 1 to 3, was
-(against SA and SC k=2). The runs themselves need a GPU and an OpenAI-compatible server:
+was R. The same holds under output tokens (verdicts: 6 R, 18 C).
+
+Hard MATH with thinking: Qwen3-4B (thinking on, cap 8,192, seed 1) on MATH-500 levels 4 and 5,
+stopped by its budget after 646 records. `hardmath_thinking_analysis.py` analyses only the 100
+items with all five configurations (paired). They lean toward easier items: an item enters only
+once its SC k=8 unit (eight long generations) finished, so they are 86 of the first 100 items of
+the dispatch order and 14 of the next 33, with 58 of level 4 and 42 of level 5 (128 and 134 among
+all 262); the single call scored 80.0% on them and 63.6% on the 44 other items it finished. Debate
+stayed cheaper than SC k=8 (23,458 against 34,072 total tokens; break-even price ratio 0.23), and
+every verdict is C under total and output tokens: no workflow was detectably different from
+cost-matched SC (the paper's 4-bit model was 5 to 8 points below it). The script also evaluates
+the 4-bit hard run on the same items. The runs themselves need a GPU and an OpenAI-compatible server:
 `scripts/cloud/README.md` describes the driver (`run_cloud_campaign.py`), the budget plan and
 the Modal and Kaggle launchers.
 
@@ -265,6 +282,29 @@ the Modal and Kaggle launchers.
 repaired HIER on GSM8K, MMLU and MMLU-Pro engineering, the Du et al. debate, and C5) within one
 run and compares its margin with the run-to-run drift of identical configurations
 (`results/extra/within_run_check.json`; `--reuse-drift` takes the drift tests from that JSON).
+
+## Measured energy on GSM8K
+
+`results/energy/gsm8k_energy_pc.jsonl` holds a GSM8K run with per-call GPU energy, measured as in
+the first HumanEval run (RTX 4060, Ollama 0.40.1, qwen2.5:3b-instruct 4-bit, one request at a
+time, NVML board power about every 20 ms, trapezoid integral per call; `harness/energy.py`): the
+first 130 items of the main study, seed 1, cap 640, SA, SC k=8 (k=2, 4 are its first calls),
+debate, GE and the repaired HIER (650 records, 3,250 calls). Each record lists other GPU
+processes and running games at its end (all empty); idle baselines are in
+`gsm8k_energy_pc_idle.jsonl`. Driver: `scripts/run_gsm8k_energy.py` (PC launcher
+`scripts/run_gsm8k_energy_pc.sh`). Analysis (no model call):
+
+```bash
+python3 scripts/analyze_gsm8k_energy.py --outdir paper/arxiv_rev3
+```
+
+It refits the paper's per-call model (gross joules on input and output tokens, intercept >= 0):
+1.06 J per output token and 0.027 J per input token, a ratio of 39 (95% item bootstrap interval
+37 to 40) against 29 on HumanEval. The HumanEval fit overestimates the measured GSM8K energy per
+query by 4 to 7% for every configuration, and the cost-matched verdicts under measured energy
+equal those under modeled energy on the same items (debate R by SC k=4, GE C, HIER C). Writes
+`results/extra/gsm8k_energy_analysis.json`, `gsm8k_energy_macros.tex` and
+`tables/gsm8k_energy_table.tex`.
 
 ## Hardware, model and software versions
 

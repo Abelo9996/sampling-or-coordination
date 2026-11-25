@@ -35,6 +35,8 @@ writes much longer traces, which raises truncation at these caps and the cost.
   (starts nothing). `analyze_cloud.py`: rev3 analysis on a cloud directory.
 - `scripts/cloud/kaggle_nonthinking.ipynb` (built by `make_kaggle_notebook.py`,
   code and data embedded): Phi-4-mini on GPU 0 and Qwen2.5-3B on GPU 1.
+- `scripts/cloud/kaggle_hardmath_thinking.ipynb` (built by `make_kaggle_hardmath_notebook.py`):
+  Qwen3-4B thinking on MATH levels 4 and 5, one shard per T4 (section below).
 
 ## Thinking models: what is logged and what is passed on
 
@@ -128,6 +130,15 @@ caffeinate -i $MPY -m modal run scripts/cloud/modal_app.py --mode smoke
 caffeinate -i $MPY -m modal run scripts/cloud/modal_app.py --mode full
 #   or --models qwen3-4b,qwen3-8b ; rerun the same command later to resume with
 #   whatever budget is left (finished units are skipped)
+caffeinate -i $MPY -m modal run scripts/cloud/modal_app.py --mode topup
+#   Qwen3-8B MATH L1-3 seed 2 only (the 377 units the full run left; resumes from the
+#   Volume); Modal timeout 2,250 s, in-container stop 2,010 s; worst case $2.93
+#   (launched 24 Nov 2026 21:05 UTC at $22.00 spent: $24.93 <= $25)
+caffeinate -i $MPY -m modal run scripts/cloud/modal_app.py --mode hardmath
+#   Qwen3-4B thinking, MATH-500 levels 4-5 (262 items), seed 1, items in order, to
+#   runs/qwen3-4b-hardmath; Modal timeout 3,800 s, in-container stop 3,530 s, no new
+#   units after 2,810 s; worst case $4.85 (launched 24 Nov 2026 at $24.59 spent:
+#   $29.45 <= $29.50, the cap the owner raised for this run; replaces the Kaggle notebook)
 $MPY scripts/cloud/modal_tools.py status                    # ledger + progress
 $MPY scripts/cloud/modal_tools.py pull                      # -> results/cloud/<model>/
 $MPY scripts/cloud/modal_tools.py stop                      # kill switch
@@ -139,6 +150,33 @@ Internet on, Run All, download `results_nonthinking.zip` from the Output tab and
 unzip into `results/cloud/`. Expected 3 to 5 h of the 12 h session (about
 1 to 1.5k output tok/s per T4). Untested on Kaggle hardware: vLLM 0.9.2 runs the
 T4 (compute 7.5) on its V0 engine (`VLLM_USE_V1=0`).
+
+### Hard MATH with thinking on Kaggle (Qwen3-4B, MATH-500 levels 4 and 5)
+
+`scripts/cloud/kaggle_hardmath_thinking.ipynb` (built by `make_kaggle_hardmath_notebook.py`):
+Qwen/Qwen3-4B thinking on, fp16, the 262 level 4 and 5 items of power campaign phase C
+(`run_cloud_campaign.py --math-levels 4-5`), same workflows, prompts, seeds, thinking handling
+and 8192 cap as the Modal runs. One vLLM server per T4, items split by parity (`--shard 0/2`,
+`1/2`, one out dir per shard, merged per seed at the end); seeds 1, 2, 3 in order; hard stop
+11.3 h after the first cell, then `results_hardmath.zip` (unzip into `results/cloud/`, gives
+`results/cloud/qwen3-4b-hardmath/`). Resumable: attach the previous zip as an input dataset.
+`max_num_seqs` 24, concurrency 32, chunks of 10 items per shard, no new units in the last 45 min.
+
+Memory per T4 (16 GB, 14.58 GiB visible; Phi-4-mini log as reference): weights 7.56 GiB (Qwen3-4B
+log), at utilization 0.92 about 4.5 GiB is left for KV after activations at 16384 batched tokens;
+KV is 144 KiB per token (36 layers, 8 KV heads, head dim 128, fp16), so about 32k tokens: one
+16384-token sequence fits twice, and about 10 to 11 thinking sequences run at once.
+
+Estimate (24 Nov 2026, from logs): Qwen3-4B MATH L1-3 output tokens per call 1,587 / 1,815 /
+2,438 for levels 1 / 2 / 3 (2,048 overall; 49.0k per item per seed, 51.5k with SA); the level
+trend gives about 3,150 (L4, 128 items) and 4,100 (L5, 134 items), so 1.75x L1-3 (range
+1.5 to 2.1x): about 23.6 M output tokens for seed 1 and 22.5 M for each later seed. T4
+throughput is KV-bound: Phi-4-mini on a T4 gave 480 tok/s at 64 running but 168 to 196 tok/s
+at 9 to 11 running (end of the Kaggle log); with Qwen3-4B's longer contexts each step also reads
+about 4.5 GB of KV, so about 130 tok/s per T4 (range 110 to 200), about 0.94 M tokens per hour
+for the pair. One session (about 11 h of generation) therefore yields about 10 M tokens: about
+44% of seed 1 (range 25 to 80%), no complete seed. Seed 1 needs about 2.5 sessions, all three
+seeds about 7 (about 80 GPU hours, beyond Kaggle's 30 h weekly quota).
 
 Local test without spending (Ollama's OpenAI endpoint):
 ```
@@ -158,6 +196,18 @@ a seed-1-only sensitivity is added for such runs. When the Kaggle results land i
 `results/cloud/phi4-mini` and `results/cloud/qwen25-3b`, rerun it and `sh paper/eaai_rev3/build.sh`;
 unchanged (model, task) inputs are reused from the JSON (the Kaggle runs landed on 24 Nov: 3 seeds
 each, 9,594 units, 0 failures, vLLM 0.9.2 V0 engine, fp16, prefix caching off, one T4 per model).
-The raw logs are committed compressed: `results/cloud/qwen3_raw_logs.tar.xz` (Qwen3) and
-`results/cloud/nonthinking_raw_logs.tar.xz` (Phi-4-mini, Qwen2.5-3B); extract either with
+The Qwen3-8B top-up (24 Nov) completed MATH L1-3 seed 2 (238 items x 4 workflow records), so
+every run now has the same seeds on every item and no seed-1-only sensitivity is needed.
+The raw logs are committed compressed: `results/cloud/qwen3_raw_logs.tar.xz` (Qwen3, including
+the completed Qwen3-8B seed 2), `results/cloud/nonthinking_raw_logs.tar.xz` (Phi-4-mini,
+Qwen2.5-3B) and `results/cloud/hardmath_raw_logs.tar.xz` (Qwen3-4B hard MATH); extract any with
 `tar -xJf results/cloud/<archive> -C results/cloud`.
+
+`scripts/cloud/hardmath_thinking_analysis.py` runs the same tests (functions of
+`cross_model_analysis.py`) on the Modal hard-MATH run (Qwen3-4B thinking, MATH-500 levels 4 and
+5, seed 1, stopped by its budget at 646 records): only items with all five configurations (100),
+paired; it reports their positions in the dispatch order, level mix and a selection check, and
+the paper's 4-bit hard run restricted to the same items. Writes
+`results/extra/hardmath_thinking_analysis.json`, `hardmath_thinking_macros.tex` and
+`tables/hardmath_thinking_table.tex` (default `paper/eaai_rev3`, or `--outdir`); reuses the JSON
+when the input files are unchanged.
