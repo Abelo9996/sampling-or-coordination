@@ -471,7 +471,8 @@ def emit(J, outdirs):
         tr_ = tr.get(c)
         cap = f1(tr_["hit_cap_pct"]) if tr_ else "--"
         fb = f"{f1(F['acc'][c])}" if F and c in F["acc"] else "--"
-        T.append(f"{xm.CL[c][0].upper() + xm.CL[c][1:]} & {f1(D[c]['acc'])} & [{f1(D[c]['lo'])}, {f1(D[c]['hi'])}] & "
+        # same style as the main tables: lowercase workflow names, interval inline in brackets
+        T.append(f"{xm.CL[c]} & {f1(D[c]['acc'])} {{\\footnotesize[{f1(D[c]['lo'])},{f1(D[c]['hi'])}]}} & "
                  f"{f1(J['by_level']['4'][c])} & {f1(J['by_level']['5'][c])} & {fint(D[c]['total_tokens'])} & "
                  f"{fint(D[c]['out_tokens'])} & {cap} & {fb} \\\\")
     for d in outdirs:
@@ -499,7 +500,7 @@ def emit_trunc_table(J, outdirs):
     T = []
     for c in xm.ALL:
         allc = f1(tr[c]["hit_cap_pct"]) if c in tr else "--"
-        T.append(f"{xm.CL[c][0].upper() + xm.CL[c][1:]} & {allc} & {pos[c]} & {f1(K['items_any_cap_pct'][c])} & "
+        T.append(f"{xm.CL[c]} & {allc} & {pos[c]} & {f1(K['items_any_cap_pct'][c])} & "
                  f"{f1(K['wrong_with_cut_pct'][c])} & {f1(K['acc_orig'][c])} & {f1(K['impute']['acc'][c])} \\\\")
     for d in outdirs:
         with open(os.path.join(d, "tables/hardmath_trunc_table.tex"), "w") as fh:

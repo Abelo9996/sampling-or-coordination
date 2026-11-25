@@ -118,16 +118,50 @@ def ticks_for(ax):
     ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
 
 
+def thin_ticks(ax, gap=3.0):
+    """Drop the largest x tick while two adjacent tick labels are closer than gap points."""
+    fig = ax.figure
+    while True:
+        fig.canvas.draw()
+        rend = fig.canvas.get_renderer()
+        labs = sorted([(t.get_loc(), t.label1.get_window_extent(rend)) for t in ax.xaxis.get_major_ticks()
+                       if t.label1.get_visible() and t.label1.get_text()
+                       and ax.get_xlim()[0] <= t.get_loc() <= ax.get_xlim()[1]], key=lambda u: u[0])
+        k = fig.dpi / 72.0
+        bad = [b for (a, ba), (b, bb) in zip(labs[:-1], labs[1:]) if bb.x0 - ba.x1 < gap * k]
+        if not bad:
+            return
+        ticks = [t for t in ax.get_xticks() if t != max(bad)]
+        ax.xaxis.set_major_locator(matplotlib.ticker.FixedLocator(ticks))
+
+
+def draw(ax, c, v, x):
+    t = TOPO[c]
+    col, mk = FS.COL[t], FS.MARK[t]
+    hollow = v["nseed"] == 1 and c != "SA"
+    E.errbar(ax, x, v["acc"], v["lo"], v["hi"], col, mk, FS.MS, "white" if hollow else col,
+             zorder=3)
+
+
+def draw_workflows(ax, a, key):
+    """Coordination workflows, drawn after the layout is final: a marker that would sit on
+    another point's interval is nudged sideways by E.dodge_x (presentation only; the plotted
+    accuracy and interval are unchanged, the exact token counts are in the tables)."""
+    samp = [c for c in a if TOPO[c] in ("SA", "SC")]
+    coord = sorted([c for c in a if TOPO[c] not in ("SA", "SC")], key=lambda c: a[c][key])
+    pos = E.dodge_x(ax, [(a[c][key], a[c]["acc"], a[c]["lo"], a[c]["hi"]) for c in samp],
+                    [(a[c][key], a[c]["acc"], a[c]["lo"], a[c]["hi"]) for c in coord])
+    for c, (x, d) in zip(coord, pos):
+        draw(ax, c, a[c], x)
+    return max([abs(d) for _, d in pos] + [0.0])
+
+
 def panel(ax, a, key):
     samp = sorted([c for c in a if TOPO[c] in ("SA", "SC")], key=lambda c: a[c][key])
     ax.plot([a[c][key] for c in samp], [a[c]["acc"] for c in samp], "-", color=FS.COL["SC"],
             lw=FS.LW, zorder=2)
-    for c, v in a.items():
-        t = TOPO[c]
-        col, mk = FS.COL[t], FS.MARK[t]
-        hollow = v["nseed"] == 1 and c != "SA"
-        E.errbar(ax, v[key], v["acc"], v["lo"], v["hi"], col, mk, FS.MS,
-                 "white" if hollow else col, zorder=3)
+    for c in samp:
+        draw(ax, c, a[c], a[c][key])
     xs = [v[key] for v in a.values()]
     ax.set_xscale("log")
     ax.set_xlim(min(xs) / 1.5, max(xs) * 2.0)
@@ -141,9 +175,15 @@ def main():
     allp = load_panels()
     panels = allp[3:] if extra else allp[:3]
     fig, axes = plt.subplots(2, len(panels), figsize=(FS.FULL_W * len(panels) / 3, 4.7))
-    for j, (title, a) in enumerate(panels):
+    lims = []
+    for title, a in panels:
         ys = [v["lo"] for v in a.values()] + [v["hi"] for v in a.values()]
-        ylim = (min(ys) - 3, max(ys) + 10)   # room for labels beyond the bar ends
+        lims.append((min(ys) - 3, max(ys) + 10))   # room for labels beyond the bar ends
+    if extra:   # the two appendix panels share one y scale (same span, same tick step)
+        span = max(hi - lo for lo, hi in lims)
+        lims = [(lo, lo + span) for lo, hi in lims]
+    for j, (title, a) in enumerate(panels):
+        ylim = lims[j]
         for i, key in enumerate(("tok", "out")):
             ax = axes[i, j]
             panel(ax, a, key)
@@ -155,9 +195,20 @@ def main():
                           else "output tokens / query (log)")
     for ax in axes[:, 0]:
         ax.set_ylabel("accuracy (%)")
-    handles = E.legend_handles(with_front=False, names={"DEBATE": "debate ($N$=3, $R$=1)",
-                                                         "GE": "GE ($R$=2)", "HIER": "HIER ($M$=3)"})
-    fig.legend(handles=handles, loc="outside upper center", ncol=5 if len(panels) > 2 else 3)
+    # one legend row; the appendix figure is narrower and names the workflows without their
+    # parameters (its caption refers to Figure 3, whose legend gives them)
+    names = {} if extra else {"DEBATE": "debate ($N$=3, $R$=1)", "GE": "GE ($R$=2)",
+                              "HIER": "HIER ($M$=3)"}
+    handles = E.legend_handles(with_front=False, names=names)
+    leg = fig.legend(handles=handles, loc="outside upper center", ncol=len(handles))
+    fig.canvas.draw()
+    assert leg.get_window_extent().width <= fig.bbox.width, "legend wider than the figure"
+    shift = max(draw_workflows(axes[i, j], a, key) for j, (_, a) in enumerate(panels)
+                for i, key in enumerate(("tok", "out")))
+    print(f"largest sideways nudge of a workflow marker: {shift:.2f} pt")
+    assert shift <= 7.0 + 1e-6, shift   # the caption of fig:frontier says "at most 7 pt"
+    for ax in axes.flat:
+        thin_ticks(ax)
     problems = []
     for j, (_, a) in enumerate(panels):
         for i, key in enumerate(("tok", "out")):
@@ -166,7 +217,7 @@ def main():
             items = [(FS.klabel(c), a[c][key], a[c]["acc"], a[c]["lo"],
                       a[c]["hi"]) for c in sc]
             texts = E.place_in_column(ax, items, fontsize=FS.FONT_PT, sides=True, dirs=(1, -1),
-                                      pad=1.6)
+                                      pad=2.4)
             problems += E.check_labels(ax, texts, pad=1.0)
     assert not problems, problems
     FS.save(fig, "fig_frontier_extra" if extra else "fig_frontier")

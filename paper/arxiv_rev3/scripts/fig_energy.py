@@ -85,13 +85,14 @@ def main():
         xin = float(np.percentile(X[:, 1], q))
         ax.plot(xo, a_out * xo + b_in * xin + c0, ls, color=fs.TEXT, lw=0.9, zorder=3,
                 label=f"{fs.fmt_int(xin)} ({'median' if q == 50 else 'p95'})")
-    ax.legend(loc="upper left", bbox_to_anchor=(0.0, 0.72), title="fit at input tokens",
-              alignment="left", handlelength=1.5, borderaxespad=0.1)
+    # fit summary alone in the empty upper left, legend in the empty lower right (below the lines)
+    ax.legend(loc="lower right", title="fit at input tokens", alignment="left", handlelength=1.5,
+              borderaxespad=0.3)
     txt = (f"{a_out:.2f} J per output token\n{b_in:.3f} J per input token\n"
            f"intercept \u2265 0 (fitted 0)\n$R^2$ = {r2:.3f}")
-    ax.text(0.03, 0.98, txt, transform=ax.transAxes, ha="left", va="top", color=fs.TEXT,
-            linespacing=1.2)
-    ax.set_xlim(0, 1060); ax.set_ylim(0, 1320)
+    tb = ax.text(0.03, 0.98, txt, transform=ax.transAxes, ha="left", va="top", color=fs.TEXT,
+                 linespacing=1.2)
+    ax.set_xlim(0, 1060); ax.set_ylim(0, 1400)
     ax.set_xticks([0, 256, 512, 768, 1024])
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: fs.fmt_int(v)))
     ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: fs.fmt_int(v)))
@@ -103,6 +104,20 @@ def main():
     cb.ax.minorticks_off()
     cb.set_label("input tokens per call (log scale)", labelpad=2)
     cb.solids.set(alpha=1, rasterized=True)
+    # the fit summary and the legend touch no point and no fit line (3 pt clearance)
+    fig.canvas.draw()
+    rend = fig.canvas.get_renderer()
+    k = fig.dpi / 72.0
+    P = ax.transData.transform(np.c_[X[:, 2], y])
+    L = np.concatenate([ax.transData.transform(np.c_[np.linspace(0, 1024, 400), l.get_ydata()[0]
+                        + (l.get_ydata()[1] - l.get_ydata()[0]) * np.linspace(0, 1, 400)])
+                        for l in ax.get_lines()])
+    for art in (tb, ax.get_legend()):
+        bb = art.get_window_extent(rend).expanded(1, 1)
+        x0, y0, x1, y1 = bb.x0 - 3 * k, bb.y0 - 3 * k, bb.x1 + 3 * k, bb.y1 + 3 * k
+        for Q in (P, L):
+            hit = (Q[:, 0] > x0) & (Q[:, 0] < x1) & (Q[:, 1] > y0) & (Q[:, 1] < y1)
+            assert not hit.any(), (art, int(hit.sum()), ax.transData.inverted().transform(Q[hit]))
     fs.save(fig, "fig_energy")
     print("a %.4f b %.5f c %.3f R2 %.5f ratio %.2f n %d" % (a_out, b_in, c0, r2, a_out / b_in, len(y)))
 

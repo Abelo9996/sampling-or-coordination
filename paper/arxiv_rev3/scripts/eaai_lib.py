@@ -502,6 +502,61 @@ def place_at_bar_ends(ax, items, fontsize=FS.FONT_PT, gap=1.6, pad=0.6, color="#
     return out
 
 
+def dodge_x(ax, fixed, movable, sep=7.0, max_shift=24.0):
+    """Presentation only: horizontal display offsets for markers that would sit on another
+    point's interval. fixed and movable are lists of (x, y, lo, hi) in data coordinates; fixed
+    points (the sampling curve) are never moved. Movable points are pushed apart until every
+    pair whose intervals (marker included) overlap vertically is at least sep points apart
+    horizontally, without changing the left-to-right order of any two points (so a workflow
+    never crosses the sampling point it is compared with). Returns (new x in data coordinates,
+    shift in points) per movable point; y, lo and hi are never changed. Call after the axis
+    limits are final."""
+    fig = ax.figure
+    fig.canvas.draw()
+    k = fig.dpi / 72.0
+    T = ax.transData
+    r = FS.MS / 2 + FS.MEW   # marker half-height in points: intervals touching a marker clash
+    pts = []
+    for n, p in enumerate(list(fixed) + list(movable)):
+        x, y, lo, hi = p
+        px = T.transform((x, y))[0] / k
+        pts.append([px, T.transform((x, lo))[1] / k - r, T.transform((x, hi))[1] / k + r,
+                    n >= len(fixed), px])
+    order = sorted(range(len(pts)), key=lambda i: (pts[i][4], i))
+    rank = {i: n for n, i in enumerate(order)}
+    for _ in range(2000):
+        moved = False
+        for a in range(len(pts)):
+            for b in range(len(pts)):
+                if rank[a] >= rank[b]:
+                    continue
+                A, B = pts[a], pts[b]                      # A left of B in the original order
+                need = sep if (A[1] < B[2] and A[2] > B[1]) else 0.0
+                deficit = need - (B[0] - A[0])
+                if deficit <= 1e-6:
+                    continue
+                if A[3] and B[3]:
+                    A[0] -= deficit / 2; B[0] += deficit / 2
+                elif A[3]:
+                    A[0] -= deficit
+                elif B[3]:
+                    B[0] += deficit
+                else:
+                    continue                               # two fixed points: not ours to move
+                moved = True
+        if not moved:
+            break
+    else:
+        raise RuntimeError("dodge_x: did not converge")
+    out = []
+    for p in pts[len(fixed):]:
+        d = p[0] - p[4]
+        if abs(d) > max_shift:
+            raise RuntimeError(f"dodge_x: shift {d:.1f} pt exceeds {max_shift} pt")
+        out.append((float(T.inverted().transform((p[0] * k, 0))[0]), d))
+    return out
+
+
 def place_in_column(ax, items, fontsize=FS.FONT_PT, gap=1.6, pad=0.6, color="#333333",
                     lead_col="#8C8C8C", sides=True, dirs=(-1, 1), strict=True, side_r=3.4):
     """Label each point beside its marker if that is free, else in its own column: the label

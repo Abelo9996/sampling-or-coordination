@@ -133,19 +133,34 @@ def panel(ax, P, key, xlabel):
     import matplotlib
     xs = [P[c][key] for c in SAMP]; ys = [P[c]["acc"] for c in SAMP]
     ax.plot(xs, ys, "-", color=fs.COL["SC"], lw=fs.LW, zorder=2)
-    for c in SAMP + COORD + ["DU"]:
-        p = P[c]
-        kc = "SA" if c == "SA" else ("SC" if c.startswith("SC") else KEYC[c])
-        fs.errorbar(ax, p[key], p["acc"], p["lo"], p["hi"], color=fs.COL[kc], marker=fs.MARK[kc],
-                    mfc="white" if c == "DU" else None)
+    for c in SAMP:
+        draw(ax, c, P[c], P[c][key])
     ax.set_xscale("log")
     ax.set_xlabel(xlabel)
-    ax.set_ylim(34, 64)
+    ax.set_ylim(34, 65)
+
+
+def draw(ax, c, p, x):
+    kc = "SA" if c == "SA" else ("SC" if c.startswith("SC") else KEYC[c])
+    fs.errorbar(ax, x, p["acc"], p["lo"], p["hi"], color=fs.COL[kc], marker=fs.MARK[kc],
+                mfc="white" if c == "DU" else None)
+
+
+def draw_workflows(ax, P, key):
+    """Coordination workflows, drawn once the layout is final; a marker that would sit on
+    another point's interval is nudged sideways by E.dodge_x (presentation only: accuracy and
+    interval unchanged, order along x kept; the exact token counts are in Table 9)."""
+    coord = sorted(COORD + ["DU"], key=lambda c: P[c][key])
+    pos = E.dodge_x(ax, [(P[c][key], P[c]["acc"], P[c]["lo"], P[c]["hi"]) for c in SAMP],
+                    [(P[c][key], P[c]["acc"], P[c]["lo"], P[c]["hi"]) for c in coord])
+    for c, (x, d) in zip(coord, pos):
+        draw(ax, c, P[c], x)
+    return max(abs(d) for _, d in pos)
 
 
 def label(ax, P, key):
     items = [(fs.klabel(c), P[c][key], P[c]["acc"], P[c]["lo"], P[c]["hi"]) for c in SAMP]
-    texts = E.place_in_column(ax, items, fontsize=fs.FONT_PT, sides=True, dirs=(1, -1), pad=1.6)
+    texts = E.place_in_column(ax, items, fontsize=fs.FONT_PT, sides=True, dirs=(1, -1), pad=2.4)
     probs = E.check_labels(ax, texts, pad=1.0)
     assert not probs, probs
 
@@ -170,6 +185,9 @@ def main():
     hs.append(Line2D([], [], color=fs.COL["DU"], marker=fs.MARK["DU"], mfc="white", ls="none",
                      ms=fs.MS, label="Du et al. debate"))
     fig.legend(handles=hs, loc="outside upper center", ncol=6)
+    shift = max(draw_workflows(ax, P, key) for ax, key in ((axs[0], "tot"), (axs[1], "out")))
+    print(f"largest sideways nudge of a workflow marker: {shift:.2f} pt")
+    assert shift <= 8.0, shift   # the caption of fig:hard says "at most 8 pt"
     for ax, key in ((axs[0], "tot"), (axs[1], "out")):
         label(ax, P, key)
     fs.save(fig, "fig_hard_frontier")

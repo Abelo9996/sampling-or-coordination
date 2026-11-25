@@ -94,7 +94,10 @@ def main():
     XHI = 20
     assert max(hi for _, hi in CI.values()) < XHI
     r = np.linspace(1, XHI, 300)
-    YLO, YHI = -2700, 2500
+    # y range holds both lines over the whole r range (no line leaves the axes)
+    ends = [V[k][0] + rr * V[k][1] for k in V for rr in (1, XHI)]
+    YLO = -500 * np.ceil((-min(ends) + 300) / 500)
+    YHI = 500 * np.ceil((max(ends) + 300) / 500)
     for key in CI:
         ax.axvspan(*CI[key], color=fs.BAND, lw=0, zorder=0)
     ax.axhline(0, color="#777777", lw=0.6, zorder=1)
@@ -105,7 +108,8 @@ def main():
         ax.axvline(rs, color="#555555", lw=0.6, ls=":", zorder=2)
     hs.append(Patch(color=fs.BAND, lw=0, label="95% interval"))
     fig.legend(handles=hs, loc="outside upper center", ncol=3, handlelength=1.5, columnspacing=0.8)
-    ax.text(9.0, -1950, r"SC $k$=8" "\n" "cheaper", ha="center", va="center", color=fs.MUTED,
+    ax.text(9.0, YLO + 0.03 * (YHI - YLO), r"SC $k$=8" "\n" "cheaper", ha="center", va="bottom",
+            color=fs.MUTED,
             style="italic", linespacing=1.1)
     ax.set_xlim(1, XHI); ax.set_ylim(YLO, YHI)
     br = sorted(V[k][2] for k in V)

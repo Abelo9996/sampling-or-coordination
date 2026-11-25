@@ -355,10 +355,16 @@ def emit(J, T):
         pr = [u[5:] for u in us if u.startswith("price")]
         parts = [UL[u] for u in us if u in ("total", "output")]
         if pr:
-            parts.append("price $r{=}" + (pr[0] if len(pr) == 1 else f"{pr[0]}$ to ${pr[-1]}") + "$")
+            parts.append("$r{=}" + (pr[0] if len(pr) == 1 else f"{pr[0]}$ to ${pr[-1]}") + "$")  # r: price ratio (caption)
         parts += [UL[u] for u in us if u == "energy"]
         return ", ".join(parts)
+    # one group heading per task (no task column), so the claim fits on one line
+    def head(name):
+        if L:
+            L.append(r"\addlinespace[2pt]")
+        L.append(f"\\multicolumn{{6}}{{@{{}}l}}{{\\textit{{{name}}}}} \\\\")
     for task in ("gsm8k", "mmlu", "proeng"):
+        head(TNAME[task])
         rs = [x for x in J["claims"] if x["task"] == task and "unit" in x]
         groups = {}
         for x in rs:
@@ -367,24 +373,25 @@ def emit(J, T):
             groups.setdefault(k, []).append(x)
         for (vx, vw, oc, mg), xs in groups.items():
             r = xs[0]
-            L.append(f"{TNAME[task]} & HIER verdict, {ulist([x['unit'] for x in xs])} & "
+            L.append(f"HIER verdict, {ulist([x['unit'] for x in xs])} & "
                      f"{vcell(vx, r['cross']['robust_by'])} & {vcell(vw, r['within']['robust_by'])} & "
                      f"{'--' if mg is None else f'{mg:.1f}'} & {r['drift_bound']:.1f} & {OUT[oc]} \\\\")
         if task == "gsm8k":
             r = R["C1"]
-            L.append(f"GSM8K & C1, HIER $-$ SC $k{{=}}4$ & {f1(r['cross']['diff'])} {{\\scriptsize{ci(r['cross']['ci95'])}}} & "
+            L.append(f"C1, HIER $-$ SC $k{{=}}4$ & {f1(r['cross']['diff'])} {{\\scriptsize{ci(r['cross']['ci95'])}}} & "
                      f"{f1(r['within']['diff'])} {{\\scriptsize{ci(r['within']['ci95'])}}} & {r['cross']['margin']:.1f} & "
                      f"{r['drift_bound']:.1f} & {OUT[r['outcome']]} \\\\")
         r = R[f"{task}_hier_bound"]
         lbl = "HIER, any gain over SC $k{=}8$" if r["cross"]["any_excluded"] else "HIER, gain cap vs SC $k{=}8$"
         mg = f"{-r['cross']['upper']:.1f}" if r["cross"]["any_excluded"] else "--"
-        L.append(f"{TNAME[task]} & {lbl} & $\\le${f1(r['cross']['upper'])} & $\\le${f1(r['within']['upper'])} & "
+        L.append(f"{lbl} & $\\le${f1(r['cross']['upper'])} & $\\le${f1(r['within']['upper'])} & "
                  f"{mg} & {r['drift_bound']:.1f} & {OUT[r['outcome']]} \\\\")
+    head("MATH")
     r = R["du45"]
-    L.append(f"MATH L4-5 & Du et al.\\ $-$ SC $k{{=}}8$ & {f1(r['cross']['diff'])} {{\\scriptsize{ci(r['cross']['ci95'])}}} & "
+    L.append(f"Du et al.\\ $-$ SC $k{{=}}8$, levels 4 to 5 & {f1(r['cross']['diff'])} {{\\scriptsize{ci(r['cross']['ci95'])}}} & "
              f"none & {r['cross']['margin']:.1f} & {r['drift_bound']:.1f} & {OUT[r['outcome']]} \\\\")
     r = R["C5"]
-    L.append(f"MATH & C5, difficulty interaction & {f1(r['cross']['diff'])} {{\\scriptsize{ci(r['cross']['ci95'])}}} & "
+    L.append(f"C5, difficulty interaction & {f1(r['cross']['diff'])} {{\\scriptsize{ci(r['cross']['ci95'])}}} & "
              f"{f1(r['within']['diff'])} {{\\scriptsize{ci(r['within']['ci95'])}}} & -- & -- & {OUT[r['outcome']]} \\\\")
     for _d in OUTDIRS:
         with open(os.path.join(_d, "tables/within_run_main.tex"), "w") as fh:
