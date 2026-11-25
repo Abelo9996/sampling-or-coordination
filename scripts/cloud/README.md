@@ -210,4 +210,9 @@ paired; it reports their positions in the dispatch order, level mix and a select
 the paper's 4-bit hard run restricted to the same items. Writes
 `results/extra/hardmath_thinking_analysis.json`, `hardmath_thinking_macros.tex` and
 `tables/hardmath_thinking_table.tex` (default `paper/eaai_rev3`, or `--outdir`); reuses the JSON
-when the input files are unchanged.
+when the input files are unchanged. It also runs a truncation check on the hard run and on the four
+level 1 to 3 / GSM8K thinking runs (cap hits per configuration and call position, whether a cut call
+ever has an answer, and the verdicts with cut calls dropped, with only the items and seeds without a
+cut call, and with every cut call scored as correct; JSON keys `cap_check` and
+`cap_check_thinking_l13`, `tables/hardmath_trunc_table.tex`). The level 1 to 3 part needs
+`qwen3_raw_logs.tar.xz` extracted and takes about 30 minutes on 10 cores the first time.

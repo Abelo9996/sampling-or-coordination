@@ -23,8 +23,23 @@ the items used here (comparator rule of protocols/HARD_MATH_PROTOCOL.md: SC with
 2, 4, 8, 12 whose mean cost on these items is not above the workflow's; harness.stats.hier_paired_test).
 Without the 4-bit logs (public release) the cached JSON values are kept for that block.
 
+Truncation check (cap_check; JSON keys cap_check and cap_check_thinking_l13, the latter for the four
+level 1 to 3 / GSM8K thinking runs of cross_model_analysis.py on its items and seeds): share of calls at
+the cap per configuration and per call position (debate round 1 / round 2; GE draft, critiques, final
+revision; HIER plan, executors, aggregator), share of items and records with at least one cut call, and
+whether a cut answer-bearing call ever has an extracted (and a correct) answer. Three sensitivity
+analyses of every comparison behind a verdict (each cheaper sampling configuration, the cost-matched
+one and SC k=8), with the R/C/N rule and the same cheaper sets: 'drop' (SC votes over its uncut samples,
+debate over its uncut round-2 answers, GE falls back to its latest uncut generator output; SA and the
+HIER aggregator have no alternative), 'clean' (only the items and seeds on which no call of either
+compared configuration hit the cap) and 'impute' (every cut answer-bearing call scored as the gold
+answer: the most a higher cap could give each configuration with its other calls unchanged; cut
+round-1 debate calls and HIER executors also change later prompts, which this cannot model).
+
 Writes results/extra/hardmath_thinking_analysis.json and, in each --outdir (default paper/eaai_rev3 if
-present, else paper/arxiv_rev3): hardmath_thinking_macros.tex and tables/hardmath_thinking_table.tex.
+present, else paper/arxiv_rev3): hardmath_thinking_macros.tex, tables/hardmath_thinking_table.tex and
+tables/hardmath_trunc_table.tex. The truncation check of the level 1 to 3 runs takes about 30 minutes on
+10 cores the first time; it is cached by input-file signature.
 Run: /usr/bin/python3 scripts/cloud/hardmath_thinking_analysis.py [--jobs 8] [--outdir DIR ...]
 """
 import argparse
@@ -123,9 +138,155 @@ def fourbit_subset(ids, level):
     return out
 
 
+# ========== truncation check (cap 8,192 on hard MATH; 4,096 / 8,192 on the L1-3 thinking runs)
+POS = {"SA": [("single call", [0])],
+       "SC_k8": [("samples", list(range(8)))],
+       "DEBATE_N3_R1": [("round 1 (independent)", [0, 1, 2]), ("round 2 (revisions, voted)", [3, 4, 5])],
+       "GE_R2": [("draft", [0]), ("critiques", [1, 3]), ("revision 1", [2]), ("revision 2 (final)", [4])],
+       "HIERFIX_M3": [("plan", [0]), ("executors", [1, 2, 3]), ("aggregator (final)", [4])]}
+ANSWER_CALLS = {"SA": [0], "SC_k8": list(range(8)), "DEBATE_N3_R1": list(range(6)), "GE_R2": [0, 2, 4],
+                "HIERFIX_M3": [4]}
+
+
+def _recs_of(recs, c, i, ss):
+    src = "SC_k8" if c.startswith("SC_k") else c
+    return [recs[(src, i, 1)]] if c == "SA" else [recs[(src, i, s)] for s in ss]
+
+
+def _calls(c, r):
+    return r["calls"][:int(c[4:])] if c.startswith("SC_k") else r["calls"]
+
+
+def drop_answer(task, c, r):
+    """Final answer when truncated calls are dropped where the protocol allows it: SC votes over its
+    untruncated samples, debate over its untruncated round-2 answers, GE falls back to its latest
+    untruncated generator output (revision 1, then the draft); SA and the HIER aggregator have no
+    alternative answer and are left as they are."""
+    cs = _calls(c, r)
+    if c.startswith("SC_k"):
+        return topologies._majority([x["extracted"] for x in cs if not x["hit_cap"]])
+    if c == "DEBATE_N3_R1":
+        fin = [cs[j] for j in r["final_call_idx"]]
+        return topologies._majority([x["extracted"] for x in fin if not x["hit_cap"]])
+    if c == "GE_R2":
+        for j in (4, 2, 0):
+            if not cs[j]["hit_cap"]:
+                return cs[j]["extracted"]
+        return None
+    return r["pred"]
+
+
+def cap_check(task, recs, ids, seeds_of, res, cells, n_jobs):
+    """Truncation: where the cap hits, whether a truncated call is ever right, and two sensitivity
+    analyses of the paired comparisons (dropping truncated calls; items and seeds with no cut call)."""
+    sc_ = lambda c, a, g: bool(task["score"](a, g))
+    D = res["configs"]
+    out = {"positions": {}, "records_any_cap_pct": {}, "items_any_cap_pct": {}, "final_cut_pct": {},
+           "truncated_calls": {}}
+    for c in ["SA"] + xm.WF:
+        R = [r for i in ids for r in _recs_of(recs, c, i, seeds_of[i])]
+        out["positions"][c] = {nm: {"calls": len(R) * len(js),
+                                    "hit_cap_pct": 100 * float(np.mean([r["calls"][j]["hit_cap"] for r in R for j in js]))}
+                               for nm, js in POS[c]}
+        aj = ANSWER_CALLS[c]
+        cut = [(r["calls"][j], r["gold"]) for r in R for j in aj if r["calls"][j]["hit_cap"]]
+        ext = [(x, g) for x, g in cut if x["extracted"] is not None]
+        out["truncated_calls"][c] = {"answer_calls": len(R) * len(aj), "cut": len(cut), "cut_with_answer": len(ext),
+                                     "cut_correct": int(sum(sc_(c, x["extracted"], g) for x, g in ext))}
+    for c in xm.ALL:
+        R = {i: _recs_of(recs, c, i, seeds_of[i]) for i in ids}
+        out["records_any_cap_pct"][c] = 100 * float(np.mean([any(x["hit_cap"] for x in _calls(c, r))
+                                                            for i in ids for r in R[i]]))
+        out["items_any_cap_pct"][c] = 100 * float(np.mean([any(x["hit_cap"] for r in R[i] for x in _calls(c, r))
+                                                          for i in ids]))
+        fin = (lambda r: _calls(c, r)) if c.startswith("SC_k") else (lambda r: [r["calls"][j] for j in r["final_call_idx"]])
+        out["final_cut_pct"][c] = 100 * float(np.mean([any(x["hit_cap"] for x in fin(r)) for i in ids for r in R[i]]))
+    # correct final answers in records whose answer-producing call was cut (SA, GE, HIER: one final call)
+    out["final_cut_correct"] = {c: [int(sum(r["calls"][r["final_call_idx"][0]]["hit_cap"] for i in ids
+                                            for r in _recs_of(recs, c, i, seeds_of[i]))),
+                                    int(sum(r["calls"][r["final_call_idx"][0]]["hit_cap"] and bool(r["correct"])
+                                            for i in ids for r in _recs_of(recs, c, i, seeds_of[i])))]
+                                for c in ("SA", "GE_R2", "HIERFIX_M3")}
+    # comparisons: every cheaper sampling configuration (verdict), the cost-matched one, and SC k=8
+    pairs = {}
+    for w in xm.COORD:
+        S = set(res["verdict_total"][w]["cheaper"]) | set(res["verdict_output"][w]["cheaper"]) | {"SC_k8"}
+        S |= {m["comparator"] for k, m in res["matched"].items() if k.startswith(w + "|") and m["comparator"]}
+        pairs[w] = [a for a in xm.SAMP if a in S]
+    # (1) 'drop': truncated calls dropped where the protocol allows it (drop_answer); (2) 'impute': every
+    # truncated answer-bearing call (SA, SC samples, debate round 2, GE revision 2, HIER aggregator) set to
+    # the gold answer, the most a higher cap could give each configuration with its other calls unchanged
+    def imp_answer(c, r):
+        cs, g = _calls(c, r), r["gold"]
+        e = lambda x: g if x["hit_cap"] else x["extracted"]
+        if c.startswith("SC_k"):
+            return topologies._majority([e(x) for x in cs])
+        if c == "DEBATE_N3_R1":
+            return topologies._majority([e(cs[j]) for j in r["final_call_idx"]])
+        return e(cs[r["final_call_idx"][0]]) if cs[r["final_call_idx"][0]]["hit_cap"] else r["pred"]
+    jobs, out["identical_to_original"] = [], {}
+    for v, fn in (("drop", lambda c, r: drop_answer(task, c, r)), ("impute", imp_answer)):
+        M = {c: {i: np.array([float(sc_(c, fn(c, r), r["gold"])) for r in _recs_of(recs, c, i, seeds_of[i])])
+                 for i in ids} for c in xm.ALL}
+        M["SA"] = {i: np.repeat(M["SA"][i], len(seeds_of[i])) for i in ids}
+        out[v] = {"acc": {c: 100 * float(np.mean([M[c][i].mean() for i in ids])) for c in xm.ALL}, "tests": {}}
+        same = all(np.array_equal(M[c][i], cells[c].M[i]) for c in xm.ALL for i in ids)
+        out["identical_to_original"][v] = same
+        for w in xm.COORD:
+            for a in pairs[w]:
+                if same:
+                    t = res["tests"][f"{w}|{a}"]
+                    out[v]["tests"][f"{w}|{a}"] = {"diff": t["diff"], "ci95": t["ci95"], "p": t["p"]}
+                else:
+                    jobs.append((f"{v}|{w}|{a}", M[w], M[a]))
+    out["acc_orig"] = {c: D[c]["acc"] for c in xm.ALL}
+    # wrong records with a truncated call: the most items a higher cap could turn correct
+    out["wrong_with_cut_pct"] = {c: 100 * float(np.mean([(not cells[c].M[i][k]) and any(x["hit_cap"] for x in _calls(c, r))
+                                                         for i in ids for k, r in enumerate(_recs_of(recs, c, i, seeds_of[i]))]))
+                                 for c in xm.ALL}
+    # (3) 'clean': items and seeds where no call of either configuration hit the cap
+    clean = {c: {i: [not any(x["hit_cap"] for x in _calls(c, r)) for r in _recs_of(recs, c, i, seeds_of[i])]
+                 for i in ids} for c in xm.ALL}
+    sub = {}
+    for w in xm.COORD:
+        for a in pairs[w]:
+            Mw, Ma = {}, {}
+            for i in ids:
+                ok = [k for k in range(len(seeds_of[i])) if clean[w][i][k] and clean[a][i][0 if a == "SA" else k]]
+                if ok:
+                    Mw[i] = cells[w].M[i][ok]
+                    Ma[i] = cells[a].M[i][ok]
+            sub[f"{w}|{a}"] = (len(Mw), sum(len(v) for v in Mw.values()),
+                               100 * float(np.mean([v.mean() for v in Mw.values()])),
+                               100 * float(np.mean([v.mean() for v in Ma.values()])))
+            jobs.append((f"clean|{w}|{a}", Mw, Ma))
+    T = rr.run_tests(jobs, n_jobs)
+    out["clean"] = {"tests": {}}
+    for k, t in T.items():
+        v, w, a = k.split("|")
+        e = {"diff": t["diff"], "ci95": t["ci95"], "p": t["p"]}
+        if v == "clean":
+            e["n_items"], e["n_item_seeds"], e["acc_w"], e["acc_a"] = sub[f"{w}|{a}"]
+        out[v]["tests"][f"{w}|{a}"] = e
+    for v in ("drop", "impute", "clean"):  # the paper's R/C/N rule with the same cheaper sets
+        out[v]["verdict_total"], out[v]["verdict_output"], out[v]["matched"] = {}, {}, {}
+        for w in xm.COORD:
+            for vk in ("verdict_total", "verdict_output"):
+                ch = res[vk][w]["cheaper"]
+                adv = {a: [-out[v]["tests"][f"{w}|{a}"]["ci95"][1], -out[v]["tests"][f"{w}|{a}"]["ci95"][0]] for a in ch}
+                rob = [a for a in ch if adv[a][0] > 0]
+                out[v][vk][w] = "R" if rob else ("N" if ch and all(adv[a][1] < 0 for a in ch) else ("N" if not ch else "C"))
+            for unit in ("total_tokens", "out_tokens"):
+                m = res["matched"][f"{w}|{unit}"]["comparator"]
+                out[v]["matched"][f"{w}|{unit}"] = dict(out[v]["tests"][f"{w}|{m}"], comparator=m) if m else None
+    return out
+
+
 # ========== LaTeX
 def emit(J, outdirs):
     R, I, F = J["result"], J["result"], J.get("fourbit_same_items")
+    XM = json.load(open(xm.OUT_JSON))["models"]
+    XV = {f"{d}:{tn}": XM[d]["tasks"][tn] for d in XM for tn in XM[d]["tasks"]}
     D = R["configs"]
     L = ["% AUTO-GENERATED by scripts/cloud/hardmath_thinking_analysis.py from results/extra/",
          "% hardmath_thinking_analysis.json. Do not edit."]
@@ -217,6 +378,89 @@ def emit(J, outdirs):
         nm("HtFbSc", f1(F["acc"]["SC_k8"]))
         ds = [F["tests"][f"{w}|total_tokens"]["diff"] for w in xm.COORD]
         nm("HtFbRange", f"{-max(ds):.1f} to {-min(ds):.1f}" if max(ds) < 0 else "n/a")  # points below the comparator
+    # truncation check (hard MATH; then the level 1 to 3 / GSM8K thinking runs)
+    K = J.get("cap_check")
+    if K:
+        P = K["positions"]
+        nm("HtCapDeb", f1(tr["DEBATE_N3_R1"]["hit_cap_pct"]))
+        nm("HtCapGe", f1(tr["GE_R2"]["hit_cap_pct"]))
+        nm("HtCapHier", f1(tr["HIERFIX_M3"]["hit_cap_pct"]))
+        nm("HtCapDebOne", f1(P["DEBATE_N3_R1"]["round 1 (independent)"]["hit_cap_pct"]))
+        nm("HtCapDebTwo", f1(P["DEBATE_N3_R1"]["round 2 (revisions, voted)"]["hit_cap_pct"]))
+        nm("HtCapGeDraft", f1(P["GE_R2"]["draft"]["hit_cap_pct"]))
+        nm("HtCapGeCrit", f1(P["GE_R2"]["critiques"]["hit_cap_pct"]))
+        nm("HtCapGeFinal", f1(P["GE_R2"]["revision 2 (final)"]["hit_cap_pct"]))
+        nm("HtCapHierPlan", f1(P["HIERFIX_M3"]["plan"]["hit_cap_pct"]))
+        nm("HtCapHierExec", f1(P["HIERFIX_M3"]["executors"]["hit_cap_pct"]))
+        nm("HtCapHierAgg", f1(P["HIERFIX_M3"]["aggregator (final)"]["hit_cap_pct"]))
+        for c, s_ in (("SA", "Sa"), ("SC_k2", "ScTwo"), ("SC_k4", "ScFour"), ("SC_k8", "Sc"), ("DEBATE_N3_R1", "Deb"),
+                      ("GE_R2", "Ge"), ("HIERFIX_M3", "Hier")):
+            nm(f"HtItemsCut{s_}", f1(K["items_any_cap_pct"][c]))
+            nm(f"HtWrongCut{s_}", f1(K["wrong_with_cut_pct"][c]))
+            nm(f"HtImpAcc{s_}", f1(K["impute"]["acc"][c]))
+            nm(f"HtImpGain{s_}", sg(K["impute"]["acc"][c] - K["acc_orig"][c], "+"))
+        T_ = K["truncated_calls"]
+        nm("HtCutCalls", fint(sum(v["cut"] for v in T_.values())))
+        nm("HtCutAnswer", fint(sum(v["cut_with_answer"] for v in T_.values())))
+        nm("HtCutCorrect", fint(sum(v["cut_correct"] for v in T_.values())))
+        nm("HtCutSc", fint(T_["SC_k8"]["cut"]))
+        nm("HtCutDeb", fint(T_["DEBATE_N3_R1"]["cut"]))
+        nm("HtDropSame", "yes" if K["identical_to_original"]["drop"] else "no")
+        for v, V in (("clean", "Clean"), ("impute", "Imp")):
+            for w in xm.COORD:
+                wl = xm.WLBL[w]
+                m = K[v]["matched"][f"{w}|total_tokens"]
+                nm(f"Ht{V}D{wl}", sg(m["diff"], "+"))
+                nm(f"Ht{V}I{wl}", f"[{sg(m['ci95'][0])}, {sg(m['ci95'][1])}]")
+                t = K[v]["tests"][f"{w}|SC_k8"]
+                nm(f"Ht{V}Sc{wl}", f"{sg(t['diff'], '+')}, [{sg(t['ci95'][0])}, {sg(t['ci95'][1])}]")
+                if v == "clean":
+                    nm(f"HtCleanN{wl}", str(m["n_items"]))
+                    nm(f"HtCleanScN{wl}", str(t["n_items"]))
+            vv = [K[v][vk][w] for vk in ("verdict_total", "verdict_output") for w in xm.COORD]
+            nm(f"Ht{V}Verdicts", "every verdict C" if set(vv) == {"C"} else
+               "verdicts " + ", ".join(vv[:3]) + " (total) and " + ", ".join(vv[3:]) + " (output)")
+        nm("HtCleanMaxAbs", f1(max(abs(t["diff"]) for t in K["clean"]["tests"].values())))
+        g = [K["impute"]["acc"][w] - K["acc_orig"][w] for w in xm.COORD]
+        nm("HtImpGainScFourInt", f"{K['impute']['acc']['SC_k4'] - K['acc_orig']['SC_k4']:.0f}")
+        nm("HtImpWfRange", f"{min(g):.0f} to {max(g):.0f}" if round(min(g)) != round(max(g)) else f"{g[0]:.0f}")
+        nm("HtCleanScN", f"{min(K['clean']['tests'][w + '|SC_k8']['n_items'] for w in xm.COORD)} to "
+                         f"{max(K['clean']['tests'][w + '|SC_k8']['n_items'] for w in xm.COORD)}")
+        cn = [K["clean"]["matched"][f"{w}|total_tokens"]["n_items"] for w in xm.COORD]
+        nm("HtCleanRange", f"{min(cn)} to {max(cn)}" if min(cn) != max(cn) else str(cn[0]))
+    L13 = J.get("cap_check_thinking_l13", {})
+    if L13:
+        cut = sum(v["cut"] for k in L13.values() for v in k["truncated_calls"].values())
+        ans = sum(v["cut_with_answer"] for k in L13.values() for v in k["truncated_calls"].values())
+        cor = sum(v["cut_correct"] for k in L13.values() for v in k["truncated_calls"].values())
+        nm("TcCutCalls", fint(cut))
+        nm("TcCutAnswer", fint(ans))
+        nm("TcCutCorrect", fint(cor))
+        nm("TcRuns", xm.word(len(L13)))
+        ch = {v: sum(k[v][vk][w] != XV[key][vk][w]["verdict"] for key, k in L13.items()
+                     for vk in ("verdict_total", "verdict_output") for w in xm.COORD)
+              for v in ("drop", "clean", "impute")}
+        for v, V in (("drop", "Drop"), ("clean", "Clean"), ("impute", "Imp")):
+            nm(f"Tc{V}Changed", xm.word(ch[v]))
+        nv = 2 * len(xm.COORD) * len(L13)
+        nm("TcNVerdicts", str(nv))
+        moves = sorted({f"{XV[key][vk][w]['verdict']} to {k[v][vk][w]}" for key, k in L13.items()
+                        for v in ("drop", "clean", "impute") for vk in ("verdict_total", "verdict_output")
+                        for w in xm.COORD if k[v][vk][w] != XV[key][vk][w]["verdict"]})
+        wd = lambda n: "none" if n == 0 else xm.word(n)
+        nm("TcChangedText", f"changed none of the {nv} verdicts" if not any(ch.values()) else
+           f"changed {wd(ch['drop'])}, {wd(ch['clean'])} and {wd(ch['impute'])} of the {nv} verdicts"
+           + (f", each from {moves[0]}" if len(moves) == 1 else " (" + ", ".join(moves) + ")"))
+        dmax = max(abs(k[v]["matched"][f"{w}|{u}"]["diff"] - XV[key]["matched"][f"{w}|{u}"]["diff"])
+                   for key, k in L13.items() for v in ("drop", "clean") for w in xm.COORD
+                   for u in ("total_tokens", "out_tokens") if k[v]["matched"][f"{w}|{u}"])
+        nm("TcMaxShift", f1(dmax))
+        imp = [k["impute"]["acc"][c] - k["acc_orig"][c] for k in L13.values() for c in xm.ALL]
+        nm("TcImpGainMax", f1(max(imp)))
+        sc8 = max(k["impute"]["acc"]["SC_k8"] - k["acc_orig"]["SC_k8"] for k in L13.values())
+        deb = max(k["impute"]["acc"]["DEBATE_N3_R1"] - k["acc_orig"]["DEBATE_N3_R1"] for k in L13.values())
+        nm("TcImpGainSc", f1(sc8))
+        nm("TcImpGainDeb", f1(deb))
     for d in outdirs:
         with open(os.path.join(d, "hardmath_thinking_macros.tex"), "w") as fh:
             fh.write("\n".join(L) + "\n")
@@ -232,6 +476,33 @@ def emit(J, outdirs):
                  f"{fint(D[c]['out_tokens'])} & {cap} & {fb} \\\\")
     for d in outdirs:
         with open(os.path.join(d, "tables/hardmath_thinking_table.tex"), "w") as fh:
+            fh.write("% AUTO-GENERATED by scripts/cloud/hardmath_thinking_analysis.py. Do not edit.\n" + "\n".join(T) + "\n")
+
+
+def emit_trunc_table(J, outdirs):
+    """Supplementary truncation table: per configuration, calls cut (all and by position), records with a cut
+    call, wrong records with a cut call, accuracy as run and with every cut answer-bearing call scored correct."""
+    K = J.get("cap_check")
+    if not K:
+        return
+    f1 = xm.f1
+    pos = {"SA": "--", "SC_k2": "--", "SC_k4": "--", "SC_k8": "--"}
+    P = K["positions"]
+    pos["DEBATE_N3_R1"] = "R1 %s, R2 %s" % (f1(P["DEBATE_N3_R1"]["round 1 (independent)"]["hit_cap_pct"]),
+                                          f1(P["DEBATE_N3_R1"]["round 2 (revisions, voted)"]["hit_cap_pct"]))
+    pos["GE_R2"] = "D %s, C %s, final %s" % (f1(P["GE_R2"]["draft"]["hit_cap_pct"]), f1(P["GE_R2"]["critiques"]["hit_cap_pct"]),
+                                           f1(P["GE_R2"]["revision 2 (final)"]["hit_cap_pct"]))
+    pos["HIERFIX_M3"] = "P %s, E %s, A %s" % (f1(P["HIERFIX_M3"]["plan"]["hit_cap_pct"]),
+                                            f1(P["HIERFIX_M3"]["executors"]["hit_cap_pct"]),
+                                            f1(P["HIERFIX_M3"]["aggregator (final)"]["hit_cap_pct"]))
+    tr = J["result"]["truncation"]
+    T = []
+    for c in xm.ALL:
+        allc = f1(tr[c]["hit_cap_pct"]) if c in tr else "--"
+        T.append(f"{xm.CL[c][0].upper() + xm.CL[c][1:]} & {allc} & {pos[c]} & {f1(K['items_any_cap_pct'][c])} & "
+                 f"{f1(K['wrong_with_cut_pct'][c])} & {f1(K['acc_orig'][c])} & {f1(K['impute']['acc'][c])} \\\\")
+    for d in outdirs:
+        with open(os.path.join(d, "tables/hardmath_trunc_table.tex"), "w") as fh:
             fh.write("% AUTO-GENERATED by scripts/cloud/hardmath_thinking_analysis.py. Do not edit.\n" + "\n".join(T) + "\n")
 
 
@@ -268,7 +539,30 @@ def main():
     else:  # raw logs absent (fresh clone before tar -xJf results/cloud/hardmath_raw_logs.tar.xz)
         J = json.load(open(OUT_JSON))
         print("raw logs absent: reusing", os.path.relpath(OUT_JSON, ROOT))
+    # truncation check: hard MATH, then the level 1 to 3 / GSM8K thinking runs of cross_model_analysis
+    # (cached by input-file signature; kept from the JSON when the raw logs are absent)
+    if sig and (A.fresh or J.get("cap_check", {}).get("input_files") != sig):
+        task, recs, ids, seeds_of, info, level = plan()
+        cells = xm.build_cells(recs, ids, seeds_of, task)
+        J["cap_check"] = cap_check(task, recs, ids, seeds_of, J["result"], cells, A.jobs)
+        J["cap_check"]["input_files"] = sig
+    XJ = json.load(open(xm.OUT_JSON))["models"]
+    L13 = J.setdefault("cap_check_thinking_l13", {})
+    for d in ("qwen3-4b", "qwen3-8b"):
+        for tn, _, _, nexp in xm.TASKS:
+            path, key = os.path.join(ROOT, "results/cloud", d), f"{d}:{tn}"
+            s13 = xm.signature(path, tn)
+            if not s13 or (not A.fresh and L13.get(key, {}).get("input_files") == s13):
+                continue
+            task, recs, ids, seeds_of, info = xm.plan(path, tn, nexp)
+            cells = xm.build_cells(recs, ids, seeds_of, task)
+            print("truncation check", key, flush=True)
+            L13[key] = cap_check(task, recs, ids, seeds_of, XJ[d]["tasks"][tn], cells, A.jobs)
+            L13[key]["input_files"] = s13
+            L13[key]["cap"] = next(iter(recs.values()))["cap"]
+    json.dump(J, open(OUT_JSON, "w"), indent=1, default=float)
     emit(J, outdirs)
+    emit_trunc_table(J, outdirs)
     R = J["result"]
     D = R["configs"]
     print("items", R["n_items"], "levels", R["level_mix"], "positions", R["positions_in_order"])
